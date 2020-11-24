@@ -1,49 +1,48 @@
-import React, {useState} from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-} from "react-router-dom";
+import React, { useState } from "react";
+import { RecoilRoot } from "recoil";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Import custom styles for our application
-import './App.css';
+import "./App.css";
 
-import Auth from './services/Auth';
+import Auth from "./services/Auth";
 import Navbar from "./components/layout/Navbar";
+import User from "./components/user/user";
+import Teacher from "./components/teacher/teacher";
+import Student from "./components/student/student";
 
 // Import pages
 import LoginPage from "./components/auth/LoginPage";
-import HomePage from './components/home/HomePage';
-import PostsPage from "./components/posts/PostsPage";
-import ChatPage from './components/chat/ChatPage';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
   Auth.bindLoggedInStateSetter(setLoggedIn);
-  
+
   const loggedInRouter = (
-            <Router>
-                <Navbar onLogout={() => Auth.logout()} />
+    <RecoilRoot>
+      <Router>
+        <Navbar onLogout={() => Auth.logout()} />
 
-                <div className="container mt-5">
-                    <Switch>
-                        <Route path="/posts">
-                            <PostsPage/>
-                        </Route>
+        <div className="container mt-5">
+          <Switch>
+            <Route path="/student">
+              <Student />
+            </Route>
 
-                        <Route path="/chat">
-                            <ChatPage/>
-                        </Route>
+            <Route path="/teacher">
+              <Teacher />
+            </Route>
 
-                        <Route path="/">
-                          <HomePage/>
-                        </Route>
-                    </Switch>
-                </div>
-            </Router>
+            <Route path="/">
+              <User />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </RecoilRoot>
   );
 
-  return (loggedIn ? loggedInRouter : <LoginPage/>);
+  return loggedIn ? loggedInRouter : <LoginPage />;
 }
 
 export default App;

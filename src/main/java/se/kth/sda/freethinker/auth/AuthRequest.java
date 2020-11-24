@@ -1,4 +1,4 @@
-package se.kth.sda.skeleton.auth;
+package se.kth.sda.freethinker.auth;
 
 public class AuthRequest {
     private String email;

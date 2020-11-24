@@ -1,4 +1,4 @@
-package se.kth.sda.skeleton;
+package se.kth.sda.freethinker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

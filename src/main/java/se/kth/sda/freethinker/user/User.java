@@ -1,5 +1,7 @@
-package se.kth.sda.skeleton.user;
+package se.kth.sda.freethinker.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -28,6 +30,8 @@ public class User {
     @Column(name = "name")
     private String name;
 
+    private String userType;
+
     // Hibernate needs a default constructor to function
     public User() {}
 
@@ -54,19 +58,28 @@ public class User {
         this.email = email;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
 
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }

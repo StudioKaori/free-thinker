@@ -1,4 +1,4 @@
-package se.kth.sda.skeleton.auth;
+package se.kth.sda.freethinker.auth;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
