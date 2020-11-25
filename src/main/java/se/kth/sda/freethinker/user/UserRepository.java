@@ -1,4 +1,4 @@
-package se.kth.sda.skeleton.user;
+package se.kth.sda.freethinker.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

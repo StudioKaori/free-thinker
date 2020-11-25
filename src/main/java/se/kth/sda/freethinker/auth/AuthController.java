@@ -1,12 +1,12 @@
-package se.kth.sda.skeleton.auth;
+package se.kth.sda.freethinker.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
-import se.kth.sda.skeleton.user.User;
-import se.kth.sda.skeleton.user.UserService;
+import se.kth.sda.freethinker.user.User;
+import se.kth.sda.freethinker.user.UserService;
 
 @RestController
 public class AuthController {
