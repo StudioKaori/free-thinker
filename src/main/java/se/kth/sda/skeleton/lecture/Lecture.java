@@ -12,8 +12,12 @@ public class Lecture {
     private String title;
 
     @Column(columnDefinition = "TEXT")
+
     private String body;
 
+    public Lecture(){
+
+    }
 
     public Lecture(Long id, String title, String body) {
         this.id = id;
