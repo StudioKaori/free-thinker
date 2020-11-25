@@ -10,11 +10,11 @@ class LectureApi {
     }
 
     createLecture(lecture) {
-        return Api.post('/lectures', post);
+        return Api.post('/lectures', lecture);
     }
 
     updateLecture(lecture) {
-        return Api.put('/lectures', post);
+        return Api.put('/lectures',lecture);
     }
 
     deleteLecture(id) {
