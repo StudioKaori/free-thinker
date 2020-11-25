@@ -8,7 +8,7 @@ function RegisterForm({ onSubmit, userType }) {
   return (
     <div className="card">
       <div className="card-body">
-        <h4 className="card-title">Sign up</h4>
+        <h4 className="card-title">{userType} Sign up</h4>
         <div>
           <div className="form-group">
             <label>Name:</label>

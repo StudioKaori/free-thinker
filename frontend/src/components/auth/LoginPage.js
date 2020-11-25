@@ -41,12 +41,10 @@ function LoginPage() {
               </div>
 
               <div className="col-12 mt-4">
-                <div>I am a teacher.</div>
                 <RegisterForm userType="Teacher" onSubmit={register} />
               </div>
 
               <div className="col-12 mt-4">
-                <div>I am a parent (student).</div>
                 <RegisterForm userType="Student" onSubmit={register} />
               </div>
             </div>
