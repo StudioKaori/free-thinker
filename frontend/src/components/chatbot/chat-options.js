@@ -3,8 +3,8 @@
 // Here we can build our own steps, which will be displayed on chat bot
 // For all options see : https://lucasbassetti.com.br/react-simple-chatbot/#/docs/steps
 
-// Later this 'steps' object needs to come from the teacher. 
-// We need to create a form which return an object like that
+// Later this 'steps' and 'theme' objects needs to come from the teacher. 
+// We need to create a form which return an object like that -> see CreateChatForm
 
 export const steps = [
     {
@@ -44,5 +44,3 @@ export const theme = {
     userBubbleColor: '#fff',
     userFontColor: '#4a4a4a',
 };
-
-// Guess we can also find where to change avatars, others options (like size, ...)
