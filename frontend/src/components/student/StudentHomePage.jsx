@@ -1,6 +1,7 @@
 // These two lines are to get user information and other shared statement
 import { useRecoilState } from "recoil";
 import { userState } from "../../js/state-information";
+import Chat from "../chatbot/Chat"
 
 export default function StudentHomePage() {
   // To get user information, just use user below
@@ -10,6 +11,7 @@ export default function StudentHomePage() {
     <div>
       <h4 className="card-title">student</h4>
       {user[0].name}
+        <Chat />
     </div>
   );
 }
