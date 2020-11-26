@@ -1,4 +1,4 @@
-package se.kth.sda.skeleton.lecture;
+package se.kth.sda.freethinker.lecture;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

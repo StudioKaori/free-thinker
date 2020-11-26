@@ -1,4 +1,4 @@
-package se.kth.sda.skeleton.lecture;
+package se.kth.sda.freethinker.lecture;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
