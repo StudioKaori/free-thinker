@@ -4,12 +4,11 @@ import { userState } from "../../js/state-information";
 
 export default function StudentHomePage() {
   // To get user information, just use user below
-  const [user, setUser] = useRecoilState(userState);
+  const [user] = useRecoilState(userState);
 
   return (
     <div>
-      <h4 className="card-title">student</h4>
-      {user[0].name}
+      <div className="body_wrapper">{user[0].name}</div>
     </div>
   );
 }
