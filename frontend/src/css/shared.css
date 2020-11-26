@@ -1,0 +1,36 @@
+/* This file is for common style of the webpage. */
+
+/* company logo font */
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+
+body {
+  color: var(--font-dark);
+  font-family: "Open Sans", sans-serif;
+  font-size: var(--font-M);
+  margin: 0;
+  background-color: var(--color-bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Monoton", cursive;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* reset user agent stylesheet */
+
+ul {
+  padding-inline-start: 0;
+}
+
+@media (min-width: 750px) {
+  .body_wrapper {
+    margin: auto;
+    width: 800px;
+  }
+}

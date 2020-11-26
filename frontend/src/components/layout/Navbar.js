@@ -1,51 +1,118 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Api from "../../api/Api";
 import { Link } from "react-router-dom";
 
+// These two lines are to get user information and other shared statement
+import { useRecoilState } from "recoil";
+import { userState } from "../../js/state-information";
+
 function Navbar({ onLogout }) {
+  const [status, setStatus] = useState(0);
+  const [user, setUser] = useRecoilState(userState);
+
+  // for user info
+  const getUser = () => {
+    Api.get("/user/loggedInUser").then((res) => setUser([res.data]));
+  };
+
+  useEffect(() => {
+    getUser();
+    resizeNav();
+  }, []);
+
+  useEffect(() => {
+    console.log(user);
+    if (user.length !== 0) {
+      setStatus(1);
+    }
+  }, [user]);
+
+  // for navigation drawer
+  window.addEventListener(
+    "resize",
+    function () {
+      resizeNav();
+    },
+    false
+  );
+
+  function resizeNav() {
+    const mySidenav = document.getElementById("mySidenav");
+
+    if (window.innerWidth >= 750) {
+      mySidenav.classList.add("header-menu-PC");
+      mySidenav.style.width = "100%";
+    } else if (window.innerWidth < 750) {
+      mySidenav.classList.remove("header-menu-PC");
+      closeNav();
+    }
+  }
+
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  function closeNav() {
+    if (window.innerWidth < 750) {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  }
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="/">
-        SDA starter
-      </a>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarColor01"
-        aria-controls="navbarColor01"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
+    <nav>
+      <div className="header-menu-bg">
+        <div className="header-menu-wrapper">
+          <div className="header-menu-logo">
+            <h1>
+              F<span>R</span>E<span>E</span> T<span>H</span>I<span>N</span>K
+              <span>E</span>R
+            </h1>
+          </div>
 
-      <div className="collapse navbar-collapse" id="navbarColor01">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-          </li>
+          <div className="header-profile-photo-wrapper">
+            {status === 1 ? (
+              <div>
+                <div className="header-profile-photo-name">{user[0].name}</div>
+                <div>
+                  <img
+                    src="/assets/img/test/lisa-larson.jpg"
+                    className="header-profile-photo"
+                  />
+                </div>
+              </div>
+            ) : null}
+          </div>
 
-          <li className="nav-item">
-            <Link to="/posts" className="nav-link">
-              Posts
-            </Link>
-          </li>
+          <div className="mobile-menu">
+            <span onClick={() => openNav()}>
+              <i className="fas fa-bars"></i>
+            </span>
+          </div>
 
-          <li className="nav-item">
-            <Link to="/chat" className="nav-link">
-              Chat
-            </Link>
-          </li>
-        </ul>
+          <div id="mySidenav" className="header-menu">
+            <span className="closebtn" onClick={() => closeNav()}>
+              &times;
+            </span>
+            <ul>
+              <li onClick={() => closeNav()}>
+                <Link to="/" className="nav-link">
+                  HOME
+                </Link>
+              </li>
 
-        <button
-          className="btn btn-outline-info my-2 my-sm-0"
-          onClick={onLogout}
-        >
-          Logout
-        </button>
+              <li onClick={() => closeNav()}>
+                <Link to="/posts" className="nav-link">
+                  POSTS
+                </Link>
+              </li>
+
+              <li onClick={onLogout}>Logout</li>
+            </ul>
+            {/* <button className="logout-button" onClick={onLogout}>
+              LOGOUT
+            </button> */}
+          </div>
+        </div>
       </div>
     </nav>
   );
