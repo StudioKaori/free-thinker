@@ -20,14 +20,11 @@ function App() {
     <RecoilRoot>
       <Router>
         <Navbar onLogout={() => Auth.logout()} />
-
-        <div className="container mt-5">
-          <Switch>
-            <Route path="/">
-              <User />
-            </Route>
-          </Switch>
-        </div>
+        <Switch>
+          <Route path="/">
+            <User />
+          </Route>
+        </Switch>
       </Router>
     </RecoilRoot>
   );

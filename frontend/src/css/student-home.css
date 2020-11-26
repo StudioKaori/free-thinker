@@ -1,0 +1,30 @@
+.student-home-map-wrapper {
+  background-color: var(--color-sea);
+}
+
+.student-home-map {
+  width: auto;
+  margin: auto;
+  height: 150px;
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: top 5px left;
+  background-image: url("../assets/img/world-map.png");
+}
+
+@media (min-width: 550px) {
+  .student-home-map {
+    height: 250px;
+    background-size: 70%;
+    background-position: top 15px left 30px;
+  }
+}
+
+@media (min-width: 750px) {
+  .student-home-map {
+    width: 800px;
+    height: 300px;
+    background-size: 70%;
+    background-position: top 15px left 30px;
+  }
+}
