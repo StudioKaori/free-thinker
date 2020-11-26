@@ -17,45 +17,21 @@ function Navbar({ onLogout }) {
 
   useEffect(() => {
     getUser();
-    resizeNav();
   }, []);
 
   useEffect(() => {
-    console.log(user);
     if (user.length !== 0) {
       setStatus(1);
     }
   }, [user]);
 
   // for navigation drawer
-  window.addEventListener(
-    "resize",
-    function () {
-      resizeNav();
-    },
-    false
-  );
-
-  function resizeNav() {
-    const mySidenav = document.getElementById("mySidenav");
-
-    if (window.innerWidth >= 750) {
-      mySidenav.classList.add("header-menu-PC");
-      mySidenav.style.width = "100%";
-    } else if (window.innerWidth < 750) {
-      mySidenav.classList.remove("header-menu-PC");
-      closeNav();
-    }
-  }
-
   function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
   }
 
   function closeNav() {
-    if (window.innerWidth < 750) {
-      document.getElementById("mySidenav").style.width = "0";
-    }
+    document.getElementById("mySidenav").style.width = "0";
   }
 
   return (
@@ -73,7 +49,7 @@ function Navbar({ onLogout }) {
             {status === 1 ? (
               <div>
                 <div className="header-profile-photo-name">{user[0].name}</div>
-                <div>
+                <div className="header-profile-photo-container">
                   <img
                     src="/assets/img/test/lisa-larson.jpg"
                     className="header-profile-photo"
@@ -94,7 +70,7 @@ function Navbar({ onLogout }) {
               &times;
             </span>
             <ul>
-              <li onClick={() => closeNav()}>
+              {/* <li onClick={() => closeNav()}>
                 <Link to="/" className="nav-link">
                   HOME
                 </Link>
@@ -104,9 +80,11 @@ function Navbar({ onLogout }) {
                 <Link to="/posts" className="nav-link">
                   POSTS
                 </Link>
-              </li>
+              </li> */}
 
-              <li onClick={onLogout}>Logout</li>
+              <li onClick={onLogout}>
+                <Link>LOGOUT</Link>
+              </li>
             </ul>
             {/* <button className="logout-button" onClick={onLogout}>
               LOGOUT

@@ -105,10 +105,11 @@
 
 .header-menu li {
   list-style: none;
+  font-family: "Monoton", cursive;
 }
 
 .header-menu li a {
-  font-family: "Gugi", cursive;
+  color: var(--color-bg);
   display: block;
   padding: 0;
   text-decoration: none;
@@ -136,6 +137,7 @@
     font-size: var(--font-XL);
   }
   .header-profile-photo-name {
+    display: inline;
     line-height: 35px;
     font-family: "Monoton", cursive;
     size: var(--font-S);
@@ -143,7 +145,7 @@
     margin-right: 10px;
   }
 
-  .header-profile-photo-wrapper div {
+  .header-profile-photo-container {
     display: inline;
   }
 }
@@ -152,35 +154,5 @@
   .header-menu-wrapper {
     margin: auto;
     width: 700px;
-    grid-template-columns: 310px 1fr 150px;
-  }
-  .header-menu ul {
-    display: inline-block;
-  }
-  .header-menu li {
-    font-size: var(--font-S);
-    display: inline;
-  }
-  .header-menu li a {
-    display: inline;
-    padding: 0;
-    margin: 0;
-    margin-left: 10px;
-  }
-
-  .pc-icon {
-    display: none;
-  }
-
-  .header-menu .closebtn {
-    display: none;
-  }
-  .mobile-menu {
-    display: none;
-  }
-
-  .checked {
-    font-weight: bold;
-    color: var(--brand-color);
   }
 }
