@@ -8,8 +8,6 @@ import "./App.css";
 import Auth from "./services/Auth";
 import Navbar from "./components/layout/Navbar";
 import User from "./components/user/user";
-import Teacher from "./components/teacher/teacher";
-import Student from "./components/student/student";
 
 // Import pages
 import LoginPage from "./components/auth/LoginPage";
@@ -25,14 +23,6 @@ function App() {
 
         <div className="container mt-5">
           <Switch>
-            <Route path="/student">
-              <Student />
-            </Route>
-
-            <Route path="/teacher">
-              <Teacher />
-            </Route>
-
             <Route path="/">
               <User />
             </Route>

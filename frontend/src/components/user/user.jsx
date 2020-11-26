@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import Api from "../../api/Api";
 import { useRecoilState } from "recoil";
 import { userState } from "../../js/state-information";
-import Student from "../student/student";
-import Teacher from "../teacher/teacher";
+import Student from "../student/StudentHomePage";
+import Teacher from "../teacher/TeacherHomePage";
 
 export default function User() {
   const [status, setStatus] = useState(0);
