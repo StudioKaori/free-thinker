@@ -3,7 +3,7 @@ import { RecoilRoot } from "recoil";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Import custom styles for our application
-import "./App.css";
+import "./css//style.css";
 
 import Auth from "./services/Auth";
 import Navbar from "./components/layout/Navbar";
@@ -20,14 +20,11 @@ function App() {
     <RecoilRoot>
       <Router>
         <Navbar onLogout={() => Auth.logout()} />
-
-        <div className="container mt-5">
-          <Switch>
-            <Route path="/">
-              <User />
-            </Route>
-          </Switch>
-        </div>
+        <Switch>
+          <Route path="/">
+            <User />
+          </Route>
+        </Switch>
       </Router>
     </RecoilRoot>
   );

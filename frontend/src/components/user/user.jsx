@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import Api from "../../api/Api";
+import React, { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { userState } from "../../js/state-information";
 import Student from "../student/StudentHomePage";
@@ -7,18 +6,10 @@ import Teacher from "../teacher/TeacherHomePage";
 
 export default function User() {
   const [status, setStatus] = useState(0);
-  const [user, setUser] = useRecoilState(userState);
-
-  // for user info
-  const getUser = () => {
-    Api.get("/user/loggedInUser").then((res) => setUser([res.data]));
-  };
+  const [user] = useRecoilState(userState);
 
   useEffect(() => {
-    getUser();
-  }, []);
-
-  useEffect(() => {
+    console.log(user);
     if (user.length !== 0) {
       setStatus(1);
     }

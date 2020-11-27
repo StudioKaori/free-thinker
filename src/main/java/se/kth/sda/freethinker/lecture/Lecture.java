@@ -1,7 +1,5 @@
 package se.kth.sda.freethinker.lecture;
 
-import se.kth.sda.freethinker.topics.Topic;
-
 import javax.persistence.*;
 import java.util.List;
 
