@@ -1,11 +1,13 @@
-package se.kth.sda.freethinker.lecture;
+package se.kth.sda.freethinker.subject;
+
+import se.kth.sda.freethinker.topics.Topic;
 
 import javax.persistence.*;
 import java.util.List;
 
 
 @Entity
-public class Lecture {
+public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,20 +15,19 @@ public class Lecture {
     private String title;
 
     @Column(columnDefinition = "TEXT")
+    private String description;
 
-    private String body;
+   //public List<Topic> topic;
 
 
-
-
-    public Lecture(){
+    public Subject(){
 
     }
 
-    public Lecture(Long id, String title, String body) {
+    public Subject(Long id, String title, String description) {
         this.id = id;
         this.title = title;
-        this.body = body;
+        this.description = description;
 
     }
 
@@ -46,12 +47,12 @@ public class Lecture {
         this.title = title;
     }
 
-    public String getBody() {
-        return body;
+    public String getDescription() {
+        return description;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     /*public Topic getTopics() {
