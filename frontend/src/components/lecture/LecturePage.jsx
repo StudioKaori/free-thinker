@@ -9,8 +9,7 @@ function LecturePage() {
 
     const createLecture = (lectureData) => {
         Api.post("/lectures", lectureData)
-        .then((r) => console.log(r));
-          //  .then((res) => setLectures([...lectures, res.data]));
+     .then((res) => setLectures([...lectures, res.data]));
     };
 
     const getAll = () => {

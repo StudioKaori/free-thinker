@@ -28,16 +28,11 @@ function Navbar({ onLogout }) {
           </li>
 
           <li className="nav-item">
-            <Link to="/posts" className="nav-link">
-              Posts
+            <Link to="/articles" className="nav-link">
+              Lectures
             </Link>
           </li>
 
-          <li className="nav-item">
-            <Link to="/chat" className="nav-link">
-              Chat
-            </Link>
-          </li>
         </ul>
 
         <button

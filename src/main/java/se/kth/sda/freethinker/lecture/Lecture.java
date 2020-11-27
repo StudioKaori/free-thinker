@@ -1,4 +1,4 @@
-package se.kth.sda.skeleton.lecture;
+package se.kth.sda.freethinker.lecture;
 
 import javax.persistence.*;
 

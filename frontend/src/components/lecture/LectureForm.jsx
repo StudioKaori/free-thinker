@@ -39,7 +39,7 @@ export default function LectureForm({ onCreateClick }) {
                      <button 
                         className="btn btn-info" 
                         
-                        onClick={() => onCreateClick()}>
+                        onClick={() => onCreateClick({title, body})}>
                         Create
                     </button> 
                 </div>
