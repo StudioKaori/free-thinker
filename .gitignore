@@ -35,3 +35,6 @@ out/
 
 ### .DS_Store ###
 *.DS_Store
+/frontend/.firebaserc
+/frontend/firebase.json
+/frontend/.firebase/hosting.YnVpbGQ.cache
