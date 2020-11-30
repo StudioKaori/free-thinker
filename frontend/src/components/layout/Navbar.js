@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Api from "../../api/Api";
 import { Link } from "react-router-dom";
+import LogoIcon from "../../assets/img/components/navbar/logo-icon.png";
 
 // These two lines are to get user information and other shared statement
 import { useRecoilState } from "recoil";
@@ -43,6 +44,11 @@ function Navbar({ onLogout }) {
               F<span>R</span>E<span>E</span> T<span>H</span>I<span>N</span>K
               <span>E</span>R
             </h1>
+            <img
+              src={LogoIcon}
+              alt="Free Thinker"
+              className="header-menu-logo-icon"
+            />
           </div>
 
           <div className="header-profile-photo-wrapper">
