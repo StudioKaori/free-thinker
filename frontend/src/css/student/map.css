@@ -1,0 +1,15 @@
+.map-date-wrapper {
+  position: relative;
+  width: 280px;
+  height: 130px;
+  background-image: url("../../assets/img/components/student/home/home-date-bg.png");
+}
+
+.map-date-text {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 180px;
+  height: 30px;
+  text-align: center;
+}
