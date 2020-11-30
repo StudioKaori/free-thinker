@@ -1,7 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Api from "../../api/Api";
 import { Link } from "react-router-dom";
 
+// These two lines are to get user information and other shared statement
+import { useRecoilState } from "recoil";
+import { userState } from "../../js/state-information";
+
 function Navbar({ onLogout }) {
+  const [status, setStatus] = useState(0);
+  const [user, setUser] = useRecoilState(userState);
+
+  // for user info
+  const getUser = () => {
+    Api.get("/user/loggedInUser").then((res) => setUser([res.data]));
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  useEffect(() => {
+    if (user.length !== 0) {
+      setStatus(1);
+    }
+  }, [user]);
+
+  // for navigation drawer
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
@@ -28,16 +60,11 @@ function Navbar({ onLogout }) {
           </li>
 
           <li className="nav-item">
-            <Link to="/posts" className="nav-link">
-              Posts
+            <Link to="/articles" className="nav-link">
+              Lectures
             </Link>
           </li>
 
-          <li className="nav-item">
-            <Link to="/chat" className="nav-link">
-              Chat
-            </Link>
-          </li>
         </ul>
 
         <button

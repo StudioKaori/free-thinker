@@ -3,15 +3,23 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../js/state-information";
 import Assignment from "../assignment/Assignment"
 
+import "../../css/student-home.css";
+
 export default function StudentHomePage() {
   // To get user information, just use user below
-  const [user, setUser] = useRecoilState(userState);
+  const [user] = useRecoilState(userState);
 
   return (
     <div>
-      <h4 className="card-title">student</h4>
-      {user[0].name}
-        <Assignment />
+
+      <div className="student-home-map-wrapper">
+        <div className="student-home-map"> </div>
+      </div>
+
+      <div className="body-wrapper">
+        <div>{user[0].name}</div>
+      </div>
+
     </div>
   );
 }

@@ -1,6 +1,7 @@
-package se.kth.sda.skeleton.lecture;
+package se.kth.sda.freethinker.lecture;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -14,6 +15,9 @@ public class Lecture {
     @Column(columnDefinition = "TEXT")
 
     private String body;
+
+
+
 
     public Lecture(){
 
@@ -50,5 +54,12 @@ public class Lecture {
         this.body = body;
     }
 
+    /*public Topic getTopics() {
+        return topics;
+    }
+
+    public void setTopics(Topic topics) {
+        this.topics = topics;
+    }*/
 
 }
