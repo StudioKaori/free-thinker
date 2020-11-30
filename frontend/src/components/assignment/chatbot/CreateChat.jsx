@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import CreateChatForm from './CreateChatForm';
 import { defaultSteps } from "./templates";
 
-import Button from './Button';
+import Button from '../atoms/Button';
 
 export default function CreateChat() {
 

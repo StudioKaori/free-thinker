@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { premadeThemes, stepsTemplate2 } from './templates';
 
-import Input from './Input';
-import Button from './Button';
+import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 
 export default function CreateChatForm({ setNewChat }) {
 

@@ -1,7 +1,7 @@
 // These two lines are to get user information and other shared statement
 import { useRecoilState } from "recoil";
 import { userState } from "../../js/state-information";
-import Assignment from "../assignment/Assignment"
+import StudentAssignmentPage from "../assignment/StudentAssignmentPage"
 
 import "../../css/student-home.css";
 
@@ -19,6 +19,8 @@ export default function StudentHomePage() {
       <div className="body-wrapper">
         <div>{user[0].name}</div>
       </div>
+
+      <StudentAssignmentPage />
 
     </div>
   );
