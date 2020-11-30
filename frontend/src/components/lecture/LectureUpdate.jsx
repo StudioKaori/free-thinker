@@ -1,25 +1,33 @@
 import React, { useState } from "react";
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 
-function LectureUpdate({ oldLecture, onUpdateClick }) {
+
+
+function LectureUpdate({ lecture, oldLecture, onUpdateClick }) {
     const [title, setTitle] = useState(oldLecture.name);
-  const [body, setBody] = useState(oldLecture.description);
+    const [body, setBody] = useState(oldLecture.description);
 
+    const handleOnChange =(e, editor) => {
+        console.log(editor.getData());
+        const data= editor.getData()
+        setBody(data)
+    }
     return (
         <div className="card">
             <div className="card-body">
-                <h1>Update product</h1>
-
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Lecture Title" value={title} onChange={e => setTitle(e.target.value)} />
-                </div>
-
-                <div class="input-group mb-3">
-                    <textarea class="form-control" placeholder="Lecture Description" value={body} onChange={e => setBody(e.target.value)} />
-                </div>
-
-                <button className="btn btn-primary" onClick={() => onUpdateClick({ ...oldLecture, title, body })}>
+                <h1> Update Lecture: </h1>
+                    <CKEditor className ="container"
+                        editor={ClassicEditor} 
+                        onChange ={handleOnChange} 
+                            
+                    />
+                <button className="btn btn-primary" onClick={() => onUpdateClick({ ...oldLecture, body })}>
                     Update
+                </button>
+                <button className="btn btn-primary m-2" onClick={() => onUpdateClick({ ...oldLecture})}>
+                    Cancel
                 </button>
             </div>
         </div>

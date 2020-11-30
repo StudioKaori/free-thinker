@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import LectureUpdate from "./LectureUpdate";
+import ReactHtmlParser from "react-html-parser"
 
 function LectureCard({ lecture, onDeleteClick, onUpdateClick }) {
     const [isUpdating, setIsUpdating] = useState(false);
@@ -14,11 +15,11 @@ function LectureCard({ lecture, onDeleteClick, onUpdateClick }) {
         :
         <div className="card mt-4">
             <div className="card-body">
-                <h1>{lecture.title}</h1>
-                <p>{lecture.body}</p>
+               
+                <p> {ReactHtmlParser(lecture.body)} </p>
 
                 <div>
-                    <button className="btn btn-danger" onClick={() => onDeleteClick(lecture)}>
+                    <button className="btn btn-danger m-2" onClick={() => onDeleteClick(lecture)}>
                         Delete
                 </button>
 
