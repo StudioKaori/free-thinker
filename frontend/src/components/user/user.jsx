@@ -9,7 +9,6 @@ export default function User() {
   const [user] = useRecoilState(userState);
 
   useEffect(() => {
-    console.log(user);
     if (user.length !== 0) {
       setStatus(1);
     }

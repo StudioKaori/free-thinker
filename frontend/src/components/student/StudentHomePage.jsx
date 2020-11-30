@@ -2,7 +2,7 @@
 import { useRecoilState } from "recoil";
 import { userState } from "../../js/state-information";
 import Assignment from "../assignment/Assignment";
-import Map from "./home/Map";
+import Map from "./home/map/Map";
 
 import "../../css/student/student-home.css";
 

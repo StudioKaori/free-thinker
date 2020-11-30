@@ -1,15 +1,37 @@
-.map-date-wrapper {
+.student-home-map-wrapper {
+  width: 800px;
+  height: 530px;
   position: relative;
+  margin: auto;
+}
+
+.student-home-map-date-wrapper {
+  position: absolute;
+  top: 0;
+  left: 520px;
   width: 280px;
   height: 130px;
   background-image: url("../../assets/img/components/student/home/home-date-bg.png");
 }
 
-.map-date-text {
+.student-home-map-date-text {
   position: absolute;
   top: 50px;
   left: 50px;
   width: 180px;
   height: 30px;
   text-align: center;
+}
+
+.student-home-map-island {
+  background-image: url("../../assets/img/components/student/home/islands/island-green.png");
+  position: absolute;
+  width: 700px;
+  height: 480px;
+  top: 62px;
+  left: 95px;
+}
+
+.island-icon-position {
+  position: absolute;
 }
