@@ -2,7 +2,7 @@ import LockIcon from "../../../icons/map-icon";
 import "../../../../css/student/islands/island-green.css";
 
 export default function Island() {
-  const exercises = [
+  const assignments = [
     {
       id: 1,
       release_date: new Date(2020, 10, 29, 12, 30, 45),
@@ -31,17 +31,17 @@ export default function Island() {
 
   return (
     <div className="student-home-map-island">
-      {exercises.map((exercise, index) => {
+      {assignments.map((assignment, index) => {
         const className = "island-icon-position island-lock-" + index;
-        const linkUrl = "/lecture/" + exercise.id;
+        const linkUrl = "/student/assignments/" + assignment.id;
 
         return (
           <div className={className}>
             <LockIcon
-              key={exercise.id}
+              key={assignment.id}
               linkUrl={linkUrl}
               type={
-                exercise.release_date.getTime() < new Date().getTime()
+                assignment.release_date.getTime() < new Date().getTime()
                   ? "unlock"
                   : "lock"
               }

@@ -1,6 +1,7 @@
 package se.kth.sda.freethinker.lecture;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.List;
 
 
@@ -15,6 +16,8 @@ public class Lecture {
     @Column(columnDefinition = "TEXT")
 
     private String body;
+
+    private Date startTime;
 
 
 
