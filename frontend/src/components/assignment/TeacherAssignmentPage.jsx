@@ -1,11 +1,13 @@
 import { useState } from 'react';
 
-import CreateChat from './chatbot/CreateChat';
 import Button from './atoms/Button';
+import CreateChat from './chatbot/CreateChat';
+import CreateSpeech from './speech/CreateSpeech';
 
 export default function TeacherAssignmentPage() {
 
     const [createChatIsOpen, setCreateChatIsOpen] = useState(false);
+    const [createSpeechIsOpen, setCreateSpeechIsOpen] = useState(false);
 
     return (
         <div className="bg-light p-2">
@@ -15,7 +17,11 @@ export default function TeacherAssignmentPage() {
             <p> Here, as a teacher, I can decide what will be this assignment, I can : </p>
             <Button content="Import a new file" />
             <Button content="Create new Quiz" />
-            <Button content="Create new Speech" />
+
+            <Button 
+                content={!createSpeechIsOpen ? "Create new Speech" : "Stop"}
+                onClick={() => setCreateSpeechIsOpen(!createSpeechIsOpen)}
+            />
 
             <Button 
                 content={!createChatIsOpen ? "Create new Chat" : "Stop"}
@@ -23,6 +29,7 @@ export default function TeacherAssignmentPage() {
             />
 
             {createChatIsOpen && <CreateChat /> }
+            {createSpeechIsOpen && <CreateSpeech /> }
         </div>
     );
 }
