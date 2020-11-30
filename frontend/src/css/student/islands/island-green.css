@@ -1,4 +1,38 @@
+.student-home-map-island {
+  background-image: url("../../../assets/img/components/student/home/islands/island-green.png");
+}
+
 .island-lock-0 {
+  left: 17.14%;
+  top: 37.09%;
+}
+
+.island-lock-1 {
+  left: 27.76%;
+  top: 46.91%;
+}
+
+.island-lock-2 {
+  left: 51.72%;
+  top: 57.14%;
+}
+
+.island-lock-3 {
+  left: 85.72%;
+  top: 39.65%;
+}
+
+.island-lock-4 {
+  left: 61.19%;
+  top: 31.76%;
+}
+
+.island-lock-5 {
+  left: 51.15%;
+  top: 14.27%;
+}
+
+/* .island-lock-0 {
   top: 181px;
   left: 211px;
 }
@@ -36,4 +70,4 @@
 .island-lock-7 {
   top: 288px;
   left: 210px;
-}
+} */

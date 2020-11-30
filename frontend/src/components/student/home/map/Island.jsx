@@ -1,4 +1,5 @@
 import LockIcon from "../../../icons/map-icon";
+import SpaceHolder from "../../../../assets/img/components/student/home/islands/island-spaceholder.gif";
 import "../../../../css/student/islands/island-green.css";
 
 export default function Island() {
@@ -31,6 +32,10 @@ export default function Island() {
 
   return (
     <div className="student-home-map-island">
+      <div className="student-home-map-island-spaceholder">
+        <img src={SpaceHolder} alt="island" />
+      </div>
+
       {assignments.map((assignment, index) => {
         const className = "island-icon-position island-lock-" + index;
         const linkUrl = "/student/assignments/" + assignment.id;
