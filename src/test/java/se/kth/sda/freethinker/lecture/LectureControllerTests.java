@@ -54,5 +54,68 @@ public class LectureControllerTests {
        Assertions.assertEquals(lectures.get(0).getTitle(),actualLectures.get(0).getTitle());
        Assertions.assertEquals(lectures.get(1).getTitle(),actualLectures.get(1).getTitle());
    }
+    @Test
+    public void testDelete(){
+        Lecture lecture1 = new Lecture(1L, "lecture1", "lecture for reading english");
+        Lecture lecture2 = new Lecture(2L, "lecture2", "lecture for reading english 3 letter words");
 
+        List<Lecture> lectures = new ArrayList<>();
+        lectures.add(lecture1);
+        lectures.add(lecture2);
+        lectures.remove(0);
+
+
+        Mockito.when(lectureService.getAll())
+                .thenReturn((lectures));
+
+        lectureController.delete(1L);
+
+        List<Lecture> actualLectures = lectureController.getAll();
+        //System.out.println("The size " + lectures.size());
+        Assertions.assertEquals(lectures.size(),actualLectures.size());
+
+    }
+
+    @Test
+    public void testUpdate(){
+        Lecture lecture1 = new Lecture(1L, "lecture1", "lecture for reading english");
+        Lecture lecture2 = new Lecture(2L, "lecture2", "lecture for reading english 3 letter words");
+
+        List<Lecture> lectures = new ArrayList<>();
+        lectures.add(lecture1);
+        lectures.add(lecture2);
+        lectures.get(0).setTitle("lecture1 updated");
+
+        Mockito.when(lectureService.getAll())
+                .thenReturn((lectures));
+
+        lectureController.update(new Lecture(1L,"lecture1 updated", "body updated"));
+
+        List<Lecture> actualLectures = lectureController.getAll();
+
+        System.out.println("The title " + lecture1.getTitle());
+        Assertions.assertEquals(lectures.get(0).getTitle(),actualLectures.get(0).getTitle());
+
+    }
+
+    @Test
+    public void testCreate(){
+        Lecture lecture1 = new Lecture(1L, "lecture1", "lecture for reading english");
+        Lecture lecture2 = new Lecture(2L, "lecture2", "lecture for reading english 3 letter words");
+
+        List<Lecture> lectures = new ArrayList<>();
+        lectures.add(lecture1);
+        lectures.add(lecture2);
+
+        Mockito.when(lectureService.getAll())
+                .thenReturn((lectures));
+
+        lectureController.create(new Lecture(3L,"lecture3", "body3"));
+        lectureController.create(new Lecture(4L,"lecture4", "body4"));
+
+        List<Lecture> actualLectures = lectureController.getAll();
+
+
+        Assertions.assertEquals(lectures.size(),actualLectures.size());
+    }
 }
