@@ -1,0 +1,80 @@
+.student-home-map-wrapper {
+}
+
+.student-home-map-date-wrapper {
+  position: relative;
+  width: 140px;
+  height: 75px;
+  background-image: url("../../assets/img/components/student/home/home-date-bg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.student-home-map-date-text {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  text-align: center;
+}
+
+.student-home-map-island {
+  width: 100%;
+  height: fit-content;
+  position: relative;
+  background-size: cover;
+  top: 0;
+  left: 0;
+}
+
+.student-home-map-island-spaceholder {
+  width: 100%;
+  height: fit-content;
+}
+
+.student-home-map-island-spaceholder img {
+  width: 100%;
+  height: auto;
+}
+
+.map-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.island-icon-position {
+  position: absolute;
+}
+
+@media (min-width: 550px) {
+  .student-home-map-island {
+    position: absolute;
+    width: 700px;
+    height: 480px;
+    top: 62px;
+    left: 95px;
+  }
+
+  .map-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (min-width: 750px) {
+  .student-home-map-wrapper {
+    width: 800px;
+    height: 530px;
+    position: relative;
+    margin: auto;
+  }
+
+  .student-home-map-date-wrapper {
+    position: absolute;
+    top: 0;
+    left: 520px;
+    width: 280px;
+    height: 130px;
+  }
+}
