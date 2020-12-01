@@ -2,6 +2,8 @@
 }
 
 .student-home-map-date-wrapper {
+  margin: 0 auto;
+  z-index: 1;
   position: relative;
   width: 140px;
   height: 75px;

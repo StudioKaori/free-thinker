@@ -54,7 +54,10 @@ function Navbar({ onLogout }) {
           <div className="header-profile-photo-wrapper">
             {status === 1 ? (
               <div>
-                <div className="header-profile-photo-name">{user[0].name}</div>
+                <div className="header-profile-photo-name">
+                  {user[0].userType === "Teacher" ? "Teacher " : null}
+                  {user[0].name}
+                </div>
                 <div className="header-profile-photo-container">
                   <img
                     src="/assets/img/test/lisa-larson.jpg"
@@ -75,25 +78,38 @@ function Navbar({ onLogout }) {
             <span className="closebtn" onClick={() => closeNav()}>
               &times;
             </span>
-            <ul>
-              {/* <li onClick={() => closeNav()}>
-                <Link to="/" className="nav-link">
-                  HOME
-                </Link>
-              </li>
-              <li onClick={() => closeNav()}>
-                <Link to="/posts" className="nav-link">
-                  POSTS
-                </Link>
-              </li> */}
 
-              <li onClick={onLogout}>
-                <Link>LOGOUT</Link>
-              </li>
-            </ul>
-            {/* <button className="logout-button" onClick={onLogout}>
-              LOGOUT
-            </button> */}
+            {status === 1 ? (
+              user[0].userType === "Teacher" ? (
+                <ul>
+                  <li onClick={() => closeNav()}>
+                    <Link to="/" className="nav-link">
+                      HOME
+                    </Link>
+                  </li>
+                  <li className="nav-link">
+                    <Link to="/create-lecture">Create Lecture</Link>
+                  </li>
+                  <li className="nav-link">
+                    <Link to="/create-assignment">Create Assignment</Link>
+                  </li>
+                  <li onClick={onLogout}>
+                    <Link>LOGOUT</Link>
+                  </li>
+                </ul>
+              ) : (
+                <ul>
+                  <li onClick={() => closeNav()}>
+                    <Link to="/" className="nav-link">
+                      HOME
+                    </Link>
+                  </li>
+                  <li onClick={onLogout}>
+                    <Link to="/">LOGOUT</Link>
+                  </li>
+                </ul>
+              )
+            ) : null}
           </div>
         </div>
       </div>
