@@ -1,5 +1,8 @@
 package se.kth.sda.freethinker.lecture;
 
+import se.kth.sda.freethinker.subject.Subject;
+import se.kth.sda.freethinker.topics.Topic;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -19,7 +22,8 @@ public class Lecture {
 
     private Date startTime;
 
-
+    @ManyToOne
+    private Topic topic;
 
 
     public Lecture(){
@@ -57,12 +61,14 @@ public class Lecture {
         this.body = body;
     }
 
-    /*public Topic getTopics() {
-        return topics;
+    public Topic getTopic() {
+        return topic;
     }
 
-    public void setTopics(Topic topics) {
-        this.topics = topics;
-    }*/
+    public void setTopic(Topic topic) {
+        this.topic = topic;
+    }
+
+
 
 }
