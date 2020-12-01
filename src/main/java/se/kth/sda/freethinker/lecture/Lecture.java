@@ -17,7 +17,8 @@ public class Lecture {
 
     private String body;
 
-    private Date startTime;
+    @Column(columnDefinition = "TIMESTAMP")
+    private Date unlockTime;
 
 
 
