@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Api from "../../api/Api";
 import { Link } from "react-router-dom";
+import LogoIcon from "../../assets/img/components/navbar/logo-icon.png";
 
 // These two lines are to get user information and other shared statement
 import { useRecoilState } from "recoil";
@@ -35,44 +36,66 @@ function Navbar({ onLogout }) {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="/">
-        SDA starter
-      </a>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarColor01"
-        aria-controls="navbarColor01"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
+    <nav>
+      <div className="header-menu-bg">
+        <div className="header-menu-wrapper">
+          <div className="header-menu-logo">
+            <h1>
+              F<span>R</span>E<span>E</span> T<span>H</span>I<span>N</span>K
+              <span>E</span>R
+            </h1>
+            <img
+              src={LogoIcon}
+              alt="Free Thinker"
+              className="header-menu-logo-icon"
+            />
+          </div>
 
-      <div className="collapse navbar-collapse" id="navbarColor01">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-          </li>
+          <div className="header-profile-photo-wrapper">
+            {status === 1 ? (
+              <div>
+                <div className="header-profile-photo-name">{user[0].name}</div>
+                <div className="header-profile-photo-container">
+                  <img
+                    src="/assets/img/test/lisa-larson.jpg"
+                    className="header-profile-photo"
+                  />
+                </div>
+              </div>
+            ) : null}
+          </div>
 
-          <li className="nav-item">
-            <Link to="/articles" className="nav-link">
-              Lectures
-            </Link>
-          </li>
+          <div className="mobile-menu">
+            <span onClick={() => openNav()}>
+              <i className="fas fa-bars"></i>
+            </span>
+          </div>
 
-        </ul>
+          <div id="mySidenav" className="header-menu">
+            <span className="closebtn" onClick={() => closeNav()}>
+              &times;
+            </span>
+            <ul>
+              {/* <li onClick={() => closeNav()}>
+                <Link to="/" className="nav-link">
+                  HOME
+                </Link>
+              </li>
+              <li onClick={() => closeNav()}>
+                <Link to="/posts" className="nav-link">
+                  POSTS
+                </Link>
+              </li> */}
 
-        <button
-          className="btn btn-outline-info my-2 my-sm-0"
-          onClick={onLogout}
-        >
-          Logout
-        </button>
+              <li onClick={onLogout}>
+                <Link>LOGOUT</Link>
+              </li>
+            </ul>
+            {/* <button className="logout-button" onClick={onLogout}>
+              LOGOUT
+            </button> */}
+          </div>
+        </div>
       </div>
     </nav>
   );

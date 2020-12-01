@@ -1,5 +1,5 @@
 .header-menu-bg {
-  background-color: #1e201990;
+  background-color: #8b6e5e;
   padding: 10px 10px;
 }
 
@@ -32,10 +32,15 @@
   font-size: var(--font-L);
   display: inline-block;
   color: var(--accent-color-green);
+  vertical-align: middle;
 }
 
 .header-menu-logo h1 span {
   color: var(--accent-color-yellow);
+}
+
+.header-menu-logo-icon {
+  height: 25px;
 }
 
 .header-menu ul {
@@ -136,6 +141,11 @@
   .header-menu-logo h1 {
     font-size: var(--font-XL);
   }
+
+  .header-menu-logo-icon {
+    height: 45px;
+  }
+
   .header-profile-photo-name {
     display: inline;
     line-height: 35px;
