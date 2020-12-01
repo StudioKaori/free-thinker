@@ -17,7 +17,7 @@ public class Lecture {
 
     private String body;
 
-    private Date startTime;
+    private Date unlockTime;
 
 
 
