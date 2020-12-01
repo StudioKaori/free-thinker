@@ -18,7 +18,7 @@ public class Topic {
 
     private String description;
 
-
+//One Topic to Many Subjects
     @ManyToOne
     private Subject subject;
 

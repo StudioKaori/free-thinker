@@ -20,6 +20,7 @@ public class Subject {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    //one Subject can have many topics
     @OneToMany
     public List<Topic> topic;
 
