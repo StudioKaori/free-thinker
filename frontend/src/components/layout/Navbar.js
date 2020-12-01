@@ -82,6 +82,7 @@ function Navbar({ onLogout }) {
             {status === 1 ? (
               user[0].userType === "Teacher" ? (
                 <ul>
+                  {/* Teacher navbar */}
                   <li onClick={() => closeNav()}>
                     <Link to="/" className="nav-link">
                       HOME
@@ -99,6 +100,7 @@ function Navbar({ onLogout }) {
                 </ul>
               ) : (
                 <ul>
+                  {/* Student navbar */}
                   <li onClick={() => closeNav()}>
                     <Link to="/" className="nav-link">
                       HOME
