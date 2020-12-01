@@ -1,3 +1,5 @@
+@import url("./map.css");
+
 .student-home-map-wrapper {
   background-color: var(--color-sea);
 }
@@ -9,7 +11,7 @@
   background-size: 90%;
   background-repeat: no-repeat;
   background-position: top 5px left;
-  background-image: url("../assets/img/world-map.png");
+  background-image: url("../../assets/img/world-map.png");
 }
 
 @media (min-width: 550px) {
