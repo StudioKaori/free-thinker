@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { useSpeechRecognition, useSpeechSynthesis } from 'react-speech-kit';
 
-export default function StudentSpeech() {
-    const [value, setValue] = useState('');
+export default function StudentSpeech({speech}) {
+
+    const [ answer, setAnswer ] = useState('');
     const { speak } = useSpeechSynthesis();
     const { listen, listening, stop } = useSpeechRecognition({
         onResult: (result) => {
-            setValue(result);
+            setAnswer(result);
         },
     });
 
     return (
         <div>
             <div>
-                <button onClick={() => speak({ text: "Is a whale bigger than a mouse ?" })}>
+                <button onClick={() => speak({ text: speech.question })}>
                     Teacher's question.
                 </button>
             </div>
@@ -29,8 +30,8 @@ export default function StudentSpeech() {
 
             <textarea
                 placeholder="Your answer will appear here"
-                value={value}
-                onChange={(event) => setValue(event.target.value)}
+                value={answer}
+                onChange={(event) => setAnswer(event.target.value)}
             />
             
             </div>

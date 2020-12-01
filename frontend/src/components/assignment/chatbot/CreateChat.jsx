@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
+import AssignmentApi from '../../../api/AssignmentApi';
 
 import CreateChatForm from './CreateChatForm';
 import { defaultSteps } from "./templates";
@@ -26,10 +27,29 @@ export default function CreateChat() {
         }, 200);
     }
 
+    const saveChat = () => {
+        const newAssignment = {
+            type: 'Chat',
+            assignment : JSON.stringify(newChat),
+        }
+        console.log(newAssignment);
+        AssignmentApi.createAssignment(newAssignment)
+            .then(() => {
+                console.log('should be in database')
+            })
+    }
+
     return (
         <div className="d-flex justify-content-around align-items-center flex-wrap">
-            <CreateChatForm setNewChat={setNewChat} />
-            
+
+            <div>
+                <CreateChatForm setNewChat={setNewChat} />
+
+                <Button content="Save Chat" 
+                    onClick={() => saveChat()}
+                />
+            </div>
+
             <div className>
                 <p>
                     Teacher see changes

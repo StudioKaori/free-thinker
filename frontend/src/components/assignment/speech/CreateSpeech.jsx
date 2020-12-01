@@ -1,9 +1,22 @@
 import React, { useState } from 'react';
 import { useSpeechSynthesis } from 'react-speech-kit';
+import AssignmentApi from '../../../api/AssignmentApi';
 
 export default function CreateSpeech() {
-    const [value, setValue] = useState('');
+    const [question, setQuestion] = useState('');
     const { speak } = useSpeechSynthesis();
+
+    const saveSpeech = () => {
+        const newAssignment = {
+            type: 'Speech',
+            assignment : JSON.stringify({ question: question }),
+        }
+        console.log(newAssignment);
+        AssignmentApi.createAssignment(newAssignment)
+            .then(() => {
+                console.log('should be in database')
+            })
+    }
 
     return (
         <div>
@@ -11,12 +24,14 @@ export default function CreateSpeech() {
                 Insert your question here.
             </p>
             <textarea
-                value={value}
-                onChange={(event) => setValue(event.target.value)}
+                value={question}
+                onChange={(event) => setQuestion(event.target.value)}
             />
-            <button onClick={() => speak({ text: value })}>Test it</button>
+            <button onClick={() => speak({ text: question })}>Test it</button>
             <div>
-                <button>Save it</button>
+                <button
+                    onClick={() => saveSpeech()}
+                >Save it</button>
             </div>
         </div>
     );
