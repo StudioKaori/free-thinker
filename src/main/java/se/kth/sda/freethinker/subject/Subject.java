@@ -7,17 +7,21 @@ import java.util.List;
 
 
 @Entity
+@Table(name = "subjects")
 public class Subject {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name ="title")
     private String title;
 
     @Column(columnDefinition = "TEXT")
     private String description;
 
-   //public List<Topic> topic;
+    @OneToMany
+    public List<Topic> topic;
 
 
     public Subject(){
@@ -29,6 +33,15 @@ public class Subject {
         this.title = title;
         this.description = description;
 
+    }
+
+
+    public List<Topic> getTopic() {
+        return topic;
+    }
+
+    public void setTopic(List <Topic> topic) {
+        this.topic = topic;
     }
 
     public Long getId() {
@@ -54,13 +67,5 @@ public class Subject {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    /*public Topic getTopics() {
-        return topics;
-    }
-
-    public void setTopics(Topic topics) {
-        this.topics = topics;
-    }*/
 
 }
