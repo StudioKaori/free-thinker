@@ -22,7 +22,7 @@ public class Subject {
 
     //one Subject can have many topics
     @OneToMany
-    public List<Topic> topic;
+    public List<Topic> topics;
 
 
     public Subject(){
@@ -37,13 +37,7 @@ public class Subject {
     }
 
 
-    public List<Topic> getTopic() {
-        return topic;
-    }
 
-    public void setTopic(List <Topic> topic) {
-        this.topic = topic;
-    }
 
     public Long getId() {
         return id;
@@ -69,4 +63,11 @@ public class Subject {
         this.description = description;
     }
 
+    public List<Topic> getTopics() {
+        return topics;
+    }
+
+    public void setTopics(List<Topic> topics) {
+        this.topics = topics;
+    }
 }

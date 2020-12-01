@@ -23,7 +23,7 @@ public class Topic {
     private Subject subject;
 
     @OneToMany
-    public List<Lecture> lecture;
+    public List<Lecture> lectures;
 
 
 
@@ -73,11 +73,12 @@ public class Topic {
         this.subject = subject;
     }
 
-    public List<Lecture> getLecture() {
-        return lecture;
+
+    public List<Lecture> getLectures() {
+        return lectures;
     }
 
-    public void setLecture(List<Lecture> lecture) {
-        this.lecture = lecture;
+    public void setLectures(List<Lecture> lectures) {
+        this.lectures = lectures;
     }
 }
