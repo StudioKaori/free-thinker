@@ -1,6 +1,7 @@
 package se.kth.sda.freethinker.assignments;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.spel.ast.Assign;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,6 +40,9 @@ public class AssignmentService {
     }
 
 
+    }
 
 
-}
+
+
+
