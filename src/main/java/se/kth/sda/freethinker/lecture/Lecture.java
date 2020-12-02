@@ -1,5 +1,6 @@
 package se.kth.sda.freethinker.lecture;
 
+import se.kth.sda.freethinker.assignments.Assignment;
 import se.kth.sda.freethinker.subject.Subject;
 import se.kth.sda.freethinker.topics.Topic;
 
@@ -26,6 +27,8 @@ public class Lecture {
     @ManyToOne
     private Topic topic;
 
+    @OneToMany
+    public List<Assignment> assignments;
 
     public Lecture(){
 
@@ -71,5 +74,11 @@ public class Lecture {
     }
 
 
+    public List<Assignment> getAssignments() {
+        return assignments;
+    }
 
+    public void setAssignments(List<Assignment> assignments) {
+        this.assignments = assignments;
+    }
 }
