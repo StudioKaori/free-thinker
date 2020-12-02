@@ -108,6 +108,9 @@ function Navbar({ onLogout }) {
                     </Link>
                     {/* Add Student menu here */}
                   </li>
+                  <li className="nav-link">
+                    <Link to="/see-assignment">See Assignment</Link>
+                  </li>
                   <li onClick={onLogout}>
                     <Link to="/">LOGOUT</Link>
                   </li>
