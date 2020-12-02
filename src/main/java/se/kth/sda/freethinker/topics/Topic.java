@@ -1,8 +1,11 @@
 package se.kth.sda.freethinker.topics;
 
 import javax.persistence.*;
-import java.util.List;
+
 import se.kth.sda.freethinker.lecture.Lecture;
+import se.kth.sda.freethinker.subject.Subject;
+
+import java.util.List;
 
 
 @Entity
@@ -15,8 +18,14 @@ public class Topic {
 
     private String description;
 
+//One Topic to Many Subjects
+    @ManyToOne
+    private Subject subject;
 
-    //private List<Lecture> lecture;
+    @OneToMany
+    public List<Lecture> lectures;
+
+
 
     public Topic() {
     }
@@ -30,6 +39,7 @@ public class Topic {
 
 
     }
+
 
     public Long getId() {
         return id;
@@ -54,12 +64,21 @@ public class Topic {
     public void setDescription(String description) {
         this.description = description;
     }
-   /* public List<Lecture> getLecture() {
-        return lecture;
+
+    public Subject getSubject() {
+        return subject;
     }
 
-    public void setLecture(List<Lecture> lecture) {
-        this.lecture = lecture;
-    }*/
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
 
+
+    public List<Lecture> getLectures() {
+        return lectures;
+    }
+
+    public void setLectures(List<Lecture> lectures) {
+        this.lectures = lectures;
+    }
 }
