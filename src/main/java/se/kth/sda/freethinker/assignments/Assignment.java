@@ -12,6 +12,7 @@ public class Assignment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     private String title;
 
     @Column(columnDefinition = "TEXT")
@@ -21,14 +22,20 @@ public class Assignment {
    @ManyToOne
    private Lecture lecture;
 
+    private String type;
+
+    @Column(columnDefinition="TEXT")
+    private String assignment;
+
+
     public Assignment(){
 
     }
 
-    public Assignment(Long id, String title, String instruction) {
+    public Assignment(Long id, String type, String assignment) {
         this.id = id;
-        this.title = title;
-        this.instruction = instruction;
+        this.type = type;
+        this.assignment = assignment;
 
     }
 
@@ -40,21 +47,18 @@ public class Assignment {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getType() {
+        return type;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getInstruction() {
-        return instruction;
+    public String getAssignment() {
+        return assignment;
     }
 
-    public void setInstruction(String instruction) {
-        this.instruction = instruction;
-    }
 
     public Lecture getLecture() {
         return lecture;
@@ -65,5 +69,10 @@ public class Assignment {
     }
 
 
+
+
+    public void setAssignment(String assignment) {
+        this.assignment = assignment;
+    }
 
 }
