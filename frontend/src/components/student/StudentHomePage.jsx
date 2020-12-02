@@ -6,7 +6,7 @@ import StudentAssignmentPage from "../assignment/StudentAssignmentPage";
 import Map from "./home/map/Map";
 
 import "../../css/student/student-home.css";
-import FileUpload from "./FileUpload";
+import FileUploader from "../common/FileUploader";
 
 export default function StudentHomePage() {
   // To get user information, just use user below
@@ -24,7 +24,9 @@ export default function StudentHomePage() {
         <div>{user[0].name}</div>
       </div>
 
-      <FileUpload />
+      <hr />
+      <FileUploader />
+      <hr />
       <StudentAssignmentPage />
     </div>
   );
