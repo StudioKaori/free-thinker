@@ -1,8 +1,6 @@
 // These two lines are to get user information and other shared statement
 import { useRecoilState } from "recoil";
 import { userState } from "../../js/state-information";
-import LecturePage from "../lecture/LecturePage";
-import TeacherAssignmentPage from "../assignment/TeacherAssignmentPage";
 
 
 export default function TeacherHomePage() {
@@ -13,8 +11,6 @@ export default function TeacherHomePage() {
     <div>
       <h4 className="card-title">Teacher</h4>
       {user[0].name}
-      <LecturePage />
-      <TeacherAssignmentPage />
     </div>
   );
 }
