@@ -52,7 +52,7 @@ export default function User() {
                 ) : (
                     <Switch>
                         {assignments.map((assign) =>
-                            <Route path={path + 'student/assignments/' + assign.id}>
+                            <Route key={assign.id} path={path + 'student/assignments/' + assign.id}>
                                 <StudentAssignmentPage assignment={assign} />
                             </Route>
                             )
