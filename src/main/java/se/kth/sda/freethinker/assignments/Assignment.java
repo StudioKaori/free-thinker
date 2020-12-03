@@ -4,6 +4,7 @@ import se.kth.sda.freethinker.lecture.Lecture;
 
 
 import javax.persistence.*;
+import java.sql.Date;
 
 
 @Entity
@@ -26,6 +27,9 @@ public class Assignment {
 
     @Column(columnDefinition="TEXT")
     private String assignment;
+
+    @Column(columnDefinition = "TIMESTAMP")
+    private Date unlockTime;
 
 
     public Assignment(){
@@ -75,4 +79,27 @@ public class Assignment {
         this.assignment = assignment;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getInstruction() {
+        return instruction;
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
+    }
+
+    public Date getUnlockTime() {
+        return unlockTime;
+    }
+
+    public void setUnlockTime(Date unlockTime) {
+        this.unlockTime = unlockTime;
+    }
 }

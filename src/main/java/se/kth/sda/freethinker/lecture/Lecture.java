@@ -6,6 +6,7 @@ import se.kth.sda.freethinker.topics.Topic;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -18,11 +19,11 @@ public class Lecture {
     private String title;
 
     @Column(columnDefinition = "TEXT")
-
     private String body;
+    private String youtubeUrl;
 
     @Column(columnDefinition = "TIMESTAMP")
-    private Date unlockTime;
+    private Timestamp unlockTime;
 
     @ManyToOne
     private Topic topic;
@@ -80,5 +81,21 @@ public class Lecture {
 
     public void setAssignments(List<Assignment> assignments) {
         this.assignments = assignments;
+    }
+
+    public Timestamp getUnlockTime() {
+        return unlockTime;
+    }
+
+    public void setUnlockTime(Timestamp unlockTime) {
+        this.unlockTime = unlockTime;
+    }
+
+    public String getYoutubeUrl() {
+        return youtubeUrl;
+    }
+
+    public void setYoutubeUrl(String youtubeUrl) {
+        this.youtubeUrl = youtubeUrl;
     }
 }
