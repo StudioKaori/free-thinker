@@ -5,11 +5,12 @@ import { userState } from "../../js/state-information";
 import Map from "./home/map/Map";
 
 import "../../css/student/student-home.css";
+import FileUploader from "../common/FileUploader";
 
 export default function StudentHomePage() {
   // To get user information, just use user below
   const [user] = useRecoilState(userState);
-  
+
   return (
     <div>
       <div className="student-home-map-wrapper">
@@ -21,6 +22,10 @@ export default function StudentHomePage() {
       <div className="body-wrapper">
         <div>{user[0].name}</div>
       </div>
+
+      <hr />
+      <FileUploader />
+      <hr />
     </div>
   );
 }
