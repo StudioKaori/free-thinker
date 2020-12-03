@@ -6,6 +6,7 @@ import {
     Route,
     useRouteMatch
 } from "react-router-dom";
+import AssignmentApi from '../../api/AssignmentApi';
 
 // Pages
 import StudentHomePage from "../student/StudentHomePage";
@@ -18,6 +19,14 @@ export default function User() {
     const { path } = useRouteMatch();
     const [status, setStatus] = useState(0);
     const [user] = useRecoilState(userState);
+    const [ assignments, setAssignments ] = useState([]);
+
+    useEffect(() => {
+        AssignmentApi.getAllAssignments()
+            .then((res) => {
+                setAssignments(res.data);
+            })
+    }, [])
 
     useEffect(() => {
         if (user.length !== 0) {
@@ -42,9 +51,12 @@ export default function User() {
                     </Switch>
                 ) : (
                     <Switch>
-                        <Route path={path + 'see-assignment'}>
-                            <StudentAssignmentPage />
-                        </Route>
+                        {assignments.map((assign) =>
+                            <Route path={path + 'student/assignments/' + assign.id}>
+                                <StudentAssignmentPage assignment={assign} />
+                            </Route>
+                            )
+                        }
                         <Route path={path}>
                             <StudentHomePage />
                         </Route>
