@@ -21,6 +21,7 @@ public class Lecture {
     @Column(columnDefinition = "TEXT")
 
     private String body;
+    private String youtubeUrl;
 
     @Column(columnDefinition = "TIMESTAMP")
     private Timestamp unlockTime;
@@ -89,4 +90,13 @@ public class Lecture {
 
     public void setUnlockTime(Timestamp unlockTime) {
         this.unlockTime = unlockTime;
-    }}
+    }
+
+    public String getYoutubeUrl() {
+        return youtubeUrl;
+    }
+
+    public void setYoutubeUrl(String youtubeUrl) {
+        this.youtubeUrl = youtubeUrl;
+    }
+}
