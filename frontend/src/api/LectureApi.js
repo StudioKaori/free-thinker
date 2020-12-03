@@ -6,7 +6,7 @@ class LectureApi {
   }
 
   getLectureByUnlockDate(date) {
-    return Api.get("/lectures/" + date);
+    return Api.get("/lectures/byDate/" + date);
   }
 
   getLectureById(id) {

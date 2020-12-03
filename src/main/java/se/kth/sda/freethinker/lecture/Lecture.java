@@ -6,6 +6,7 @@ import se.kth.sda.freethinker.topics.Topic;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -21,8 +22,8 @@ public class Lecture {
 
     private String body;
 
-    @Column(columnDefinition = "DATETIME")
-    private Date unlockTime;
+    @Column(columnDefinition = "TIMESTAMP")
+    private Timestamp unlockTime;
 
     @ManyToOne
     private Topic topic;
@@ -82,10 +83,10 @@ public class Lecture {
         this.assignments = assignments;
     }
 
-    public Date getUnlockTime() {
+    public Timestamp getUnlockTime() {
         return unlockTime;
     }
 
-    public void setUnlockTime(Date unlockTime) {
+    public void setUnlockTime(Timestamp unlockTime) {
         this.unlockTime = unlockTime;
     }}

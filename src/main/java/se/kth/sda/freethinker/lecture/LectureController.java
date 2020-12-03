@@ -20,8 +20,8 @@ public class LectureController {
             return lectureService.getAll();
     }
 
-    @GetMapping("/{date}")
-    public List<Lecture> findAllByUnlockTime(String date) {
+    @GetMapping("/byDate/{date}")
+    public List<Lecture> findAllByUnlockTime(@PathVariable String date) {
         return lectureService.findAllByUnlockTime(date);
     }
 

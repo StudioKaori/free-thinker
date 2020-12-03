@@ -5,6 +5,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +42,9 @@ public class LectureService {
     }
 
     public List<Lecture> findAllByUnlockTime(String date) {
-        return lectureRepo.findAllByUnlockTime(date);
+        Timestamp startDate= Timestamp.valueOf(date +" 00:00:00");
+        Timestamp endDate= Timestamp.valueOf(date +" 23:59:59");
+        return lectureRepo.findAllByUnlockTime(startDate,endDate);
     }
 
 

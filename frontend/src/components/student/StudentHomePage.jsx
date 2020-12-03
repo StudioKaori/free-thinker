@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 // These two lines are to get user information and other shared statement
 import { useRecoilState } from "recoil";
 
@@ -14,12 +16,21 @@ export default function StudentHomePage() {
 
   // lecture
 
+  const [lectures, setLectures] = useState([]);
+
   const getLectureByDate = () => {
-    const Lectures = LectureApi.getLectureById("2020-12-03");
-    console.log(Lectures);
+    LectureApi.getLectureByUnlockDate("2020-12-03").then((res) =>
+      setLectures(res.data)
+    );
   };
 
-  getLectureByDate();
+  useEffect(() => {
+    getLectureByDate();
+  }, []);
+
+  useEffect(() => {
+    console.log("lectures", lectures);
+  }, [lectures]);
 
   return (
     <div>
