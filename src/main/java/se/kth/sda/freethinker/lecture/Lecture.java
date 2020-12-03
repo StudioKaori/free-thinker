@@ -19,7 +19,6 @@ public class Lecture {
     private String title;
 
     @Column(columnDefinition = "TEXT")
-
     private String body;
     private String youtubeUrl;
 
