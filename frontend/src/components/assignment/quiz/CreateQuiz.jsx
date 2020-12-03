@@ -2,13 +2,13 @@ import React, {useState} from 'react';
 import AssignmentApi from '../../../api/AssignmentApi';
 import Quiz from 'react-quiz-component';
 import CreateQuizForm from './CreateQuizForm';
-import { quiz } from './templates';
+import { defaultQuiz } from './templates';
 
 import Button from '../atoms/Button';
 
 export default function CreateQuiz() {
 
-    const [newQuiz, setNewQuiz ] = useState(quiz);
+    const [newQuiz, setNewQuiz ] = useState(defaultQuiz);
 
     // Backup solution to see changes waiting for better
     // Just 'open - close' the chat
@@ -32,28 +32,34 @@ export default function CreateQuiz() {
     }
 
     return (
-        <div className="d-flex justify-content-around align-items-center flex-wrap">
+        <div className="container d-flex justify-content-around flex-wrap">
 
-            <div>
-                <CreateQuizForm setNewQuiz={setNewQuiz} />
+            <div className="col-sm-12 col-md-6">
+                <h5 className="text-center">Create here</h5>
+                <CreateQuizForm refresh={refresh} setNewQuiz={setNewQuiz} />
 
-                <Button content="Save Quiz" 
+                <Button 
+                    buttonStyle="btn-danger"
+                    content="Save Quiz" 
                     onClick={() => saveQuiz()}
                 />
             </div>
 
-            <div className>
-                <p>
-                    Teacher see changes
+            <div className="col-sm-12 col-md-6">
+                <h5 className="text-center">See changes there</h5>
+
+                <div className="text-center">
                     <Button
                         buttonStyle="btn-sm btn-success"
                         content="Apply Changes"
                         onClick={() => handleRefresh()}
                     />
-                </p>
+                </div>
 
                 { !refresh &&
-                    <Quiz quiz={newQuiz}/>
+                    <div className="mt-4">
+                        <Quiz quiz={newQuiz}/>
+                    </div>
                 }
             </div>
         </div>
