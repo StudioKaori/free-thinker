@@ -41,13 +41,14 @@ export default function Island() {
         <img src={SpaceHolder} alt="island" />
       </div>
 
-      {assignments.map((assignment, index) => {
-        const className = "island-icon-position island-lock-" + index;
-        const linkUrl = "/student/assignments/" + assignment.id;
+      {status === 1 &&
+        assignments.map((assignment, index) => {
+          const className = "island-icon-position island-lock-" + index;
+          const linkUrl = "/student/assignments/" + assignment.id;
+          console.log("date", assignment.release_date.getTime());
 
-        return (
-          <div className={className}>
-            {status === 1 && (
+          return (
+            <div className={className}>
               <LockIcon
                 key={index}
                 linkUrl={linkUrl}
@@ -57,10 +58,9 @@ export default function Island() {
                     : "lock"
                 }
               />
-            )}
-          </div>
-        );
-      })}
+            </div>
+          );
+        })}
     </div>
   );
 }
