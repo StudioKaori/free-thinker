@@ -2,7 +2,6 @@
 import { useRecoilState } from "recoil";
 
 import { userState } from "../../js/state-information";
-import StudentAssignmentPage from "../assignment/StudentAssignmentPage";
 import Map from "./home/map/Map";
 
 import "../../css/student/student-home.css";
@@ -23,11 +22,6 @@ export default function StudentHomePage() {
       <div className="body-wrapper">
         <div>{user[0].name}</div>
       </div>
-
-      <hr />
-      <FileUploader />
-      <hr />
-      <StudentAssignmentPage />
     </div>
   );
 }

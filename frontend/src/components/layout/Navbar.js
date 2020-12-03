@@ -84,15 +84,13 @@ function Navbar({ onLogout }) {
                 <ul>
                   {/* Teacher navbar */}
                   <li onClick={() => closeNav()}>
-                    <Link to="/" className="nav-link">
-                      HOME
-                    </Link>
+                    <Link to="/">HOME</Link>
                   </li>
                   {/* Add Teacher menu here */}
-                  <li className="nav-link">
+                  <li onClick={() => closeNav()}>
                     <Link to="/create-lecture">Create Lecture</Link>
                   </li>
-                  <li className="nav-link">
+                  <li onClick={() => closeNav()}>
                     <Link to="/create-assignment">Create Assignment</Link>
                   </li>
                   <li onClick={onLogout}>
@@ -103,10 +101,11 @@ function Navbar({ onLogout }) {
                 <ul>
                   {/* Student navbar */}
                   <li onClick={() => closeNav()}>
-                    <Link to="/" className="nav-link">
-                      HOME
-                    </Link>
+                    <Link to="/">HOME</Link>
                     {/* Add Student menu here */}
+                  </li>
+                  <li onClick={() => closeNav()}>
+                    <Link to="/see-assignment">See Assignment</Link>
                   </li>
                   <li onClick={onLogout}>
                     <Link to="/">LOGOUT</Link>
