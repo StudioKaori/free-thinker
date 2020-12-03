@@ -11,7 +11,7 @@ public class ClassDailySetting {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "TIMESTAMP")
+    @Column(columnDefinition = "DATETIME")
     private Date date;
 
     private String islandTheme;

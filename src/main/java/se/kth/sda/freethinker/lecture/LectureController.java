@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.sql.Date;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,10 @@ public class LectureController {
             return lectureService.getAll();
     }
 
-
+    @GetMapping("/{date}")
+    public List<Lecture> findAllByUnlockTime(String date) {
+        return lectureService.findAllByUnlockTime(date);
+    }
 
     @GetMapping("/{id}")
     public Lecture getById(@PathVariable long id) {

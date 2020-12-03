@@ -21,7 +21,7 @@ public class Lecture {
 
     private String body;
 
-    @Column(columnDefinition = "TIMESTAMP")
+    @Column(columnDefinition = "DATETIME")
     private Date unlockTime;
 
     @ManyToOne
@@ -81,4 +81,11 @@ public class Lecture {
     public void setAssignments(List<Assignment> assignments) {
         this.assignments = assignments;
     }
-}
+
+    public Date getUnlockTime() {
+        return unlockTime;
+    }
+
+    public void setUnlockTime(Date unlockTime) {
+        this.unlockTime = unlockTime;
+    }}

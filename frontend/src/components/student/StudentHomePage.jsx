@@ -4,12 +4,22 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../js/state-information";
 import Map from "./home/map/Map";
 
+import LectureApi from "../../api/LectureApi";
+
 import "../../css/student/student-home.css";
-import FileUploader from "../common/FileUploader";
 
 export default function StudentHomePage() {
   // To get user information, just use user below
   const [user] = useRecoilState(userState);
+
+  // lecture
+
+  const getLectureByDate = () => {
+    const Lectures = LectureApi.getLectureById("2020-12-03");
+    console.log(Lectures);
+  };
+
+  getLectureByDate();
 
   return (
     <div>
