@@ -1,5 +1,8 @@
 package se.kth.sda.freethinker.assignments;
 
+import se.kth.sda.freethinker.lecture.Lecture;
+
+
 import javax.persistence.*;
 
 
@@ -9,10 +12,21 @@ public class Assignment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    private String title;
+
+    @Column(columnDefinition = "TEXT")
+    private String instruction;
+
+
+   @ManyToOne
+   private Lecture lecture;
+
     private String type;
 
     @Column(columnDefinition="TEXT")
     private String assignment;
+
 
     public Assignment(){
 
@@ -45,7 +59,20 @@ public class Assignment {
         return assignment;
     }
 
+
+    public Lecture getLecture() {
+        return lecture;
+    }
+
+    public void setLecture(Lecture lecture) {
+        this.lecture = lecture;
+    }
+
+
+
+
     public void setAssignment(String assignment) {
         this.assignment = assignment;
     }
+
 }
