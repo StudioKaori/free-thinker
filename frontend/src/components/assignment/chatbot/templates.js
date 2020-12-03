@@ -63,14 +63,14 @@ export const stepsTemplate1 = [
 export const stepsTemplate2 = [
     {
         id: '1',
-        message: '18 + 12',
+        message: 'Default question, type ok to move on',
         trigger: '2',
     },
     {
         id: '2',
         user: true,
         trigger: (value) => {
-            if (value.value === '30') {
+            if (value.value === 'ok') {
                 return '4';
             }
             return '3';

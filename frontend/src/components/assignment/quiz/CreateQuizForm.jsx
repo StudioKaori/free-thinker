@@ -25,7 +25,6 @@ export default function CreateChatForm({ refresh, setNewQuiz }) {
             quizSynopsis: synopsis,
             questions: questions,
         })
-        console.log('youhou')
     }, [title, synopsis, refresh]);
 
     const saveQuestion = () => {
@@ -49,7 +48,7 @@ export default function CreateChatForm({ refresh, setNewQuiz }) {
             setQuestions(questions.concat(newQuestion))
         }
 
-        // Reset
+        // Reset feilds
         setQuestion('');
         setOption1('');
         setOption2('');

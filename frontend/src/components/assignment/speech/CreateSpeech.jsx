@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSpeechSynthesis } from 'react-speech-kit';
 import AssignmentApi from '../../../api/AssignmentApi';
 
+import Button from '../atoms/Button';
+
 export default function CreateSpeech() {
     const [question, setQuestion] = useState('');
     const { speak } = useSpeechSynthesis();
@@ -20,18 +22,25 @@ export default function CreateSpeech() {
 
     return (
         <div>
-            <p>
-                Insert your question here.
-            </p>
+            <p> Type your question here.</p>
             <textarea
                 value={question}
                 onChange={(event) => setQuestion(event.target.value)}
             />
-            <button onClick={() => speak({ text: question })}>Test it</button>
             <div>
-                <button
+                <Button 
+                    buttonStyle="btn-sm btn-info"
+                    content="Test it" 
+                    onClick={() => speak({ text: question })}
+                />
+            </div>
+
+            <div>
+                <Button 
+                    buttonStyle="btn-sm btn-danger"
+                    content="Save Question" 
                     onClick={() => saveSpeech()}
-                >Save it</button>
+                />
             </div>
         </div>
     );
