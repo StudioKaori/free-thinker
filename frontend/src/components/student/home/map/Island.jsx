@@ -14,8 +14,8 @@ export default function Island() {
     new Date(2020, 10, 29, 12, 30, 45),
     new Date(2020, 10, 29, 12, 30, 45),
     new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 11, 29, 12, 30, 45),
-    new Date(2020, 12, 1, 12, 30, 45),
+    new Date(2020, 10, 29, 12, 30, 45),
+    new Date(2020, 10, 29, 12, 30, 45),
     new Date(2020, 12, 1, 12, 30, 45),
   ]; // No more than 6 assignment for tests
 
