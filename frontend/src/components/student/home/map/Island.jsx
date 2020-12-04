@@ -44,7 +44,7 @@ export default function Island() {
       {status === 1 &&
         assignments.map((assignment, index) => {
           const className = "island-icon-position island-lock-" + index;
-          const linkUrl = "/student/assignments/" + assignment.id;
+          const linkUrl = "/assignment/" + assignment.id;
           console.log("date", assignment.release_date.getTime());
 
           return (

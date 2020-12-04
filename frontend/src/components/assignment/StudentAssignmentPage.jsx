@@ -1,8 +1,20 @@
+import { useState, useEffect } from 'react';
+
 import StudentChat from './chatbot/StudentChat';
 import StudentSpeech from './speech/StudentSpeech';
 import StudentQuiz from './quiz/StudentQuiz';
 
-export default function StudentAssignmentPage({ assignment }) {
+import AssignmentApi from "../../api/AssignmentApi";
+
+export default function StudentAssignmentPage({ match }) {
+    const assignmentId = Number(match.match.params.id);
+    const [assignment, setAssignment] = useState({});
+  
+    useEffect(() => {
+      AssignmentApi.getAssignmentById(assignmentId).then((res) => {
+        setAssignment(res.data);
+      });
+    }, []);
 
     return (
         <div className="bg-light p-2 d-flex flex-column align-items-center">
