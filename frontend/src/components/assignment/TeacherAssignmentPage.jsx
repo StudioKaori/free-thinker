@@ -7,29 +7,40 @@ import CreateQuiz from './quiz/CreateQuiz';
 
 export default function TeacherAssignmentPage() {
 
-    const [createChatIsOpen, setCreateChatIsOpen] = useState(false);
-    const [createSpeechIsOpen, setCreateSpeechIsOpen] = useState(false);
+    const [uploadFileIsOpen, setUploadFileIsOpen] = useState(false);
     const [createQuizIsOpen, setCreateQuizIsOpen] = useState(false);
+    const [createSpeechIsOpen, setCreateSpeechIsOpen] = useState(false);
+    const [createChatIsOpen, setCreateChatIsOpen] = useState(false);
 
     return (
         <div className="bg-light p-2">
 
-            <h3>Teacher Assignment Page</h3>
+            <h3 className="text-center">Create a new Assignment</h3>
 
             <div className="d-flex justify-content-center mt-3">
                 <Button 
+                    disabled={createChatIsOpen || createSpeechIsOpen || createQuizIsOpen}
+                    buttonStyle="is-rounded btn-primary"
+                    content={!uploadFileIsOpen ? "Upload File" : "Stop"}
+                    onClick={() => setUploadFileIsOpen(!uploadFileIsOpen)}
+                />
+
+                <Button 
+                    disabled={createChatIsOpen || createSpeechIsOpen || uploadFileIsOpen}
                     buttonStyle="is-rounded btn-primary"
                     content={!createQuizIsOpen ? "Create new Quiz" : "Stop"}
                     onClick={() => setCreateQuizIsOpen(!createQuizIsOpen)}
                 />
 
                 <Button 
+                    disabled={createQuizIsOpen || createChatIsOpen || uploadFileIsOpen}
                     buttonStyle="is-rounded btn-primary"
                     content={!createSpeechIsOpen ? "Create new Speech" : "Stop"}
                     onClick={() => setCreateSpeechIsOpen(!createSpeechIsOpen)}
                 />
 
                 <Button 
+                    disabled={createQuizIsOpen || createSpeechIsOpen || uploadFileIsOpen}
                     buttonStyle="is-rounded btn-primary"
                     content={!createChatIsOpen ? "Create new Chat" : "Stop"}
                     onClick={() => setCreateChatIsOpen(!createChatIsOpen)}
@@ -40,6 +51,7 @@ export default function TeacherAssignmentPage() {
                 {createChatIsOpen && <CreateChat /> }
                 {createSpeechIsOpen && <CreateSpeech /> }
                 {createQuizIsOpen && <CreateQuiz /> }
+                {uploadFileIsOpen && <div>Not ready yet</div>}
             </div>
         </div>
     );

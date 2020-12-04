@@ -1,11 +1,11 @@
-export const quiz =  {
+export const defaultQuiz =  {
     "quizTitle": "React Quiz Component Demo",
     "quizSynopsis": "Test",
-    "answerSelectionType": "single",
     "questions": [
       {
         "question": "5 + 5",
         "questionType": "text",
+        "answerSelectionType": "single",
         "answers": [
           "55",
           "10",
@@ -17,5 +17,15 @@ export const quiz =  {
         "explanation": "Count your fingers",
         "point": "20"
       },
-    ]
+    ],
+    "appLocale": {
+        "landingHeaderText": "<questionLength> Questions",
+        "question": "Question",
+        "startQuizBtn": "Start Quiz",
+        "resultFilterAll": "All",
+        "resultFilterCorrect": "Correct",
+        "resultFilterIncorrect": "Incorrect",
+        "nextQuestionBtn": "Next",
+        "resultPageHeaderText": "You have completed the quiz. You got <correctIndexLength> out of <questionLength> questions."
+      } 
   } 
