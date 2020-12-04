@@ -50,7 +50,7 @@ export default function Island() {
           return (
             <div className={className}>
               <LockIcon
-                key={index}
+                key={assignment.id}
                 linkUrl={linkUrl}
                 type={
                   assignment.release_date.getTime() < new Date().getTime()
