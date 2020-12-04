@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react';
+import { defaultQuiz } from './templates';
 
 import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 
-export default function CreateChatForm({ setNewQuiz }) {
+export default function CreateChatForm({ refresh, setNewQuiz }) {
 
+    // Variables for quiz main part
     const [title, setTitle] = useState("Build your quiz");
     const [synopsis, setSynopsis] = useState("What is your quiz about");
-    const [questions, setQuestions] = useState([]);
+    const [questions, setQuestions] = useState(defaultQuiz.questions);
+
+    // Variables for one question
     const [question, setQuestion] = useState("1 + 1");
     const [answer, setAnswer] = useState('2');
-    const [tryAgain, setTryAgain] = useState('Good');
-    const [congrats, setCongrats] = useState('Bad');
     const [option1, setOption1] = useState('1');
     const [option2, setOption2] = useState('2');
     const [option3, setOption3] = useState('3');
@@ -22,11 +25,10 @@ export default function CreateChatForm({ setNewQuiz }) {
             quizSynopsis: synopsis,
             questions: questions,
         })
-    }, [title, synopsis, questions]);
+    }, [title, synopsis, refresh]);
 
-    // Update whole Chat when user changes something
-    useEffect(() => {
-        setQuestions([{
+    const saveQuestion = () => {
+        const newQuestion = {
             question: question,
             questionType: "text",
             answerSelectionType: "single",
@@ -36,12 +38,23 @@ export default function CreateChatForm({ setNewQuiz }) {
               option3,
             ],
             correctAnswer: option1 === answer ? '1' : option2 === answer ? '2' : '3',
-            messageForCorrectAnswer: congrats,
-            messageForIncorrectAnswer: tryAgain,
-            explanation: "Count your fingers",
-            point: "20",
-          }])
-    }, [question, answer, option1, option2, option3, tryAgain, congrats]);
+            point: 20,
+        }
+
+        // Override default question only for the first one
+        if (questions === defaultQuiz.questions) {
+            setQuestions([newQuestion])
+        } else { // Otherwise just add it
+            setQuestions(questions.concat(newQuestion))
+        }
+
+        // Reset feilds
+        setQuestion('');
+        setOption1('');
+        setOption2('');
+        setOption3('');
+        setAnswer('');
+    };
 
     return (
         <div className="card p-3 mt-4 mb-4">
@@ -76,13 +89,10 @@ export default function CreateChatForm({ setNewQuiz }) {
                     label="Option 3 : " value={option3}
                     onChange={(e) => setOption3(e.target.value)}
                 />
-                <Input
-                    label="Congrats Message : " value={congrats}
-                    onChange={(e) => setCongrats(e.target.value)}
-                />
-                <Input
-                    label="Try again message : " value={tryAgain}
-                    onChange={(e) => setTryAgain(e.target.value)}
+                <Button 
+                    buttonStyle="btn-sm btn-primary"
+                    content="Save question"
+                    onClick={() => saveQuestion()}
                 />
             </div>
         </div>

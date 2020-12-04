@@ -29,13 +29,10 @@ export default function User() {
     AssignmentApi.getAllAssignments().then((res) => {
       setAssignments(res.data);
     });
+    LectureApi.getAllLectures().then((res) => {
+       setLectures(res.data);
+    })
   }, []);
-
-  useEffect(() => {
-        LectureApi.getAllLectures().then((res) => {
-            setLectures(res.data);
-        })
-}, [])
 
   useEffect(() => {
     if (user.length !== 0) {
@@ -60,20 +57,23 @@ export default function User() {
           </Switch>
         ) : (
           <Switch>
-            {assignments.map((assign) => (
-              <Route path={path + "student/assignments/" + assign.id}>
+            <Route
+              path="/student/assignments/:id"
+              render={(assign) => (
                 <StudentAssignmentPage assignment={assign} />
-              </Route>
-            ))}
-            {lectures.map((lecture) =>
-              <Route key={lecture.id} path={path + "student/lectures/"+ lecture.id}>
-                  <Lecture lecture={lecture} />
-              </Route>
-              )
-              }
+              )}
+            />
+            /*
+            <Route
+              path="/student/lectures/:id"
+              render={(lecture) => (
+                <Lecture lecture={lecture} />
+              )}
+            />
+            */
               <Route path={path + "see-lecture"}>
-                            <LectureStudentPage />
-                        </Route>
+                  <LectureStudentPage />
+              </Route>
             <Route
               path="/lecture/:id"
               render={(match) => <StudentLecture match={match} />}

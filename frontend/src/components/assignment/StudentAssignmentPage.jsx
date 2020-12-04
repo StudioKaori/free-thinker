@@ -4,13 +4,11 @@ import StudentQuiz from './quiz/StudentQuiz';
 
 export default function StudentAssignmentPage({ assignment }) {
 
-    console.log(assignment);
-
     return (
-        <div className="bg-light p-2">
-            <h4>Student Assignment Page</h4>
+        <div className="bg-light p-2 d-flex flex-column align-items-center">
 
-            <hr />
+            <h4 className="border-bottom mb-3" >Student Assignment Page</h4>
+
             {
                 assignment.type === 'Chat'
                     ? <StudentChat key={assignment.id} chat={JSON.parse(assignment.assignment)} />
@@ -21,7 +19,6 @@ export default function StudentAssignmentPage({ assignment }) {
                             : null
 
             }
-            <hr />
 
         </div>
     );

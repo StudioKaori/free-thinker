@@ -32,32 +32,37 @@ export default function CreateChat() {
             type: 'Chat',
             assignment : JSON.stringify(newChat),
         }
-        console.log(newAssignment);
         AssignmentApi.createAssignment(newAssignment)
             .then(() => {
-                console.log('should be in database')
+                console.log('chat saved')
             })
     }
 
     return (
-        <div className="d-flex justify-content-around align-items-center flex-wrap">
+        <div className="container d-flex justify-content-around flex-wrap"> 
 
-            <div>
-                <CreateChatForm setNewChat={setNewChat} />
+            <div className="col-sm-12 col-md-6">
+                <h5 className="text-center">Create here</h5>
 
-                <Button content="Save Chat" 
+                <CreateChatForm refresh={refresh} setNewChat={setNewChat} />
+
+                <Button 
+                    buttonStyle="btn-danger"
+                    content="Save Chat" 
                     onClick={() => saveChat()}
                 />
             </div>
 
-            <div className>
-                <p>
-                    Teacher see changes
+            <div className="col-sm-12 col-md-6">
+                <h5 className="text-center">See changes there</h5>
+
+                <div className="text-center">
                     <Button
+                        buttonStyle="btn-sm btn-success mb-3"
                         content="Apply Changes"
                         onClick={() => handleRefresh()}
                     />
-                </p>
+                </div>
 
                 { !refresh &&
                     <ThemeProvider theme={newChat.theme}>
