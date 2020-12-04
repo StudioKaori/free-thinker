@@ -1,0 +1,12 @@
+.table-striped, td {
+    table-layout: auto;
+    width: 250px;
+    border: 1px ridge white;
+    border-collapse: collapse;
+    text-align: center;
+    font-weight: 700;
+}
+caption {
+    caption-side: top;
+    text-align: center;
+}
