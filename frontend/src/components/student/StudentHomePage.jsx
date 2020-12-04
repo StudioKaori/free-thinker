@@ -3,7 +3,6 @@ import { useRecoilState } from "recoil";
 
 import { userState } from "../../js/state-information";
 import Map from "./home/map/Map";
-import Schedule from "./home/schedule/Schedule";
 
 import "../../css/student/student-home.css";
 
@@ -13,12 +12,7 @@ export default function StudentHomePage() {
 
   return (
     <div>
-      <div className="student-home-map-wrapper">
-        <div>
-          <Map />
-          <Schedule />
-        </div>
-      </div>
+      <Map />
       <div className="body-wrapper">
         <div></div>
       </div>
