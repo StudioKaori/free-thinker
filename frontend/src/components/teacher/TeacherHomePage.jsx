@@ -1,16 +1,25 @@
-// These two lines are to get user information and other shared statement
-import { useRecoilState } from "recoil";
-import { userState } from "../../js/state-information";
+
+import { Link } from "react-router-dom";
+import Map from "../student/home/map/Map";
+import Dropdown from "./Dropdown";
 
 
 export default function TeacherHomePage() {
-  // To get user information, just use user below
-  const [user, setUser] = useRecoilState(userState);
-
-  return (
-    <div>
-      <h4 className="card-title">Teacher</h4>
-      {user[0].name}
+    return (
+    <div class="container p-3 my-3">
+        <div>
+            <h4 className="card-title"> Class Settings</h4>
+              <div>
+                 <Link to="/create-lecture" className="btn btn-info">Create New Lecture</Link>
+                 <Link to="/create-assignment" className="btn btn-info m-2">Create New Assignment</Link>
+                   <div>
+                   <Dropdown />
+                   </div>
+                   <div>
+                      <Map />
+                   </div>
+              </div>
+         </div>
     </div>
-  );
+  )
 }

@@ -3,46 +3,57 @@ import Api from "../../api/Api";
 import LectureCard from "./LectureCard";
 import LectureForm from "./LectureForm";
 
-
 function LecturePage() {
-    const [lectures, setLectures] = useState([]);
+  const [lectures, setLectures] = useState([]);
 
-    const createLecture = (lectureData) => {
-        Api.post("/lectures", lectureData)
-     .then((res) => setLectures([...lectures, res.data]));
-    };
+  const createLecture = (lectureData) => {
+    console.log("lectureData", lectureData);
+    let sqlLectureData = {};
+    sqlLectureData.title = lectureData.title;
+    sqlLectureData.body = lectureData.body;
+    sqlLectureData.unlockTime =
+      lectureData.unlockDate + "T" + lectureData.unlockTime + ":00.0";
+    sqlLectureData.youtubeUrl = lectureData.youtube.replace(
+      "https://www.youtube.com/watch?v=",
+      ""
+    );
+    console.log("sqlLectureData", sqlLectureData);
 
-    const getAll = () => {
-        Api.get("/lectures")
-            .then(res => setLectures(res.data));
-    };
+    Api.post("/lectures", sqlLectureData).then((res) =>
+      setLectures([...lectures, res.data])
+    );
+  };
 
-    const updateLecture = (updatedLecture) => {
-        Api.put("/lectures/", updatedLecture)
-            .then(r => getAll());
-    };
+  const getAll = () => {
+    Api.get("/lectures").then((res) => setLectures(res.data));
+  };
 
-    const deleteLecture = (lecture) => {
-        Api.delete("/lectures/" + lecture.id)
-            .then(r => getAll());
-    }
+  const updateLecture = (updatedLecture) => {
+    Api.put("/lectures/", updatedLecture).then((r) => getAll());
+  };
 
-    useEffect(() => {
-        getAll();
-    }, []);
+  const deleteLecture = (lecture) => {
+    Api.delete("/lectures/" + lecture.id).then((r) => getAll());
+  };
 
-    return <div>
-        <LectureForm onCreateClick={createLecture} />
+  useEffect(() => {
+    getAll();
+  }, []);
 
-        {
-            lectures.map(lecture => (<LectureCard
-                key={lecture.id}
-                lecture={lecture}
-                onUpdateClick={updateLecture}
-                onDeleteClick={deleteLecture} />))
-        }
+  return (
+    <div className="body-wrapper">
+      <LectureForm onCreateClick={createLecture} />
+
+      {lectures.map((lecture) => (
+        <LectureCard
+          key={lecture.id}
+          lecture={lecture}
+          onUpdateClick={updateLecture}
+          onDeleteClick={deleteLecture}
+        />
+      ))}
     </div>
+  );
 }
-
 
 export default LecturePage;
