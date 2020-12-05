@@ -55,8 +55,16 @@ export default function TeacherAssignmentPage() {
                         close={() => setCreateChatIsOpen(false)} 
                         setDisplayPopUp={setDisplayPopUp}
                     /> }
-                {createSpeechIsOpen && <CreateSpeech /> }
-                {createQuizIsOpen && <CreateQuiz /> }
+                {createSpeechIsOpen && 
+                    <CreateSpeech 
+                        close={() => setCreateSpeechIsOpen(false)} 
+                        setDisplayPopUp={setDisplayPopUp}
+                    /> }
+                {createQuizIsOpen && 
+                    <CreateQuiz 
+                        close={() => setCreateQuizIsOpen(false)} 
+                        setDisplayPopUp={setDisplayPopUp}
+                    /> }
                 {uploadFileIsOpen && <div>Not ready yet</div>}
             </div>
 
