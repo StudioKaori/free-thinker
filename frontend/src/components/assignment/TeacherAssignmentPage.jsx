@@ -4,6 +4,7 @@ import Button from './atoms/Button';
 import CreateChat from './chatbot/CreateChat';
 import CreateSpeech from './speech/CreateSpeech';
 import CreateQuiz from './quiz/CreateQuiz';
+import PopUpMsg from "./PopUpMsg";
 
 export default function TeacherAssignmentPage() {
 
@@ -11,6 +12,7 @@ export default function TeacherAssignmentPage() {
     const [createQuizIsOpen, setCreateQuizIsOpen] = useState(false);
     const [createSpeechIsOpen, setCreateSpeechIsOpen] = useState(false);
     const [createChatIsOpen, setCreateChatIsOpen] = useState(false);
+    const [displayPopUp, setDisplayPopUp] = useState(false);
 
     return (
         <div className="bg-light p-2">
@@ -48,11 +50,17 @@ export default function TeacherAssignmentPage() {
             </div>
 
             <div className="d-flex justify-content-center mt-3">
-                {createChatIsOpen && <CreateChat /> }
+                {createChatIsOpen && 
+                    <CreateChat 
+                        close={() => setCreateChatIsOpen(false)} 
+                        setDisplayPopUp={setDisplayPopUp}
+                    /> }
                 {createSpeechIsOpen && <CreateSpeech /> }
                 {createQuizIsOpen && <CreateQuiz /> }
                 {uploadFileIsOpen && <div>Not ready yet</div>}
             </div>
+
+            {displayPopUp && <PopUpMsg message="Succesfully saved"/>}
         </div>
     );
 }

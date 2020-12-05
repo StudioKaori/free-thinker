@@ -11,9 +11,9 @@ export const premadeThemes = [
         userFontColor: '#4a4a4a',
     },
     {
-        background: 'blue',
+        background: 'green',
         fontFamily: 'Helvetica Neue',
-        headerBgColor: 'green',
+        headerBgColor: 'blue',
         headerFontColor: '#fff',
         headerFontSize: '15px',
         botBubbleColor: 'green',
@@ -24,8 +24,8 @@ export const premadeThemes = [
     {
         background: 'pink',
         fontFamily: 'Helvetica Neue',
-        headerBgColor: 'yellow',
-        headerFontColor: 'black',
+        headerBgColor: 'rgb(182, 24, 50)',
+        headerFontColor: '#fff',
         headerFontSize: '15px',
         botBubbleColor: 'yellow',
         botFontColor: 'black',
