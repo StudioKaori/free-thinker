@@ -32,14 +32,14 @@ public class ClassDailySettingService {
     public ClassDailySetting create(ClassDailySetting newClassDailySetting) {
         return classDailySettingRepo.save(newClassDailySetting);
     }
-//
-//    public ClassDailySetting update(ClassDailySetting updatedClassDailySetting) {
-//        return classDailySettingRepo.save(updatedClassDailySetting);
-//    }
-//
-//    public void delete(Long id) {
-//        classDailySettingRepo.deleteById(id);
-//    }
+
+    public ClassDailySetting update(ClassDailySetting updatedClassDailySetting) {
+        return classDailySettingRepo.save(updatedClassDailySetting);
+    }
+
+    public void delete(Long id) {
+        classDailySettingRepo.deleteById(id);
+    }
 
 
 

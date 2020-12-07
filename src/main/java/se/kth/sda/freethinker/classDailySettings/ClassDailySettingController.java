@@ -21,7 +21,7 @@ public class ClassDailySettingController {
 
 
 
-    @GetMapping("/{date}")
+    @GetMapping("/byDate/{date}")
     public ClassDailySetting getByDate(@PathVariable String date) {
         return classDailySettingService.getByDate(date);
     }
@@ -31,13 +31,13 @@ public class ClassDailySettingController {
         return classDailySettingService.create(newClassDailySetting);
     }
 
-//    @PutMapping("")
-//    public ClassDailySetting update(@RequestBody ClassDailySetting updatedClassDailySetting) {
-//        return classDailySettingService.update(updatedClassDailySetting);
-//    }
-//
-//    @DeleteMapping("{id}")
-//    public void delete(@PathVariable Long id) {
-//        classDailySettingService.delete(id);
-//    }
+    @PutMapping("")
+    public ClassDailySetting update(@RequestBody ClassDailySetting updatedClassDailySetting) {
+        return classDailySettingService.update(updatedClassDailySetting);
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Long id) {
+        classDailySettingService.delete(id);
+    }
 }
