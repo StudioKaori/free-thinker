@@ -23,6 +23,18 @@ h6 {
   margin-bottom: 0;
 }
 
+.react-dropdown-list li {
+  cursor: pointer;
+  display: block;
+  list-style: none;
+  text-transform: uppercase;
+  padding: 5px;
+}
+
+.react-dropdown-list li :hover {
+  background-color: var(--accent-color-green);
+}
+
 /* reset user agent stylesheet */
 
 ul {

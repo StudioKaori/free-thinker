@@ -4,7 +4,6 @@ import ClassDailySettingApi from "../../../api/ClassDailySettingsApi";
 
 export default function DailySettingForm() {
   const [date, setDate] = useState(moment().format("yyyy-MM-DD"));
-  console.log(date);
 
   // islands
   const islands = [
@@ -40,7 +39,6 @@ export default function DailySettingForm() {
   };
 
   const createSqlClassDailySettingData = () => {
-    console.log("islandTheme", islandTheme);
     let sqlClassDailySettingData = {};
     sqlClassDailySettingData.islandTheme = islandTheme;
     sqlClassDailySettingData.date = date + "T00:00:00.0";
@@ -49,8 +47,6 @@ export default function DailySettingForm() {
 
   const setIslandThemeOnDb = () => {
     const sqlClassDailySettingData = createSqlClassDailySettingData();
-    console.log("setIslandThemeOnDb", sqlClassDailySettingData);
-
     ClassDailySettingApi.updateWhereDateClassDailySetting(
       sqlClassDailySettingData
     );
@@ -58,8 +54,6 @@ export default function DailySettingForm() {
 
   const createIslandThemeOnDb = () => {
     const sqlClassDailySettingData = createSqlClassDailySettingData();
-    console.log("createIslandThemeOnDb", sqlClassDailySettingData);
-
     ClassDailySettingApi.createClassDailySetting(sqlClassDailySettingData);
   };
 
@@ -86,7 +80,7 @@ export default function DailySettingForm() {
           Choose island-theme
         </button>
         <div className="dropdown-menu" aria-labelledby="island-selector">
-          <ul>{islandsList}</ul>
+          <ul className="react-dropdown-list">{islandsList}</ul>
         </div>
       </div>
 

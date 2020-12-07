@@ -5,7 +5,7 @@ import DailySettingForm from "./home/DailySettingForm";
 
 export default function TeacherHomePage() {
   return (
-    <div class="container p-3 my-3">
+    <div className="container p-3 my-3">
       <div>
         <h4 className="card-title"> Class Settings</h4>
         <div>
