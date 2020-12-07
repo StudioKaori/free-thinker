@@ -49,12 +49,12 @@ export default function Island() {
         assignments.map((assignment, index) => {
           const className = "island-icon-position island-lock-" + index;
           const linkUrl = "/assignment/" + assignment.id;
-          console.log("date", assignment.release_date.getTime());
+          const uniqueKey = "assignment-icon" + assignment.id;
 
           return (
             <div className={className}>
               <LockIcon
-                key={assignment.id}
+                key={uniqueKey}
                 linkUrl={linkUrl}
                 type={
                   assignment.release_date.getTime() < new Date().getTime()

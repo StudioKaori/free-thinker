@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import moment from "moment";
+import ClassDailySettingApi from "../../../api/ClassDailySettingsApi";
 
 export default function DailySettingForm() {
   const [date, setDate] = useState(moment().format("yyyy-MM-DD"));
+  console.log(date);
 
   // islands
-  const [islandTheme] = useState("");
   const islands = [
     "island-green",
     "island-ice",
@@ -13,33 +14,86 @@ export default function DailySettingForm() {
     "island-desert",
     "island-green-river",
   ];
+  const [islandTheme, setIslandTheme] = useState(islands[0]);
 
   const islandsList = islands.map((island) => {
-    return <li>{island}</li>;
+    return (
+      <li
+        key={island}
+        id={island}
+        onClick={() => {
+          setIslandTheme(island);
+        }}
+      >
+        {island}
+      </li>
+    );
   });
 
   // DB
-  const getIslandTheme = () => {};
+  const getIslandTheme = () => {
+    ClassDailySettingApi.getByDate(date).then((res) => {
+      res.data.length !== 0
+        ? setIslandTheme(res.data.islandTheme)
+        : createIslandThemeOnDb();
+    });
+  };
 
-  useEffect(() => {}, []);
+  const createSqlClassDailySettingData = () => {
+    console.log("islandTheme", islandTheme);
+    let sqlClassDailySettingData = {};
+    sqlClassDailySettingData.islandTheme = islandTheme;
+    sqlClassDailySettingData.date = date + "T00:00:00.0";
+    return sqlClassDailySettingData;
+  };
+
+  const setIslandThemeOnDb = () => {
+    const sqlClassDailySettingData = createSqlClassDailySettingData();
+    console.log("setIslandThemeOnDb", sqlClassDailySettingData);
+
+    ClassDailySettingApi.updateWhereDateClassDailySetting(
+      sqlClassDailySettingData
+    );
+  };
+
+  const createIslandThemeOnDb = () => {
+    const sqlClassDailySettingData = createSqlClassDailySettingData();
+    console.log("createIslandThemeOnDb", sqlClassDailySettingData);
+
+    ClassDailySettingApi.createClassDailySetting(sqlClassDailySettingData);
+  };
+
+  useEffect(() => {
+    getIslandTheme();
+  }, []);
+
+  useEffect(() => {
+    document.getElementById("island-selector").innerText = islandTheme;
+  }, [islandTheme]);
 
   return (
     <div>
-      <h6>{moment().format("yyyy/MM/DD")} Classroom Setting</h6>
-      <div class="dropdown">
+      <h6>{date} Classroom Setting</h6>
+      <div className="dropdown">
         <button
-          class="btn btn-secondary dropdown-toggle"
+          className="btn btn-secondary dropdown-toggle"
           type="button"
           id="island-selector"
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
         >
-          Dropdown button
+          Choose island-theme
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div className="dropdown-menu" aria-labelledby="island-selector">
           <ul>{islandsList}</ul>
         </div>
+      </div>
+
+      <div>
+        <button className="btn btn-info" onClick={() => setIslandThemeOnDb()}>
+          Set theme
+        </button>
       </div>
     </div>
   );

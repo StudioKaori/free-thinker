@@ -2,6 +2,7 @@ package se.kth.sda.freethinker.classDailySettings;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -12,7 +13,7 @@ public class ClassDailySetting {
     private Long id;
 
     @Column(columnDefinition = "TIMESTAMP")
-    private Date date;
+    private Timestamp date;
 
     private String islandTheme;
 
@@ -31,11 +32,11 @@ public class ClassDailySetting {
         this.id = id;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 

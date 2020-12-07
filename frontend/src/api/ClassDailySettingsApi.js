@@ -17,6 +17,10 @@ class ClassDailySettingsApi {
     return Api.put("/classDailySettings", classDailySetting);
   }
 
+  updateWhereDateClassDailySetting(classDailySetting) {
+    return Api.put("/classDailySettings/date", classDailySetting);
+  }
+
   deleteClassDailySetting(id) {
     return Api.delete("/classDailySettings/" + id);
   }

@@ -110,7 +110,7 @@
 
 .header-menu li {
   list-style: none;
-  font-family: "Bungee Inline", cursive;
+  font-family: "Sigmar One", cursive;
 }
 
 .header-menu li a {
@@ -149,7 +149,7 @@
   .header-profile-photo-name {
     display: inline;
     line-height: 35px;
-    font-family: "Bungee Inline", cursive;
+    font-family: "Sigmar One", cursive;
     size: var(--font-S);
     color: var(--accent-color-yellow);
     margin-right: 10px;
