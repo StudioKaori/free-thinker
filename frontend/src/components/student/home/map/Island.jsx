@@ -1,13 +1,24 @@
 import { useState, useEffect } from "react";
 import AssignmentApi from "../../../../api/AssignmentApi";
 
+import moment from "moment";
+import ClassDailySettingApi from "../../../../api/ClassDailySettingsApi";
 import LockIcon from "../../../icons/map-icon";
 import SpaceHolder from "../../../../assets/img/components/student/home/islands/island-spaceholder.gif";
 import "../../../../css/student/islands/island-green.css";
 
 export default function Island() {
   const [assignments, setAssignments] = useState([]);
+  const [islandTheme, setIslandTheme] = useState("island-green");
+  const [date, setDate] = useState(moment().format("yyyy-MM-DD"));
   const [status, setStatus] = useState(0);
+
+  // island theme
+  const getIslandTheme = () => {
+    ClassDailySettingApi.getByDate(date).then((res) => {
+      res.data.length !== 0 && setIslandTheme(res.data.islandTheme);
+    });
+  };
 
   const fakesDates = [
     // Waiting for release_dates coming directly with assignment
@@ -31,6 +42,9 @@ export default function Island() {
       }
       setAssignments(assignmentsPlusDate);
     });
+
+    // island theme
+    getIslandTheme();
   }, []);
 
   useEffect(() => {
@@ -39,8 +53,14 @@ export default function Island() {
     }
   }, [assignments]);
 
+  useEffect(() => {
+    console.log("islandTheme", islandTheme);
+    const islandImg = "url('/assets/img/css/islands/" + islandTheme + ".png')";
+    document.getElementById("map-island").style.backgroundImage = islandImg;
+  }, [islandTheme]);
+
   return (
-    <div className="student-home-map-island">
+    <div id="map-island" className="student-home-map-island">
       <div className="student-home-map-island-spaceholder">
         <img src={SpaceHolder} alt="island" />
       </div>
