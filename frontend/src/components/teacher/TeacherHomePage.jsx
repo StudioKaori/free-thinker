@@ -1,9 +1,17 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Map from "../student/home/map/Map";
 import Dropdown from "./Dropdown";
 import DailySettingForm from "./home/DailySettingForm";
 
 export default function TeacherHomePage() {
+  const [previewChange, setPreviewChange] = useState(<Map />);
+
+  const onClickPreview = (islandTheme) => {
+    console.log("change island");
+    setPreviewChange(<Map key={islandTheme} />);
+  };
+
   return (
     <div className="container p-3 my-3">
       <div>
@@ -20,11 +28,9 @@ export default function TeacherHomePage() {
           </div>
 
           <div>
-            <DailySettingForm />
+            <DailySettingForm onClickPreview={onClickPreview} />
           </div>
-          <div>
-            <Map />
-          </div>
+          <div>{previewChange}</div>
         </div>
       </div>
     </div>

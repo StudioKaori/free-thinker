@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import moment from "moment";
 import ClassDailySettingApi from "../../../api/ClassDailySettingsApi";
 
-export default function DailySettingForm() {
+export default function DailySettingForm({ onClickPreview }) {
   const [date, setDate] = useState(moment().format("yyyy-MM-DD"));
 
   // islands
@@ -85,7 +85,13 @@ export default function DailySettingForm() {
       </div>
 
       <div>
-        <button className="btn btn-info" onClick={() => setIslandThemeOnDb()}>
+        <button
+          className="btn btn-info"
+          onClick={() => {
+            setIslandThemeOnDb();
+            onClickPreview(islandTheme);
+          }}
+        >
           Set theme
         </button>
       </div>
