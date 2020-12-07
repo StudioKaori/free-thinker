@@ -1,26 +1,29 @@
 import Api from "./Api";
 
 class AssignmentApi {
-    getAllAssignments() {
-        return Api.get('/assignments');
-    }
+  getAllAssignments() {
+    return Api.get("/assignments");
+  }
 
-    getAssignmentById(id) {
-        return Api.get('/assignments/'+id);
-    }
+  getAssignmentsByUnlockDate(date) {
+    return Api.get("/assignments/byDate/" + date);
+  }
 
-    createAssignment(assignment) {
-        return Api.post('/assignments', assignment);
-    }
+  getAssignmentById(id) {
+    return Api.get("/assignments/" + id);
+  }
 
-    updateAssignment(assignment) {
-        return Api.put('/assignments',assignment);
-    }
+  createAssignment(assignment) {
+    return Api.post("/assignments", assignment);
+  }
 
-    deleteAssignment(id) {
-        return Api.delete('/assignments/'+id);
-    } 
+  updateAssignment(assignment) {
+    return Api.put("/assignments", assignment);
+  }
 
+  deleteAssignment(id) {
+    return Api.delete("/assignments/" + id);
+  }
 }
 
 export default new AssignmentApi();
