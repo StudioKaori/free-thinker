@@ -76,7 +76,6 @@ export default function CreateChatForm({ setNewChat }) {
                 />
             </div>
 
-            <hr />
             <div className="d-flex justify-content-center">
                 <div className={`create-chat-div div-theme-${theme}`} >
 
