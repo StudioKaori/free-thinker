@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,21 +27,28 @@ public class ClassDailySettingService {
     }
 
     public ClassDailySetting getByDate(String date) {
-        Timestamp timestamp = Timestamp.valueOf(date);
-        return classDailySettingRepo.getByDate(timestamp);
+        Timestamp startDate= Timestamp.valueOf(date +" 00:00:00");
+        Timestamp endDate= Timestamp.valueOf(date +" 23:59:59");
+        return classDailySettingRepo.findByCertainDate(startDate, endDate);
     }
 
     public ClassDailySetting create(ClassDailySetting newClassDailySetting) {
         return classDailySettingRepo.save(newClassDailySetting);
     }
-//
-//    public ClassDailySetting update(ClassDailySetting updatedClassDailySetting) {
-//        return classDailySettingRepo.save(updatedClassDailySetting);
-//    }
-//
-//    public void delete(Long id) {
-//        classDailySettingRepo.deleteById(id);
-//    }
+
+    public ClassDailySetting update(ClassDailySetting updatedClassDailySetting) {
+        return classDailySettingRepo.save(updatedClassDailySetting);
+    }
+
+    public ClassDailySetting updateWhereDate(ClassDailySetting updatedClassDailySetting) {
+        String islandTheme = updatedClassDailySetting.getIslandTheme();
+        LocalDateTime localDateTime = updatedClassDailySetting.getDate();
+        return classDailySettingRepo.updateWhereDate(islandTheme,localDateTime);
+    }
+
+    public void delete(Long id) {
+        classDailySettingRepo.deleteById(id);
+    }
 
 
 

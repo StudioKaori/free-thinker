@@ -6,41 +6,22 @@ export default function LectureForm({ onCreateClick }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
-  var date = new Date();
-  var timestamp = date.getTime();
-  const sortTime = new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  }).format(timestamp);
+  // var date = new Date();
+  // var timestamp = date.getTime();
+  // const sortTime = new Intl.DateTimeFormat("en-US", {
+  //   year: "numeric",
+  //   month: "2-digit",
+  //   day: "2-digit",
+  //   hour: "2-digit",
+  //   minute: "2-digit",
+  //   second: "2-digit",
+  // }).format(timestamp);
 
   const handleOnChange = (e, editor) => {
     console.log(editor.getData());
     const data = editor.getData();
     setBody(data);
   };
-
-  /*const handleOnClick = (editor) => {
-    console.log(editor.getData());
-  
-    const data = editor.getData();
-  
-    setBody({
-      data: ''
-    });
-  };*/
-
-  /*const handleOnClick = (e, editor) => {
-    CKEditor.instances.editor.setData(" ");
-  };*/
-  
-  
-  
-
-  // kaori
 
   //youtube video
   const [youtube, setYoutube] = useState("");
@@ -58,6 +39,7 @@ export default function LectureForm({ onCreateClick }) {
           <div className="form-group">
             <label>Title:</label>
             <input
+              id="lectureTitleInLectureForm"
               type="text"
               className="form-control"
               placeholder="lecture title"
@@ -69,6 +51,7 @@ export default function LectureForm({ onCreateClick }) {
           <div className="form-group">
             <label>Unlock Date:</label>
             <input
+              id="lectureDateInLectureForm"
               type="text"
               className="form-control"
               placeholder="YYYY-MM-DD"
@@ -80,6 +63,7 @@ export default function LectureForm({ onCreateClick }) {
           <div className="form-group">
             <label>Unlock Time:</label>
             <input
+              id="lectureTimeInLectureForm"
               type="text"
               className="form-control"
               placeholder="ex. 09:00"
@@ -91,6 +75,7 @@ export default function LectureForm({ onCreateClick }) {
           <div className="form-group">
             <label>Youtube:</label>
             <input
+              id="lectureYoutubeInLectureForm"
               type="text"
               className="form-control"
               placeholder="youtube video url"
@@ -98,17 +83,17 @@ export default function LectureForm({ onCreateClick }) {
               onChange={(e) => setYoutube(e.target.value)}
             />
           </div>
+
           <CKEditor
+            id="lectureBodyInLectureForm"
             className="container"
             editor={ClassicEditor}
             onChange={handleOnChange}
-            //onClick={handleOnClick}
-            
           />
-          
 
           <div className="form-group">
             <button
+              id="lectureCreateButtonInLectureForm"
               className="btn btn-info"
               onClick={() => {
                 onCreateClick({ title, body, youtube, unlockDate, unlockTime });
@@ -118,9 +103,9 @@ export default function LectureForm({ onCreateClick }) {
                 setYoutube("");
                 document.getElementsByClassName("ck-content")[0].childNodes[0].innerHTML = '';
 
-               
-                        
-               
+
+
+
               }}
             >
               Create

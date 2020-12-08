@@ -1,67 +1,61 @@
 import React, {useState} from 'react';
 import AssignmentApi from '../../../api/AssignmentApi';
-import Quiz from 'react-quiz-component';
+
 import CreateQuizForm from './CreateQuizForm';
-import { defaultQuiz } from './templates';
 
 import Button from '../atoms/Button';
 
-export default function CreateQuiz() {
+// Entry point for Quiz creation
+export default function CreateQuiz({close, setDisplayPopUp}) {
 
-    const [newQuiz, setNewQuiz ] = useState(defaultQuiz);
+    const [newQuiz, setNewQuiz ] = useState({});
 
-    // Backup solution to see changes waiting for better
-    // Just 'open - close' the chat
-    const [refresh, setRefresh] = useState(false)
-    const handleRefresh = () => {
-        setRefresh(true); 
-        setTimeout(() => {
-            setRefresh(false);
-        }, 200);
+    // Helper function when saving quiz,
+    // Check if an answer has been selected for each question
+    const lastCheck = (questions) => {
+        for (let i = 0; i < questions.length; i += 1) {
+            if (questions[i].correctAnswer === '') {
+                return false;
+            }
+        }
+        return true;
     }
 
     const saveQuiz = () => {
+        if (!lastCheck(newQuiz.questions)) { return; } // Cancel if not ok
+        
         const newAssignment = {
             type: 'Quiz',
             assignment : JSON.stringify(newQuiz),
         }
         AssignmentApi.createAssignment(newAssignment)
             .then(() => {
-                console.log('Quiz saved')
+                setDisplayPopUp(true);
+                setTimeout(() => {
+                    setDisplayPopUp(false);
+                }, 1000)
+
+                close();
             })
     }
 
     return (
-        <div className="container d-flex justify-content-around flex-wrap">
+        <div className="container d-flex justify-content-center">
 
-            <div className="col-sm-12 col-md-6">
-                <h5 className="text-center">Create here</h5>
-                <CreateQuizForm refresh={refresh} setNewQuiz={setNewQuiz} />
-
-                <Button 
-                    buttonStyle="btn-danger"
-                    content="Save Quiz" 
-                    onClick={() => saveQuiz()}
-                />
-            </div>
-
-            <div className="col-sm-12 col-md-6">
-                <h5 className="text-center">See changes there</h5>
+            <div className="col-sm-12 col-md-8">
 
                 <div className="text-center">
-                    <Button
-                        buttonStyle="btn-sm btn-success"
-                        content="Apply Changes"
-                        onClick={() => handleRefresh()}
+                    <Button 
+                        id="save-quiz-button"
+                        buttonStyle="btn-danger"
+                        content="Save Quiz" 
+                        onClick={() => saveQuiz()}
                     />
                 </div>
 
-                { !refresh &&
-                    <div className="mt-4">
-                        <Quiz quiz={newQuiz}/>
-                    </div>
-                }
+                <CreateQuizForm setNewQuiz={setNewQuiz} />
             </div>
+
         </div>
     );
 }

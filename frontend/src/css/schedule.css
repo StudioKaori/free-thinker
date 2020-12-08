@@ -1,12 +1,63 @@
-.table-striped, td {
-    table-layout: auto;
-    width: 250px;
-    border: 1px ridge white;
-    border-collapse: collapse;
-    text-align: center;
-    font-weight: 700;
+.table-striped,
+td {
+  table-layout: auto;
+  width: 250px;
+  border: 1px ridge white;
+  border-collapse: collapse;
+  text-align: center;
+  font-weight: 700;
 }
 caption {
-    caption-side: top;
-    text-align: center;
+  caption-side: top;
+  text-align: center;
+}
+h6 {
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+th {
+  color: var(--accent-color-green);
+  height: 100%;
+  vertical-align: middle;
+  border-bottom: 1px solid #ffffff7c;
+  border-right: 1px solid #ffffff7c;
+}
+
+td {
+  border: 0;
+  padding: 5px;
+  border-bottom: 1px solid #ffffff7c;
+}
+
+td a {
+  padding: 5px;
+  color: #ffffff;
+  display: block;
+  width: 98%;
+  height: 98%;
+  border-radius: 5px;
+  background-color: var(--accent-color-green);
+}
+
+.student-home-schedule {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--accent-color-yellow);
+  border-radius: var(--big-radius);
+  margin: 20px;
+}
+
+@media (min-width: 550px) {
+  .student-home-schedule {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 225px;
+    padding: 20px;
+    background-color: var(--accent-color-yellow);
+    border-radius: var(--big-radius);
+    margin: 0;
+  }
 }

@@ -14,7 +14,6 @@ import LecturePage from "../lecture/LecturePage";
 import TeacherAssignmentPage from "../assignment/TeacherAssignmentPage";
 import StudentAssignmentPage from "../assignment/StudentAssignmentPage";
 import StudentLecture from "../student/lecture/LecturePage";
-import Lecture from "../lecture/Lecture";
 
 
 export default function User() {
@@ -57,23 +56,13 @@ export default function User() {
           </Switch>
         ) : (
           <Switch>
+            <Route path={path + "see-lecture"}>
+                <LectureStudentPage />
+            </Route>
             <Route
-              path="/student/assignments/:id"
-              render={(assign) => (
-                <StudentAssignmentPage assignment={assign} />
-              )}
+              path="/assignment/:id"
+              render={(match) => <StudentAssignmentPage match={match} />}
             />
-            /*
-            <Route
-              path="/student/lectures/:id"
-              render={(lecture) => (
-                <Lecture lecture={lecture} />
-              )}
-            />
-            */
-              <Route path={path + "see-lecture"}>
-                  <LectureStudentPage />
-              </Route>
             <Route
               path="/lecture/:id"
               render={(match) => <StudentLecture match={match} />}
