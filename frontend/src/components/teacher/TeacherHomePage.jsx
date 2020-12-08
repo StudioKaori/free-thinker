@@ -18,14 +18,16 @@ export default function TeacherHomePage() {
         <DayBox day="4" />
         <DayBox day="5" />
       </div>
-      <hr/>
+      <hr />
       <div className="bottom-container">
         {/* The following div forms the recent activity block on the page
         It needs an independent component to display the task details */}
         <div className="card">
           <div className="card-header">Recent Activity</div>
           <ul className="list-group list-group-flush">
-            <li className="list-group-item"><h3>Some assignment</h3></li>
+            <li className="list-group-item">
+              <h3>Some assignment</h3>
+            </li>
             <li className="list-group-item">Some lecture</li>
             <li className="list-group-item">Some assignment</li>
             <li className="list-group-item">Some assignment</li>
@@ -34,10 +36,16 @@ export default function TeacherHomePage() {
         </div>
         {/* This div only needs some finer CSS touch, otherwise it looks fine */}
         <div className="btn-container">
-          <Link to="/create-lecture" className="btn btn-info btn-lg btn-block mb-5">
+          <Link
+            to="/create-lecture"
+            className="btn btn-info btn-lg btn-block mb-5"
+          >
             Create New Lecture
           </Link>
-          <Link to="/create-assignment" className="btn btn-info btn-lg btn-block mb-5">
+          <Link
+            to="/create-assignment"
+            className="btn btn-info btn-lg btn-block mb-5"
+          >
             Create New Assignment
           </Link>
           <div>
