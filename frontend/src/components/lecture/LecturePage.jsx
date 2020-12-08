@@ -5,12 +5,10 @@ import LectureForm from "./LectureForm";
 
 function LecturePage({ dateFromCal }) {
   const dateFromCalDate = dateFromCal.match.params.date;
-  console.log("dateFromCalDate", dateFromCalDate);
 
   const [lectures, setLectures] = useState([]);
 
   const createLecture = (lectureData) => {
-    console.log("lectureData", lectureData);
     let sqlLectureData = {};
     sqlLectureData.title = lectureData.title;
     sqlLectureData.body = lectureData.body;
@@ -20,8 +18,6 @@ function LecturePage({ dateFromCal }) {
     sqlLectureData.youtubeUrl = lectureData.youtube
       .match(/[v][=][A-Za-z1-9]+/g)[0]
       .replace("v=", "");
-
-    console.log("sqlLectureData", sqlLectureData);
 
     Api.post("/lectures", sqlLectureData).then((res) =>
       setLectures([...lectures, res.data])

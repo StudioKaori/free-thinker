@@ -19,7 +19,6 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
   // }).format(timestamp);
 
   const handleOnChange = (e, editor) => {
-    console.log(editor.getData());
     const data = editor.getData();
     setBody(data);
   };
@@ -40,9 +39,6 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
           .format("HH")
           .concat(":00")
   );
-
-  console.log("dateFromCalDate", dateFromCalDate);
-  // date from url params
 
   return (
     <div className="body-wrapper">
