@@ -73,12 +73,12 @@ export default function LectureForm({ onCreateClick }) {
           </div>
 
           <div className="form-group">
-            <label>Youtube:</label>
+            <label>Youtube/Zoom:</label>
             <input
               id="lectureYoutubeInLectureForm"
               type="text"
               className="form-control"
-              placeholder="youtube video url"
+              placeholder="Youtube video url or Zoom link"
               value={youtube}
               onChange={(e) => setYoutube(e.target.value)}
             />
