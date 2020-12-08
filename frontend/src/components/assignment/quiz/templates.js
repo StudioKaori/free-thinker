@@ -1,3 +1,5 @@
+/* Template for a default quiz, can be used to see the original format */
+
 export const defaultQuiz =  {
     "quizTitle": "React Quiz Component Demo",
     "quizSynopsis": "Test",
@@ -18,6 +20,9 @@ export const defaultQuiz =  {
         "point": "20"
       },
     ],
+
+    // This part is default one, can be modified, for end of quiz options for example.
+
     "appLocale": {
         "landingHeaderText": "<questionLength> Questions",
         "question": "Question",

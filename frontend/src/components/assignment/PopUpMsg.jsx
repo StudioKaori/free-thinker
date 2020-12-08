@@ -1,8 +1,7 @@
 import '../../css/assignment/popUpMsg.css'
 
+// Pop up message, can be used for "Saved" or "Error" for example
 export default function PopUpMsg({message}) {
-
-    console.log(message)
 
     return (
         <div className="pop-up-message"> 

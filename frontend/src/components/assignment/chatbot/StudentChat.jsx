@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
 
-
+// Chat in Student side: use of 'react-simple-chatbot' library
 export default function StudentChat({chat}) {
 
     const [steps, setSteps] = useState(chat.steps);
@@ -38,14 +38,14 @@ export default function StudentChat({chat}) {
 
     return (
         <>
-        {status === 1 &&
-            <ThemeProvider theme={chat.theme}>
-                <ChatBot
-                    headerTitle={chat.title}
-                    steps={steps}
-                />
-            </ThemeProvider>
-        }
+            {status === 1 &&
+                <ThemeProvider theme={chat.theme}>
+                    <ChatBot
+                        headerTitle={chat.title}
+                        steps={steps}
+                    />
+                </ThemeProvider>
+            }
         </>
     );
 }

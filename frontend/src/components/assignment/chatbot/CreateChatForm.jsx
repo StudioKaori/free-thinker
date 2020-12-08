@@ -6,6 +6,7 @@ import Step from './Step';
 
 import '../../../css/assignment/chatbot.css';
 
+// The actual form for create the chat
 export default function CreateChatForm({ setNewChat }) {
 
     // Main style
@@ -24,7 +25,7 @@ export default function CreateChatForm({ setNewChat }) {
         })
     }, [steps, title, theme])
 
-    // Create a set of 4 steps => corresponding at one question/answer.
+    // Create a set of 4 steps => corresponding at one question/answer set.
     const createStep = () => {
         const newStep = [
             {
@@ -60,16 +61,19 @@ export default function CreateChatForm({ setNewChat }) {
         <div className="card p-3 mt-4 mb-4 bg-dark">
             <div className="text-center">
                 <Button 
+                    id="create-chat-theme-1"
                     buttonStyle="btn-sm btn-info"
                     content="Theme 1" 
                     onClick={() => setTheme(1)} 
                 />
                 <Button 
+                    id="create-chat-theme-2"
                     buttonStyle="btn-sm btn-info"
                     content="Theme 2" 
                     onClick={() => setTheme(2)} 
                 />
                 <Button 
+                    id="create-chat-theme-3"
                     buttonStyle="btn-sm btn-info"
                     content="Theme 3" 
                     onClick={() => setTheme(3)} 
@@ -81,6 +85,7 @@ export default function CreateChatForm({ setNewChat }) {
 
                     <div className={`create-chat-header header-theme-${theme}`}>
                         <input 
+                            id="create-chat-input-title"
                             className={`header-theme-${theme}`}
                             placeholder="Enter title" value={title}
                             maxLength="40"
@@ -92,6 +97,7 @@ export default function CreateChatForm({ setNewChat }) {
                         {
                             steps.map((step) => 
                                 <Step 
+                                    key={`step-${step.id}`}
                                     step={step}
                                     update={update}
                                     numberOfSteps={steps.length}
@@ -102,6 +108,7 @@ export default function CreateChatForm({ setNewChat }) {
 
                     <div>
                         <Button
+                            id="create-chat-step-button"
                             buttonStyle="mt-4 ml-1 btn-sm btn-success"
                             content="+"
                             onClick={() => createStep()}

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 
+// One single Step => one input for text.
 export default function Step(props) {
 
     const {step, update, numberOfSteps} = props;
-    let placeholder = '';
+    const [message, setMessage] = useState('');
 
+    let placeholder = '';
     switch(step.id % 4) {
         case 1: placeholder = "Enter message"; break;
         case 2: placeholder = "Expected Student Input"; break;
@@ -13,8 +15,7 @@ export default function Step(props) {
         default: placeholder = "Enter message"; break;
     }
 
-    const [message, setMessage] = useState('');
-
+    // Update step when user add text or create a new step
     useEffect(() => {
         const newStep = {...step};
 
@@ -41,6 +42,7 @@ export default function Step(props) {
                 ${step.id % 4 === 1 && 'chat-first'}`}
         >
             <input
+                id={`chat-step-input-${step.id}`}
                 className={`chat-input ${step.id % 4 === 2 && 'chat-input-right'}`}
                 placeholder={placeholder} value={message}
                 maxLength={step.id % 4 === 2 ? 40 : 200}

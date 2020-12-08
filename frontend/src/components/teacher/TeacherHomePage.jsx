@@ -1,12 +1,24 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import Map from "../student/home/map/Map";
+import DailySettingForm from "./home/DailySettingForm";
+import LectureCalendar from "./schedule/LectureCalendar";
 import DayBox from "./DayBox";
 import Dropdown from "./Dropdown";
 
 export default function TeacherHomePage() {
+  const [previewChange, setPreviewChange] = useState(<Map />);
+
+  const onClickPreview = (islandTheme) => {
+    console.log("change island");
+    setPreviewChange(<Map key={islandTheme} />);
+  };
   var num = 0;
   return (
     <div class="container p-3 my-3">
+      <div>
+        <LectureCalendar />
+      </div>
       {/* This container forms the week's display
       The number props soecify the day relative to the current day */}
       <div class="week-container">
@@ -55,6 +67,13 @@ export default function TeacherHomePage() {
         {/* <div>
               <Map />
             </div> */}
+      </div>
+      <div>
+        <div>
+          <DailySettingForm onClickPreview={onClickPreview} />
+        </div>
+
+        <div>{previewChange}</div>
       </div>
     </div>
   );

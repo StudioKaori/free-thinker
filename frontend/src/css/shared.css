@@ -1,7 +1,8 @@
 /* This file is for common style of the webpage. */
 
 /* company logo font */
-@import url("https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap");
 
 body {
   color: var(--font-dark);
@@ -17,9 +18,21 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Bungee Inline", cursive;
+  font-family: "Sigmar One", cursive;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.react-dropdown-list li {
+  cursor: pointer;
+  display: block;
+  list-style: none;
+  text-transform: uppercase;
+  padding: 5px;
+}
+
+.react-dropdown-list li :hover {
+  background-color: var(--accent-color-green);
 }
 
 /* reset user agent stylesheet */
