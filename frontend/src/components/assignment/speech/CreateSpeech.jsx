@@ -4,7 +4,7 @@ import AssignmentApi from '../../../api/AssignmentApi';
 
 import Button from '../atoms/Button';
 
-export default function CreateSpeech() {
+export default function CreateSpeech({close, setDisplayPopUp}) {
     const [question, setQuestion] = useState('');
     const { speak } = useSpeechSynthesis();
 
@@ -16,7 +16,12 @@ export default function CreateSpeech() {
         console.log(newAssignment);
         AssignmentApi.createAssignment(newAssignment)
             .then(() => {
-                console.log('should be in database')
+                setDisplayPopUp(true);
+                setTimeout(() => {
+                    setDisplayPopUp(false);
+                }, 1000)
+
+                close();
             })
     }
 

@@ -1,0 +1,59 @@
+.create-quiz-div {
+    width: 400px;
+    height: 600px;
+    max-height: 600px;
+    overflow-y: scroll;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.create-quiz-header {
+    border-radius: 15px 15px 0 0;
+    width: 400px;
+    height: 100px;
+    font-family: "Helvetica Neue";
+    font-size: 20px;
+    background-color: aquamarine;
+}
+.create-quiz-header input {
+    width: 400px;
+    height: 50px;
+    font-family: "Helvetica Neue";
+    font-size: 20px;
+    background-color: aquamarine;
+}
+.create-quiz-div input:focus { 
+    outline: none;
+}
+
+.quiz-teacher-question {
+    margin: 3px;
+    width: 394px;
+    height: 30px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-top: 30px;
+    background-color: burlywood;
+}
+
+.quiz-student-answer {
+    margin: 3px;
+    width: 354px;
+    height: 30px;
+    border-radius: 5px;
+    align-self: flex-end;
+    text-align: right;
+}
+
+.quiz-student-box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.create-quiz-div .active {
+    background-color: aqua;
+}

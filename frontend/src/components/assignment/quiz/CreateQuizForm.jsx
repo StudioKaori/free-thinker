@@ -1,99 +1,101 @@
 import { useState, useEffect } from 'react';
-import { defaultQuiz } from './templates';
 
-import Input from '../atoms/Input';
 import Button from '../atoms/Button';
+import Question from './Question';
 
-export default function CreateChatForm({ refresh, setNewQuiz }) {
+import '../../../css/assignment/quiz.css';
 
-    // Variables for quiz main part
-    const [title, setTitle] = useState("Build your quiz");
-    const [synopsis, setSynopsis] = useState("What is your quiz about");
-    const [questions, setQuestions] = useState(defaultQuiz.questions);
+export default function CreateQuizForm({ setNewQuiz }) {
 
-    // Variables for one question
-    const [question, setQuestion] = useState("1 + 1");
-    const [answer, setAnswer] = useState('2');
-    const [option1, setOption1] = useState('1');
-    const [option2, setOption2] = useState('2');
-    const [option3, setOption3] = useState('3');
+    // Main style
+    const [title, setTitle] = useState('');
+    const [synopsis, setSynopsis] = useState('');
+    // const [theme, setTheme] = useState(1); later maybe ?
+    // Steps
+    const [questions, setQuestions] = useState([]);
+    const [stepId, setStepId] = useState(1);
 
-    // Update whole Chat when user changes something
+
+    // Update whole Quiz when changes are made
     useEffect(() => {
         setNewQuiz({
             quizTitle: title,
             quizSynopsis: synopsis,
             questions: questions,
         })
-    }, [title, synopsis, refresh]);
+        console.log('useEffect')
+    }, [title, synopsis, questions]);
 
-    const saveQuestion = () => {
-        const newQuestion = {
-            question: question,
+
+    // Create a new 'question' => corresponding at one question + several choice.
+    const createQuestion = () => {
+        const newQuestion =
+        {
+            id: stepId,
+            question: '',
             questionType: "text",
             answerSelectionType: "single",
-            answers: [
-              option1,
-              option2,
-              option3,
-            ],
-            correctAnswer: option1 === answer ? '1' : option2 === answer ? '2' : '3',
-            point: 20,
+            answers: [],
+            correctAnswer: '',
+            point: 10,
         }
+        setQuestions(questions.concat(newQuestion));
+        setStepId(stepId + 1);
+    }
 
-        // Override default question only for the first one
-        if (questions === defaultQuiz.questions) {
-            setQuestions([newQuestion])
-        } else { // Otherwise just add it
-            setQuestions(questions.concat(newQuestion))
-        }
+    useEffect(() => {
+        createQuestion()
+    }, [])
 
-        // Reset feilds
-        setQuestion('');
-        setOption1('');
-        setOption2('');
-        setOption3('');
-        setAnswer('');
-    };
+    // Update the list of steps when change is made inside one step.
+    const update = (newQuestion, id) => {
+        const newQuestions = questions;
+        newQuestions[id - 1] = newQuestion;
+
+        setQuestions(newQuestions);
+    }
 
     return (
-        <div className="card p-3 mt-4 mb-4">
-            <Input
-                label="Choose a Title : " value={title}
-                onChange={(e) => setTitle(e.target.value)}
-            />
-            <Input
-                label="Enter Synopsis : " value={synopsis}
-                onChange={(e) => setSynopsis(e.target.value)}
-            />
-            <hr />
+        <div className="card p-3 mt-4 mb-4 bg-dark">
+            {/* <div className="text-center">
+                Change Themes here maybe
+            </div> */}
 
-            <div>
-                <Input
-                    label="Choose a question : " value={question}
-                    onChange={(e) => setQuestion(e.target.value)}
-                />
-                <Input
-                    label="Expected answer : " value={answer}
-                    onChange={(e) => setAnswer(e.target.value)}
-                />
-                <Input
-                    label="Option 1 : " value={option1}
-                    onChange={(e) => setOption1(e.target.value)}
-                />
-                <Input
-                    label="Option 2 : " value={option2}
-                    onChange={(e) => setOption2(e.target.value)}
-                />
-                <Input
-                    label="Option 3 : " value={option3}
-                    onChange={(e) => setOption3(e.target.value)}
-                />
-                <Button 
-                    buttonStyle="btn-sm btn-primary"
-                    content="Save question"
-                    onClick={() => saveQuestion()}
-                />
+            <div className="d-flex justify-content-center">
+                <div className='create-quiz-div' >
+                    <div className='create-quiz-header'>
+                        <input
+                            placeholder="Title" value={title}
+                            maxLength="40"
+                            onChange={(e) => setTitle(e.target.value)}
+                        />
+                        <input
+                            placeholder="About what ?" value={synopsis}
+                            maxLength="200"
+                            onChange={(e) => setSynopsis(e.target.value)}
+                        />
+                    </div>
+
+                    <div className="d-flex flex-column">
+                        {
+                            questions.map((question) =>
+                                <Question
+                                    question={question}
+                                    update={update}
+                                />
+                            )
+                        }
+                    </div>
+
+                    <div>
+                        <Button
+                            buttonStyle="mt-4 ml-1 btn-sm btn-success"
+                            content="+"
+                            onClick={() => createQuestion()}
+                        />
+                    </div>
+
+                </div>
             </div>
         </div>
     );

@@ -6,47 +6,45 @@ import { ThemeProvider } from 'styled-components';
 export default function StudentChat({chat}) {
 
     const [steps, setSteps] = useState(chat.steps);
-    // Backup solution to avoid chat taking steps before changes
-    const [refresh, setRefresh] = useState(false)
+    const [status, setStatus] = useState(0)
 
     // Lost functions in database transfert, need to put it back here.
     useEffect(() => {
         const newSteps = [...chat.steps];
 
-        for (let i = 0; i < newSteps.length; i += 4) {
-            function expectedFunction(value) {
-                console.log(value, chat.expectedAnswers[i])
-                if (value.value === chat.expectedAnswers[i / 4]) {
-                    console.log(`${i + 4}`)
-                    return `${i + 4}`;
+        for (let i = 0; i < newSteps.length; i += 1) {
+            if ( i % 4 === 1 ) { // Means every 2nd steps (user steps)
+                const answer = newSteps[i].message;
+
+                function userFunction(value) {
+                    if (value.value === answer) {
+                        return `${i + 3}`;
+                    }
+                    return `${i + 2}`;
                 }
-                return `${i + 3}`;
-            }
-            newSteps[i + 1].trigger = expectedFunction;
-            if (i < newSteps.length - 6) {
-                newSteps[i + 3].trigger = `${i + 5}`
-            } else {
-                newSteps[i + 3].end = true;
+                const newUserStep = {
+                    id: i + 1,
+                    user: true,
+                    trigger: userFunction,
+                }
+                newSteps[i] = newUserStep;
             }
         }
-        console.log(newSteps);
+
         setSteps(newSteps);
 
-        setRefresh(true); 
-        setTimeout(() => {
-            setRefresh(false);
-        }, 200);
+        setStatus(1)
     }, [])
 
     return (
         <>
-        {!refresh &&
-        <ThemeProvider theme={chat.theme}>
-            <ChatBot
-                headerTitle={chat.title}
-                steps={steps}
-            />
-        </ThemeProvider>
+        {status === 1 &&
+            <ThemeProvider theme={chat.theme}>
+                <ChatBot
+                    headerTitle={chat.title}
+                    steps={steps}
+                />
+            </ThemeProvider>
         }
         </>
     );
