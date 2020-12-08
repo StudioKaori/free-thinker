@@ -11,9 +11,6 @@ export default function DayBox({ day }) {
   const dateonly = calender.format("L");
   console.log(dateonly);
 
-  let lecnum = 0;
-  let ass = 0;
-
   const lectures = [
     {
       id: "1",
@@ -70,6 +67,7 @@ export default function DayBox({ day }) {
     },
   ];
 
+  // Filters the elements of same date to get the daily count
   const lec = lectures.filter(lecture => lecture.date===dateonly);
 
   console.log(lec);
