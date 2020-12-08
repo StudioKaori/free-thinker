@@ -17,7 +17,6 @@ export default function LectureCalendar() {
       );
 
       setEventList(lectureData);
-      console.log("lectureData", lectureData);
     });
   };
 
@@ -61,6 +60,12 @@ export default function LectureCalendar() {
   //   },
   // ];
 
+  function openStudentLecturePage(lectureId) {
+    const url = "/lecture/" + lectureId;
+    var win = window.open(url, "_blank");
+    win.focus();
+  }
+
   return (
     <div>
       <Calendar
@@ -68,7 +73,7 @@ export default function LectureCalendar() {
         events={status === 0 ? [] : eventList}
         timeslots="2"
         defaultView={Views.WEEK}
-        onSelectEvent={(event) => alert(event.title)}
+        onSelectEvent={(event) => openStudentLecturePage(event.id)}
         selectable="true"
         onSelectSlot={(event) => console.log("1event", event)}
         style={{ height: 500 }}
