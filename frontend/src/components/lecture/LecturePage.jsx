@@ -5,8 +5,10 @@ import LectureForm from "./LectureForm";
 
 function LecturePage() {
   const [lectures, setLectures] = useState([]);
+  
 
   const createLecture = (lectureData) => {
+  
     console.log("lectureData", lectureData);
     let sqlLectureData = {};
     sqlLectureData.title = lectureData.title;
@@ -20,13 +22,15 @@ function LecturePage() {
     console.log("sqlLectureData", sqlLectureData);
 
     Api.post("/lectures", sqlLectureData).then((res) =>
-      setLectures([...lectures, res.data])
+      setLectures([res.data, ...lectures])
     );
   };
 
   const getAll = () => {
-    Api.get("/lectures").then((res) => setLectures(res.data));
-  };
+    Api.get("/lectures").then((res) => {
+      setLectures(res.data.sort((a,b) => b.id - a.id));
+  });
+};
 
   const updateLecture = (updatedLecture) => {
     Api.put("/lectures/", updatedLecture).then((r) => getAll());
@@ -39,6 +43,9 @@ function LecturePage() {
   useEffect(() => {
     getAll();
   }, []);
+
+ 
+
 
   return (
     <div className="body-wrapper">
@@ -55,5 +62,6 @@ function LecturePage() {
     </div>
   );
 }
+ 
 
 export default LecturePage;

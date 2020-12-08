@@ -23,6 +23,23 @@ export default function LectureForm({ onCreateClick }) {
     setBody(data);
   };
 
+  /*const handleOnClick = (editor) => {
+    console.log(editor.getData());
+  
+    const data = editor.getData();
+  
+    setBody({
+      data: ''
+    });
+  };*/
+
+  /*const handleOnClick = (e, editor) => {
+    CKEditor.instances.editor.setData(" ");
+  };*/
+  
+  
+  
+
   // kaori
 
   //youtube video
@@ -81,19 +98,30 @@ export default function LectureForm({ onCreateClick }) {
               onChange={(e) => setYoutube(e.target.value)}
             />
           </div>
-
           <CKEditor
             className="container"
             editor={ClassicEditor}
             onChange={handleOnChange}
+            //onClick={handleOnClick}
+            
           />
+          
 
           <div className="form-group">
             <button
               className="btn btn-info"
-              onClick={() =>
-                onCreateClick({ title, body, youtube, unlockDate, unlockTime })
-              }
+              onClick={() => {
+                onCreateClick({ title, body, youtube, unlockDate, unlockTime });
+                setTitle("");
+                setUnlockDate("");
+                setUnlockTime("");
+                setYoutube("");
+                //setBody('<p>Some text.</p>');
+               
+                //CKEditor.instances.editor.setData(" ");
+                        
+               
+              }}
             >
               Create
             </button>
