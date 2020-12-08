@@ -12,8 +12,14 @@ export default function LecturePage({ match }) {
 
   useEffect(() => {
     LectureApi.getLectureById(lectureId).then((res) => {
-      const youtubeID = res.data.youtubeUrl;
-      res.data.youtubeUrl = "https://www.youtube.com/embed/" + youtubeID;
+      const videoID = res.data.youtubeUrl;
+
+      // Temporary solution to see If we can use Lecture form for zoom link
+      if ( videoID.match('zoom')) {
+        res.data.youtubeUrl = videoID;
+      } else {
+          res.data.youtubeUrl = "https://www.youtube.com/embed/" + videoID;
+      }
       setLecture(res.data);
     });
   }, []);

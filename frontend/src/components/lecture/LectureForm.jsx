@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import moment from "moment";
 
-export default function LectureForm({ onCreateClick }) {
+export default function LectureForm({ onCreateClick, dateFromCalDate }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
@@ -18,7 +19,6 @@ export default function LectureForm({ onCreateClick }) {
   // }).format(timestamp);
 
   const handleOnChange = (e, editor) => {
-    console.log(editor.getData());
     const data = editor.getData();
     setBody(data);
   };
@@ -27,8 +27,18 @@ export default function LectureForm({ onCreateClick }) {
   const [youtube, setYoutube] = useState("");
 
   // unlock date
-  const [unlockDate, setUnlockDate] = useState("");
-  const [unlockTime, setUnlockTime] = useState("");
+  const [unlockDate, setUnlockDate] = useState(
+    typeof dateFromCalDate === "undefined"
+      ? ""
+      : moment(dateFromCalDate).format("YYYY-MM-DD")
+  );
+  const [unlockTime, setUnlockTime] = useState(
+    typeof dateFromCalDate === "undefined"
+      ? ""
+      : moment(dateFromCalDate)
+          .format("HH")
+          .concat(":00")
+  );
 
   return (
     <div className="body-wrapper">
@@ -73,12 +83,12 @@ export default function LectureForm({ onCreateClick }) {
           </div>
 
           <div className="form-group">
-            <label>Youtube:</label>
+            <label>Youtube/Zoom:</label>
             <input
               id="lectureYoutubeInLectureForm"
               type="text"
               className="form-control"
-              placeholder="youtube video url"
+              placeholder="Youtube video url or Zoom link"
               value={youtube}
               onChange={(e) => setYoutube(e.target.value)}
             />
