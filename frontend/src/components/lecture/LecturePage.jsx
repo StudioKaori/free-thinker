@@ -3,7 +3,10 @@ import Api from "../../api/Api";
 import LectureCard from "./LectureCard";
 import LectureForm from "./LectureForm";
 
-function LecturePage() {
+function LecturePage({ dateFromCal }) {
+  const dateFromCalDate = dateFromCal.match.params.date;
+  console.log("dateFromCalDate", dateFromCalDate);
+
   const [lectures, setLectures] = useState([]);
 
   const createLecture = (lectureData) => {
@@ -47,7 +50,10 @@ function LecturePage() {
 
   return (
     <div className="body-wrapper">
-      <LectureForm onCreateClick={createLecture} />
+      <LectureForm
+        onCreateClick={createLecture}
+        dateFromCalDate={dateFromCalDate}
+      />
 
       {lectures.map((lecture) => (
         <LectureCard

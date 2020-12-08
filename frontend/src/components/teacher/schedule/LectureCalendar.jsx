@@ -60,11 +60,18 @@ export default function LectureCalendar() {
   //   },
   // ];
 
-  function openStudentLecturePage(lectureId) {
+  const openStudentLecturePage = (lectureId) => {
     const url = "/lecture/" + lectureId;
     var win = window.open(url, "_blank");
     win.focus();
-  }
+  };
+
+  const openCreateLecturePage = (event) => {
+    console.log("date", event.start);
+    const url = "/create-lecture-from-cal/" + event.start;
+    var win = window.open(url, "_blank");
+    win.focus();
+  };
 
   return (
     <div>
@@ -75,7 +82,7 @@ export default function LectureCalendar() {
         defaultView={Views.WEEK}
         onSelectEvent={(event) => openStudentLecturePage(event.id)}
         selectable="true"
-        onSelectSlot={(event) => console.log("1event", event)}
+        onSelectSlot={(event) => openCreateLecturePage(event)}
         style={{ height: 500 }}
         scrollToTime={new Date(new Date().setHours(7, 0, 0, 0))}
       />

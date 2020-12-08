@@ -48,6 +48,13 @@ export default function User() {
               <TeacherAssignmentPage />
             </Route>
             <Route
+              path="/create-lecture-from-cal/:date"
+              render={(dateFromCal) => (
+                <LecturePage dateFromCal={dateFromCal} />
+              )}
+            />
+
+            <Route
               path="/assignment/:id"
               render={(match) => <StudentAssignmentPage match={match} />}
             />

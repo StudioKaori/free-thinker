@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import moment from "moment";
 
-export default function LectureForm({ onCreateClick }) {
+export default function LectureForm({ onCreateClick, dateFromCalDate }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
@@ -30,6 +31,9 @@ export default function LectureForm({ onCreateClick }) {
   const [unlockDate, setUnlockDate] = useState("");
   const [unlockTime, setUnlockTime] = useState("");
 
+  console.log("dateFromCalDate", dateFromCalDate);
+  // date from url params
+
   return (
     <div className="body-wrapper">
       <div className="card">
@@ -55,7 +59,11 @@ export default function LectureForm({ onCreateClick }) {
               type="text"
               className="form-control"
               placeholder="YYYY-MM-DD"
-              value={unlockDate}
+              value={
+                typeof dateFromCalDate === "undefined"
+                  ? unlockDate
+                  : moment(dateFromCalDate).format("YYYY-MM-DD")
+              }
               onChange={(e) => setUnlockDate(e.target.value)}
             />
           </div>
@@ -67,7 +75,13 @@ export default function LectureForm({ onCreateClick }) {
               type="text"
               className="form-control"
               placeholder="ex. 09:00"
-              value={unlockTime}
+              value={
+                typeof dateFromCalDate === "undefined"
+                  ? unlockTime
+                  : moment(dateFromCalDate)
+                      .format("HH")
+                      .concat(":00")
+              }
               onChange={(e) => setUnlockTime(e.target.value)}
             />
           </div>
