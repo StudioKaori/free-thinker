@@ -28,8 +28,18 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
   const [youtube, setYoutube] = useState("");
 
   // unlock date
-  const [unlockDate, setUnlockDate] = useState("");
-  const [unlockTime, setUnlockTime] = useState("");
+  const [unlockDate, setUnlockDate] = useState(
+    typeof dateFromCalDate === "undefined"
+      ? ""
+      : moment(dateFromCalDate).format("YYYY-MM-DD")
+  );
+  const [unlockTime, setUnlockTime] = useState(
+    typeof dateFromCalDate === "undefined"
+      ? ""
+      : moment(dateFromCalDate)
+          .format("HH")
+          .concat(":00")
+  );
 
   console.log("dateFromCalDate", dateFromCalDate);
   // date from url params
@@ -59,11 +69,7 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
               type="text"
               className="form-control"
               placeholder="YYYY-MM-DD"
-              value={
-                typeof dateFromCalDate === "undefined"
-                  ? unlockDate
-                  : moment(dateFromCalDate).format("YYYY-MM-DD")
-              }
+              value={unlockDate}
               onChange={(e) => setUnlockDate(e.target.value)}
             />
           </div>
@@ -75,13 +81,7 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
               type="text"
               className="form-control"
               placeholder="ex. 09:00"
-              value={
-                typeof dateFromCalDate === "undefined"
-                  ? unlockTime
-                  : moment(dateFromCalDate)
-                      .format("HH")
-                      .concat(":00")
-              }
+              value={unlockTime}
               onChange={(e) => setUnlockTime(e.target.value)}
             />
           </div>

@@ -16,15 +16,11 @@ function LecturePage({ dateFromCal }) {
     sqlLectureData.body = lectureData.body;
     sqlLectureData.unlockTime =
       lectureData.unlockDate + "T" + lectureData.unlockTime + ":00.0";
-    sqlLectureData.youtubeUrl = lectureData.youtube.replace(
-      "https://www.youtube.com/watch?v=",
-      ""
-    );
 
-    sqlLectureData.youtubeUrl = sqlLectureData.youtubeUrl.replace(
-      /[&][t][=].*/g,
-      ""
-    );
+    sqlLectureData.youtubeUrl = lectureData.youtube
+      .match(/[v][=][A-Za-z1-9]+/g)[0]
+      .replace("v=", "");
+
     console.log("sqlLectureData", sqlLectureData);
 
     Api.post("/lectures", sqlLectureData).then((res) =>
