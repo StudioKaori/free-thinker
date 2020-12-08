@@ -116,9 +116,9 @@ export default function LectureForm({ onCreateClick }) {
                 setUnlockDate("");
                 setUnlockTime("");
                 setYoutube("");
-                //setBody('<p>Some text.</p>');
+                document.getElementsByClassName("ck-content")[0].childNodes[0].innerHTML = '';
+
                
-                //CKEditor.instances.editor.setData(" ");
                         
                
               }}
