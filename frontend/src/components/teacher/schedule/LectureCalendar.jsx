@@ -66,10 +66,13 @@ export default function LectureCalendar() {
       <Calendar
         localizer={localizer}
         events={status === 0 ? [] : eventList}
-        timeslots={2}
+        timeslots="2"
         defaultView={Views.WEEK}
         onSelectEvent={(event) => alert(event.title)}
+        selectable="true"
+        onSelectSlot={(event) => console.log("1event", event)}
         style={{ height: 500 }}
+        scrollToTime={new Date(new Date().setHours(7, 0, 0, 0))}
       />
     </div>
   );
