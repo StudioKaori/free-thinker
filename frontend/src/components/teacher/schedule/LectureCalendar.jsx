@@ -63,25 +63,14 @@ export default function LectureCalendar() {
 
   return (
     <div>
-      {status === 0 ? (
-        <Calendar
-          localizer={localizer}
-          events={[]}
-          timeslots={2}
-          defaultView={Views.WEEK}
-          onSelectEvent={(event) => alert(event.title)}
-          style={{ height: 500 }}
-        />
-      ) : (
-        <Calendar
-          localizer={localizer}
-          events={eventList}
-          timeslots={2}
-          defaultView={Views.WEEK}
-          onSelectEvent={(event) => alert(event.title)}
-          style={{ height: 500 }}
-        />
-      )}
+      <Calendar
+        localizer={localizer}
+        events={status === 0 ? [] : eventList}
+        timeslots={2}
+        defaultView={Views.WEEK}
+        onSelectEvent={(event) => alert(event.title)}
+        style={{ height: 500 }}
+      />
     </div>
   );
 }
