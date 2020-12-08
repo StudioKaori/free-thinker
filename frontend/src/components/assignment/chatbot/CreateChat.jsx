@@ -1,10 +1,10 @@
 import { useState } from "react";
 import AssignmentApi from '../../../api/AssignmentApi';
 
+import Button from '../atoms/Button';
 import CreateChatForm from './CreateChatForm';
 
-import Button from '../atoms/Button';
-
+// Entry point for Creating a chat - Teacher's side
 export default function CreateChat({close, setDisplayPopUp}) {
 
     const [newChat, setNewChat ] = useState({})
@@ -31,8 +31,9 @@ export default function CreateChat({close, setDisplayPopUp}) {
             <div className="col-sm-12 col-md-8">
 
                 <div className="text-center">
-                    <Button 
-                        buttonStyle="btn-danger"
+                    <Button
+                        id="create-chat-button"
+                        buttonStyle="btn m-1 btn-danger"
                         content="Save Chat" 
                         onClick={() => saveChat()}
                     />

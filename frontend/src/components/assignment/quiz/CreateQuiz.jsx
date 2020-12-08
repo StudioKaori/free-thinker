@@ -5,10 +5,12 @@ import CreateQuizForm from './CreateQuizForm';
 
 import Button from '../atoms/Button';
 
+// Entry point for Quiz creation
 export default function CreateQuiz({close, setDisplayPopUp}) {
 
     const [newQuiz, setNewQuiz ] = useState({});
 
+    // Helper function when saving quiz,
     // Check if an answer has been selected for each question
     const lastCheck = (questions) => {
         for (let i = 0; i < questions.length; i += 1) {
@@ -20,7 +22,7 @@ export default function CreateQuiz({close, setDisplayPopUp}) {
     }
 
     const saveQuiz = () => {
-        if (!lastCheck(newQuiz.questions)) { return; }
+        if (!lastCheck(newQuiz.questions)) { return; } // Cancel if not ok
         
         const newAssignment = {
             type: 'Quiz',
@@ -44,6 +46,7 @@ export default function CreateQuiz({close, setDisplayPopUp}) {
 
                 <div className="text-center">
                     <Button 
+                        id="save-quiz-button"
                         buttonStyle="btn-danger"
                         content="Save Quiz" 
                         onClick={() => saveQuiz()}

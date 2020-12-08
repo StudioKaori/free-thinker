@@ -6,6 +6,7 @@ import CreateSpeech from './speech/CreateSpeech';
 import CreateQuiz from './quiz/CreateQuiz';
 import PopUpMsg from "./PopUpMsg";
 
+// Create assignment Page for teacher
 export default function TeacherAssignmentPage() {
 
     const [uploadFileIsOpen, setUploadFileIsOpen] = useState(false);
