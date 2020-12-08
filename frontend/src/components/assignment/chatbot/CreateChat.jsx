@@ -1,31 +1,13 @@
 import { useState } from "react";
-import ChatBot from 'react-simple-chatbot';
-import { ThemeProvider } from 'styled-components';
 import AssignmentApi from '../../../api/AssignmentApi';
 
-import CreateChatForm from './CreateChatForm';
-import { defaultSteps } from "./templates";
-
 import Button from '../atoms/Button';
+import CreateChatForm from './CreateChatForm';
 
-export default function CreateChat() {
+// Entry point for Creating a chat - Teacher's side
+export default function CreateChat({close, setDisplayPopUp}) {
 
-    // Initialise with default minimal properties
-    const [newChat, setNewChat ] = useState({
-        title: "New Chat",
-        steps: defaultSteps,
-        theme: {}
-    })
-
-    // Backup solution to see changes waiting for better
-    // Just 'open - close' the chat
-    const [refresh, setRefresh] = useState(false)
-    const handleRefresh = () => {
-        setRefresh(true); 
-        setTimeout(() => {
-            setRefresh(false);
-        }, 200);
-    }
+    const [newChat, setNewChat ] = useState({})
 
     const saveChat = () => {
         const newAssignment = {
@@ -34,44 +16,31 @@ export default function CreateChat() {
         }
         AssignmentApi.createAssignment(newAssignment)
             .then(() => {
-                console.log('chat saved')
+                setDisplayPopUp(true);
+                setTimeout(() => {
+                    setDisplayPopUp(false);
+                }, 1000)
+
+                close();
             })
     }
 
     return (
-        <div className="container d-flex justify-content-around flex-wrap"> 
+        <div className="container d-flex justify-content-center"> 
 
-            <div className="col-sm-12 col-md-6">
-                <h5 className="text-center">Create here</h5>
-
-                <CreateChatForm refresh={refresh} setNewChat={setNewChat} />
-
-                <Button 
-                    buttonStyle="btn-danger"
-                    content="Save Chat" 
-                    onClick={() => saveChat()}
-                />
-            </div>
-
-            <div className="col-sm-12 col-md-6">
-                <h5 className="text-center">See changes there</h5>
+            <div className="col-sm-12 col-md-8">
 
                 <div className="text-center">
                     <Button
-                        buttonStyle="btn-sm btn-success mb-3"
-                        content="Apply Changes"
-                        onClick={() => handleRefresh()}
+                        id="create-chat-button"
+                        buttonStyle="btn m-1 btn-danger"
+                        content="Save Chat" 
+                        onClick={() => saveChat()}
                     />
                 </div>
 
-                { !refresh &&
-                    <ThemeProvider theme={newChat.theme}>
-                        <ChatBot 
-                            steps={newChat.steps} 
-                            headerTitle={newChat.title}
-                        />
-                    </ThemeProvider>
-                }
+                <CreateChatForm setNewChat={setNewChat} />
+
             </div>
         </div>
     );

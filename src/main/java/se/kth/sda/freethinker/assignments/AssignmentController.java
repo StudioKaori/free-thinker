@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import se.kth.sda.freethinker.lecture.Lecture;
 
 import java.util.List;
 
@@ -19,7 +20,10 @@ public class AssignmentController {
             return assignmentService.getAll();
     }
 
-
+    @GetMapping("/byDate/{date}")
+    public List<Assignment> findAllByUnlockTime(@PathVariable String date) {
+        return assignmentService.findAllByUnlockTime(date);
+    }
 
     @GetMapping("/{id}")
     public Assignment getById(@PathVariable long id) {

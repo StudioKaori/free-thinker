@@ -4,7 +4,9 @@ import AssignmentApi from '../../../api/AssignmentApi';
 
 import Button from '../atoms/Button';
 
-export default function CreateSpeech() {
+// Entry point for creating a Speech assignment - use of react-speech-kit library
+export default function CreateSpeech({close, setDisplayPopUp}) {
+
     const [question, setQuestion] = useState('');
     const { speak } = useSpeechSynthesis();
 
@@ -16,7 +18,12 @@ export default function CreateSpeech() {
         console.log(newAssignment);
         AssignmentApi.createAssignment(newAssignment)
             .then(() => {
-                console.log('should be in database')
+                setDisplayPopUp(true);
+                setTimeout(() => {
+                    setDisplayPopUp(false);
+                }, 1000)
+
+                close();
             })
     }
 
@@ -24,11 +31,13 @@ export default function CreateSpeech() {
         <div>
             <p> Type your question here.</p>
             <textarea
+                id="create-speech-textarea"
                 value={question}
                 onChange={(event) => setQuestion(event.target.value)}
             />
             <div>
                 <Button 
+                    id="test-speech-button"
                     buttonStyle="btn-sm btn-info"
                     content="Test it" 
                     onClick={() => speak({ text: question })}
@@ -37,6 +46,7 @@ export default function CreateSpeech() {
 
             <div>
                 <Button 
+                    id="save-speech-button"
                     buttonStyle="btn-sm btn-danger"
                     content="Save Question" 
                     onClick={() => saveSpeech()}

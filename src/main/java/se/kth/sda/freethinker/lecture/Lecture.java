@@ -1,12 +1,10 @@
 package se.kth.sda.freethinker.lecture;
 
 import se.kth.sda.freethinker.assignments.Assignment;
-import se.kth.sda.freethinker.subject.Subject;
 import se.kth.sda.freethinker.topics.Topic;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -23,7 +21,8 @@ public class Lecture {
     private String youtubeUrl;
 
     @Column(columnDefinition = "TIMESTAMP")
-    private Timestamp unlockTime;
+    private LocalDateTime unlockTime;
+
 
     @ManyToOne
     private Topic topic;
@@ -83,11 +82,11 @@ public class Lecture {
         this.assignments = assignments;
     }
 
-    public Timestamp getUnlockTime() {
+    public LocalDateTime getUnlockTime() {
         return unlockTime;
     }
 
-    public void setUnlockTime(Timestamp unlockTime) {
+    public void setUnlockTime(LocalDateTime unlockTime) {
         this.unlockTime = unlockTime;
     }
 

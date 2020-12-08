@@ -4,13 +4,16 @@ import Button from './atoms/Button';
 import CreateChat from './chatbot/CreateChat';
 import CreateSpeech from './speech/CreateSpeech';
 import CreateQuiz from './quiz/CreateQuiz';
+import PopUpMsg from "./PopUpMsg";
 
+// Create assignment Page for teacher
 export default function TeacherAssignmentPage() {
 
     const [uploadFileIsOpen, setUploadFileIsOpen] = useState(false);
     const [createQuizIsOpen, setCreateQuizIsOpen] = useState(false);
     const [createSpeechIsOpen, setCreateSpeechIsOpen] = useState(false);
     const [createChatIsOpen, setCreateChatIsOpen] = useState(false);
+    const [displayPopUp, setDisplayPopUp] = useState(false);
 
     return (
         <div className="bg-light p-2">
@@ -48,11 +51,25 @@ export default function TeacherAssignmentPage() {
             </div>
 
             <div className="d-flex justify-content-center mt-3">
-                {createChatIsOpen && <CreateChat /> }
-                {createSpeechIsOpen && <CreateSpeech /> }
-                {createQuizIsOpen && <CreateQuiz /> }
+                {createChatIsOpen && 
+                    <CreateChat 
+                        close={() => setCreateChatIsOpen(false)} 
+                        setDisplayPopUp={setDisplayPopUp}
+                    /> }
+                {createSpeechIsOpen && 
+                    <CreateSpeech 
+                        close={() => setCreateSpeechIsOpen(false)} 
+                        setDisplayPopUp={setDisplayPopUp}
+                    /> }
+                {createQuizIsOpen && 
+                    <CreateQuiz 
+                        close={() => setCreateQuizIsOpen(false)} 
+                        setDisplayPopUp={setDisplayPopUp}
+                    /> }
                 {uploadFileIsOpen && <div>Not ready yet</div>}
             </div>
+
+            {displayPopUp && <PopUpMsg message="Succesfully saved"/>}
         </div>
     );
 }
