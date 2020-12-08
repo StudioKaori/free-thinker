@@ -17,6 +17,11 @@ function LecturePage() {
       "https://www.youtube.com/watch?v=",
       ""
     );
+
+    sqlLectureData.youtubeUrl = sqlLectureData.youtubeUrl.replace(
+      /[&][t][=].*/g,
+      ""
+    );
     console.log("sqlLectureData", sqlLectureData);
 
     Api.post("/lectures", sqlLectureData).then((res) =>
