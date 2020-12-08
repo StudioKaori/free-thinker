@@ -2,9 +2,8 @@ package se.kth.sda.freethinker.assignments;
 
 import se.kth.sda.freethinker.lecture.Lecture;
 
-
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -20,19 +19,19 @@ public class Assignment {
     private String instruction;
 
 
-   @ManyToOne
-   private Lecture lecture;
+    @ManyToOne
+    private Lecture lecture;
 
     private String type;
 
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String assignment;
 
     @Column(columnDefinition = "TIMESTAMP")
-    private Date unlockTime;
+    private LocalDateTime unlockTime;
 
 
-    public Assignment(){
+    public Assignment() {
 
     }
 
@@ -73,8 +72,6 @@ public class Assignment {
     }
 
 
-
-
     public void setAssignment(String assignment) {
         this.assignment = assignment;
     }
@@ -95,11 +92,11 @@ public class Assignment {
         this.instruction = instruction;
     }
 
-    public Date getUnlockTime() {
+    public LocalDateTime getUnlockTime() {
         return unlockTime;
     }
 
-    public void setUnlockTime(Date unlockTime) {
+    public void setUnlockTime(LocalDateTime unlockTime) {
         this.unlockTime = unlockTime;
     }
 }

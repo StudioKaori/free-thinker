@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -17,6 +18,6 @@ public interface ClassDailySettingRepo extends JpaRepository<ClassDailySetting, 
 
 
     @Query(value = "UPDATE class_daily_setting SET island_theme = ?1  WHERE date = ?2 RETURNING *", nativeQuery = true)
-    ClassDailySetting updateWhereDate(String islandTheme, Timestamp date);
+    ClassDailySetting updateWhereDate(String islandTheme, LocalDateTime date);
 
 }

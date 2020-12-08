@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,8 +42,8 @@ public class ClassDailySettingService {
 
     public ClassDailySetting updateWhereDate(ClassDailySetting updatedClassDailySetting) {
         String islandTheme = updatedClassDailySetting.getIslandTheme();
-        Timestamp timestamp = updatedClassDailySetting.getDate();
-        return classDailySettingRepo.updateWhereDate(islandTheme,timestamp);
+        LocalDateTime localDateTime = updatedClassDailySetting.getDate();
+        return classDailySettingRepo.updateWhereDate(islandTheme,localDateTime);
     }
 
     public void delete(Long id) {

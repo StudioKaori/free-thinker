@@ -8,9 +8,10 @@ import "../../../../css/schedule.css";
 export default function Schedule() {
   const [status, setStatus] = useState(0);
   const [lectures, setLectures] = useState([]);
+  const [date, setDate] = useState(moment().format("yyyy-MM-DD"));
 
   const getLectureByDate = () => {
-    LectureApi.getLectureByUnlockDate("2020-12-04").then((res) =>
+    LectureApi.getLectureByUnlockDate(date).then((res) =>
       setLectures(res.data)
     );
   };
@@ -21,7 +22,6 @@ export default function Schedule() {
 
   useEffect(() => {
     if (lectures.length !== 0) {
-      console.log("lectures in", lectures);
       setStatus(1);
     }
   }, [lectures]);
@@ -34,8 +34,9 @@ export default function Schedule() {
           <tbody>
             {lectures.map((lecture) => {
               const lectureUrl = "/lecture/" + lecture.id;
+              const myKey = "lecturelink" + lecture.id;
               return (
-                <tr>
+                <tr key={myKey}>
                   <th>{moment(lecture.unlockTime).format("H:mm")}</th>
                   <td>
                     <div>
