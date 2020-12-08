@@ -6,6 +6,7 @@ import StudentQuiz from './quiz/StudentQuiz';
 
 import AssignmentApi from "../../api/AssignmentApi";
 
+// Student assignment entry point, fetch assignment by id and display the related component
 export default function StudentAssignmentPage({ match }) {
     const assignmentId = Number(match.match.params.id);
     const [assignment, setAssignment] = useState({});
