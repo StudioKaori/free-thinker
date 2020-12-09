@@ -22,8 +22,7 @@ function LecturePage({ dateFromCal }) {
     let sqlLectureData = {};
     sqlLectureData.title = lectureData.title;
     sqlLectureData.body = lectureData.body;
-    sqlLectureData.unlockTime =
-      lectureData.unlockDate + "T" + lectureData.unlockTime + ":00.0";
+    sqlLectureData.unlockTime = lectureData.unlockDate + "T" + lectureData.unlockTime + ":00.0";
 
     sqlLectureData.youtubeUrl = lectureData.youtube
       .match(/[v][=][A-Za-z1-9]+/g)[0]
