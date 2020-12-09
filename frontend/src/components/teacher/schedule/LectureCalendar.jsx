@@ -68,6 +68,7 @@ export default function LectureCalendar() {
   };
 
   const openCreateLecturePage = (event) => {
+    console.log("event", event);
     const url = "/create-lecture-from-cal/" + event.start;
     var win = window.open(url, "_blank");
     win.focus();
@@ -85,7 +86,9 @@ export default function LectureCalendar() {
         selectable="true"
         onSelectSlot={(event) => openCreateLecturePage(event)}
         style={{ height: 500 }}
-        scrollToTime={new Date(new Date().setHours(7, 0, 0, 0))}
+        scrollToTime={new Date(new Date().setHours(8, 0, 0, 0))}
+        min={new Date(new Date().setHours(8, 0, 0, 0))}
+        max={new Date(new Date().setHours(15, 0, 0, 0))}
       />
     </div>
   );
