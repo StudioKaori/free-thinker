@@ -5,8 +5,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import moment from "moment";
 
-export default function LectureForm({ onCreateClick }) {
+export default function LectureForm({ onCreateClick, dateFromCalDate }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
@@ -22,7 +23,6 @@ export default function LectureForm({ onCreateClick }) {
   // }).format(timestamp);
 
   const handleOnChange = (e, editor) => {
-    console.log(editor.getData());
     const data = editor.getData();
     setBody(data);
   };
@@ -31,8 +31,18 @@ export default function LectureForm({ onCreateClick }) {
   const [youtube, setYoutube] = useState("");
 
   // unlock date
-  const [unlockDate, setUnlockDate] = useState("");
-  const [unlockTime, setUnlockTime] = useState("");
+  const [unlockDate, setUnlockDate] = useState(
+    dateFromCalDate.current === ""
+      ? ""
+      : moment(dateFromCalDate.current).format("YYYY-MM-DD")
+  );
+  const [unlockTime, setUnlockTime] = useState(
+    dateFromCalDate.current === ""
+      ? ""
+      : moment(dateFromCalDate.current)
+          .format("hh")
+          .concat(":00")
+  );
 
   return (
     <div className="body-wrapper">
@@ -109,9 +119,18 @@ export default function LectureForm({ onCreateClick }) {
             <button
               id="lectureCreateButtonInLectureForm"
               className="btn btn-info"
-              onClick={() =>
-                onCreateClick({ title, body, youtube, unlockDate, unlockTime })
-              }
+              onClick={() => {
+                onCreateClick({ title, body, youtube, unlockDate, unlockTime });
+                setTitle("");
+                setUnlockDate("");
+                setUnlockTime("");
+                setYoutube("");
+                document.getElementsByClassName("ck-content")[0].childNodes[0].innerHTML = '';
+
+
+
+
+              }}
             >
               Create
             </button>

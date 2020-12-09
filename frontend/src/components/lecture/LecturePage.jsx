@@ -1,38 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Api from "../../api/Api";
 import moment from "moment";
 import LectureCard from "./LectureCard";
 import LectureForm from "./LectureForm";
 
-function LecturePage() {
+function LecturePage({ dateFromCal }) {
+  const dateFromCalDate = useRef("");
+
+  if (typeof dateFromCal !== "undefined") {
+    dateFromCalDate.current = dateFromCal.match.params.date;
+  }
+
   const [lectures, setLectures] = useState([]);
+  
 
   const createLecture = (lectureData) => {
+
+  
     console.log("lectureData", lectureData);
+
+
     let sqlLectureData = {};
     sqlLectureData.title = lectureData.title;
     sqlLectureData.body = lectureData.body;
     sqlLectureData.unlockTime =
+
       moment(lectureData.unlockDate).format("YYYY-MM-DD") + "T" + lectureData.unlockTime + ":00.0";
     sqlLectureData.youtubeUrl = lectureData.youtube.replace(
       "https://www.youtube.com/watch?v=",
       ""
     );
 
-    sqlLectureData.youtubeUrl = sqlLectureData.youtubeUrl.replace(
-      /[&][t][=].*/g,
-      ""
-    );
-    console.log("sqlLectureData", sqlLectureData);
+
+    sqlLectureData.youtubeUrl = lectureData.youtube
+      .match(/[v][=][A-Za-z1-9]+/g)[0]
+      .replace("v=", "");
 
     Api.post("/lectures", sqlLectureData).then((res) =>
-      setLectures([...lectures, res.data])
+      setLectures([res.data, ...lectures])
     );
   };
 
   const getAll = () => {
-    Api.get("/lectures").then((res) => setLectures(res.data));
-  };
+    Api.get("/lectures").then((res) => {
+      setLectures(res.data.sort((a,b) => b.id - a.id));
+  });
+};
 
   const updateLecture = (updatedLecture) => {
     Api.put("/lectures/", updatedLecture).then((r) => getAll());
@@ -46,9 +59,15 @@ function LecturePage() {
     getAll();
   }, []);
 
+ 
+
+
   return (
     <div className="body-wrapper">
-      <LectureForm onCreateClick={createLecture} />
+      <LectureForm
+        onCreateClick={createLecture}
+        dateFromCalDate={dateFromCalDate}
+      />
 
       {lectures.map((lecture) => (
         <LectureCard
@@ -61,5 +80,6 @@ function LecturePage() {
     </div>
   );
 }
+ 
 
 export default LecturePage;

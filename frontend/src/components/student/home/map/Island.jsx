@@ -54,7 +54,6 @@ export default function Island() {
   }, [assignments]);
 
   useEffect(() => {
-    console.log("islandTheme", islandTheme);
     const islandImg = "url('/assets/img/css/islands/" + islandTheme + ".png')";
     document.getElementById("map-island").style.backgroundImage = islandImg;
   }, [islandTheme]);

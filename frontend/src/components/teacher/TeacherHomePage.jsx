@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Map from "../student/home/map/Map";
-import Dropdown from "./Dropdown";
 import DailySettingForm from "./home/DailySettingForm";
+import LectureCalendar from "./schedule/LectureCalendar";
 
 export default function TeacherHomePage() {
   const [previewChange, setPreviewChange] = useState(<Map />);
@@ -13,7 +13,7 @@ export default function TeacherHomePage() {
   };
 
   return (
-    <div className="container p-3 my-3">
+    <div className="body-wrapper">
       <div>
         <h4 className="card-title"> Class Settings</h4>
         <div>
@@ -23,14 +23,18 @@ export default function TeacherHomePage() {
           <Link to="/create-assignment" className="btn btn-info m-2">
             Create New Assignment
           </Link>
+
           <div>
-            <Dropdown />
+            <LectureCalendar />
           </div>
 
           <div>
-            <DailySettingForm onClickPreview={onClickPreview} />
+            <div>
+              <DailySettingForm onClickPreview={onClickPreview} />
+            </div>
+
+            <div>{previewChange}</div>
           </div>
-          <div>{previewChange}</div>
         </div>
       </div>
     </div>
