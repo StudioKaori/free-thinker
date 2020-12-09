@@ -34,14 +34,14 @@ function LoginPage() {
         <div className="wrapper login-section-1">
             <div className="container">
                 <div className="row">
-                    <div className="col-md-6 mt-4 d-flex justify-content-center">
+                    <div className="col-md-6 mt-4 text-center">
                         <h1>Free Thinkers</h1>
                     </div>
 
                     <div className="col-md-6 mt-4">
                         <ul className="nav d-flex justify-content-sm-center justify-content-md-end">
                             <li 
-                                className={`nav-item btn btn-info ${loginOpen && 'active'}`}
+                                className={`nav-item btn btn-info m-1 ${loginOpen && 'active'}`}
                                 onClick={() => {
                                     setLoginOpen(!loginOpen);
                                     setTeacherRegisterOpen(false);
@@ -49,7 +49,7 @@ function LoginPage() {
                                 }}
                             >Login</li>
                             <li 
-                                className={`nav-item btn btn-info ${teacherRegisterOpen && 'active'}`}
+                                className={`nav-item btn btn-info m-1 ${teacherRegisterOpen && 'active'}`}
                                 onClick={() => {
                                     setLoginOpen(false);
                                     setTeacherRegisterOpen(!teacherRegisterOpen);
@@ -57,7 +57,7 @@ function LoginPage() {
                                 }}
                             >Teacher Sign Up</li>
                             <li 
-                                className={`nav-item btn btn-info ${studentRegisterOpen && 'active'}`}
+                                className={`nav-item btn btn-info m-1 ${studentRegisterOpen && 'active'}`}
                                 onClick={() => {
                                     setLoginOpen(false);
                                     setTeacherRegisterOpen(false);
