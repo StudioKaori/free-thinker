@@ -10,9 +10,9 @@ function LectureCard({ lecture, onDeleteClick, onUpdateClick }) {
     };
 
 
-    return isUpdating ?
+    return isUpdating ? (
         <LectureUpdate oldLecture={lecture} onUpdateClick={(updatedLecture) => { setIsUpdating(false); onUpdateClick(updatedLecture); }} />
-        :
+    ):(
         <div className="card mt-4">
             <div className="card-body">
                
@@ -29,6 +29,7 @@ function LectureCard({ lecture, onDeleteClick, onUpdateClick }) {
                 </div>
             </div>
             </div>
+    );
 }
 
 export default LectureCard;

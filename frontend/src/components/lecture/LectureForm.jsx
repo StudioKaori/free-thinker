@@ -105,9 +105,18 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
             <button
               id="lectureCreateButtonInLectureForm"
               className="btn btn-info"
-              onClick={() =>
-                onCreateClick({ title, body, youtube, unlockDate, unlockTime })
-              }
+              onClick={() => {
+                onCreateClick({ title, body, youtube, unlockDate, unlockTime });
+                setTitle("");
+                setUnlockDate("");
+                setUnlockTime("");
+                setYoutube("");
+                document.getElementsByClassName("ck-content")[0].childNodes[0].innerHTML = '';
+
+
+
+
+              }}
             >
               Create
             </button>
