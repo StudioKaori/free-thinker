@@ -1,9 +1,12 @@
+import React, { useEffect, useState } from "react";
 import moment from "moment";
+import Api from "../../../api/Api";
 
 import "../../../css/DayBox.css";
 
 export default function DayBox({ day }) {
-  console.log(day);
+  const [lectures, setLectures] = useState([]);
+
   const calender = moment().add(day, "days");
   console.log(calender);
   const dayonly = calender.format("dddd");
@@ -11,64 +14,25 @@ export default function DayBox({ day }) {
   const dateonly = calender.format("L");
   console.log(dateonly);
 
-  const lectures = [
-    {
-      id: "1",
-      title: "Lecture 1",
-      date: "12/10/2020",
-    },
-    {
-      id: "2",
-      title: "Lecture 2",
-      date: "12/11/2020",
-    },
-    {
-      id: "3",
-      title: "Lecture 3",
-      date: "12/11/2020",
-    },
-    {
-      id: "4",
-      title: "Lecture 4",
-      date: "12/13/2020",
-    },
-    {
-      id: "5",
-      title: "Lecture 5",
-      date: "12/13/2020",
-    },
-  ];
+  const getAll = () => {
+    Api.get("/lectures").then((res) => {
+      setLectures(res.data.sort((a, b) => b.id - a.id));
+    });
+  };
 
-  const assingments = [
-    {
-      id: "1",
-      title: "Assignment 1",
-      date: "12/10/2020",
-    },
-    {
-      id: "2",
-      title: "Assignment 2",
-      date: "12/10/2020",
-    },
-    {
-      id: "3",
-      title: "Assignment 3",
-      date: "12/12/2020",
-    },
-    {
-      id: "4",
-      title: "Assingment 4",
-      date: "12/12/2020",
-    },
-    {
-      id: "5",
-      title: "Assignment 5",
-      date: "12/13/2020",
-    },
-  ];
+  useEffect(() => {
+    getAll();
+  }, []);
+
+  console.log(lectures);
 
   // Filters the elements of same date to get the daily count
-  const lec = lectures.filter((lecture) => lecture.date === dateonly);
+  const lec = lectures.filter((lecture) => {
+    const lectureDate = moment(lecture.unlockTime).format("L");
+    if (lectureDate === dateonly) {
+      return lecture;
+    }
+  });
 
   console.log(lec);
   // Also need some more creative ideas about how to display the week bar

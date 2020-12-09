@@ -6,14 +6,6 @@ import Lecture from "../../../assets/img/Lecture.png";
 import "../../../css/ActivityBox.css";
 
 export default function ActivityBox({ index }) {
-//   console.log(day);
-//   const calender = moment().add(day, "days");
-//   console.log(calender);
-//   const dayonly = calender.format("dddd");
-//   console.log(dayonly);
-//   const dateonly = calender.format("L");
-//   console.log(dateonly);
-
   const lectures = [
     {
       id: "1",
@@ -91,14 +83,5 @@ export default function ActivityBox({ index }) {
         <p className="card-text">Unlock Time: {lectures[index].unlockTime}</p>
       </div>
     </div>
-    //   ) : (
-    //     <div className="week-card bg-light mb-3">
-    //       <div className="card-header">{dayonly}</div>
-    //       <div className="card-body">
-    //         <p className="card-text">{lec.length} Lectures</p>
-    //         <p className="card-text">X Assignments</p>
-    //       </div>
-    //     </div>
   );
-  // null
 }
