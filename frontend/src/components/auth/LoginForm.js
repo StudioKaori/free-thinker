@@ -7,7 +7,6 @@ function LoginForm({onSubmit}) {
     return (
         <div className="card">
             <div className="card-body">
-                <h4 className="card-title" >Login</h4>
                 <div>
                     <div className="form-group">
                         <label>Email:</label>
