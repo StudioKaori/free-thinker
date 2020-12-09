@@ -28,15 +28,15 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
 
   // unlock date
   const [unlockDate, setUnlockDate] = useState(
-    typeof dateFromCalDate === "undefined"
+    dateFromCalDate.current === ""
       ? ""
-      : moment(dateFromCalDate).format("YYYY-MM-DD")
+      : moment(dateFromCalDate.current).format("YYYY-MM-DD")
   );
   const [unlockTime, setUnlockTime] = useState(
-    typeof dateFromCalDate === "undefined"
+    dateFromCalDate.current === ""
       ? ""
-      : moment(dateFromCalDate)
-          .format("HH")
+      : moment(dateFromCalDate.current)
+          .format("hh")
           .concat(":00")
   );
 

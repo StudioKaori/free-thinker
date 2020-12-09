@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Api from "../../api/Api";
 import LectureCard from "./LectureCard";
 import LectureForm from "./LectureForm";
 
 function LecturePage({ dateFromCal }) {
-  const dateFromCalDate = dateFromCal.match.params.date;
+  const dateFromCalDate = useRef("");
+
+  if (typeof dateFromCal !== "undefined") {
+    dateFromCalDate.current = dateFromCal.match.params.date;
+  }
 
   const [lectures, setLectures] = useState([]);
 
