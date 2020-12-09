@@ -8,7 +8,6 @@ function RegisterForm({ onSubmit, userType }) {
   return (
     <div className="card">
       <div className="card-body">
-        <h4 className="card-title">{userType} Sign up</h4>
         <div>
           <div className="form-group">
             <label>Name:</label>
@@ -48,7 +47,7 @@ function RegisterForm({ onSubmit, userType }) {
               className="btn btn-success"
               onClick={(e) => onSubmit({ name, email, password, userType })}
             >
-              Create account
+              Create {userType} account
             </button>
           </div>
         </div>
