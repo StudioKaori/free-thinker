@@ -82,13 +82,13 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
              />
             </div>
             </div>
-            
+
 
           <div className="form-group">
             <label>Unlock Time:</label>
             <input
               id="lectureTimeInLectureForm"
-              type="text"
+              type="time"
               className="form-control"
               placeholder="ex. 09:00"
               value={unlockTime}

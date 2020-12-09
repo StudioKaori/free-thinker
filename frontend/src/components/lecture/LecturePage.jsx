@@ -16,7 +16,7 @@ function LecturePage({ dateFromCal }) {
 
   const createLecture = (lectureData) => {
 
-  
+
     console.log("lectureData", lectureData);
 
 
