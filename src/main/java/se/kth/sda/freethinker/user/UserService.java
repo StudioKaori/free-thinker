@@ -22,4 +22,8 @@ public class UserService {
         user.setPassword(encryptedPass);
         userRepository.save(user);
     }
+
+    public User update(User newUser) {
+        return userRepository.save(newUser);
+    }
 }
