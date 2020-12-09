@@ -13,7 +13,7 @@ function LecturePage() {
     sqlLectureData.title = lectureData.title;
     sqlLectureData.body = lectureData.body;
     sqlLectureData.unlockTime =
-      lectureData.unlockDate + "T" + lectureData.unlockTime + ":00.0";
+      moment(lectureData.unlockDate).format("YYYY-MM-DD") + "T" + lectureData.unlockTime + ":00.0";
     sqlLectureData.youtubeUrl = lectureData.youtube.replace(
       "https://www.youtube.com/watch?v=",
       ""
