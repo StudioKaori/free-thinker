@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ReactDatePicker from "react-datepicker";
 import Api from "../../api/Api";
 import LectureCard from "./LectureCard";
 import LectureForm from "./LectureForm";
@@ -13,7 +14,7 @@ function LecturePage() {
     let sqlLectureData = {};
     sqlLectureData.title = lectureData.title;
     sqlLectureData.body = lectureData.body;
-    sqlLectureData.unlockTime =
+    sqlLectureData.unlockTime = 
       lectureData.unlockDate + "T" + lectureData.unlockTime + ":00.0";
     sqlLectureData.youtubeUrl = lectureData.youtube.replace(
       "https://www.youtube.com/watch?v=",
