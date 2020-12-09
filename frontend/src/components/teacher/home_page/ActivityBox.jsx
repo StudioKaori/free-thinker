@@ -1,4 +1,6 @@
 import moment from "moment";
+import { useRecoilState } from "recoil";
+import { recent } from "./State";
 
 import Assignment from "../../../assets/img/Assignment.jpg";
 import Lecture from "../../../assets/img/Lecture.png";
@@ -6,6 +8,9 @@ import Lecture from "../../../assets/img/Lecture.png";
 import "../../../css/ActivityBox.css";
 
 export default function ActivityBox({ index }) {
+  const [activity, setActivity] = useRecoilState(recent);
+  console.log(activity);
+
   const lectures = [
     {
       id: "1",
