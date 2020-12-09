@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Api from "../../api/Api";
+import moment from "moment";
 import LectureCard from "./LectureCard";
 import LectureForm from "./LectureForm";
 
@@ -22,7 +23,14 @@ function LecturePage({ dateFromCal }) {
     let sqlLectureData = {};
     sqlLectureData.title = lectureData.title;
     sqlLectureData.body = lectureData.body;
-    sqlLectureData.unlockTime = lectureData.unlockDate + "T" + lectureData.unlockTime + ":00.0";
+    sqlLectureData.unlockTime =
+
+      moment(lectureData.unlockDate).format("YYYY-MM-DD") + "T" + lectureData.unlockTime + ":00.0";
+    sqlLectureData.youtubeUrl = lectureData.youtube.replace(
+      "https://www.youtube.com/watch?v=",
+      ""
+    );
+
 
     sqlLectureData.youtubeUrl = lectureData.youtube
       .match(/[v][=][A-Za-z1-9]+/g)[0]

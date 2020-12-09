@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+import moment from "moment";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import moment from "moment";
@@ -60,15 +64,25 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
 
           <div className="form-group">
             <label>Unlock Date:</label>
-            <input
+             {/* <input
               id="lectureDateInLectureForm"
               type="text"
               className="form-control"
               placeholder="YYYY-MM-DD"
               value={unlockDate}
               onChange={(e) => setUnlockDate(e.target.value)}
-            />
-          </div>
+            /> */}
+          <div>
+          <DatePicker
+            id="lectureDateInLectureForm"
+            className="form-control"
+            selected={unlockDate}
+            dateFormat='yyyy-MM-dd'
+            onChange={(e) => setUnlockDate(e)}
+             />
+            </div>
+            </div>
+            
 
           <div className="form-group">
             <label>Unlock Time:</label>
