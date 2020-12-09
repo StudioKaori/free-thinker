@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import firebase, { storage } from "../../firebase/firebase";
 
-export default function FileUpload() {
+export default function FileUpload({ registerPhotoToDB }) {
   const [image, setImage] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const handleImage = (event) => {
@@ -41,6 +41,9 @@ export default function FileUpload() {
       .getDownloadURL()
       .then((fireBaseUrl) => {
         setImageUrl(fireBaseUrl);
+
+        //for register photo to DB
+        registerPhotoToDB(fireBaseUrl);
       });
   };
 

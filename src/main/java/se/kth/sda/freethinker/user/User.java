@@ -1,7 +1,5 @@
 package se.kth.sda.freethinker.user;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -9,7 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name="account")
+@Table(name = "account")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,18 +20,21 @@ public class User {
     private String email;
 
 
-    @Length(min = 5, max=100, message = "Password length most be between 5-100 characters")
+    @Length(min = 5, max = 100, message = "Password length most be between 5-100 characters")
     @Column(name = "password")
     private String password;
 
-    @Length(min = 3, max=100, message = "Name must be between 3-100 characters")
+    @Length(min = 3, max = 100, message = "Name must be between 3-100 characters")
     @Column(name = "name")
     private String name;
 
     private String userType;
 
+    private String userPic;
+
     // Hibernate needs a default constructor to function
-    public User() {}
+    public User() {
+    }
 
     public User(@Email(message = "Invalid email address! Please provide a valid email address") @NotEmpty(message = "Please provide an email address") String email, @Length(min = 5, max = 100, message = "Password length most be between 5-100 characters") String password, @Length(min = 3, max = 100, message = "Name must be between 3-100 characters") String name) {
         this.email = email;
@@ -57,16 +58,15 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    @JsonIgnore
+    
     public String getPassword() {
         return password;
     }
 
-    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
+
     public String getName() {
         return name;
     }
@@ -81,5 +81,13 @@ public class User {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public String getUserPic() {
+        return userPic;
+    }
+
+    public void setUserPic(String userPic) {
+        this.userPic = userPic;
     }
 }
