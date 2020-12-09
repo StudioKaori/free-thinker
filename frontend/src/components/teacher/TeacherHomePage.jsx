@@ -5,6 +5,7 @@ import DailySettingForm from "./home/DailySettingForm";
 import LectureCalendar from "./schedule/LectureCalendar";
 import DayBox from "./home_page/DayBox";
 import Dropdown from "./Dropdown";
+import ActivityBox from "./home_page/ActivityBox";
 
 export default function TeacherHomePage() {
   const [previewChange, setPreviewChange] = useState(<Map />);
@@ -38,13 +39,20 @@ export default function TeacherHomePage() {
           <div className="card-header">Recent Activity</div>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
-              <h3>Some assignment</h3>
-              <h4>Details of assignment</h4>
+              <ActivityBox index="0" />
             </li>
-            <li className="list-group-item">Some lecture</li>
-            <li className="list-group-item">Some assignment</li>
-            <li className="list-group-item">Some assignment</li>
-            <li className="list-group-item">Some lecture</li>
+            <li className="list-group-item">
+              <ActivityBox index="1" />
+            </li>
+            <li className="list-group-item">
+              <ActivityBox index="2" />
+            </li>
+            <li className="list-group-item">
+              <ActivityBox index="3" />
+            </li>
+            <li className="list-group-item">
+              <ActivityBox index="4" />
+            </li>
           </ul>
         </div>
         {/* This div only needs some finer CSS touch, otherwise it looks fine */}
