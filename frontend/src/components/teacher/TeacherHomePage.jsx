@@ -3,7 +3,7 @@ import { useState } from "react";
 import Map from "../student/home/map/Map";
 import DailySettingForm from "./home/DailySettingForm";
 import LectureCalendar from "./schedule/LectureCalendar";
-import DayBox from "./DayBox";
+import DayBox from "./home_page/DayBox";
 import Dropdown from "./Dropdown";
 
 export default function TeacherHomePage() {
@@ -39,6 +39,7 @@ export default function TeacherHomePage() {
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
               <h3>Some assignment</h3>
+              <h4>Details of assignment</h4>
             </li>
             <li className="list-group-item">Some lecture</li>
             <li className="list-group-item">Some assignment</li>

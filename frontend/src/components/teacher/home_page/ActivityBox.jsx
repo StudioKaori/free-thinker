@@ -1,8 +1,8 @@
 import moment from "moment";
 
-import "../../css/DayBox.css";
+import "../../../css/DayBox.css";
 
-export default function DayBox({ day }) {
+export default function ActivityBox({ day }) {
   console.log(day);
   const calender = moment().add(day, "days");
   console.log(calender);
