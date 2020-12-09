@@ -1,11 +1,20 @@
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+import moment from "moment";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import moment from "moment";
+
 
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-export default function LectureForm({ onCreateClick }) {
+
+
+export default function LectureForm({ onCreateClick, dateFromCalDate }) {
+
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
@@ -21,7 +30,6 @@ export default function LectureForm({ onCreateClick }) {
   // }).format(timestamp);
 
   const handleOnChange = (e, editor) => {
-    console.log(editor.getData());
     const data = editor.getData();
     setBody(data);
   };
@@ -30,8 +38,18 @@ export default function LectureForm({ onCreateClick }) {
   const [youtube, setYoutube] = useState("");
 
   // unlock date
-  const [unlockDate, setUnlockDate] = useState("");
-  const [unlockTime, setUnlockTime] = useState("");
+  const [unlockDate, setUnlockDate] = useState(
+    dateFromCalDate.current === ""
+      ? ""
+      : moment(dateFromCalDate.current).format("YYYY-MM-DD")
+  );
+  const [unlockTime, setUnlockTime] = useState(
+    dateFromCalDate.current === ""
+      ? ""
+      : moment(dateFromCalDate.current)
+          .format("hh")
+          .concat(":00")
+  );
 
   return (
     <div className="body-wrapper">
@@ -53,16 +71,31 @@ export default function LectureForm({ onCreateClick }) {
 
           <div className="form-group">
             <label>Unlock Date:</label>
-            <input
+             {/* <input
               id="lectureDateInLectureForm"
               type="text"
               className="form-control"
               placeholder="YYYY-MM-DD"
               value={unlockDate}
               onChange={(e) => setUnlockDate(e.target.value)}
+
               />
                         
           </div>
+
+            /> */}
+          <div>
+          <DatePicker
+            id="lectureDateInLectureForm"
+            className="form-control"
+            selected={unlockDate}
+            dateFormat='yyyy-MM-dd'
+            onChange={(e) => setUnlockDate(e)}
+             />
+            </div>
+            </div>
+            
+
 
 
 
@@ -79,12 +112,12 @@ export default function LectureForm({ onCreateClick }) {
           </div>
 
           <div className="form-group">
-            <label>Youtube:</label>
+            <label>Youtube/Zoom:</label>
             <input
               id="lectureYoutubeInLectureForm"
               type="text"
               className="form-control"
-              placeholder="youtube video url"
+              placeholder="Youtube video url or Zoom link"
               value={youtube}
               onChange={(e) => setYoutube(e.target.value)}
             />
