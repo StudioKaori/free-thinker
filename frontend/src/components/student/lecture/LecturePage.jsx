@@ -15,10 +15,10 @@ export default function LecturePage({ match }) {
       const videoID = res.data.youtubeUrl;
 
       // Temporary solution to see If we can use Lecture form for zoom link
-      if ( videoID.match('zoom')) {
+      if (videoID.match("zoom")) {
         res.data.youtubeUrl = videoID;
       } else {
-          res.data.youtubeUrl = "https://www.youtube.com/embed/" + videoID;
+        res.data.youtubeUrl = "https://www.youtube.com/embed/" + videoID;
       }
       setLecture(res.data);
     });
@@ -27,7 +27,6 @@ export default function LecturePage({ match }) {
   useEffect(() => {
     if (lecture.length !== 0) {
       setStatus(1);
-      console.log(lecture);
     }
   }, [lecture]);
 
