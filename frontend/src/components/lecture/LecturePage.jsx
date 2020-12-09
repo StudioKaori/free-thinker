@@ -40,9 +40,25 @@ function LecturePage({ dateFromCal }) {
   });
 };
 
-  const updateLecture = (updatedLecture) => {
-    Api.put("/lectures/", updatedLecture).then((r) => getAll());
-  };
+const updateLecture = (updatedLecture) => {
+  let sqlLectureData = {};
+  sqlLectureData.id = updatedLecture.id;
+  sqlLectureData.title = updatedLecture.title;
+  sqlLectureData.body = updatedLecture.body;
+  sqlLectureData.unlockTime = 
+  updatedLecture.unlockDate + "T" + updatedLecture.unlockTime + ":00.0";
+  sqlLectureData.youtubeUrl = updatedLecture.youtube
+  .match(/[v][=][A-Za-z1-9]+/g)[0]
+  .replace("v=", "");
+
+ 
+
+  console.log("update", sqlLectureData);
+  
+  Api.put("/lectures/", sqlLectureData).then((r) => 
+  getAll([]));
+};
+
 
   const deleteLecture = (lecture) => {
     Api.delete("/lectures/" + lecture.id).then((r) => getAll());
