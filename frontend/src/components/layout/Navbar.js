@@ -18,7 +18,6 @@ function Navbar({ onLogout }) {
   // for user info
   const getUser = () => {
     Api.get("/user/loggedInUser").then((res) => {
-      console.log("data", res.data);
       setUser([res.data]);
     });
   };
@@ -45,7 +44,6 @@ function Navbar({ onLogout }) {
   // for dm
 
   const showDMPopup = () => {
-    console.log("popup");
     const dmPopup = document.getElementById("dmPopup");
     dmPopup.classList.remove("hidePopup");
     dmPopup.classList.add("showPopup");

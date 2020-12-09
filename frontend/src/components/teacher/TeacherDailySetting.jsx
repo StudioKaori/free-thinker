@@ -8,7 +8,6 @@ export default function TeacherDailySetting() {
   const [previewChange, setPreviewChange] = useState(<Map />);
 
   const onClickPreview = (islandTheme) => {
-    console.log("change island");
     setPreviewChange(<Map key={islandTheme} />);
   };
 

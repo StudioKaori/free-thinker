@@ -12,25 +12,20 @@ function LecturePage({ dateFromCal }) {
   }
 
   const [lectures, setLectures] = useState([]);
-  
 
   const createLecture = (lectureData) => {
-
-  
-    console.log("lectureData", lectureData);
-
-
     let sqlLectureData = {};
     sqlLectureData.title = lectureData.title;
     sqlLectureData.body = lectureData.body;
     sqlLectureData.unlockTime =
-
-      moment(lectureData.unlockDate).format("YYYY-MM-DD") + "T" + lectureData.unlockTime + ":00.0";
+      moment(lectureData.unlockDate).format("YYYY-MM-DD") +
+      "T" +
+      lectureData.unlockTime +
+      ":00.0";
     sqlLectureData.youtubeUrl = lectureData.youtube.replace(
       "https://www.youtube.com/watch?v=",
       ""
     );
-
 
     sqlLectureData.youtubeUrl = lectureData.youtube
       .match(/[v][=][A-Za-z1-9]+/g)[0]
@@ -43,29 +38,25 @@ function LecturePage({ dateFromCal }) {
 
   const getAll = () => {
     Api.get("/lectures").then((res) => {
-      setLectures(res.data.sort((a,b) => b.id - a.id));
-  });
-};
+      setLectures(res.data.sort((a, b) => b.id - a.id));
+    });
+  };
 
-const updateLecture = (updatedLecture) => {
-  let sqlLectureData = {};
-  sqlLectureData.id = updatedLecture.id;
-  sqlLectureData.title = updatedLecture.title;
-  sqlLectureData.body = updatedLecture.body;
-  sqlLectureData.unlockTime = 
-  updatedLecture.unlockDate + "T" + updatedLecture.unlockTime + ":00.0";
-  sqlLectureData.youtubeUrl = updatedLecture.youtube
-  .match(/[v][=][A-Za-z1-9]+/g)[0]
-  .replace("v=", "");
+  const updateLecture = (updatedLecture) => {
+    let sqlLectureData = {};
+    sqlLectureData.id = updatedLecture.id;
+    sqlLectureData.title = updatedLecture.title;
+    sqlLectureData.body = updatedLecture.body;
+    sqlLectureData.unlockTime =
+      updatedLecture.unlockDate + "T" + updatedLecture.unlockTime + ":00.0";
+    sqlLectureData.youtubeUrl = updatedLecture.youtube
+      .match(/[v][=][A-Za-z1-9]+/g)[0]
+      .replace("v=", "");
 
- 
+    console.log("update", sqlLectureData);
 
-  console.log("update", sqlLectureData);
-  
-  Api.put("/lectures/", sqlLectureData).then((r) => 
-  getAll([]));
-};
-
+    Api.put("/lectures/", sqlLectureData).then((r) => getAll([]));
+  };
 
   const deleteLecture = (lecture) => {
     Api.delete("/lectures/" + lecture.id).then((r) => getAll());
@@ -74,9 +65,6 @@ const updateLecture = (updatedLecture) => {
   useEffect(() => {
     getAll();
   }, []);
-
- 
-
 
   return (
     <div className="body-wrapper">
@@ -96,6 +84,5 @@ const updateLecture = (updatedLecture) => {
     </div>
   );
 }
- 
 
 export default LecturePage;
