@@ -11,6 +11,7 @@ import User from "./components/user/user";
 
 // Import pages
 import LoginPage from "./components/auth/LoginPage";
+import HomePage from "./components/home/HomePage";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -29,7 +30,12 @@ function App() {
     </RecoilRoot>
   );
 
-  return loggedIn ? loggedInRouter : <LoginPage />;
+  return loggedIn ? loggedInRouter : (
+        <>
+            <LoginPage />
+            <HomePage />
+        </>
+    );
 }
 
 export default App;

@@ -5,9 +5,16 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import moment from "moment";
+
+
+
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 
 export default function LectureForm({ onCreateClick, dateFromCalDate }) {
+
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
@@ -71,6 +78,11 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
               placeholder="YYYY-MM-DD"
               value={unlockDate}
               onChange={(e) => setUnlockDate(e.target.value)}
+
+              />
+
+          </div>
+
             /> */}
           <div>
           <DatePicker
@@ -82,6 +94,9 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
              />
             </div>
             </div>
+            
+
+
 
 
           <div className="form-group">
@@ -101,14 +116,12 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
             <input
               id="lectureYoutubeInLectureForm"
               type="text"
-              className="form-control" 
-             
+              className="form-control"
               placeholder="Youtube video url or Zoom link"
               value={youtube}
               onChange={(e) => setYoutube(e.target.value)}
             />
           </div>
-          
 
           <CKEditor
             id="lectureBodyInLectureForm"
@@ -128,9 +141,6 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
                 setUnlockTime("");
                 setYoutube("");
                 document.getElementsByClassName("ck-content")[0].childNodes[0].innerHTML = '';
-
-
-
 
               }}
             >

@@ -1,9 +1,7 @@
 package se.kth.sda.freethinker.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import se.kth.sda.freethinker.auth.AuthService;
 
 @RestController
@@ -14,6 +12,11 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @PutMapping("")
+    public User create(@RequestBody User newUser) {
+        return userService.update(newUser);
+    }
 
     @GetMapping("/loggedInUser")
     public User getLoggedInUser() {

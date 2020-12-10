@@ -1,4 +1,14 @@
+
+
+import ReactDatePicker from "react-datepicker";
+
 import React, { useEffect, useRef, useState } from "react";
+
+
+
+import { useRecoilState } from "recoil";
+import { recent } from "../teacher/home_page/State";
+
 import Api from "../../api/Api";
 import moment from "moment";
 import LectureCard from "./LectureCard";
@@ -12,20 +22,25 @@ function LecturePage({ dateFromCal }) {
   }
 
   const [lectures, setLectures] = useState([]);
-  
+
+  // const [activity, setActivity] = useRecoilState(recent);
+
 
   const createLecture = (lectureData) => {
 
-
+  
     console.log("lectureData", lectureData);
 
 
     let sqlLectureData = {};
     sqlLectureData.title = lectureData.title;
     sqlLectureData.body = lectureData.body;
+
+
     sqlLectureData.unlockTime =
 
       moment(lectureData.unlockDate).format("YYYY-MM-DD") + "T" + lectureData.unlockTime + ":00.0";
+
     sqlLectureData.youtubeUrl = lectureData.youtube.replace(
       "https://www.youtube.com/watch?v=",
       ""
@@ -36,9 +51,11 @@ function LecturePage({ dateFromCal }) {
       .match(/[v][=][A-Za-z1-9]+/g)[0]
       .replace("v=", "");
 
-    Api.post("/lectures", sqlLectureData).then((res) =>
+    Api.post("/lectures", sqlLectureData).then((res) => {
       setLectures([res.data, ...lectures])
-    );
+    // }).then((res) => {
+    //   setActivity([res.data, ...lectures])
+    });
   };
 
   const getAll = () => {
@@ -47,9 +64,25 @@ function LecturePage({ dateFromCal }) {
   });
 };
 
-  const updateLecture = (updatedLecture) => {
-    Api.put("/lectures/", updatedLecture).then((r) => getAll());
-  };
+const updateLecture = (updatedLecture) => {
+  let sqlLectureData = {};
+  sqlLectureData.id = updatedLecture.id;
+  sqlLectureData.title = updatedLecture.title;
+  sqlLectureData.body = updatedLecture.body;
+  sqlLectureData.unlockTime =
+  updatedLecture.unlockDate + "T" + updatedLecture.unlockTime + ":00.0";
+  sqlLectureData.youtubeUrl = updatedLecture.youtube
+  .match(/[v][=][A-Za-z1-9]+/g)[0]
+  .replace("v=", "");
+
+
+
+  console.log("update", sqlLectureData);
+
+  Api.put("/lectures/", sqlLectureData).then((r) =>
+  getAll([]));
+};
+
 
   const deleteLecture = (lecture) => {
     Api.delete("/lectures/" + lecture.id).then((r) => getAll());
