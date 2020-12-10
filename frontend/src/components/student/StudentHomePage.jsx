@@ -13,8 +13,17 @@ export default function StudentHomePage() {
   return (
     <div>
       <Map />
-      <div className="body-wrapper">
-        <div></div>
+
+      <div id="dmPopup" className="hidePopup dmPopup">
+        <div className="popup_inner">
+          {status === 1 && (
+            <Profile
+              key="profileUploader"
+              registerPhotoToDB={registerPhotoToDB}
+              closeDMPopup={closeDMPopup}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

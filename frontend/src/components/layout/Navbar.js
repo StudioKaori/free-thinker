@@ -41,18 +41,18 @@ function Navbar({ onLogout }) {
     document.getElementById("mySidenav").style.width = "0";
   }
 
-  // for dm
+  // for popup
 
-  const showDMPopup = () => {
-    const dmPopup = document.getElementById("dmPopup");
-    dmPopup.classList.remove("hidePopup");
-    dmPopup.classList.add("showPopup");
+  const showPopupWindow = () => {
+    const popupWindow = document.getElementById("popupWindow");
+    popupWindow.classList.remove("hidePopup");
+    popupWindow.classList.add("showPopup");
   };
 
-  const closeDMPopup = () => {
-    const dmPopup = document.getElementById("dmPopup");
-    dmPopup.classList.remove("showPopup");
-    dmPopup.classList.add("hidePopup");
+  const closePopupWindow = () => {
+    const popupWindow = document.getElementById("popupWindow");
+    popupWindow.classList.remove("showPopup");
+    popupWindow.classList.add("hidePopup");
   };
 
   const registerPhotoToDB = (fireBaseUrl) => {
@@ -93,7 +93,7 @@ function Navbar({ onLogout }) {
                 </div>
                 <div
                   className="header-profile-photo-container"
-                  onClick={() => showDMPopup()}
+                  onClick={() => showPopupWindow()}
                 >
                   {status === 1 && user[0].userPic !== null ? (
                     <img
@@ -163,13 +163,13 @@ function Navbar({ onLogout }) {
         </div>
       </div>
 
-      <div id="dmPopup" className="hidePopup dmPopup">
+      <div id="popupWindow" className="hidePopup popupWindow">
         <div className="popup_inner">
           {status === 1 && (
             <Profile
               key="profileUploader"
               registerPhotoToDB={registerPhotoToDB}
-              closeDMPopup={closeDMPopup}
+              closePopupWindow={closePopupWindow}
             />
           )}
         </div>
