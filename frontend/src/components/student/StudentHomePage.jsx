@@ -1,8 +1,11 @@
-// These two lines are to get user information and other shared statement
 import { useRecoilState } from "recoil";
-
 import { userState } from "../../js/state-information";
 import Map from "./home/map/Map";
+import StoryIntro from "./home/storyIntro/StoryIntro";
+
+// Popup
+import showPopupWindow from "../../js/common/popup/showPopupWindow";
+import closePopupWindow from "../../js/common/popup/closePopupWindow";
 
 import "../../css/student/student-home.css";
 
@@ -13,8 +16,11 @@ export default function StudentHomePage() {
   return (
     <div>
       <Map />
-      <div className="body-wrapper">
-        <div></div>
+
+      <div id="popupWindow" className="popupWindow">
+        <div className="popup_inner popup_inner_L story-inner-box">
+          <StoryIntro key="storyIntro" />
+        </div>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ import "../../../../css/student/islands/island-green.css";
 export default function Island() {
   const [assignments, setAssignments] = useState([]);
   const [islandTheme, setIslandTheme] = useState("island-green");
-  const [date, setDate] = useState(moment().format("yyyy-MM-DD"));
+  const [date] = useState(moment().format("yyyy-MM-DD"));
   const [status, setStatus] = useState(0);
 
   // island theme
@@ -59,7 +59,10 @@ export default function Island() {
   }, [islandTheme]);
 
   return (
-    <div id="map-island" className="student-home-map-island">
+    <div
+      id="map-island"
+      className="student-home-map-island animate__animated animate__pulse animate__infinite	infinite animate__slower"
+    >
       <div className="student-home-map-island-spaceholder">
         <img src={SpaceHolder} alt="island" />
       </div>

@@ -30,11 +30,11 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
   const [youtube, setYoutube] = useState("");
 
   // unlock date
-  const [unlockDate, setUnlockDate] = useState(
+  const initialUnlockDate =
     dateFromCalDate.current === ""
       ? ""
-      : moment(dateFromCalDate.current).format("YYYY-MM-DD")
-  );
+      : moment(dateFromCalDate.current).format("YYYY-MM-DD");
+  const [unlockDate, setUnlockDate] = useState(initialUnlockDate);
   const [unlockTime, setUnlockTime] = useState(
     dateFromCalDate.current === ""
       ? ""

@@ -56,13 +56,6 @@
     position: relative;
     margin: auto;
   }
-  /* .student-home-map-island {
-    position: absolute;
-    width: 700px;
-    height: 480px;
-    top: 62px;
-    left: 95px;
-  } */
 
   .student-home-map-island {
     position: absolute;
@@ -92,5 +85,20 @@
     left: 520px;
     width: 280px;
     height: 130px;
+  }
+
+  .student-home-map-island-spaceholder img {
+    width: 650px;
+    height: 480px;
+  }
+
+  .student-home-map-island {
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    width: 650px;
+    height: 480px;
+    top: 90px;
+    left: 170px;
   }
 }
