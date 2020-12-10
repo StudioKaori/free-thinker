@@ -30,6 +30,7 @@ public class Assignment {
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime unlockTime;
 
+    private Boolean isDone;
 
     public Assignment() {
 
@@ -39,7 +40,7 @@ public class Assignment {
         this.id = id;
         this.type = type;
         this.assignment = assignment;
-
+        this.isDone = false;
     }
 
     public Long getId() {
@@ -98,5 +99,13 @@ public class Assignment {
 
     public void setUnlockTime(LocalDateTime unlockTime) {
         this.unlockTime = unlockTime;
+    }
+
+    public Boolean getIsDone() {
+        return isDone;
+    }
+    
+    public void setIsDone(Boolean isDone) {
+        this.isDone = isDone;
     }
 }

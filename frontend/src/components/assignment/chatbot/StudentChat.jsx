@@ -3,17 +3,10 @@ import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
 
 // Chat in Student side: use of 'react-simple-chatbot' library
-export default function StudentChat({chat}) {
+export default function StudentChat({chat, setEnd}) {
 
     const [steps, setSteps] = useState(chat.steps);
     const [status, setStatus] = useState(0);
-    const [end, setEnd] = useState(false);
-
-    useEffect(() => {
-        if (end) {
-            console.log('end')
-        }
-    }, [end])
 
     // Lost functions in database transfert, need to put it back here.
     useEffect(() => {

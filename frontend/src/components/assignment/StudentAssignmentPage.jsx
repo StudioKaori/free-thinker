@@ -10,12 +10,22 @@ import AssignmentApi from "../../api/AssignmentApi";
 export default function StudentAssignmentPage({ match }) {
     const assignmentId = Number(match.match.params.id);
     const [assignment, setAssignment] = useState({});
+    const [end, setEnd] = useState(false); // Check for assignment completion
   
     useEffect(() => {
       AssignmentApi.getAssignmentById(assignmentId).then((res) => {
         setAssignment(res.data);
       });
     }, []);
+
+    useEffect(() => {
+        if (end) {
+            console.log(end)
+            const updatedAssign = {...assignment}
+            updatedAssign.isDone = true;
+            AssignmentApi.updateAssignment(updatedAssign)
+        }
+    }, [end, assignment])
 
     return (
         <div className="bg-light p-2 d-flex flex-column align-items-center">
@@ -24,11 +34,23 @@ export default function StudentAssignmentPage({ match }) {
 
             {
                 assignment.type === 'Chat'
-                    ? <StudentChat key={assignment.id} chat={JSON.parse(assignment.assignment)} />
+                    ? <StudentChat 
+                        key={assignment.id} 
+                        chat={JSON.parse(assignment.assignment)}
+                        setEnd={setEnd} 
+                      />
                     : assignment.type === 'Speech'
-                        ? <StudentSpeech key={assignment.id} speech={JSON.parse(assignment.assignment)} />
+                        ? <StudentSpeech 
+                            key={assignment.id} 
+                            speech={JSON.parse(assignment.assignment)} 
+                            setEnd={setEnd} 
+                          />
                         : assignment.type === 'Quiz'
-                            ? <StudentQuiz key={assignment.id} quiz={JSON.parse(assignment.assignment)} />
+                            ? <StudentQuiz 
+                                key={assignment.id} 
+                                quiz={JSON.parse(assignment.assignment)}
+                                setEnd={setEnd} 
+                              />
                             : null
 
             }
