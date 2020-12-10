@@ -1,21 +1,28 @@
 .story-inner-box {
   background-color: black;
-  color: #ffffff;
+  color: var(--accent-color-green);
   font-family: "Sigmar One", cursive;
   font-size: var(--font-XL);
   position: relative;
 }
 
-.fadeIn {
-  animation: fadeInFrames 5s;
-  /* animation-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1); */
-  opacity: 0;
+.storyIntroElement {
   position: absolute;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+:root {
+  --animate-delay: 10s;
+}
+
+.fadeIn {
+  animation: fadeInFrames 5s;
+  /* animation-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1); */
+  opacity: 0;
 }
 
 @keyframes fadeInFrames {
@@ -40,26 +47,38 @@
   }
 }
 
-.text1 {
+.delay1 {
   animation-delay: 0;
 }
 
-.text2 {
+.delay2 {
   animation-delay: 5s;
 }
 
-.text3 {
+.delay3 {
   animation-delay: 10s;
 }
 
-.text4 {
+.delay4 {
   animation-delay: 15s;
 }
 
-.text5 {
+.delay5 {
   animation-delay: 20s;
 }
 
-.text6 {
+.delay6 {
   animation-delay: 25s;
+}
+
+.delay7 {
+  animation-delay: 30s;
+}
+
+.delay8 {
+  animation-delay: 35s;
+}
+
+.delay9 {
+  animation-delay: 40s;
 }

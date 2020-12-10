@@ -1,5 +1,5 @@
 .header-menu-bg {
-  background-color: #8b6e5e;
+  background-color: var(--accent-color-brown);
   padding: 10px 10px;
 }
 
