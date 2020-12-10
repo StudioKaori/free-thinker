@@ -14,6 +14,7 @@ export default function TeacherAssignmentPage() {
     const [createSpeechIsOpen, setCreateSpeechIsOpen] = useState(false);
     const [createChatIsOpen, setCreateChatIsOpen] = useState(false);
     const [displayPopUp, setDisplayPopUp] = useState(false);
+    const [displayError, setDisplayError] = useState(false);
 
     return (
         <div className="bg-light p-2">
@@ -54,22 +55,23 @@ export default function TeacherAssignmentPage() {
                 {createChatIsOpen && 
                     <CreateChat 
                         close={() => setCreateChatIsOpen(false)} 
-                        setDisplayPopUp={setDisplayPopUp}
+                        setDisplayPopUp={setDisplayPopUp} setDisplayError={setDisplayError}
                     /> }
                 {createSpeechIsOpen && 
                     <CreateSpeech 
                         close={() => setCreateSpeechIsOpen(false)} 
-                        setDisplayPopUp={setDisplayPopUp}
+                        setDisplayPopUp={setDisplayPopUp} setDisplayError={setDisplayError}
                     /> }
                 {createQuizIsOpen && 
                     <CreateQuiz 
                         close={() => setCreateQuizIsOpen(false)} 
-                        setDisplayPopUp={setDisplayPopUp}
+                        setDisplayPopUp={setDisplayPopUp} setDisplayError={setDisplayError}
                     /> }
                 {uploadFileIsOpen && <div>Not ready yet</div>}
             </div>
 
-            {displayPopUp && <PopUpMsg message="Succesfully saved"/>}
+            {displayPopUp && <PopUpMsg type="success" message="Succesfully saved"/>}
+            {displayError && <PopUpMsg type="error" message="Something is Missing"/>}
         </div>
     );
 }

@@ -2,20 +2,28 @@ import React, { useState } from 'react';
 import { useSpeechSynthesis } from 'react-speech-kit';
 import AssignmentApi from '../../../api/AssignmentApi';
 
+import '../../../css/assignment/speech.css'
+
 import Button from '../atoms/Button';
 
 // Entry point for creating a Speech assignment - use of react-speech-kit library
-export default function CreateSpeech({close, setDisplayPopUp}) {
+export default function CreateSpeech({close, setDisplayPopUp, setDisplayError}) {
 
     const [question, setQuestion] = useState('');
     const { speak } = useSpeechSynthesis();
 
     const saveSpeech = () => {
+        if (question === '') { 
+            setDisplayError(true);
+            setTimeout(() => {
+                setDisplayError(false);
+            }, 1000)
+            return; 
+        } // Cancel if not ok
         const newAssignment = {
             type: 'Speech',
             assignment : JSON.stringify({ question: question }),
         }
-        console.log(newAssignment);
         AssignmentApi.createAssignment(newAssignment)
             .then(() => {
                 setDisplayPopUp(true);
@@ -28,7 +36,7 @@ export default function CreateSpeech({close, setDisplayPopUp}) {
     }
 
     return (
-        <div>
+        <div className="container d-flex flex-column align-items-center">
             <p> Type your question here.</p>
             <textarea
                 id="create-speech-textarea"
@@ -39,16 +47,13 @@ export default function CreateSpeech({close, setDisplayPopUp}) {
                 <Button 
                     id="test-speech-button"
                     buttonStyle="btn-sm btn-info"
-                    content="Test it" 
+                    content="Test" 
                     onClick={() => speak({ text: question })}
                 />
-            </div>
-
-            <div>
                 <Button 
                     id="save-speech-button"
                     buttonStyle="btn-sm btn-danger"
-                    content="Save Question" 
+                    content="Save" 
                     onClick={() => saveSpeech()}
                 />
             </div>

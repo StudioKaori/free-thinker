@@ -6,15 +6,18 @@ import CreateQuizForm from './CreateQuizForm';
 import Button from '../atoms/Button';
 
 // Entry point for Quiz creation
-export default function CreateQuiz({close, setDisplayPopUp}) {
+export default function CreateQuiz({close, setDisplayPopUp, setDisplayError}) {
 
     const [newQuiz, setNewQuiz ] = useState({});
 
     // Helper function when saving quiz,
-    // Check if an answer has been selected for each question
+    // Check if no empty field for each question
     const lastCheck = (questions) => {
         for (let i = 0; i < questions.length; i += 1) {
-            if (questions[i].correctAnswer === '') {
+            if (questions[i].question === ''
+                || questions[i].answers[0] === ''
+                || questions[i].answers[0] === ''
+                || questions[i].answers[0] === '') {
                 return false;
             }
         }
@@ -22,7 +25,13 @@ export default function CreateQuiz({close, setDisplayPopUp}) {
     }
 
     const saveQuiz = () => {
-        if (!lastCheck(newQuiz.questions)) { return; } // Cancel if not ok
+        if (!lastCheck(newQuiz.questions)) { 
+            setDisplayError(true);
+            setTimeout(() => {
+                setDisplayError(false);
+            }, 1000)
+            return; 
+        } // Cancel if not ok
         
         const newAssignment = {
             type: 'Quiz',

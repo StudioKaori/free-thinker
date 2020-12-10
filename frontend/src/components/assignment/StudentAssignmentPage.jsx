@@ -18,6 +18,7 @@ export default function StudentAssignmentPage({ match }) {
         setAssignment(res.data);
         setEnd(res.data.isDone);
       });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
