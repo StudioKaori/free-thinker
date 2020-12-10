@@ -49,7 +49,7 @@ export default function DayBox({ day }) {
   // Lecture and Assignment count to be included in the week's display
 
   return day == 0 ? (
-    <div className="week-card text-white bg-primary mb-3">
+    <div className="week-card text-white bg-info mb-3">
       <div className="card-header">{moment().format("dddd")}</div>
       <div className="card-body">
         <p className="card-text">{lec.length} Lectures</p>
