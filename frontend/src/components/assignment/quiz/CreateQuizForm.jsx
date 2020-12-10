@@ -25,7 +25,6 @@ export default function CreateQuizForm({ setNewQuiz }) {
             quizSynopsis: synopsis,
             questions: questions,
         })
-        console.log('useEffect')
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [title, synopsis, questions]);
 
@@ -70,7 +69,7 @@ export default function CreateQuizForm({ setNewQuiz }) {
                     <div className='create-quiz-header'>
                         <input
                             id="create-quiz-title-input"
-                            placeholder="Title" value={title}
+                            placeholder="Quiz Title" value={title}
                             maxLength="40"
                             onChange={(e) => setTitle(e.target.value)}
                         />
