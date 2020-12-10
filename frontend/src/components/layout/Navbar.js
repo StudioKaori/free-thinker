@@ -25,6 +25,7 @@ function Navbar({ onLogout }) {
 
   useEffect(() => {
     getUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -99,9 +100,10 @@ function Navbar({ onLogout }) {
                     <img
                       src={user[0].userPic}
                       className="header-profile-photo"
+                      alt="user-profile-pic"
                     />
                   ) : (
-                    <i class="fas fa-user-edit"></i>
+                    <i className="fas fa-user-edit"></i>
                   )}
                 </div>
               </div>

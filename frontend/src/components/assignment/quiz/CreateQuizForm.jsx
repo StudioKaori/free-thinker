@@ -26,6 +26,7 @@ export default function CreateQuizForm({ setNewQuiz }) {
             questions: questions,
         })
         console.log('useEffect')
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [title, synopsis, questions]);
 
 
@@ -47,6 +48,7 @@ export default function CreateQuizForm({ setNewQuiz }) {
 
     useEffect(() => {
         createQuestion()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     // Update the list of steps when change is made inside one step.

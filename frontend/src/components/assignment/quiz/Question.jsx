@@ -25,7 +25,7 @@ export default function Question(props) {
         newQuestion.correctAnswer = pickedOption.toString();
 
         update(newQuestion, newQuestion.id)
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [teacherQuestion, option1, option2, option3, pickedOption])
 
 
