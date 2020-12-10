@@ -72,8 +72,10 @@ function Navbar({ onLogout }) {
         <div className="header-menu-wrapper">
           <div className="header-menu-logo">
             <h1>
-              F<span>R</span>E<span>E</span> T<span>H</span>I<span>N</span>K
-              <span>E</span>R
+              <Link to="/">
+                F<span>R</span>E<span>E</span> T<span>H</span>I<span>N</span>K
+                <span>E</span>R
+              </Link>
             </h1>
             <img
               src={LogoIcon}
@@ -125,6 +127,9 @@ function Navbar({ onLogout }) {
                     <Link to="/">HOME</Link>
                   </li>
                   {/* Add Teacher menu here */}
+                  <li onClick={() => closeNav()}>
+                    <Link to="/daily-settings">Daily Settings</Link>
+                  </li>
                   <li onClick={() => closeNav()}>
                     <Link to="/create-lecture">Create Lecture</Link>
                   </li>

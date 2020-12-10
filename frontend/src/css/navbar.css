@@ -35,6 +35,11 @@
   vertical-align: middle;
 }
 
+.header-menu-logo h1 a {
+  color: var(--accent-color-green);
+  text-decoration: none;
+}
+
 .header-menu-logo h1 span {
   color: var(--accent-color-yellow);
 }
