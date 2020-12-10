@@ -6,7 +6,10 @@ import moment from "moment";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
+import 'react-datepicker/dist/react-datepicker.css';
+
 export default function LectureForm({ onCreateClick, dateFromCalDate }) {
+
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
@@ -70,6 +73,11 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
               placeholder="YYYY-MM-DD"
               value={unlockDate}
               onChange={(e) => setUnlockDate(e.target.value)}
+
+              />
+                        
+          </div>
+
             /> */}
           <div>
           <DatePicker
@@ -83,11 +91,14 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
             </div>
             
 
+
+
+
           <div className="form-group">
             <label>Unlock Time:</label>
             <input
               id="lectureTimeInLectureForm"
-              type="text"
+              type="time"
               className="form-control"
               placeholder="ex. 09:00"
               value={unlockTime}
@@ -125,9 +136,6 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
                 setUnlockTime("");
                 setYoutube("");
                 document.getElementsByClassName("ck-content")[0].childNodes[0].innerHTML = '';
-
-
-
 
               }}
             >

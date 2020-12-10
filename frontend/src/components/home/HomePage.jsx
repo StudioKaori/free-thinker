@@ -57,7 +57,7 @@ function HomePage() {
                     this is the best of the two worlds. 
                     <br />
                     We are most than interested by your feedback or advices.
-                    Feel free to contact at <a href="#">freethinkers@mail.com</a>
+                    Feel free to contact at <em>freethinkers@mail.com</em>
                 </p>
                 <p>We are Free Thinkers !</p>
             </section>
