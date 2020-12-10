@@ -1,6 +1,14 @@
+
+
+import ReactDatePicker from "react-datepicker";
+
 import React, { useEffect, useRef, useState } from "react";
+
+
+
 import { useRecoilState } from "recoil";
 import { recent } from "../teacher/home_page/State";
+
 import Api from "../../api/Api";
 import moment from "moment";
 import LectureCard from "./LectureCard";
@@ -27,9 +35,12 @@ function LecturePage({ dateFromCal }) {
     let sqlLectureData = {};
     sqlLectureData.title = lectureData.title;
     sqlLectureData.body = lectureData.body;
+
+    
     sqlLectureData.unlockTime =
 
       moment(lectureData.unlockDate).format("YYYY-MM-DD") + "T" + lectureData.unlockTime + ":00.0";
+
     sqlLectureData.youtubeUrl = lectureData.youtube.replace(
       "https://www.youtube.com/watch?v=",
       ""
