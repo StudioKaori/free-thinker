@@ -43,7 +43,11 @@ export default function StudentChat({chat, setEnd}) {
                     <ChatBot
                         headerTitle={chat.title}
                         steps={steps}
-                        handleEnd={() => setEnd(true)}
+                        handleEnd={() => {
+                            setTimeout(() => {
+                                setEnd(true);
+                            }, 1000)
+                        }}
                     />
                 </ThemeProvider>
             }

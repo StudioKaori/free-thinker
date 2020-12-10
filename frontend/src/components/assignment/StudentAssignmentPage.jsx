@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 import StudentChat from './chatbot/StudentChat';
 import StudentSpeech from './speech/StudentSpeech';
@@ -11,16 +12,16 @@ export default function StudentAssignmentPage({ match }) {
     const assignmentId = Number(match.match.params.id);
     const [assignment, setAssignment] = useState({});
     const [end, setEnd] = useState(false); // Check for assignment completion
-  
+
     useEffect(() => {
       AssignmentApi.getAssignmentById(assignmentId).then((res) => {
         setAssignment(res.data);
+        setEnd(res.data.isDone);
       });
     }, []);
 
     useEffect(() => {
         if (end) {
-            console.log(end)
             const updatedAssign = {...assignment}
             updatedAssign.isDone = true;
             AssignmentApi.updateAssignment(updatedAssign)
@@ -32,7 +33,16 @@ export default function StudentAssignmentPage({ match }) {
 
             <h4 className="border-bottom mb-3" >Student Assignment Page</h4>
 
-            {
+            { end ?
+                <div className="text-center">
+                    <p>
+                        Thank you very much your teacher will review your answers.
+                    </p>
+                    <Link to="/" className="btn btn-danger">
+                        Back
+                    </Link>
+                </div>
+            :
                 assignment.type === 'Chat'
                     ? <StudentChat 
                         key={assignment.id} 
