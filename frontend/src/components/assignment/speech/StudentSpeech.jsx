@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSpeechRecognition, useSpeechSynthesis } from 'react-speech-kit';
 
 import Button from '../atoms/Button';
@@ -8,6 +8,7 @@ export default function StudentSpeech({speech}) {
 
     const [ answer, setAnswer ] = useState('');
     const [ sendAnswer, setSendAnswer] = useState(false);
+    const [end, setEnd] = useState(false);
 
     const { speak } = useSpeechSynthesis();
     const { listen, listening, stop } = useSpeechRecognition({
@@ -15,6 +16,12 @@ export default function StudentSpeech({speech}) {
             setAnswer(result);
         },
     });
+
+    useEffect(() => {
+        if (end) {
+            console.log('end')
+        }
+    }, [end])
 
     return (
         <div>
@@ -61,7 +68,10 @@ export default function StudentSpeech({speech}) {
                     id="speech-send-answer-button"
                     buttonStyle="btn-sm btn-success text-white"
                     content="Save it"
-                    onClick={() => setSendAnswer(true)}
+                    onClick={() => {
+                        setSendAnswer(true);
+                        setEnd(true);
+                    }}
                 />
             </div>
 

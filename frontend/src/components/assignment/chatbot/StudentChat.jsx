@@ -6,7 +6,14 @@ import { ThemeProvider } from 'styled-components';
 export default function StudentChat({chat}) {
 
     const [steps, setSteps] = useState(chat.steps);
-    const [status, setStatus] = useState(0)
+    const [status, setStatus] = useState(0);
+    const [end, setEnd] = useState(false);
+
+    useEffect(() => {
+        if (end) {
+            console.log('end')
+        }
+    }, [end])
 
     // Lost functions in database transfert, need to put it back here.
     useEffect(() => {
@@ -43,6 +50,7 @@ export default function StudentChat({chat}) {
                     <ChatBot
                         headerTitle={chat.title}
                         steps={steps}
+                        handleEnd={() => setEnd(true)}
                     />
                 </ThemeProvider>
             }
