@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { useSpeechRecognition, useSpeechSynthesis } from 'react-speech-kit';
 
 import Button from '../atoms/Button';
 
 // Speech assignment, Student side - Use of react-speech-kit library
-export default function StudentSpeech({speech}) {
+export default function StudentSpeech({speech, setEnd}) {
 
     const [ answer, setAnswer ] = useState('');
-    const [ sendAnswer, setSendAnswer] = useState(false);
 
     const { speak } = useSpeechSynthesis();
     const { listen, listening, stop } = useSpeechRecognition({
@@ -33,7 +32,6 @@ export default function StudentSpeech({speech}) {
                 <textarea
                     id="answer-textarea-readonly"
                     readOnly
-                    disabled={sendAnswer && "disabled"}
                     placeholder="Your answer will appear here."
                     value={answer}
                     onChange={(event) => setAnswer(event.target.value)}
@@ -44,7 +42,6 @@ export default function StudentSpeech({speech}) {
                     <div>
                         <button 
                             id="speech-speak-button"
-                            disabled={sendAnswer && "disabled"}
                             className="btn btn-sm btn-success m-1" 
                             onMouseDown={listen} onMouseUp={stop}
                         >
@@ -61,11 +58,9 @@ export default function StudentSpeech({speech}) {
                     id="speech-send-answer-button"
                     buttonStyle="btn-sm btn-success text-white"
                     content="Save it"
-                    onClick={() => setSendAnswer(true)}
+                    onClick={() => setEnd(true)}
                 />
             </div>
-
-            { sendAnswer && <div> Your answer : {answer} </div> }
         </div>
     );
 }

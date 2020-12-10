@@ -6,12 +6,7 @@ import moment from "moment";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-
-
-
 import 'react-datepicker/dist/react-datepicker.css';
-
-
 
 export default function LectureForm({ onCreateClick, dateFromCalDate }) {
 
@@ -80,7 +75,7 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
               onChange={(e) => setUnlockDate(e.target.value)}
 
               />
-
+                        
           </div>
 
             /> */}

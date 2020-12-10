@@ -53,8 +53,8 @@ function LecturePage({ dateFromCal }) {
 
     Api.post("/lectures", sqlLectureData).then((res) => {
       setLectures([res.data, ...lectures])
-    // }).then((res) => {
-    //   setActivity([res.data, ...lectures])
+      const temp = JSON.parse(window.localStorage.getItem('recent-activity')) || [];
+      window.localStorage.setItem('recent-activity', JSON.stringify(temp.concat(res.data)));
     });
   };
 

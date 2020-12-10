@@ -1,25 +1,24 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Map from "../student/home/map/Map";
 import DailySettingForm from "./home/DailySettingForm";
-import LectureCalendar from "./schedule/LectureCalendar";
 import DayBox from "./home_page/DayBox";
-import Dropdown from "./Dropdown";
 import ActivityBox from "./home_page/ActivityBox";
 
 export default function TeacherHomePage() {
-  const [previewChange, setPreviewChange] = useState(<Map />);
+  // const [previewChange, setPreviewChange] = useState(<Map />);
 
-  const onClickPreview = (islandTheme) => {
-    console.log("change island");
-    setPreviewChange(<Map key={islandTheme} />);
-  };
-  var num = 0;
+  const recentActivity =
+    JSON.parse(window.localStorage.getItem("recent-activity")) || [];
+
+  // const onClickPreview = (islandTheme) => {
+  //   console.log("change island");
+  //   setPreviewChange(<Map key={islandTheme} />);
+  // };
   return (
     <div class="container p-3 my-3">
-      <div>
+      {/* <div>
         <LectureCalendar />
-      </div>
+      </div> */}
       {/* This container forms the week's display
       The number props soecify the day relative to the current day */}
       <div class="week-container">
@@ -37,23 +36,12 @@ export default function TeacherHomePage() {
         It needs an independent component to display the task details */}
         <div className="card">
           <div className="card-header">Recent Activity</div>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <ActivityBox index="0" />
-            </li>
-            <li className="list-group-item">
-              <ActivityBox index="1" />
-            </li>
-            <li className="list-group-item">
-              <ActivityBox index="2" />
-            </li>
-            <li className="list-group-item">
-              <ActivityBox index="3" />
-            </li>
-            <li className="list-group-item">
-              <ActivityBox index="4" />
-            </li>
-          </ul>
+          {recentActivity
+            .reverse()
+            .slice(0, 5)
+            .map((activity) => (
+              <ActivityBox activity={activity} />
+            ))}
         </div>
         {/* This div only needs some finer CSS touch, otherwise it looks fine */}
         <div className="btn-container">
@@ -70,20 +58,12 @@ export default function TeacherHomePage() {
             Create New Assignment
           </Link>
           <div>
-            <Dropdown />
+            {/* <Dropdown /> */}
+            <DailySettingForm />
           </div>
         </div>
-        {/* <div>
-              <Map />
-            </div> */}
       </div>
-      <div>
-        <div>
-          <DailySettingForm onClickPreview={onClickPreview} />
-        </div>
-
-        <div>{previewChange}</div>
-      </div>
+      <div>{/* <div>{previewChange}</div> */}</div>
     </div>
   );
 }
