@@ -5,6 +5,10 @@
     overflow-y: scroll;
     background-color: white;
     border-radius: 15px;
+    border: 1px solid rgb(156, 3, 3);
+}
+.create-quiz-div input { 
+    height: 35px; 
 }
 
 .create-quiz-header {
@@ -13,14 +17,14 @@
     height: 100px;
     font-family: "Helvetica Neue";
     font-size: 20px;
-    background-color: aquamarine;
 }
 .create-quiz-header input {
     width: 400px;
     height: 50px;
     font-family: "Helvetica Neue";
     font-size: 20px;
-    background-color: aquamarine;
+    border: none;
+    border-bottom: 2px double black;
 }
 .create-quiz-div input:focus { 
     outline: none;
@@ -28,18 +32,15 @@
 
 .quiz-teacher-question {
     margin: 3px;
-    width: 394px;
-    height: 30px;
+    width: 390px;
     border-radius: 5px;
     margin-bottom: 5px;
     margin-top: 30px;
-    background-color: burlywood;
 }
 
 .quiz-student-answer {
     margin: 3px;
     width: 354px;
-    height: 30px;
     border-radius: 5px;
     align-self: flex-end;
     text-align: right;
@@ -52,8 +53,9 @@
     margin-left: 10px;
     cursor: pointer;
     border: 1px solid black;
+    box-shadow: -1px 1px grey;
 }
 
 .create-quiz-div .active {
-    background-color: aqua;
+    background-color: rgb(12, 184, 49);
 }
