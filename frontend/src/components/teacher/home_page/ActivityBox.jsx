@@ -7,9 +7,7 @@ import Lecture from "../../../assets/img/Lecture.png";
 
 import "../../../css/ActivityBox.css";
 
-export default function ActivityBox({ index }) {
-  const [activity, setActivity] = useRecoilState(recent);
-  console.log(activity);
+export default function ActivityBox({ activity }) {
 
   const lectures = [
     {
@@ -83,9 +81,9 @@ export default function ActivityBox({ index }) {
     <div className="activity-card bg-light">
       <img src={Lecture} alt="checklist logo" className="logo" />
       <div className="card-body">
-        <p className="card-text">{lectures[index].title}</p>
-        <p className="card-text">{lectures[index].date}</p>
-        <p className="card-text">Unlock Time: {lectures[index].unlockTime}</p>
+        <p className="card-text">{activity.title}</p>
+        <p className="card-text">{activity.date}</p>
+        <p className="card-text">Unlock Time: {activity.unlockTime}</p>
       </div>
     </div>
   );
