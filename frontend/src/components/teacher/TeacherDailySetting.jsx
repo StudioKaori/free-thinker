@@ -23,9 +23,9 @@ export default function TeacherDailySetting() {
             <div>{previewChange}</div>
           </div>
 
-          <div className="lecture-calendar-wrapper">
+          {/* <div className="lecture-calendar-wrapper">
             <LectureCalendar />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

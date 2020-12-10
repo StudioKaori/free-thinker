@@ -5,7 +5,9 @@ import LogoIcon from "../../assets/img/components/navbar/logo-icon.png";
 import Profile from "../layout/Profile";
 import UserApi from "../../api/UserApi";
 
-import "../../css/components/popup.css";
+// Popup
+import showPopupWindow from "../../js/common/popup/showPopupWindow";
+import closePopupWindow from "../../js/common/popup/closePopupWindow";
 
 // These two lines are to get user information and other shared statement
 import { useRecoilState } from "recoil";
@@ -40,20 +42,6 @@ function Navbar({ onLogout }) {
   function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
   }
-
-  // for popup
-
-  const showPopupWindow = () => {
-    const popupWindow = document.getElementById("popupWindow");
-    popupWindow.classList.remove("hidePopup");
-    popupWindow.classList.add("showPopup");
-  };
-
-  const closePopupWindow = () => {
-    const popupWindow = document.getElementById("popupWindow");
-    popupWindow.classList.remove("showPopup");
-    popupWindow.classList.add("hidePopup");
-  };
 
   const registerPhotoToDB = (fireBaseUrl) => {
     let updatedUser = {};
@@ -101,7 +89,7 @@ function Navbar({ onLogout }) {
                       className="header-profile-photo"
                     />
                   ) : (
-                    <i class="fas fa-user-edit"></i>
+                    <i className="fas fa-user-edit"></i>
                   )}
                 </div>
               </div>
