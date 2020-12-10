@@ -5,11 +5,30 @@ import Button from '../atoms/Button';
 import CreateChatForm from './CreateChatForm';
 
 // Entry point for Creating a chat - Teacher's side
-export default function CreateChat({close, setDisplayPopUp}) {
+export default function CreateChat({close, setDisplayPopUp, setDisplayError}) {
 
     const [newChat, setNewChat ] = useState({})
 
+    // Helper function when saving quiz,
+    // Check if no empty field for each question
+    const lastCheck = (steps) => {
+        for (let i = 0; i < steps.length; i += 1) {
+            if (steps[i].message === '') {
+                return false;
+            }
+        }
+        return true;
+    }
+
     const saveChat = () => {
+        if (!lastCheck(newChat.steps)) { 
+            setDisplayError(true);
+            setTimeout(() => {
+                setDisplayError(false);
+            }, 1000)
+            return; 
+        } // Cancel if not ok
+
         const newAssignment = {
             type: 'Chat',
             assignment : JSON.stringify(newChat),

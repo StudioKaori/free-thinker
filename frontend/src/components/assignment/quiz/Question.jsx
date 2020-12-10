@@ -10,7 +10,7 @@ export default function Question(props) {
     const [option2, setOption2] = useState('');
     const [option3, setOption3] = useState('');
 
-    const [pickedOption, setPickedOption] = useState(''); // Correct answer
+    const [pickedOption, setPickedOption] = useState(1); // Correct answer
 
     // Update in every change
     useEffect(() => {
@@ -25,7 +25,7 @@ export default function Question(props) {
         newQuestion.correctAnswer = pickedOption.toString();
 
         update(newQuestion, newQuestion.id)
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [teacherQuestion, option1, option2, option3, pickedOption])
 
 

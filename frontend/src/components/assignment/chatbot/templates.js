@@ -4,7 +4,7 @@
 export const premadeThemes = [
     {
         background: '#f5f8fb',
-        fontFamily: 'Helvetica Neue',
+        fontFamily: 'Helvetica Neue', 
         headerBgColor: '#EF6C00',
         headerFontColor: '#fff',
         headerFontSize: '15px',
@@ -14,9 +14,9 @@ export const premadeThemes = [
         userFontColor: '#4a4a4a',
     },
     {
-        background: 'green',
+        background: '#f5f8fb',
         fontFamily: 'Helvetica Neue',
-        headerBgColor: 'blue',
+        headerBgColor: '#6e48aa',
         headerFontColor: '#fff',
         headerFontSize: '15px',
         botBubbleColor: 'green',
