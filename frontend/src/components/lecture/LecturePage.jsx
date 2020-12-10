@@ -1,10 +1,6 @@
-
-
 import ReactDatePicker from "react-datepicker";
 
 import React, { useEffect, useRef, useState } from "react";
-
-
 
 import { useRecoilState } from "recoil";
 import { recent } from "../teacher/home_page/State";
@@ -30,10 +26,11 @@ function LecturePage({ dateFromCal }) {
     sqlLectureData.title = lectureData.title;
     sqlLectureData.body = lectureData.body;
 
-    
     sqlLectureData.unlockTime =
-
-      moment(lectureData.unlockDate).format("YYYY-MM-DD") + "T" + lectureData.unlockTime + ":00.0";
+      moment(lectureData.unlockDate).format("YYYY-MM-DD") +
+      "T" +
+      lectureData.unlockTime +
+      ":00.0";
 
     sqlLectureData.youtubeUrl = lectureData.youtube.replace(
       "https://www.youtube.com/watch?v=",
@@ -46,8 +43,12 @@ function LecturePage({ dateFromCal }) {
 
     Api.post("/lectures", sqlLectureData).then((res) => {
       setLectures([res.data, ...lectures]);
-      // }).then((res) => {
-      //   setActivity([res.data, ...lectures])
+      const temp =
+        JSON.parse(window.localStorage.getItem("recent-activity")) || [];
+      window.localStorage.setItem(
+        "recent-activity",
+        JSON.stringify(temp.concat(res.data))
+      );
     });
   };
 

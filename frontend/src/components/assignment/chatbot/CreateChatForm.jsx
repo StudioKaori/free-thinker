@@ -23,6 +23,7 @@ export default function CreateChatForm({ setNewChat }) {
             title: title,
             steps: steps
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [steps, title, theme])
 
     // Create a set of 4 steps => corresponding at one question/answer set.
@@ -47,6 +48,7 @@ export default function CreateChatForm({ setNewChat }) {
 
     useEffect(() => {
         createStep()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     // Update the list of steps when change is made inside one step.
