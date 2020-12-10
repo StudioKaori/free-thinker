@@ -1,0 +1,10 @@
+.activity-card {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}

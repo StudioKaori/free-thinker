@@ -4,6 +4,11 @@ import ReactDatePicker from "react-datepicker";
 
 import React, { useEffect, useRef, useState } from "react";
 
+
+
+import { useRecoilState } from "recoil";
+import { recent } from "../teacher/home_page/State";
+
 import Api from "../../api/Api";
 import moment from "moment";
 import LectureCard from "./LectureCard";
@@ -17,6 +22,8 @@ function LecturePage({ dateFromCal }) {
   }
 
   const [lectures, setLectures] = useState([]);
+
+  // const [activity, setActivity] = useRecoilState(recent);
   
 
   const createLecture = (lectureData) => {
@@ -44,9 +51,11 @@ function LecturePage({ dateFromCal }) {
       .match(/[v][=][A-Za-z1-9]+/g)[0]
       .replace("v=", "");
 
-    Api.post("/lectures", sqlLectureData).then((res) =>
+    Api.post("/lectures", sqlLectureData).then((res) => {
       setLectures([res.data, ...lectures])
-    );
+    // }).then((res) => {
+    //   setActivity([res.data, ...lectures])
+    });
   };
 
   const getAll = () => {

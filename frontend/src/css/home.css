@@ -1,0 +1,40 @@
+.home-section, .home-section .row{
+    height: 100vh;
+}
+
+.home-infos, .about-section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-infos p, .about-section p {
+    font-size: var(--font-M);
+}
+
+.home-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-inner {
+    border: 3px solid white;
+}
+
+.about-section {
+    height: 80vh;
+}
+
+.home-footer {
+    height: 20vh;
+    display: flex;
+    align-items: center;
+}
+.home-footer ul {
+    width: 100%;
+    list-style: none;
+    color: white;
+}
