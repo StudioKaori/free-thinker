@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { useSpeechRecognition, useSpeechSynthesis } from 'react-speech-kit';
 
 import Button from '../atoms/Button';
 
 // Speech assignment, Student side - Use of react-speech-kit library
-export default function StudentSpeech({speech}) {
+export default function StudentSpeech({speech, setEnd}) {
 
     const [ answer, setAnswer ] = useState('');
     const [ sendAnswer, setSendAnswer] = useState(false);
@@ -61,7 +61,10 @@ export default function StudentSpeech({speech}) {
                     id="speech-send-answer-button"
                     buttonStyle="btn-sm btn-success text-white"
                     content="Save it"
-                    onClick={() => setSendAnswer(true)}
+                    onClick={() => {
+                        setSendAnswer(true);
+                        setEnd(true);
+                    }}
                 />
             </div>
 
