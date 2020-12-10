@@ -30,3 +30,7 @@
 .hidePopup {
   display: none;
 }
+.profile-img-preview {
+  height: 50px;
+  width: auto;
+}

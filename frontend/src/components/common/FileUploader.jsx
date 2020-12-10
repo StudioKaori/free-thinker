@@ -62,7 +62,7 @@ export default function FileUpload({ registerPhotoToDB }) {
         <input type="file" onChange={handleImage} />
         <button>Upload</button>
       </form>
-      {status === 1 ? <img src={imageUrl} alt="uploaded" /> : null}
+      {status === 1 ? <img src={imageUrl} alt="uploaded" className="profile-img-preview" /> : null}
     </div>
   );
 }
