@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import Api from "../../../api/Api";
+import assApi from "../../../api/AssignmentApi";
 
 import "../../../css/DayBox.css";
 
 export default function DayBox({ day }) {
   const [lectures, setLectures] = useState([]);
+  const [assignments, setAssignments] = useState([]);
 
   const calender = moment().add(day, "days");
   console.log(calender);
@@ -14,17 +16,25 @@ export default function DayBox({ day }) {
   const dateonly = calender.format("L");
   console.log(dateonly);
 
-  const getAll = () => {
+  const getAllLectures = () => {
     Api.get("/lectures").then((res) => {
-      setLectures(res.data.sort((a, b) => b.id - a.id));
+      setLectures(res.data);
+    });
+  };
+
+  const getAllAssignments = () => {
+    assApi.getAllAssignments().then((res) => {
+      setAssignments(res.data);
     });
   };
 
   useEffect(() => {
-    getAll();
+    getAllLectures();
+    getAllAssignments();
   }, []);
 
   console.log(lectures);
+  console.log(assignments);
 
   // Filters the elements of same date to get the daily count
   const lec = lectures.filter((lecture) => {
@@ -39,11 +49,11 @@ export default function DayBox({ day }) {
   // Lecture and Assignment count to be included in the week's display
 
   return day == 0 ? (
-    <div className="week-card text-white bg-primary mb-3">
+    <div className="week-card text-white bg-info mb-3">
       <div className="card-header">{moment().format("dddd")}</div>
       <div className="card-body">
         <p className="card-text">{lec.length} Lectures</p>
-        <p className="card-text">X Assignments</p>
+        <p className="card-text">{assignments.length} Active assignments</p>
       </div>
     </div>
   ) : (
@@ -51,9 +61,8 @@ export default function DayBox({ day }) {
       <div className="card-header">{dayonly}</div>
       <div className="card-body">
         <p className="card-text">{lec.length} Lectures</p>
-        <p className="card-text">X Assignments</p>
+        <p className="card-text">{assignments.length} Active assignments</p>
       </div>
     </div>
   );
-  // null
 }
