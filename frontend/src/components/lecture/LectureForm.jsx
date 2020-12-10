@@ -101,12 +101,14 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
             <input
               id="lectureYoutubeInLectureForm"
               type="text"
-              className="form-control"
+              className="form-control" 
+             
               placeholder="Youtube video url or Zoom link"
               value={youtube}
               onChange={(e) => setYoutube(e.target.value)}
             />
           </div>
+          
 
           <CKEditor
             id="lectureBodyInLectureForm"
