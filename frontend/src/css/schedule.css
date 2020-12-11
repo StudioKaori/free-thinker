@@ -72,7 +72,7 @@ td a:hover {
 
 @media (min-width: 750px) {
   .student-home-schedule-wrapper {
-    position: absolute;
+    position: relative;
     top: 30px;
     right: 0;
     width: 280px;

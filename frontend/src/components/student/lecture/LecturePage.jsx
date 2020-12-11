@@ -57,7 +57,7 @@ export default function LecturePage({ match }) {
 
           <div>{ReactHtmlParser(lecture.body)}</div>
 
-          <div>
+          <div className="student-home-schedule-wrapper">
             <Schedule />
           </div>
         </div>

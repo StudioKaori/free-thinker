@@ -27,7 +27,7 @@ export default function Schedule() {
   }, [lectures]);
 
   return (
-    <div className="student-home-schedule-wrapper">
+    <div>
       <div className="student-home-schedule-wrapper">
         <img src="/assets/img/css/lecture-bg.svg" />
       </div>
