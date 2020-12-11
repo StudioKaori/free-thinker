@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import Api from "../../api/Api";
 import { Link } from "react-router-dom";
 import LogoIcon from "../../assets/img/components/navbar/logo-icon.png";
+import Profile from "../layout/Profile";
+import UserApi from "../../api/UserApi";
+
+import "../../css/components/popup.css";
 
 // These two lines are to get user information and other shared statement
 import { useRecoilState } from "recoil";
@@ -13,11 +17,15 @@ function Navbar({ onLogout }) {
 
   // for user info
   const getUser = () => {
-    Api.get("/user/loggedInUser").then((res) => setUser([res.data]));
+    Api.get("/user/loggedInUser").then((res) => {
+      console.log("data", res.data);
+      setUser([res.data]);
+    });
   };
 
   useEffect(() => {
     getUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -34,6 +42,32 @@ function Navbar({ onLogout }) {
   function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
   }
+
+  // for dm
+
+  const showDMPopup = () => {
+    console.log("popup");
+    const dmPopup = document.getElementById("dmPopup");
+    dmPopup.classList.remove("hidePopup");
+    dmPopup.classList.add("showPopup");
+  };
+
+  const closeDMPopup = () => {
+    const dmPopup = document.getElementById("dmPopup");
+    dmPopup.classList.remove("showPopup");
+    dmPopup.classList.add("hidePopup");
+  };
+
+  const registerPhotoToDB = (fireBaseUrl) => {
+    let updatedUser = {};
+    updatedUser.id = user[0].id;
+    updatedUser.userPic = fireBaseUrl;
+    updatedUser.email = user[0].email;
+    updatedUser.name = user[0].name;
+    updatedUser.userType = user[0].userType;
+    updatedUser.password = user[0].password;
+    UserApi.updateUser(updatedUser);
+  };
 
   return (
     <nav>
@@ -58,11 +92,19 @@ function Navbar({ onLogout }) {
                   {user[0].userType === "Teacher" ? "Teacher " : null}
                   {user[0].name}
                 </div>
-                <div className="header-profile-photo-container">
-                  <img
-                    src="/assets/img/test/lisa-larson.jpg"
-                    className="header-profile-photo"
-                  />
+                <div
+                  className="header-profile-photo-container"
+                  onClick={() => showDMPopup()}
+                >
+                  {status === 1 && user[0].userPic !== null ? (
+                    <img
+                      src={user[0].userPic}
+                      className="header-profile-photo"
+                      alt="user-profile-pic"
+                    />
+                  ) : (
+                    <i className="fas fa-user-edit"></i>
+                  )}
                 </div>
               </div>
             ) : null}
@@ -117,6 +159,18 @@ function Navbar({ onLogout }) {
               )
             ) : null}
           </div>
+        </div>
+      </div>
+
+      <div id="dmPopup" className="hidePopup dmPopup">
+        <div className="popup_inner">
+          {status === 1 && (
+            <Profile
+              key="profileUploader"
+              registerPhotoToDB={registerPhotoToDB}
+              closeDMPopup={closeDMPopup}
+            />
+          )}
         </div>
       </div>
     </nav>

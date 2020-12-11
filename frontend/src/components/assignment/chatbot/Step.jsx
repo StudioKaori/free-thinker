@@ -33,7 +33,7 @@ export default function Step(props) {
         }
 
         update(newStep, newStep.id)
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [message, numberOfSteps])
 
     return (

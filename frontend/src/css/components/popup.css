@@ -1,0 +1,36 @@
+.dmPopup {
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.popup_inner {
+  z-index: 100;
+  text-align: center;
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  margin: auto;
+  background-color: var(--accent-color-green);
+  border-radius: 10px;
+  padding: 20px;
+}
+.showPopup {
+  display: block;
+}
+
+.hidePopup {
+  display: none;
+}
+.profile-img-preview {
+  height: 50px;
+  width: auto;
+}

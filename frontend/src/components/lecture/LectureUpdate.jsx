@@ -15,7 +15,7 @@ function LectureUpdate({ lecture, oldLecture, onUpdateClick }) {
 
 
     const handleOnChange =(e, editor) => {
-        console.log(editor.getData());
+        //console.log(editor.getData());
         const data= editor.getData()
         setBody(data)
     }
@@ -76,9 +76,9 @@ function LectureUpdate({ lecture, oldLecture, onUpdateClick }) {
                 <button className="btn btn-primary" onClick={() => onUpdateClick({ ...oldLecture, title, body, unlockDate, unlockTime, youtube })}>
                     Update
                 </button>
-                <button className="btn btn-primary m-2" onClick={() => onUpdateClick({ ...oldLecture})}>
+                {/*<button className="btn btn-primary m-2" onClick={() => onUpdateClick({ ...oldLecture})}>
                     Cancel
-                </button>
+                </button>*/} 
             </div>
         </div>
     );

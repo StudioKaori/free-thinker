@@ -156,6 +156,7 @@
   }
 
   .header-profile-photo-container {
+    cursor: pointer;
     display: inline;
   }
 }

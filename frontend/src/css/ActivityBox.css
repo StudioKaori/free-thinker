@@ -1,0 +1,17 @@
+.activity-card {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  align-items: center;
+  margin: 3px 5px 3px 5px;
+  padding: 5px;
+}
+
+.activity-card-body {
+  padding: 0;
+}
+
+.logo {
+  height: 30px;
+  width: auto;
+  margin-left: 15px;
+}

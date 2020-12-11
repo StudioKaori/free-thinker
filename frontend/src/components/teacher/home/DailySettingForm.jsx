@@ -67,7 +67,7 @@ export default function DailySettingForm({ onClickPreview }) {
 
   return (
     <div>
-      <h4 className="card-title">{date} Classroom Setting</h4>
+      {/* <h4 className="card-title">{date} Classroom Setting</h4> */}
       <div className="dropdown">
         <button
           className="btn btn-secondary dropdown-toggle"
@@ -82,14 +82,11 @@ export default function DailySettingForm({ onClickPreview }) {
         <div className="dropdown-menu" aria-labelledby="island-selector">
           <ul className="react-dropdown-list">{islandsList}</ul>
         </div>
-      </div>
-
-      <div>
         <button
           className="btn btn-info"
           onClick={() => {
             setIslandThemeOnDb();
-            onClickPreview(islandTheme);
+            // onClickPreview(islandTheme);
           }}
         >
           Set theme
