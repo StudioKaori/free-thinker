@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import LectureApi from "../../../api/LectureApi";
 import ReactHtmlParser from "react-html-parser";
 import moment from "moment";
-import Schedule from "../home/schedule/Schedule";
 
 import "../../../css/student/lecture.css";
 
@@ -55,10 +54,8 @@ export default function LecturePage({ match }) {
             ></iframe>
           </div>
 
-          <div>{ReactHtmlParser(lecture.body)}</div>
-
-          <div className="student-home-schedule-wrapper">
-            <Schedule />
+          <div className="lecture-details">
+            <div className="lecture-text">{ReactHtmlParser(lecture.body)}</div>
           </div>
         </div>
       )}
