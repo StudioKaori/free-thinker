@@ -10,6 +10,10 @@ body {
   font-size: var(--font-M);
   margin: 0;
   background-color: var(--color-bg);
+  background-image: url("../assets/img/common/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 h1,

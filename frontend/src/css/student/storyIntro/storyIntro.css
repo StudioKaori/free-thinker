@@ -1,0 +1,106 @@
+.story-inner-box {
+  background-color: black;
+  color: var(--accent-color-green);
+  font-family: "Sigmar One", cursive;
+  font-size: var(--font-XL);
+  position: relative;
+}
+
+.storyIntroElement {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+:root {
+  --animate-delay: 10s;
+}
+
+.fadeIn {
+  animation: fadeInFrames 5s;
+  /* animation-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1); */
+  opacity: 0;
+}
+
+@keyframes fadeInFrames {
+  0% {
+    opacity: 0;
+    top: 30px;
+  }
+
+  10% {
+    opacity: 1;
+    top: 0;
+  }
+
+  90% {
+    opacity: 1;
+    top: 0;
+  }
+
+  100% {
+    opacity: 0;
+    top: -30px;
+  }
+}
+
+.bounce {
+  animation: bounceKey 0.3s ease infinite alternate;
+}
+
+@keyframes bounceKey {
+  0% {
+    top: 0;
+  }
+  90% {
+    top: 0;
+  }
+  92% {
+    top: 0;
+  }
+  96% {
+    top: 0;
+  }
+  99% {
+    top: 0;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+.storyIntro div:nth-child(1) {
+  animation-delay: 0;
+}
+
+.storyIntro div:nth-child(2) {
+  animation-delay: 5s;
+}
+
+.storyIntro div:nth-child(3) {
+  animation-delay: 10s;
+}
+
+.storyIntro div:nth-child(4) {
+  animation-delay: 15s;
+}
+
+.storyIntro div:nth-child(5) {
+  animation-delay: 20s;
+}
+
+.storyIntro div:nth-child(6) {
+  animation-delay: 25s;
+}
+
+.storyIntro div:nth-child(7) {
+  animation-delay: 30s;
+}
+.storyIntro div:nth-child(8) {
+  animation-delay: 35s;
+}
