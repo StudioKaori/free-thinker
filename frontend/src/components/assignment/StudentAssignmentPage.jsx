@@ -16,8 +16,6 @@ export default function StudentAssignmentPage({ match }) {
     const [end, setEnd] = useState(false); // Check for assignment completion
     const [user] = useRecoilState(userState);
 
-    console.log(assignment)
-
     useEffect(() => {
       AssignmentApi.getAssignmentById(assignmentId).then((res) => {
         setAssignment(res.data);
