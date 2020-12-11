@@ -50,20 +50,20 @@
 }
 
 @media (min-width: 550px) {
-  .student-home-map-wrapper {
+  /* .student-home-map-wrapper {
     width: 550px;
     height: 530px;
     position: relative;
     margin: auto;
-  }
+  } */
 
-  .student-home-map-island {
+  /* .student-home-map-island {
     position: absolute;
     width: 100%;
     height: auto;
-    top: 62px;
-    left: 95px;
-  }
+    top: 100px;
+    left: 0;
+  } */
 
   .map-icon {
     width: 50px;
@@ -81,8 +81,8 @@
 
   .student-home-map-date-wrapper {
     position: absolute;
-    top: 0;
-    left: 520px;
+    top: 350px;
+    left: 0;
     width: 280px;
     height: 130px;
   }
@@ -96,9 +96,9 @@
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
-    width: 650px;
+    width: 600px;
     height: 480px;
-    top: 90px;
-    left: 170px;
+    top: 100px;
+    left: 0;
   }
 }

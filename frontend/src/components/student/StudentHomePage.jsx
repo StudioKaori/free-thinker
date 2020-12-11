@@ -17,7 +17,7 @@ export default function StudentHomePage() {
     <div>
       <Map />
 
-      <div id="popupWindow" className="popupWindow">
+      <div id="popupWindow" className="popupWindow hidePopup">
         <div className="popup_inner popup_inner_L story-inner-box">
           <StoryIntro key="storyIntro" />
         </div>
