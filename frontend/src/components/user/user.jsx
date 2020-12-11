@@ -6,7 +6,6 @@ import { Switch, Route, useRouteMatch } from "react-router-dom";
 import LectureStudentPage from "../lecture/LectureStudentPage";
 
 // Pages
-import LectureStudentPage from "../lecture/LectureStudentPage";
 import StudentHomePage from "../student/StudentHomePage";
 import TeacherHomePage from "../teacher/TeacherHomePage";
 import TeacherAssignmentPage from "../assignment/TeacherAssignmentPage";
