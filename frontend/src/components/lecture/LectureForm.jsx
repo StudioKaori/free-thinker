@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
+import moment from 'moment';
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import PopUpMsg from "../assignment/PopUpMsg";
 import moment from "moment";
