@@ -1,9 +1,11 @@
 package se.kth.sda.freethinker.assignments;
 
 import se.kth.sda.freethinker.lecture.Lecture;
+import se.kth.sda.freethinker.user.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.*;
 
 
 @Entity
@@ -30,7 +32,8 @@ public class Assignment {
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime unlockTime;
 
-    private Boolean isDone;
+    @ManyToMany
+    private List<User> isDoneByUser = new ArrayList<>();
 
     public Assignment() {
 
@@ -40,7 +43,6 @@ public class Assignment {
         this.id = id;
         this.type = type;
         this.assignment = assignment;
-        this.isDone = false;
     }
 
     public Long getId() {
@@ -101,11 +103,11 @@ public class Assignment {
         this.unlockTime = unlockTime;
     }
 
-    public Boolean getIsDone() {
-        return isDone;
+    public List<User> getIsDoneByUser() {
+        return isDoneByUser;
     }
     
-    public void setIsDone(Boolean isDone) {
-        this.isDone = isDone;
+    public void setIsDoneByUser(List<User> isDoneByUser) {
+        this.isDoneByUser = isDoneByUser;
     }
 }
