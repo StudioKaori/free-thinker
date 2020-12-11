@@ -5,15 +5,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-<<<<<<< HEAD
-
-=======
 import PopUpMsg from "../assignment/PopUpMsg";
 
 import 'react-datepicker/dist/react-datepicker.css';
 
 export default function LectureForm({ isOpen, onCreateClick, dateFromCalDate }) {
->>>>>>> b4931a34b23de520c173c8989c3e6166a425542f
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
