@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import AssignmentApi from '../../../api/AssignmentApi';
 
 import CreateQuizForm from './CreateQuizForm';
 
 import Button from '../atoms/Button';
 
 // Entry point for Quiz creation
-export default function CreateQuiz({close, setDisplayPopUp, setDisplayError}) {
+export default function CreateQuiz({close, setDisplayPopUp, setDisplayError, 
+    assignmentObj ,setAssignmentObj}) {
 
     const [newQuiz, setNewQuiz ] = useState({});
 
@@ -33,19 +33,18 @@ export default function CreateQuiz({close, setDisplayPopUp, setDisplayError}) {
             return; 
         } // Cancel if not ok
         
-        const newAssignment = {
-            type: 'Quiz',
-            assignment : JSON.stringify(newQuiz),
-        }
-        AssignmentApi.createAssignment(newAssignment)
-            .then(() => {
-                setDisplayPopUp(true);
-                setTimeout(() => {
-                    setDisplayPopUp(false);
-                }, 1000)
+        const newObj = {...assignmentObj}
+        newObj.type = "Quiz";
+        newObj.assignment = JSON.stringify(newQuiz);
 
-                close();
-            })
+        setAssignmentObj(newObj);
+
+        setDisplayPopUp(true);
+        setTimeout(() => {
+            setDisplayPopUp(false);
+        }, 2000)
+
+        close();
     }
 
     return (

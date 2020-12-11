@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import AssignmentApi from '../../api/AssignmentApi'
 
 import Button from './atoms/Button';
 import CreateChat from './chatbot/CreateChat';
 import CreateSpeech from './speech/CreateSpeech';
 import CreateQuiz from './quiz/CreateQuiz';
 import PopUpMsg from "./PopUpMsg";
+import AssignmentCreateForm from  "./assignCreate/AssignCreateForm"
 
 // Create assignment Page for teacher
 export default function TeacherAssignmentPage() {
@@ -16,10 +18,39 @@ export default function TeacherAssignmentPage() {
     const [displayPopUp, setDisplayPopUp] = useState(false);
     const [displayError, setDisplayError] = useState(false);
 
+    const [assignmentObj, setAssignmentObj] = useState({});
+    const [resetFields, setResetFields] = useState(false);
+
+    const onCreateClick = () => {
+
+        if (typeof assignmentObj.assignment === 'undefined' ) {
+            setDisplayError(true);
+            setTimeout(() => {
+                setDisplayError(false);
+            }, 1000)
+            return;
+        }
+
+        console.log(assignmentObj)
+        AssignmentApi.createAssignment(assignmentObj)
+            .then(() => {
+                setDisplayPopUp(true);
+                setTimeout(() => {
+                    setDisplayPopUp(false);
+                }, 1000)
+
+                setAssignmentObj({})
+                setResetFields(true);
+            })
+    }
+
     return (
         <div className="bg-light p-2">
 
-            <h3 className="text-center">Create a new Assignment</h3>
+            <AssignmentCreateForm 
+                assignmentObj={assignmentObj} setAssignmentObj={setAssignmentObj} 
+                setResetFields={setResetFields} resetFields={resetFields}
+            />
 
             <div className="d-flex justify-content-center mt-3">
                 <Button 
@@ -55,20 +86,32 @@ export default function TeacherAssignmentPage() {
                 {createChatIsOpen && 
                     <CreateChat 
                         close={() => setCreateChatIsOpen(false)} 
-                        setDisplayPopUp={setDisplayPopUp} setDisplayError={setDisplayError}
+                        setDisplayError={setDisplayError} setDisplayPopUp={setDisplayPopUp}
+                        assignmentObj={assignmentObj} setAssignmentObj={setAssignmentObj}
                     /> }
                 {createSpeechIsOpen && 
                     <CreateSpeech 
                         close={() => setCreateSpeechIsOpen(false)} 
-                        setDisplayPopUp={setDisplayPopUp} setDisplayError={setDisplayError}
+                        setDisplayError={setDisplayError} setDisplayPopUp={setDisplayPopUp}
+                        assignmentObj={assignmentObj}  setAssignmentObj={setAssignmentObj}
                     /> }
                 {createQuizIsOpen && 
                     <CreateQuiz 
                         close={() => setCreateQuizIsOpen(false)} 
-                        setDisplayPopUp={setDisplayPopUp} setDisplayError={setDisplayError}
+                        setDisplayError={setDisplayError} setDisplayPopUp={setDisplayPopUp}
+                        assignmentObj={assignmentObj}  setAssignmentObj={setAssignmentObj}
                     /> }
                 {uploadFileIsOpen && <div>Not ready yet</div>}
             </div>
+
+            <button
+              id="assignCreateButtonInAssignForm"
+              className="btn btn-info"
+              onClick={() => onCreateClick()}
+            >
+              Create
+            </button>
+
 
             {displayPopUp && <PopUpMsg type="success" message="Succesfully saved"/>}
             {displayError && <PopUpMsg type="error" message="Something is Missing"/>}
