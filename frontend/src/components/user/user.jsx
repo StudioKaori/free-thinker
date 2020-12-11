@@ -5,7 +5,7 @@ import { Switch, Route, useRouteMatch } from "react-router-dom";
 import AssignmentApi from "../../api/AssignmentApi";
 import LectureApi from "../../api/LectureApi";
 import LectureStudentPage from "../lecture/LectureStudentPage";
-
+import AssignmentCreateForm from  "../assignment/assignCreate/AssignCreateForm"
 // Pages
 import StudentHomePage from "../student/StudentHomePage";
 import TeacherHomePage from "../teacher/TeacherHomePage";
@@ -45,6 +45,7 @@ export default function User() {
               <LecturePage />
             </Route>
             <Route path={path + "create-assignment"}>
+              <AssignmentCreateForm />
               <TeacherAssignmentPage />
             </Route>
             <Route
@@ -63,7 +64,8 @@ export default function User() {
               render={(match) => <StudentLecture match={match} />}
             />
             <Route path={path}>
-              <TeacherHomePage />
+               <TeacherHomePage /> 
+
             </Route>
           </Switch>
         ) : (
