@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import LectureApi from "../../../api/LectureApi";
 import ReactHtmlParser from "react-html-parser";
+import moment from "moment";
 
 import "../../../css/student/lecture.css";
 
@@ -34,6 +35,13 @@ export default function LecturePage({ match }) {
     <div className="body-wrapper">
       {status === 1 && (
         <div>
+          <div className="lecture-title-wrapper">
+            <h2>
+              <i className="fas fa-glasses"></i> {lecture.title}{" "}
+              <i className="fas fa-glasses"></i>
+            </h2>
+            {moment(lecture.unlockTime).format("YYYY-MM-DD HH:mm")}
+          </div>
           <div className="youtube-wrapper">
             <iframe
               title="youtube"
@@ -45,8 +53,10 @@ export default function LecturePage({ match }) {
               allowfullscreen
             ></iframe>
           </div>
-          <h2>{lecture.title}</h2>
-          {ReactHtmlParser(lecture.body)}
+
+          <div className="lecture-details">
+            <div className="lecture-text">{ReactHtmlParser(lecture.body)}</div>
+          </div>
         </div>
       )}
     </div>

@@ -1,9 +1,5 @@
 @import url("./map.css");
 
-.student-home-map-wrapper {
-  background-color: var(--color-sea);
-}
-
 .student-home-map {
   width: auto;
   margin: auto;

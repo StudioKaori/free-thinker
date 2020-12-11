@@ -1,6 +1,6 @@
 import FileUploader from "../common/FileUploader";
 
-export default function Profile({ registerPhotoToDB, closeDMPopup }) {
+export default function Profile({ registerPhotoToDB, closePopupWindow }) {
   return (
     <div className="form-group">
       <br />
@@ -8,7 +8,7 @@ export default function Profile({ registerPhotoToDB, closeDMPopup }) {
       <FileUploader registerPhotoToDB={registerPhotoToDB} />
       <br />
       <br />
-      <button className="btn btn-info" onClick={closeDMPopup}>
+      <button className="btn btn-info" onClick={closePopupWindow}>
         CLOSE
       </button>
     </div>

@@ -1,10 +1,6 @@
-
-
 import ReactDatePicker from "react-datepicker";
 
 import React, { useEffect, useRef, useState } from "react";
-
-
 
 import { useRecoilState } from "recoil";
 import { recent } from "../teacher/home_page/State";
@@ -25,16 +21,19 @@ function LecturePage({ dateFromCal }) {
   const [lectures, setLectures] = useState([]);
 
   // const [activity, setActivity] = useRecoilState(recent);
-  
 
   const createLecture = (lectureData) => {
-    //console.log("lectureData", lectureData);
+
     let sqlLectureData = {};
     sqlLectureData.title = lectureData.title;
     sqlLectureData.body = lectureData.body;
 
     sqlLectureData.unlockTime =
-      moment(lectureData.unlockDate).format("YYYY-MM-DD") + "T" + lectureData.unlockTime + ":00.0";
+      moment(lectureData.unlockDate).format("YYYY-MM-DD") +
+      "T" +
+      lectureData.unlockTime +
+      ":00.0";
+    
     sqlLectureData.youtubeUrl = lectureData.youtube.replace(
       "https://www.youtube.com/watch?v=",
       ""
@@ -45,6 +44,7 @@ function LecturePage({ dateFromCal }) {
       .replace("v=", "");
 
     Api.post("/lectures", sqlLectureData).then((res) => {
+
       setIsOpen(true);
       setTimeout(()=> {
         setIsOpen(false);
@@ -58,6 +58,7 @@ function LecturePage({ dateFromCal }) {
 
   const getAll = () => {
     Api.get("/lectures").then((res) => {
+
       setLectures(res.data.sort((a,b) => b.id - a.id));
   });
 };
@@ -79,6 +80,8 @@ const updateLecture = (updatedLecture) => {
   getAll([]));
 };
 
+    Api.put("/lectures/", sqlLectureData).then((r) => getAll([]));
+  };
 
   const deleteLecture = (lecture) => {
     Api.delete("/lectures/" + lecture.id).then((r) => getAll());
@@ -88,8 +91,6 @@ const updateLecture = (updatedLecture) => {
     getAll();
   }, []);
 
- 
-  
   return (
     <div className="body-wrapper">
       <LectureForm
@@ -110,6 +111,5 @@ const updateLecture = (updatedLecture) => {
     </div>
   );
 }
- 
 
 export default LecturePage;
