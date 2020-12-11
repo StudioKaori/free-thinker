@@ -149,7 +149,8 @@
   }
 
   .header-menu-logo-icon {
-    height: 45px;
+    height: 42px;
+    width: auto;
   }
 
   .header-profile-photo-name {

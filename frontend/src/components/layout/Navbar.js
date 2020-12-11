@@ -62,15 +62,13 @@ function Navbar({ onLogout }) {
           <div className="header-menu-logo">
             <h1>
               <Link to="/">
-                F<span>R</span>E<span>E</span> T<span>H</span>I<span>N</span>K
-                <span>E</span>R
+                <img
+                  src="/assets/img/logo.svg"
+                  alt="Free Thinker"
+                  className="header-menu-logo-icon"
+                />
               </Link>
             </h1>
-            <img
-              src={LogoIcon}
-              alt="Free Thinker"
-              className="header-menu-logo-icon"
-            />
           </div>
 
           <div className="header-profile-photo-wrapper">
