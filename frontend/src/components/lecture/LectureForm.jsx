@@ -1,18 +1,13 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
-import moment from "moment";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-
-
+import PopUpMsg from "../assignment/PopUpMsg";
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-
-
-export default function LectureForm({ onCreateClick, dateFromCalDate }) {
+export default function LectureForm({ isOpen, onCreateClick, dateFromCalDate }) {
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -94,10 +89,6 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
             </div>
             </div>
             
-
-
-
-
           <div className="form-group">
             <label>Unlock Time:</label>
             <input
@@ -145,6 +136,7 @@ export default function LectureForm({ onCreateClick, dateFromCalDate }) {
             >
               Create
             </button>
+            {isOpen && <PopUpMsg type="success" message="lecture has been created" />}
           </div>
         </div>
       </div>
