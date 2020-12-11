@@ -12,6 +12,7 @@ import LectureForm from "./LectureForm";
 
 function LecturePage({ dateFromCal }) {
   const dateFromCalDate = useRef("");
+  const[isOpen, setIsOpen] = useState(false);
 
   if (typeof dateFromCal !== "undefined") {
     dateFromCalDate.current = dateFromCal.match.params.date;
@@ -22,6 +23,7 @@ function LecturePage({ dateFromCal }) {
   // const [activity, setActivity] = useRecoilState(recent);
 
   const createLecture = (lectureData) => {
+
     let sqlLectureData = {};
     sqlLectureData.title = lectureData.title;
     sqlLectureData.body = lectureData.body;
@@ -31,7 +33,7 @@ function LecturePage({ dateFromCal }) {
       "T" +
       lectureData.unlockTime +
       ":00.0";
-
+    
     sqlLectureData.youtubeUrl = lectureData.youtube.replace(
       "https://www.youtube.com/watch?v=",
       ""
@@ -42,34 +44,41 @@ function LecturePage({ dateFromCal }) {
       .replace("v=", "");
 
     Api.post("/lectures", sqlLectureData).then((res) => {
-      setLectures([res.data, ...lectures]);
-      const temp =
-        JSON.parse(window.localStorage.getItem("recent-activity")) || [];
-      window.localStorage.setItem(
-        "recent-activity",
-        JSON.stringify(temp.concat(res.data))
-      );
+
+      setIsOpen(true);
+      setTimeout(()=> {
+        setIsOpen(false);
+         }, 1000)
+
+      setLectures([res.data, ...lectures])
+      const temp = JSON.parse(window.localStorage.getItem('recent-activity')) || [];
+      window.localStorage.setItem('recent-activity', JSON.stringify(temp.concat(res.data)));
     });
   };
 
   const getAll = () => {
     Api.get("/lectures").then((res) => {
-      setLectures(res.data.sort((a, b) => b.id - a.id));
-    });
-  };
 
-  const updateLecture = (updatedLecture) => {
-    let sqlLectureData = {};
-    sqlLectureData.id = updatedLecture.id;
-    sqlLectureData.title = updatedLecture.title;
-    sqlLectureData.body = updatedLecture.body;
-    sqlLectureData.unlockTime =
-      updatedLecture.unlockDate + "T" + updatedLecture.unlockTime + ":00.0";
-    sqlLectureData.youtubeUrl = updatedLecture.youtube
-      .match(/[v][=][A-Za-z1-9]+/g)[0]
-      .replace("v=", "");
+      setLectures(res.data.sort((a,b) => b.id - a.id));
+  });
+};
 
-    console.log("update", sqlLectureData);
+const updateLecture = (updatedLecture) => {
+  let sqlLectureData = {};
+  sqlLectureData.id = updatedLecture.id;
+  sqlLectureData.title = updatedLecture.title;
+  sqlLectureData.body = updatedLecture.body;
+  sqlLectureData.unlockTime = 
+  updatedLecture.unlockDate + "T" + updatedLecture.unlockTime + ":00.0";
+  sqlLectureData.youtubeUrl = updatedLecture.youtube
+  .match(/[v][=][A-Za-z1-9]+/g)[0]
+  .replace("v=", "");
+
+  //console.log("update", sqlLectureData);
+  
+  Api.put("/lectures/", sqlLectureData).then((r) => 
+  getAll([]));
+};
 
     Api.put("/lectures/", sqlLectureData).then((r) => getAll([]));
   };
@@ -87,6 +96,8 @@ function LecturePage({ dateFromCal }) {
       <LectureForm
         onCreateClick={createLecture}
         dateFromCalDate={dateFromCalDate}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
       />
 
       {lectures.map((lecture) => (

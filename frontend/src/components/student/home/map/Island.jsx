@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import AssignmentApi from "../../../../api/AssignmentApi";
+import { useRecoilState } from "recoil";
+import { userState } from "../../../../js/state-information";
 
 import moment from "moment";
 import ClassDailySettingApi from "../../../../api/ClassDailySettingsApi";
@@ -12,6 +14,7 @@ export default function Island() {
   const [islandTheme, setIslandTheme] = useState("island-green");
   const [date] = useState(moment().format("yyyy-MM-DD"));
   const [status, setStatus] = useState(0);
+  const [user] = useRecoilState(userState);
 
   // island theme
   const getIslandTheme = () => {
@@ -72,6 +75,11 @@ export default function Island() {
           const className = "island-icon-position island-lock-" + index;
           const linkUrl = "/assignment/" + assignment.id;
           const uniqueKey = "assignment-icon" + assignment.id;
+
+          // This const "done" return true If assignment is done for that student / false if not
+          const done = assignment.isDoneByUser.filter(usr => usr.id === user[0].id).length > 0;
+        //   console.log( 'Assignement with id', assignment.id, 
+        //     done ? "has be done" : "is not done", 'by user', user[0].name);
 
           return (
             <div className={className}>

@@ -1,10 +1,12 @@
 package se.kth.sda.freethinker.user;
 
 import org.hibernate.validator.constraints.Length;
+import se.kth.sda.freethinker.assignments.Assignment;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.util.*;
 
 @Entity
 @Table(name = "account")
@@ -31,6 +33,9 @@ public class User {
     private String userType;
 
     private String userPic;
+
+    @ManyToMany
+    private List<Assignment> assignmentsDone = new ArrayList<>();
 
     // Hibernate needs a default constructor to function
     public User() {
