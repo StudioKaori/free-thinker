@@ -5,7 +5,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import moment from 'moment';
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import PopUpMsg from "../assignment/PopUpMsg";
-import moment from "moment";
+
 
 import 'react-datepicker/dist/react-datepicker.css';
 
