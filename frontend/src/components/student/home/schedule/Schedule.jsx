@@ -29,7 +29,7 @@ export default function Schedule() {
   return (
     <div className="student-home-schedule-wrapper">
       <div className="student-home-schedule-wrapper">
-        <img src="assets/img/css/lecture-bg.svg" />
+        <img src="/assets/img/css/lecture-bg.svg" />
       </div>
       <div className="student-home-schedule">
         <h6>LECTURE</h6>
