@@ -68,12 +68,10 @@ export default function LectureCalendar() {
   };
 
   const openCreateLecturePage = (event) => {
-    console.log("event", event);
     const url = "/create-lecture-from-cal/" + event.start;
     var win = window.open(url, "_blank");
     win.focus();
   };
-  console.log("moment", moment("12/10/2020").format("YYYY-MM-DD"));
 
   return (
     <div>

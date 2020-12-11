@@ -2,33 +2,22 @@ import React, { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { userState } from "../../js/state-information";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
-import AssignmentApi from "../../api/AssignmentApi";
-import LectureApi from "../../api/LectureApi";
+
 import LectureStudentPage from "../lecture/LectureStudentPage";
-import AssignmentCreateForm from  "../assignment/assignCreate/AssignCreateForm"
+
 // Pages
 import StudentHomePage from "../student/StudentHomePage";
 import TeacherHomePage from "../teacher/TeacherHomePage";
-import LecturePage from "../lecture/LecturePage";
 import TeacherAssignmentPage from "../assignment/TeacherAssignmentPage";
+import LecturePage from "../lecture/LecturePage";
 import StudentAssignmentPage from "../assignment/StudentAssignmentPage";
 import StudentLecture from "../student/lecture/LecturePage";
+import TeacherDailySettings from "../teacher/TeacherDailySetting";
 
 export default function User() {
   const { path } = useRouteMatch();
   const [status, setStatus] = useState(0);
   const [user] = useRecoilState(userState);
-  const [assignments, setAssignments] = useState([]);
-  const [lectures, setLectures] = useState([]);
-
-  useEffect(() => {
-    AssignmentApi.getAllAssignments().then((res) => {
-      setAssignments(res.data);
-    });
-    LectureApi.getAllLectures().then((res) => {
-      setLectures(res.data);
-    });
-  }, []);
 
   useEffect(() => {
     if (user.length !== 0) {
@@ -45,8 +34,10 @@ export default function User() {
               <LecturePage />
             </Route>
             <Route path={path + "create-assignment"}>
-              <AssignmentCreateForm />
               <TeacherAssignmentPage />
+            </Route>
+            <Route path={path + "daily-settings"}>
+              <TeacherDailySettings />
             </Route>
             <Route
               path="/create-lecture-from-cal/:date"

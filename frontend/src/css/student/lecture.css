@@ -1,3 +1,17 @@
+.lecture-title-wrapper {
+  margin: 50px auto;
+  text-align: center;
+  width: 100%;
+  color: var(--accent-color-brown);
+}
+
+.lecture-title-wrapper h2 {
+  font-size: var(--font-XL);
+  text-transform: uppercase;
+}
+.lecture-title-wrapper h2 i {
+  color: var(--accent-color-yellow);
+}
 .youtube-wrapper {
   width: 100%;
   height: 0;
@@ -6,10 +20,26 @@
   overflow: hidden;
 }
 
+.youtube-wrapper {
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
 .youtube-wrapper iframe {
   position: absolute;
   top: 0;
   left: 0;
   width: 100% !important;
   height: 100% !important;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.lecture-details {
+  display: flex;
+}
+.lecture-text {
+  border-radius: 30px;
+  margin: 30px auto;
+  background-color: #ffffffb0;
+  color: var(--accent-color-brown);
+  padding: 40px;
 }

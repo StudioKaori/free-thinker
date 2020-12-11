@@ -1,3 +1,13 @@
+.lecture-calendar-wrapper {
+  background-color: #ffffff;
+  border-radius: 30px;
+}
+
+.rbc-calendar {
+  width: 600px;
+  margin: 50px auto;
+}
+
 .rbc-day-slot .rbc-events-container {
   cursor: pointer;
 }

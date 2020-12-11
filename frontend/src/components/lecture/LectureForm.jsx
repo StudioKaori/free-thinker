@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
+import moment from 'moment';
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import PopUpMsg from "../assignment/PopUpMsg";
 
-import 'react-datepicker/dist/react-datepicker.css';
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function LectureForm({ isOpen, onCreateClick, dateFromCalDate }) {
 
@@ -32,11 +33,11 @@ export default function LectureForm({ isOpen, onCreateClick, dateFromCalDate }) 
   const [youtube, setYoutube] = useState("");
 
   // unlock date
-  const [unlockDate, setUnlockDate] = useState(
+  const initialUnlockDate =
     dateFromCalDate.current === ""
       ? ""
-      : moment(dateFromCalDate.current).format("YYYY-MM-DD")
-  );
+      : moment(dateFromCalDate.current).format("YYYY-MM-DD");
+  const [unlockDate, setUnlockDate] = useState(initialUnlockDate);
   const [unlockTime, setUnlockTime] = useState(
     dateFromCalDate.current === ""
       ? ""
@@ -65,7 +66,7 @@ export default function LectureForm({ isOpen, onCreateClick, dateFromCalDate }) 
 
           <div className="form-group">
             <label>Unlock Date:</label>
-             {/* <input
+            {/* <input
               id="lectureDateInLectureForm"
               type="text"
               className="form-control"
@@ -78,17 +79,17 @@ export default function LectureForm({ isOpen, onCreateClick, dateFromCalDate }) 
           </div>
 
             /> */}
-          <div>
-          <DatePicker
-            id="lectureDateInLectureForm"
-            className="form-control"
-            selected={unlockDate}
-            dateFormat='yyyy-MM-dd'
-            onChange={(e) => setUnlockDate(e)}
-             />
+            <div>
+              <DatePicker
+                id="lectureDateInLectureForm"
+                className="form-control"
+                selected={unlockDate}
+                dateFormat="yyyy-MM-dd"
+                onChange={(e) => setUnlockDate(e)}
+              />
             </div>
-            </div>
-            
+          </div>
+
           <div className="form-group">
             <label>Unlock Time:</label>
             <input
@@ -130,8 +131,9 @@ export default function LectureForm({ isOpen, onCreateClick, dateFromCalDate }) 
                 setUnlockDate("");
                 setUnlockTime("");
                 setYoutube("");
-                document.getElementsByClassName("ck-content")[0].childNodes[0].innerHTML = '';
-
+                document.getElementsByClassName(
+                  "ck-content"
+                )[0].childNodes[0].innerHTML = "";
               }}
             >
               Create

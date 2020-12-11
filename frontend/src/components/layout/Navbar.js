@@ -5,7 +5,9 @@ import LogoIcon from "../../assets/img/components/navbar/logo-icon.png";
 import Profile from "../layout/Profile";
 import UserApi from "../../api/UserApi";
 
-import "../../css/components/popup.css";
+// Popup
+import showPopupWindow from "../../js/common/popup/showPopupWindow";
+import closePopupWindow from "../../js/common/popup/closePopupWindow";
 
 // These two lines are to get user information and other shared statement
 import { useRecoilState } from "recoil";
@@ -18,7 +20,6 @@ function Navbar({ onLogout }) {
   // for user info
   const getUser = () => {
     Api.get("/user/loggedInUser").then((res) => {
-      console.log("data", res.data);
       setUser([res.data]);
     });
   };
@@ -43,21 +44,6 @@ function Navbar({ onLogout }) {
     document.getElementById("mySidenav").style.width = "0";
   }
 
-  // for dm
-
-  const showDMPopup = () => {
-    console.log("popup");
-    const dmPopup = document.getElementById("dmPopup");
-    dmPopup.classList.remove("hidePopup");
-    dmPopup.classList.add("showPopup");
-  };
-
-  const closeDMPopup = () => {
-    const dmPopup = document.getElementById("dmPopup");
-    dmPopup.classList.remove("showPopup");
-    dmPopup.classList.add("hidePopup");
-  };
-
   const registerPhotoToDB = (fireBaseUrl) => {
     let updatedUser = {};
     updatedUser.id = user[0].id;
@@ -75,8 +61,10 @@ function Navbar({ onLogout }) {
         <div className="header-menu-wrapper">
           <div className="header-menu-logo">
             <h1>
-              F<span>R</span>E<span>E</span> T<span>H</span>I<span>N</span>K
-              <span>E</span>R
+              <Link to="/">
+                F<span>R</span>E<span>E</span> T<span>H</span>I<span>N</span>K
+                <span>E</span>R
+              </Link>
             </h1>
             <img
               src={LogoIcon}
@@ -94,7 +82,7 @@ function Navbar({ onLogout }) {
                 </div>
                 <div
                   className="header-profile-photo-container"
-                  onClick={() => showDMPopup()}
+                  onClick={() => showPopupWindow()}
                 >
                   {status === 1 && user[0].userPic !== null ? (
                     <img
@@ -130,6 +118,9 @@ function Navbar({ onLogout }) {
                   </li>
                   {/* Add Teacher menu here */}
                   <li onClick={() => closeNav()}>
+                    <Link to="/daily-settings">Daily Settings</Link>
+                  </li>
+                  <li onClick={() => closeNav()}>
                     <Link to="/create-lecture">Create Lecture</Link>
                   </li>
                   <li onClick={() => closeNav()}>
@@ -162,13 +153,13 @@ function Navbar({ onLogout }) {
         </div>
       </div>
 
-      <div id="dmPopup" className="hidePopup dmPopup">
+      <div id="popupWindow" className="hidePopup popupWindow">
         <div className="popup_inner">
           {status === 1 && (
             <Profile
               key="profileUploader"
               registerPhotoToDB={registerPhotoToDB}
-              closeDMPopup={closeDMPopup}
+              closePopupWindow={closePopupWindow}
             />
           )}
         </div>

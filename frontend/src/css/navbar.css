@@ -1,6 +1,7 @@
 .header-menu-bg {
-  background-color: #8b6e5e;
+  background-color: var(--color-bg);
   padding: 10px 10px;
+  box-shadow: 0 5px 10px 0 #9191918c;
 }
 
 .header-menu-wrapper {
@@ -33,6 +34,11 @@
   display: inline-block;
   color: var(--accent-color-green);
   vertical-align: middle;
+}
+
+.header-menu-logo h1 a {
+  color: var(--accent-color-green);
+  text-decoration: none;
 }
 
 .header-menu-logo h1 span {

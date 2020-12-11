@@ -1,11 +1,11 @@
 import { useState } from "react";
-import AssignmentApi from '../../../api/AssignmentApi';
 
 import Button from '../atoms/Button';
 import CreateChatForm from './CreateChatForm';
 
 // Entry point for Creating a chat - Teacher's side
-export default function CreateChat({close, setDisplayPopUp, setDisplayError}) {
+export default function CreateChat({close, assignmentObj ,setAssignmentObj, 
+    setDisplayPopUp, setDisplayError}) {
 
     const [newChat, setNewChat ] = useState({})
 
@@ -29,19 +29,18 @@ export default function CreateChat({close, setDisplayPopUp, setDisplayError}) {
             return; 
         } // Cancel if not ok
 
-        const newAssignment = {
-            type: 'Chat',
-            assignment : JSON.stringify(newChat),
-        }
-        AssignmentApi.createAssignment(newAssignment)
-            .then(() => {
-                setDisplayPopUp(true);
-                setTimeout(() => {
-                    setDisplayPopUp(false);
-                }, 1000)
+        const newObj = {...assignmentObj}
+        newObj.type = "Chat";
+        newObj.assignment = JSON.stringify(newChat);
 
-                close();
-            })
+        setAssignmentObj(newObj);
+
+        setDisplayPopUp(true);
+        setTimeout(() => {
+            setDisplayPopUp(false);
+        }, 2000)
+
+        close();
     }
 
     return (

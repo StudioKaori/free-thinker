@@ -1,11 +1,34 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
+import moment from "moment";
 
 
-export default function AssignCreateForm(onCreateClick) {
-    const [title, setTitle] = useState("");
+export default function AssignCreateForm({assignmentObj, setAssignmentObj, resetFields, setResetFields}) {
+    const [title, setTitle] = useState(assignmentObj.title);
     const [instruction, setInstruction] = useState("");
     const [unlockDate, setUnlockDate] = useState("");
     const [unlockTime, setUnlockTime] = useState("")
+
+    useEffect(() => {
+        const newObj = {...assignmentObj};
+        newObj.title = title;
+        newObj.instruction = instruction;
+        newObj.unlockTime = moment(unlockDate).format("YYYY-MM-DD") + "T" + unlockTime + ":00.0";
+
+        setAssignmentObj(newObj);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [title, instruction, unlockDate, unlockTime])
+
+    useEffect(() => {
+        if (resetFields) {
+            setTitle('');
+            setInstruction('');
+            setUnlockDate('');
+            setUnlockTime('');
+            setResetFields(false)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [resetFields])
    
   return (
     <div className="body-wrapper">
@@ -18,7 +41,7 @@ export default function AssignCreateForm(onCreateClick) {
               id="assignTitleInAssignForm"
               type="text"
               className="form-control"
-              placeholder="lecture title"
+              placeholder="Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
@@ -61,25 +84,7 @@ export default function AssignCreateForm(onCreateClick) {
               onChange={(e) => setUnlockTime(e.target.value)}
             />
           </div>
-          <div className="form-group">
-            <button
-              id="assignCreateButtonInAssignForm"
-              className="btn btn-info"
-              onClick={() => {
-                onCreateClick({ title, instruction,unlockDate, unlockTime });
-                setTitle("");
-                setInstruction("");
-                setUnlockDate("");
-                setUnlockTime("");
-                
-               
-            }}
-            >
-              Create
-            </button>
-          </div>
-
-          </div>
+        </div>
     </div>
   );
 }
