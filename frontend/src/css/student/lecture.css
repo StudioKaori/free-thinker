@@ -43,3 +43,24 @@
   color: var(--accent-color-brown);
   padding: 40px;
 }
+
+.lecture-details {
+  display: flex;
+}
+.lecture-text {
+  width: 100%;
+  border-radius: 30px;
+  margin: 30px auto;
+  background-color: #ffffffb0;
+  color: var(--accent-color-brown);
+  padding: 40px;
+  text-align: left;
+  font-size: var(--font-L);
+}
+
+.lecture-text-title {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px var(--accent-color-brown) solid;
+  margin-bottom: 20px;
+}
