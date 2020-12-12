@@ -15,13 +15,20 @@ export default function IslandIcon({ type, linkUrl, done, assignmentNum }) {
         </Link>
       );
     case "done":
-      return <img src="/assets/img/css/islands/icon-done.svg" alt="done" />;
+      return (
+        <img
+          src="/assets/img/css/islands/icon-done.svg"
+          className="island-icon"
+          alt="done"
+        />
+      );
 
     case "lock":
       return (
         <img
           src="/assets/img/css/islands/icon-lock.png"
           alt="locked assignment"
+          className="island-icon"
         />
       );
 
@@ -30,6 +37,7 @@ export default function IslandIcon({ type, linkUrl, done, assignmentNum }) {
         <img
           src="/assets/img/css/islands/icon-lock.png"
           alt="locked assignment"
+          className="island-icon"
         />
       );
   }

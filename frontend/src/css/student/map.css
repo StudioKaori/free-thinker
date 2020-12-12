@@ -49,6 +49,15 @@
   position: absolute;
 }
 
+.student-home-map-island-path {
+  display: none;
+}
+
+.island-icon-position img:hover {
+  width: 75px;
+  height: 75px;
+}
+
 @media (min-width: 550px) {
   /* .student-home-map-wrapper {
     width: 550px;
@@ -100,5 +109,12 @@
     height: 480px;
     top: 100px;
     left: 0;
+  }
+
+  .student-home-map-island-path {
+    display: block;
+    position: absolute;
+    top: 70px;
+    left: 80px;
   }
 }

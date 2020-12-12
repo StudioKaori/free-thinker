@@ -23,27 +23,9 @@ export default function Island() {
     });
   };
 
-  const fakesDates = [
-    // Waiting for release_dates coming directly with assignment
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 12, 1, 12, 30, 45),
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 12, 1, 12, 30, 45),
-  ]; // No more than 6 assignment for tests
-
   useEffect(() => {
     AssignmentApi.getAllAssignments().then((res) => {
-      const assignmentsPlusDate = [...res.data];
-      for (let i = 0; i < assignmentsPlusDate.length; i += 1) {
-        assignmentsPlusDate[i].release_date = fakesDates[i];
-      }
-      setAssignments(assignmentsPlusDate);
+      setAssignments([...res.data]);
     });
 
     // island theme
@@ -67,7 +49,14 @@ export default function Island() {
       className="student-home-map-island animate__animated animate__pulse animate__infinite	infinite animate__slower"
     >
       <div className="student-home-map-island-spaceholder">
-        <img src={SpaceHolder} alt="island" />
+        <img
+          src="/assets/img/css/islands/island-spaceholder.gif"
+          alt="island"
+        />
+      </div>
+
+      <div className="student-home-map-island-path">
+        <img src="/assets/img/css/islands/island-path.png" alt="path" />
       </div>
 
       {status === 1 &&
@@ -86,19 +75,21 @@ export default function Island() {
           const orderNumber = index + 1;
 
           return (
-            <div className={className}>
-              <LockIcon
-                key={uniqueKey}
-                linkUrl={linkUrl}
-                type={
-                  moment(assignment.unlockTime).format("YYYY-MM-DD HH:MM") <
-                  moment().format("YYYY-MM-DD HH:MM")
-                    ? "unlock"
-                    : "lock"
-                }
-                done={done}
-                assignmentNum={orderNumber}
-              />
+            <div>
+              <div className={className}>
+                <LockIcon
+                  key={uniqueKey}
+                  linkUrl={linkUrl}
+                  type={
+                    moment(assignment.unlockTime).format("YYYY-MM-DD HH:MM") <
+                    moment().format("YYYY-MM-DD HH:MM")
+                      ? "unlock"
+                      : "lock"
+                  }
+                  done={done}
+                  assignmentNum={orderNumber}
+                />
+              </div>
             </div>
           );
         })}
