@@ -25,4 +25,7 @@
     background-size: 70%;
     background-position: top 15px left 30px;
   }
+  .student-home-schedule-wrapper {
+    position: absolute !important;
+  }
 }

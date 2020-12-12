@@ -57,6 +57,10 @@ td a:hover {
   height: 100%;
 }
 
+.student-home-schedule-wrapper h6 {
+  text-align: center;
+}
+
 .student-home-schedule-bg {
   position: absolute;
   top: 0;
@@ -67,7 +71,7 @@ td a:hover {
 .student-home-schedule {
   position: absolute;
   top: 80px;
-  left: 50px;
+  left: 60px;
 }
 
 @media (min-width: 750px) {

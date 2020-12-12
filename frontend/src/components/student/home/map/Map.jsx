@@ -7,7 +7,7 @@ export default function Map() {
     <div className="student-home-map-wrapper">
       <Island />
       <DisplayDate />
-      <div className="student-home-schedule-wrapper position-absolute">
+      <div className="student-home-schedule-wrapper">
         <Schedule />
       </div>
     </div>
