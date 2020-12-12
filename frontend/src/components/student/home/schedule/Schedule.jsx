@@ -32,7 +32,9 @@ export default function Schedule() {
         <img src="/assets/img/css/lecture-bg.svg" alt="background" />
       </div>
       <div className="student-home-schedule">
-        <h6>LECTURE</h6>
+        <h5>
+          {moment().format("MM/DD")} lecture <i className="fas fa-glasses"></i>
+        </h5>
         {status === 1 ? (
           <table>
             <tbody>
@@ -53,7 +55,7 @@ export default function Schedule() {
             </tbody>
           </table>
         ) : (
-          <p>No lecture</p>
+          <h6>No lecture</h6>
         )}
 
         {/*           <tr className="bg-primary">

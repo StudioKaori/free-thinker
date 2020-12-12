@@ -11,6 +11,7 @@ caption {
   caption-side: top;
   text-align: center;
 }
+h5,
 h6 {
   margin-bottom: 10px;
   color: var(--accent-color-brown);
