@@ -1,5 +1,5 @@
 .story-inner-box {
-  background-color: black;
+  background-color: #ffffff;
   color: var(--accent-color-green);
   font-family: "Sigmar One", cursive;
   font-size: var(--font-XL);
@@ -14,6 +14,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 20px;
 }
 
 :root {
