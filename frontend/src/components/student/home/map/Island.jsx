@@ -5,7 +5,7 @@ import { userState } from "../../../../js/state-information";
 
 import moment from "moment";
 import ClassDailySettingApi from "../../../../api/ClassDailySettingsApi";
-import LockIcon from "../../../icons/map-icon";
+import LockIcon from "./IslandIcon";
 import SpaceHolder from "../../../../assets/img/components/student/home/islands/island-spaceholder.gif";
 import "../../../../css/student/islands/island-green.css";
 
@@ -77,9 +77,13 @@ export default function Island() {
           const uniqueKey = "assignment-icon" + assignment.id;
 
           // This const "done" return true If assignment is done for that student / false if not
-          const done = assignment.isDoneByUser.filter(usr => usr.id === user[0].id).length > 0;
-        //   console.log( 'Assignement with id', assignment.id, 
-        //     done ? "has be done" : "is not done", 'by user', user[0].name);
+          const done =
+            assignment.isDoneByUser.filter((usr) => usr.id === user[0].id)
+              .length > 0;
+          console.log("Assignement with id", assignment);
+          //     done ? "has be done" : "is not done", 'by user', user[0].name);
+
+          const orderNumber = index + 1;
 
           return (
             <div className={className}>
@@ -87,10 +91,13 @@ export default function Island() {
                 key={uniqueKey}
                 linkUrl={linkUrl}
                 type={
-                  assignment.release_date.getTime() < new Date().getTime()
+                  moment(assignment.unlockTime).format("YYYY-MM-DD HH:MM") <
+                  moment().format("YYYY-MM-DD HH:MM")
                     ? "unlock"
                     : "lock"
                 }
+                done={done}
+                assignmentNum={orderNumber}
               />
             </div>
           );
