@@ -72,7 +72,7 @@ td a:hover {
 .student-home-schedule {
   position: absolute;
   top: 80px;
-  left: 60px;
+  left: 45px;
 }
 
 @media (min-width: 750px) {

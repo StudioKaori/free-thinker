@@ -11,7 +11,11 @@ export default function IslandIcon({ type, linkUrl, done, assignmentNum }) {
     case "unlock":
       return (
         <Link to={linkUrl}>
-          <img src={iconImg} className="island-icon unlock" alt="assignment" />
+          <img
+            src={iconImg}
+            className="island-icon animate__animated animate__rubberBand"
+            alt="assignment"
+          />
         </Link>
       );
     case "done":
