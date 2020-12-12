@@ -5,7 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap");
 
 body {
-  color: var(--font-dark);
+  color: var(--accent-color-brown);
   font-family: "Open Sans", sans-serif;
   font-size: var(--font-M);
   margin: 0;
@@ -25,6 +25,7 @@ h6 {
   font-family: "Sigmar One", cursive;
   margin-top: 0;
   margin-bottom: 0;
+  color: var(--accent-color-brown);
 }
 
 .react-dropdown-list li {
