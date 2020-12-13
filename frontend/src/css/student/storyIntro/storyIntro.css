@@ -1,9 +1,9 @@
 .story-inner-box {
-  background-color: #ffffff;
   color: var(--accent-color-green);
   font-family: "Sigmar One", cursive;
   font-size: var(--font-XL);
   position: relative;
+  background-color: #000000;
 }
 
 .storyIntroElement {
@@ -49,6 +49,30 @@
   }
 }
 
+.fadeOut {
+  animation: fadeOutFrames 5s;
+  /* animation-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1); */
+  opacity: 0;
+}
+
+@keyframes fadeOutFrames {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 .bounce {
   animation: bounceKey 0.3s ease infinite alternate;
 }
@@ -77,6 +101,8 @@
 
 .storyIntro div:nth-child(1) {
   animation-delay: 0;
+  background-color: #ffffff;
+  border-radius: 10px;
 }
 
 .storyIntro div:nth-child(2) {
