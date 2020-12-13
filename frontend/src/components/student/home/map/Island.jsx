@@ -23,27 +23,9 @@ export default function Island() {
     });
   };
 
-  const fakesDates = [
-    // Waiting for release_dates coming directly with assignment
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 12, 1, 12, 30, 45),
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 10, 29, 12, 30, 45),
-    new Date(2020, 12, 1, 12, 30, 45),
-  ]; // No more than 6 assignment for tests
-
   useEffect(() => {
     AssignmentApi.getAllAssignments().then((res) => {
-      const assignmentsPlusDate = [...res.data];
-      for (let i = 0; i < assignmentsPlusDate.length; i += 1) {
-        assignmentsPlusDate[i].release_date = fakesDates[i];
-      }
-      setAssignments(assignmentsPlusDate);
+      setAssignments(res.data);
     });
 
     // island theme
@@ -70,16 +52,52 @@ export default function Island() {
         <img src={SpaceHolder} alt="island" />
       </div>
 
+      <div className="student-track-progress d-flex">
       {status === 1 &&
-        assignments.map((assignment, index) => {
+        assignments
+        .sort((a1, a2) => a1.id < a2.id ? -1 : 1) // Always in id order
+        .slice(0, 6) // Not more than 6 
+        .map((assignment) => {
+          const className = "mr-3";
+          const uniqueKey = "progress-icon" + assignment.id;
+
+          // This const "done" return true If assignment is done for that student / false if not
+          const done = assignment.isDoneByUser.filter(usr => usr.id === user[0].id).length > 0;
+
+          return (
+            <div className={className}>
+                <LockIcon
+                    key={uniqueKey}
+                    type={ done ? "thumbs up" : "todo"}
+                />
+            </div>
+          );
+        })}
+
+        
+        {status === 1 &&
+            assignments
+            .sort((a1, a2) => a1.id < a2.id ? -1 : 1) 
+            .slice(0, 6)
+            .every((assignment) => assignment.isDoneByUser.filter(usr => usr.id === user[0].id).length > 0)
+            // If all assignments are done
+                ? <LockIcon type={"trophy"} />
+                : null 
+        }
+      </div>
+
+
+      {status === 1 &&
+        assignments
+        .sort((a1, a2) => a1.id < a2.id ? -1 : 1) // Always in id order
+        .slice(0, 6) // Not more than 6 
+        .map((assignment, index) => {
           const className = "island-icon-position island-lock-" + index;
           const linkUrl = "/assignment/" + assignment.id;
           const uniqueKey = "assignment-icon" + assignment.id;
 
           // This const "done" return true If assignment is done for that student / false if not
           const done = assignment.isDoneByUser.filter(usr => usr.id === user[0].id).length > 0;
-        //   console.log( 'Assignement with id', assignment.id, 
-        //     done ? "has be done" : "is not done", 'by user', user[0].name);
 
           return (
             <div className={className}>
@@ -87,8 +105,8 @@ export default function Island() {
                 key={uniqueKey}
                 linkUrl={linkUrl}
                 type={
-                  assignment.release_date.getTime() < new Date().getTime()
-                    ? "unlock"
+                    new Date(assignment.unlockTime).getTime() < new Date().getTime()
+                    ? (done ? "check" : "unlock")
                     : "lock"
                 }
               />

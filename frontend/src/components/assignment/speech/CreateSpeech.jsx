@@ -24,7 +24,7 @@ export default function CreateSpeech({close, setDisplayPopUp, setDisplayError,
 
         const newObj = {...assignmentObj}
         newObj.type = "Speech";
-        newObj.assignment = JSON.stringify(question);
+        newObj.assignment = JSON.stringify({question: question});
 
         setAssignmentObj(newObj);
 
