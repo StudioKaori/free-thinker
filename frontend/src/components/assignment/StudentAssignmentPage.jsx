@@ -35,7 +35,7 @@ export default function StudentAssignmentPage({ match }) {
             const temp = updatedAssign.isDoneByUser.concat(user[0]);
             updatedAssign.isDoneByUser = temp;
 
-            AssignmentApi.updateAssignment(updatedAssign).then(() => console.log('updated'))
+            AssignmentApi.updateAssignment(updatedAssign).then(() => {})
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [end, assignment])
