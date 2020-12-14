@@ -94,7 +94,11 @@ export default function TeacherAssignmentPage() {
                         setCreateChatIsOpen(false);
                         setCreateQuizIsOpen(false);
                         setCreateSpeechIsOpen(false);
-                        setAssignmentObj({type: 'None', assignment: ''})
+                        
+                        const newAssign = {...assignmentObj};
+                        newAssign.type = 'None';
+                        newAssign.assignment = '';
+                        setAssignmentObj(newAssign);
                     }}
                 >None</div>
                 <div 
