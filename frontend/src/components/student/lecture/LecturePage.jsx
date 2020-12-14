@@ -16,9 +16,7 @@ export default function LecturePage({ match }) {
       const videoID = res.data.youtubeUrl;
 
       // Temporary solution to see If we can use Lecture form for zoom link
-      if (videoID.match("zoom")) {
-        res.data.youtubeUrl = videoID;
-      } else {
+      if (res.data.youtubeUrl !== null) {
         res.data.youtubeUrl = "https://www.youtube.com/embed/" + videoID;
       }
       setLecture(res.data);
@@ -42,17 +40,20 @@ export default function LecturePage({ match }) {
             </h2>
             {moment(lecture.unlockTime).format("YYYY-MM-DD HH:mm")}
           </div>
-          <div className="youtube-wrapper">
-            <iframe
-              title="youtube"
-              width="560"
-              height="315"
-              src={lecture.youtubeUrl}
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
+
+          {lecture.youtubeUrl !== null && (
+            <div className="youtube-wrapper">
+              <iframe
+                title="youtube"
+                width="560"
+                height="315"
+                src={lecture.youtubeUrl}
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          )}
 
           <div className="lecture-details">
             <div className="lecture-text">
