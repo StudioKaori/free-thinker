@@ -75,19 +75,22 @@ export default function LectureCalendar() {
 
   return (
     <div>
-      <Calendar
-        localizer={localizer}
-        events={status === 0 ? [] : eventList}
-        timeslots="2"
-        defaultView={Views.WEEK}
-        onSelectEvent={(event) => openStudentLecturePage(event.id)}
-        selectable="true"
-        onSelectSlot={(event) => openCreateLecturePage(event)}
-        style={{ height: 500 }}
-        scrollToTime={new Date(new Date().setHours(8, 0, 0, 0))}
-        min={new Date(new Date().setHours(8, 0, 0, 0))}
-        max={new Date(new Date().setHours(15, 0, 0, 0))}
-      />
+      <h2 className="lecture-calendar-title">Lecture calendar</h2>
+      <div className="lecture-calendar-wrapper">
+        <Calendar
+          localizer={localizer}
+          events={status === 0 ? [] : eventList}
+          timeslots="2"
+          defaultView={Views.WEEK}
+          onSelectEvent={(event) => openStudentLecturePage(event.id)}
+          selectable="true"
+          // onSelectSlot={(event) => openCreateLecturePage(event)}
+          style={{ height: 500 }}
+          scrollToTime={new Date(new Date().setHours(8, 0, 0, 0))}
+          min={new Date(new Date().setHours(8, 0, 0, 0))}
+          max={new Date(new Date().setHours(15, 0, 0, 0))}
+        />
+      </div>
     </div>
   );
 }

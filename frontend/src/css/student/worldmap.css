@@ -23,54 +23,148 @@
   left: 0;
 }
 
-.worldMap-island div {
+.worldMap-island article {
   position: absolute;
 }
 
-.worldMap-island div:nth-child(1) {
+.worldMap-island article:nth-child(1) {
+  top: 15%;
+  left: 47%;
+}
+
+.worldMap-island article:nth-child(2) {
+  top: 32%;
+  left: 37%;
+}
+
+.worldMap-island article:nth-child(3) {
+  top: 48%;
+  left: 46%;
+}
+
+.worldMap-island article:nth-child(4) {
+  top: 70%;
+  left: 50%;
+}
+.worldMap-island article:nth-child(5) {
+  top: 35%;
+  left: 60%;
+}
+.worldMap-island article:nth-child(6) {
+  top: 49%;
+  left: 68%;
+}
+
+.worldMap-island article:nth-child(7) {
+  top: 28%;
+  left: 76%;
+}
+
+.worldMap-island article:nth-child(8) {
+  top: 43%;
+  left: 85%;
+}
+
+.worldMap-island article:nth-child(9) {
+  top: 63%;
+  left: 26%;
+}
+
+.worldMap-island article:nth-child(10) {
+  top: 28%;
+  left: 17%;
+}
+
+/* don't delete original position
+.worldMap-island article:nth-child(1) {
   top: 22%;
   left: 47%;
 }
 
-.worldMap-island div:nth-child(2) {
+.worldMap-island article:nth-child(2) {
   top: 30%;
   left: 44.6%;
 }
 
-.worldMap-island div:nth-child(3) {
+.worldMap-island article:nth-child(3) {
   top: 40%;
   left: 53%;
 }
 
-.worldMap-island div:nth-child(4) {
+.worldMap-island article:nth-child(4) {
   top: 77%;
   left: 50%;
 }
-.worldMap-island div:nth-child(5) {
+.worldMap-island article:nth-child(5) {
   top: 43%;
   left: 63%;
 }
-.worldMap-island div:nth-child(6) {
+.worldMap-island article:nth-child(6) {
   top: 43%;
   left: 65%;
 }
 
-.worldMap-island div:nth-child(7) {
+.worldMap-island article:nth-child(7) {
   top: 33%;
   left: 76%;
 }
 
-.worldMap-island div:nth-child(8) {
+.worldMap-island article:nth-child(8) {
   top: 36%;
   left: 82%;
 }
 
-.worldMap-island div:nth-child(9) {
+.worldMap-island article:nth-child(9) {
   top: 70%;
   left: 31%;
 }
 
-.worldMap-island div:nth-child(10) {
+.worldMap-island article:nth-child(10) {
   top: 32%;
   left: 23%;
+}*/
+
+/* inside article */
+.worldMap-island article div {
+  position: absolute;
+}
+
+.worldMap-island article .island-name {
+  top: -40px;
+  left: 30px;
+  color: #ffffffce;
+  font-size: var(--font-M);
+  font-family: var(--theme-font-family);
+}
+
+.worldMap-island article .island-name span {
+  font-size: var(--font-XS);
+}
+
+.worldMap-island article .island-img {
+  top: 0;
+  left: 0;
+}
+
+.worldMap-island article .island-img img {
+  width: 60px;
+  height: auto;
+}
+
+.worldMap-island article .island-monster {
+  top: -30px;
+  left: -10px;
+}
+
+.worldMap-island article .island-monster img {
+  width: 40px;
+  height: auto;
+}
+
+.worldmap-invisible {
+  filter: brightness(5%);
+}
+
+.worldmap-hide {
+  display: none;
 }

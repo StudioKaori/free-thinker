@@ -113,31 +113,50 @@ function Navbar({ onLogout }) {
                 <ul>
                   {/* Teacher navbar */}
                   <li onClick={() => closeNav()}>
-                    <Link to="/">HOME</Link>
+                    <Link to="/">
+                      <i className="fas fa-home"></i>HOME
+                    </Link>
                   </li>
                   {/* Add Teacher menu here */}
                   <li onClick={() => closeNav()}>
-                    <Link to="/daily-settings">Daily Settings</Link>
+                    <Link to="/create-lecture">
+                      <i className="fas fa-glasses"></i>Create Lecture
+                    </Link>
                   </li>
                   <li onClick={() => closeNav()}>
-                    <Link to="/create-lecture">Create Lecture</Link>
+                    <Link to="/create-assignment">
+                      <i className="fas fa-file-alt"></i>Create Assignment
+                    </Link>
                   </li>
                   <li onClick={() => closeNav()}>
-                    <Link to="/create-assignment">Create Assignment</Link>
+                    <Link to="/lecture-calendar">
+                      <i className="fas fa-calendar-alt"></i>Lecture Calendar
+                    </Link>
+                  </li>
+                  <li onClick={() => closeNav()}>
+                    <Link to="/daily-settings">
+                      <i className="fas fa-cog"></i>Daily Settings
+                    </Link>
                   </li>
                   <li onClick={onLogout}>
-                    <Link to="/">LOGOUT</Link>
+                    <Link to="/">
+                      <i className="fas fa-sign-out-alt"></i>LOGOUT
+                    </Link>
                   </li>
                 </ul>
               ) : (
                 <ul>
                   {/* Student navbar */}
                   <li onClick={() => closeNav()}>
-                    <Link to="/">HOME</Link>
+                    <Link to="/">
+                      <i className="fas fa-home"></i>HOME
+                    </Link>
                     {/* Add Student menu here */}
                   </li>
                   <li onClick={onLogout}>
-                    <Link to="/">LOGOUT</Link>
+                    <Link to="/">
+                      <i className="fas fa-sign-out-alt"></i>LOGOUT
+                    </Link>
                   </li>
                 </ul>
               )

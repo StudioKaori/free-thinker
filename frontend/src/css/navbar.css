@@ -125,6 +125,15 @@
   padding: 0;
   text-decoration: none;
   margin: 10px;
+  text-transform: uppercase;
+}
+
+.header-menu li i {
+  display: inline-block;
+  margin-right: 5px;
+  color: #ffffff80;
+  width: 16px;
+  text-align: center;
 }
 
 .header-profile-photo-wrapper {
