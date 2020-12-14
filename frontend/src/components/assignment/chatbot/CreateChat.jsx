@@ -4,8 +4,8 @@ import Button from '../atoms/Button';
 import CreateChatForm from './CreateChatForm';
 
 // Entry point for Creating a chat - Teacher's side
-export default function CreateChat({close, assignmentObj ,setAssignmentObj, 
-    setDisplayPopUp, setDisplayError}) {
+export default function CreateChat({close, assignmentObj, setAssignmentObj, 
+    setAssignmentIsValid, setNothingIsPicked}) {
 
     const [newChat, setNewChat ] = useState({})
 
@@ -21,25 +21,21 @@ export default function CreateChat({close, assignmentObj ,setAssignmentObj,
     }
 
     const saveChat = () => {
-        if (!lastCheck(newChat.steps)) { 
-            setDisplayError(true);
-            setTimeout(() => {
-                setDisplayError(false);
-            }, 1000)
-            return; 
-        } // Cancel if not ok
 
         const newObj = {...assignmentObj}
         newObj.type = "Chat";
+
+        if (!lastCheck(newChat.steps)) { 
+            setNothingIsPicked(false)
+            setAssignmentObj(newObj);
+            setAssignmentIsValid(false)
+            return; 
+        } // Cancel if not ok
         newObj.assignment = JSON.stringify(newChat);
 
+        setNothingIsPicked(false)
         setAssignmentObj(newObj);
-
-        setDisplayPopUp(true);
-        setTimeout(() => {
-            setDisplayPopUp(false);
-        }, 2000)
-
+        setAssignmentIsValid(true);
         close();
     }
 
