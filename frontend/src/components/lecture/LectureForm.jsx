@@ -101,7 +101,7 @@ export default function LectureForm({
               className="form-control"
               placeholder="Zoom link"
               value={zoom}
-              onChange={(e) => setYoutube(e.target.value)}
+              onChange={(e) => setZoom(e.target.value)}
             />
           </div>
 

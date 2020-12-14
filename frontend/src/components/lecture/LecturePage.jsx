@@ -28,9 +28,6 @@ function LecturePage({ dateFromCal }) {
       lectureData.unlockTime +
       ":00.0";
 
-    console.log(lectureData.youtube);
-    console.log(lectureData.zoom);
-
     if (lectureData.youtube !== "") {
       sqlLectureData.youtubeUrl = lectureData.youtube
         .match(/[v][=][A-Za-z1-9]+/g)[0]
@@ -68,11 +65,13 @@ function LecturePage({ dateFromCal }) {
     sqlLectureData.body = updatedLecture.body;
     sqlLectureData.unlockTime =
       updatedLecture.unlockDate + "T" + updatedLecture.unlockTime + ":00.0";
-    sqlLectureData.youtubeUrl = updatedLecture.youtube
-      .match(/[v][=][A-Za-z1-9]+/g)[0]
-      .replace("v=", "");
+    if (updatedLecture.youtube !== "") {
+      sqlLectureData.youtubeUrl = updatedLecture.youtube
+        .match(/[v][=][A-Za-z1-9]+/g)[0]
+        .replace("v=", "");
+    }
 
-    //console.log("update", sqlLectureData);
+    sqlLectureData.zoomLink = updatedLecture.zoom;
 
     Api.put("/lectures/", sqlLectureData).then((r) => getAll([]));
   };
