@@ -17,7 +17,7 @@ export default function StudentHomePage() {
   return (
     <div>
       <Map />
-      {/* <WorldMap /> */}
+      <WorldMap />
 
       <div id="popupWindow" className="popupWindow hidePopup">
         <div className="popup_inner popup_inner_L story-inner-box animate__animated animate__rubberBand">

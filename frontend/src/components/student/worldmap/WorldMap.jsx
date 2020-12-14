@@ -10,8 +10,18 @@ export default function WorldMap() {
         />
 
         <div className="worldMap-island">
-          <div>111</div>
-          <div>2222</div>
+          <article>
+            <div className="island-monster animate__animated animate__pulse animate__infinite	infinite">
+              <img src="/assets/img/monsters/kurage.png" alt="monster" />
+            </div>
+            <div className="island-name">Stockholm</div>
+            <div className="island-img">
+              <img
+                src="/assets/img/css/islands/island-green.png"
+                alt="island"
+              />
+            </div>
+          </article>
         </div>
       </div>
     </div>
