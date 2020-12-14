@@ -4,10 +4,6 @@
 -->
 
 
-[![Contributors][contributors-shield]][contributors-url]
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -61,7 +57,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Home Page][home-page-screenshot]](frontend/src/assets/img/child-reading.jpg)
+![Home Page](frontend/src/assets/img/child-reading.jpg)
 
 In those stranges times, our children could not always have possibility to go to school and attend regular class. We believe that kind of learning platform are part of the future of education and must be thought to suits teachers, parents and of course students.
 
@@ -93,14 +89,14 @@ See dedicated section for installation >> [Help](./Help.md)
 
 ### Teachers
 
-[![Teacher Page][teacher-page-screenshot]](frontend/src/assets/img/teacher-carousel-1.png)
+![Teacher Page](frontend/src/assets/img/teacher-carousel-1.png)
 
 Create lectures and assignment and get an overview of your preparation.
 For the next day or the next week, you can plan in advance.
 
 ### Students
 
-[![Teacher Page][teacher-page-screenshot]](frontend/src/assets/img/student-carousel-1.png)
+![Student Page](frontend/src/assets/img/student-carousel-1.png)
 
 Follow your teacher's intructions in a funny environment. Even better than in classroom !
 
@@ -115,9 +111,3 @@ Want ot help us build a bigger project? Any contributions you make are **greatly
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://github.com/asad-tirmizi/sda-group-project-gp3/graphs/contributors
