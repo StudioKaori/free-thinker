@@ -5,7 +5,7 @@ import CreateQuizForm from './CreateQuizForm';
 import Button from '../atoms/Button';
 
 // Entry point for Quiz creation
-export default function CreateQuiz({close, setDisplayPopUp, setDisplayError, 
+export default function CreateQuiz({close, setAssignmentIsValid, setNothingIsPicked,
     assignmentObj ,setAssignmentObj}) {
 
     const [newQuiz, setNewQuiz ] = useState({});
@@ -25,25 +25,22 @@ export default function CreateQuiz({close, setDisplayPopUp, setDisplayError,
     }
 
     const saveQuiz = () => {
-        if (!lastCheck(newQuiz.questions)) { 
-            setDisplayError(true);
-            setTimeout(() => {
-                setDisplayError(false);
-            }, 1000)
-            return; 
-        } // Cancel if not ok
-        
+
         const newObj = {...assignmentObj}
         newObj.type = "Quiz";
+
+        if (!lastCheck(newQuiz.questions)) { 
+            setNothingIsPicked(false)
+            setAssignmentObj(newObj);
+            setAssignmentIsValid(false)
+            return; 
+        } // Cancel if not ok
+
         newObj.assignment = JSON.stringify(newQuiz);
 
+        setNothingIsPicked(false)
         setAssignmentObj(newObj);
-
-        setDisplayPopUp(true);
-        setTimeout(() => {
-            setDisplayPopUp(false);
-        }, 2000)
-
+        setAssignmentIsValid(true);
         close();
     }
 

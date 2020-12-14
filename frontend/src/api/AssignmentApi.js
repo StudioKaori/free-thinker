@@ -14,7 +14,14 @@ class AssignmentApi {
   }
 
   createAssignment(assignment) {
-    return Api.post("/assignments", assignment);
+    return Api.post("/assignments", assignment).then((res) => {
+      const temp =
+        JSON.parse(window.localStorage.getItem("recent-activity")) || [];
+      window.localStorage.setItem(
+        "recent-activity",
+        JSON.stringify(temp.concat(res.data))
+      );
+    });
   }
 
   updateAssignment(assignment) {

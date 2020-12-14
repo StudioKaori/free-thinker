@@ -19,30 +19,6 @@ export default function StudentAssignmentPage({ match }) {
     const [end, setEnd] = useState(false); // Check for assignment completion
     const [user] = useRecoilState(userState);
 
-    useEffect(() => {
-      AssignmentApi.getAssignmentById(assignmentId).then((res) => {
-        setAssignment(res.data);
-        const done = res.data.isDoneByUser.filter(usr => usr.id === user[0].id).length > 0;
-        setEnd(done);
-      });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    useEffect(() => {
-        if (end) {
-            let updatedAssign = {...assignment}
-            if (updatedAssign.isDoneByUser.filter(usr => usr.id === user[0].id).length > 0) {
-                // Means : student click on an already finished assignment
-                return;
-            }
-            const temp = updatedAssign.isDoneByUser.concat(user[0]);
-            updatedAssign.isDoneByUser = temp;
-
-            AssignmentApi.updateAssignment(updatedAssign).then(() => {})
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [end, assignment])
-
   useEffect(() => {
     AssignmentApi.getAssignmentById(assignmentId).then((res) => {
       setAssignment(res.data);
@@ -102,6 +78,17 @@ export default function StudentAssignmentPage({ match }) {
           quiz={JSON.parse(assignment.assignment)}
           setEnd={setEnd}
         />
+      ) : assignment.type === "None" ? (
+        <div>
+            {assignment.title}
+            {assignment.instructions}
+            <div className="text-right">
+                <button
+                    className="btn btn-success"
+                    onClick={() => setEnd(true)}
+                >I am done</button>
+            </div>
+        </div>
       ) : null}
     </section>
   );
