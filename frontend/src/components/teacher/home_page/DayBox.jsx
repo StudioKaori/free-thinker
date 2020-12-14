@@ -44,7 +44,16 @@ export default function DayBox({ day }) {
     }
   });
 
+  const assn = assignments.filter((assnt) => {
+    const assignmentDate = moment(assnt.unlockTime).format("L");
+    if (assignmentDate === dateonly) {
+      return assnt;
+    }
+  });
+
   console.log(lec);
+  console.log(assn);
+  
   // Also need some more creative ideas about how to display the week bar
   // Lecture and Assignment count to be included in the week's display
 
@@ -53,7 +62,7 @@ export default function DayBox({ day }) {
       <div className="card-header">{moment().format("dddd")}</div>
       <div className="card-body">
         <p className="card-text">{lec.length} Lectures</p>
-        <p className="card-text">{assignments.length} Active assignments</p>
+        <p className="card-text">{assn.length} Assignments</p>
       </div>
     </div>
   ) : (
@@ -61,7 +70,7 @@ export default function DayBox({ day }) {
       <div className="card-header">{dayonly}</div>
       <div className="card-body">
         <p className="card-text">{lec.length} Lectures</p>
-        <p className="card-text">{assignments.length} Active assignments</p>
+        <p className="card-text">{assn.length} Assignments</p>
       </div>
     </div>
   );
