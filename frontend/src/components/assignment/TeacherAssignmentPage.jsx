@@ -51,6 +51,9 @@ export default function TeacherAssignmentPage() {
 
                 setAssignmentObj({})
                 setResetFields(true);
+                setAssignmentIsValid(false);
+                setFormIsValid(false);
+                setNothingIsPicked(true)
             })
     } 
 
