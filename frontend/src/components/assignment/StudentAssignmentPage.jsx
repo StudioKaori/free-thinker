@@ -13,10 +13,35 @@ import "../../css/student/assignmentPage.css";
 
 // Student assignment entry point, fetch assignment by id and display the related component
 export default function StudentAssignmentPage({ match }) {
-  const assignmentId = Number(match.match.params.id);
-  const [assignment, setAssignment] = useState({});
-  const [end, setEnd] = useState(false); // Check for assignment completion
-  const [user] = useRecoilState(userState);
+
+    const assignmentId = Number(match.match.params.id);
+    const [assignment, setAssignment] = useState({});
+    const [end, setEnd] = useState(false); // Check for assignment completion
+    const [user] = useRecoilState(userState);
+
+    useEffect(() => {
+      AssignmentApi.getAssignmentById(assignmentId).then((res) => {
+        setAssignment(res.data);
+        const done = res.data.isDoneByUser.filter(usr => usr.id === user[0].id).length > 0;
+        setEnd(done);
+      });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        if (end) {
+            let updatedAssign = {...assignment}
+            if (updatedAssign.isDoneByUser.filter(usr => usr.id === user[0].id).length > 0) {
+                // Means : student click on an already finished assignment
+                return;
+            }
+            const temp = updatedAssign.isDoneByUser.concat(user[0]);
+            updatedAssign.isDoneByUser = temp;
+
+            AssignmentApi.updateAssignment(updatedAssign).then(() => {})
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [end, assignment])
 
   useEffect(() => {
     AssignmentApi.getAssignmentById(assignmentId).then((res) => {
