@@ -1,7 +1,12 @@
 import "../../../css/student/worldmap.css";
 import moment from "moment";
+import { useEffect, useState } from "react";
+import WorldMapIslandCard from "./WorldMapIslandCard";
 
 export default function WorldMap() {
+  const [islands, setIslands] = useState([]);
+  const [status, setStatus] = useState(0);
+
   const fakeDB = [
     {
       id: 1,
@@ -9,6 +14,7 @@ export default function WorldMap() {
       isDone: true,
       city: "Stockholm",
       monster: "oni",
+      islandTheme: "island-green",
     },
 
     {
@@ -17,6 +23,7 @@ export default function WorldMap() {
       isDone: true,
       city: "Stockholm",
       monster: "kurage",
+      islandTheme: "island-ice",
     },
 
     {
@@ -25,6 +32,7 @@ export default function WorldMap() {
       isDone: false,
       city: "Stockholm",
       monster: "kurage",
+      islandTheme: "island-desert",
     },
 
     {
@@ -33,6 +41,7 @@ export default function WorldMap() {
       isDone: false,
       city: "Stockholm",
       monster: "kurage",
+      islandTheme: "island-green-volcano",
     },
 
     {
@@ -41,8 +50,21 @@ export default function WorldMap() {
       isDone: false,
       city: "Stockholm",
       monster: "kurage",
+      islandTheme: "island-green",
     },
   ];
+
+  const setIslandCard = () => {
+    const cards = fakeDB.map((island, index) => {
+      const key = "worldmapIsland" + index;
+      return <WorldMapIslandCard key={key} island={island} />;
+    });
+    setIslands(cards);
+  };
+
+  useEffect(() => {
+    setIslandCard();
+  }, []);
 
   return (
     <div className="worldMap">
@@ -52,226 +74,7 @@ export default function WorldMap() {
           alt="world map"
         />
 
-        <div className="worldMap-island">
-          <article>
-            <div className="island-monster animate__animated animate__pulse animate__infinite	infinite">
-              <img
-                src="/assets/img/monsters/kurage.png"
-                className="worldmap-visible"
-                alt="monster"
-              />
-            </div>
-            <div className="island-name">
-              <span>{moment().format("YYYY/MM/DD")}</span>
-              <br />
-              Stockholm
-            </div>
-            <div className="island-img">
-              <img
-                src="/assets/img/css/islands/island-green.png"
-                className="worldmap-visible"
-                alt="island"
-              />
-            </div>
-          </article>
-
-          <article>
-            <div className="island-monster animate__animated animate__pulse animate__infinite	infinite">
-              <img
-                src="/assets/img/monsters/kurage.png"
-                className="worldmap-visible"
-                alt="monster"
-              />
-            </div>
-            <div className="island-name">
-              <span>{moment().format("YYYY/MM/DD")}</span>
-              <br />
-              Stockholm
-            </div>
-            <div className="island-img">
-              <img
-                src="/assets/img/css/islands/island-green.png"
-                className="worldmap-visible"
-                alt="island"
-              />
-            </div>
-          </article>
-
-          <article>
-            <div className="island-monster animate__animated animate__pulse animate__infinite	infinite">
-              <img
-                src="/assets/img/monsters/kurage.png"
-                className="worldmap-visible"
-                alt="monster"
-              />
-            </div>
-            <div className="island-name">
-              <span>{moment().format("YYYY/MM/DD")}</span>
-              <br />
-              Stockholm
-            </div>
-            <div className="island-img">
-              <img
-                src="/assets/img/css/islands/island-green.png"
-                className="worldmap-visible"
-                alt="island"
-              />
-            </div>
-          </article>
-
-          <article>
-            <div className="island-monster animate__animated animate__pulse animate__infinite	infinite">
-              <img
-                src="/assets/img/monsters/kurage.png"
-                className="worldmap-visible"
-                alt="monster"
-              />
-            </div>
-            <div className="island-name">
-              <span>{moment().format("YYYY/MM/DD")}</span>
-              <br />
-              Stockholm
-            </div>
-            <div className="island-img">
-              <img
-                src="/assets/img/css/islands/island-green.png"
-                className="worldmap-visible"
-                alt="island"
-              />
-            </div>
-          </article>
-
-          <article>
-            <div className="island-monster animate__animated animate__pulse animate__infinite	infinite">
-              <img
-                src="/assets/img/monsters/kurage.png"
-                className="worldmap-visible"
-                alt="monster"
-              />
-            </div>
-            <div className="island-name">
-              <span>{moment().format("YYYY/MM/DD")}</span>
-              <br />
-              Stockholm
-            </div>
-            <div className="island-img">
-              <img
-                src="/assets/img/css/islands/island-green.png"
-                className="worldmap-visible"
-                alt="island"
-              />
-            </div>
-          </article>
-
-          <article>
-            <div className="island-monster animate__animated animate__pulse animate__infinite	infinite">
-              <img
-                src="/assets/img/monsters/kurage.png"
-                className="worldmap-visible"
-                alt="monster"
-              />
-            </div>
-            <div className="island-name">
-              <span>{moment().format("YYYY/MM/DD")}</span>
-              <br />
-              Stockholm
-            </div>
-            <div className="island-img">
-              <img
-                src="/assets/img/css/islands/island-green.png"
-                className="worldmap-visible"
-                alt="island"
-              />
-            </div>
-          </article>
-
-          <article>
-            <div className="island-monster animate__animated animate__pulse animate__infinite	infinite">
-              <img
-                src="/assets/img/monsters/kurage.png"
-                className="worldmap-visible"
-                alt="monster"
-              />
-            </div>
-            <div className="island-name">
-              <span>{moment().format("YYYY/MM/DD")}</span>
-              <br />
-              Stockholm
-            </div>
-            <div className="island-img">
-              <img
-                src="/assets/img/css/islands/island-green.png"
-                className="worldmap-visible"
-                alt="island"
-              />
-            </div>
-          </article>
-
-          <article>
-            <div className="island-monster animate__animated animate__pulse animate__infinite	infinite">
-              <img
-                src="/assets/img/monsters/kurage.png"
-                className="worldmap-visible"
-                alt="monster"
-              />
-            </div>
-            <div className="island-name">
-              <span>{moment().format("YYYY/MM/DD")}</span>
-              <br />
-              Stockholm
-            </div>
-            <div className="island-img">
-              <img
-                src="/assets/img/css/islands/island-green.png"
-                className="worldmap-visible"
-                alt="island"
-              />
-            </div>
-          </article>
-
-          <article>
-            <div className="island-monster animate__animated animate__pulse animate__infinite	infinite">
-              <img
-                src="/assets/img/monsters/kurage.png"
-                className="worldmap-visible"
-                alt="monster"
-              />
-            </div>
-            <div className="island-name">
-              <span>{moment().format("YYYY/MM/DD")}</span>
-              <br />
-              Stockholm
-            </div>
-            <div className="island-img">
-              <img
-                src="/assets/img/css/islands/island-green.png"
-                className="worldmap-visible"
-                alt="island"
-              />
-            </div>
-          </article>
-          <article>
-            <div className="island-monster animate__animated animate__pulse animate__infinite	infinite">
-              <img
-                src="/assets/img/monsters/kurage.png"
-                className="worldmap-visible"
-                alt="monster"
-              />
-            </div>
-            <div className="island-name">
-              <span>{moment().format("YYYY/MM/DD")}</span>
-              <br />
-              Stockholm
-            </div>
-            <div className="island-img">
-              <img
-                src="/assets/img/css/islands/island-green.png"
-                className="worldmap-visible"
-                alt="island"
-              />
-            </div>
-          </article>
-        </div>
+        <div className="worldMap-island">{islands}</div>
       </div>
     </div>
   );

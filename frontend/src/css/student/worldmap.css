@@ -157,6 +157,14 @@
 }
 
 .worldMap-island article .island-monster img {
-  width: 30px;
+  width: 40px;
   height: auto;
+}
+
+.worldmap-invisible {
+  filter: brightness(5%);
+}
+
+.worldmap-hide {
+  display: none;
 }
