@@ -45,7 +45,13 @@
     <li>
       <a href="#getting-started">Getting Started</a>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li>
+        <a href="#usage">Usage</a>
+        <ul>
+          <li><a href="#teachers">Teachers</a></li>
+          <li><a href="#students">Students</a></li>
+        </ul>
+    </li>
     <li><a href="#contributing">Contributing</a></li>
   </ol>
 </details>
@@ -82,11 +88,21 @@ Feel free to clone this repo and use it as you want.
 See dedicated section for installation >> [Help](./Help.md)
 
 
-
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Need to fill that part
+### Teachers
+
+[![Teacher Page][teacher-page-screenshot]](frontend/src/assets/img/teacher-carousel-1.png)
+
+Create lectures and assignment and get an overview of your preparation.
+For the next day or the next week, you can plan in advance.
+
+### Students
+
+[![Teacher Page][teacher-page-screenshot]](frontend/src/assets/img/student-carousel-1.png)
+
+Follow your teacher's intructions in a funny environment. Even better than in classroom !
 
 
 <!-- CONTRIBUTING -->
