@@ -6,7 +6,6 @@ import { userState } from "../../../../js/state-information";
 import moment from "moment";
 import ClassDailySettingApi from "../../../../api/ClassDailySettingsApi";
 import LockIcon from "./IslandIcon";
-import SpaceHolder from "../../../../assets/img/components/student/home/islands/island-spaceholder.gif";
 import "../../../../css/student/islands/island-green.css";
 
 export default function Island() {
@@ -26,7 +25,7 @@ export default function Island() {
   };
 
   useEffect(() => {
-    AssignmentApi.getAllAssignments().then((res) => {
+    AssignmentApi.getAssignmentsByUnlockDate(date).then((res) => {
       setAssignments([...res.data]);
     });
 
