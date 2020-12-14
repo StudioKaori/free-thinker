@@ -1,13 +1,27 @@
+.lecture-calendar-title {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 20px auto;
+}
 .lecture-calendar-wrapper {
-  background-color: #ffffff;
+  background-color: #ffffffa1;
   border-radius: 30px;
+  padding: 10px;
 }
 
 .rbc-calendar {
-  width: 600px;
-  margin: 50px auto;
+  margin: 50px 20px;
 }
 
+.rbc-toolbar-label {
+  font-size: var(--font-L);
+  font-family: var(--theme-font-family);
+}
+
+.rbc-btn-group button {
+  font-size: var(--font-S);
+}
 /* .rbc-day-slot .rbc-events-container {
   cursor: pointer;
 } */
