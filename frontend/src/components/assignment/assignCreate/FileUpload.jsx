@@ -37,30 +37,7 @@ class FileUpload extends Component {
 	// Request made to the backend api 
 	// Send formData object 
 	axios.post("api/uploadfile", formData); 
-	}; 
-	
-	// File content to be displayed after 
-	// file upload is complete 
-	/* fileData = () => { 
-	
-	if (this.state.selectedFile) { 
-		
-		return ( 
-		<div> 
-			<h2>File Details:</h2> 
-			<p>File Name: {this.state.selectedFile.name}</p> 
-			<p>File Type: {this.state.selectedFile.type}</p> 
-		</div> 
-		); 
-	} else { 
-		return ( 
-		<div> 
-			<br /> 
-			<h4>Choose before Pressing the Upload button</h4> 
-		</div> 
-		); 
-	} 
-	}; */ 
+	};  
 	
 	render() { 
 	
