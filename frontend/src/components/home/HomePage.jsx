@@ -2,6 +2,7 @@ import React from "react";
 
 import TeacherCarousel from "./TeacherCarousel";
 import StudentCarousel from "./StudentCarousel";
+import Footer from "./Footer";
 
 function HomePage() {
 
@@ -56,18 +57,20 @@ function HomePage() {
                     A team passionate about learning and development and
                     this is the best of the two worlds. 
                     <br />
-                    We are most than interested by your feedback or advices.
+                    We are more interested in your feedback or advices.
                     Feel free to contact at <em>freethinkers@mail.com</em>
                 </p>
                 <p>We are Free Thinkers !</p>
             </section>
-            <footer className="home-footer bg-secondary">
+            {/* <footer className="home-footer bg-secondary">
                 <ul className="d-flex justify-content-around">
                     <li>Instagram</li>
                     <li>LinkedIn</li>
                     <li>Github</li>
                 </ul>
-            </footer>
+            </footer> */}
+            <Footer />
+
         </>
     )
 
