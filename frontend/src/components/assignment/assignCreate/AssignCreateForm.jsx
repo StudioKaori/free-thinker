@@ -3,7 +3,9 @@ import { useEffect } from "react";
 import moment from "moment";
 
 
-export default function AssignCreateForm({assignmentObj, setAssignmentObj, resetFields, setResetFields}) {
+export default function AssignCreateForm({assignmentObj, setAssignmentObj, 
+    resetFields, setResetFields, setFormIsValid}) {
+
     const [title, setTitle] = useState(assignmentObj.title);
     const [instruction, setInstruction] = useState("");
     const [unlockDate, setUnlockDate] = useState("");
@@ -16,6 +18,11 @@ export default function AssignCreateForm({assignmentObj, setAssignmentObj, reset
         newObj.unlockTime = moment(unlockDate).format("YYYY-MM-DD") + "T" + unlockTime + ":00.0";
 
         setAssignmentObj(newObj);
+
+        if(title !== '' && instruction !== '' && unlockDate !== '' && unlockTime !== '') {
+            setFormIsValid(true)
+        }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [title, instruction, unlockDate, unlockTime])
 

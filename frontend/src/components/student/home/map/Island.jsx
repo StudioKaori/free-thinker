@@ -70,7 +70,7 @@ export default function Island() {
         <img src="/assets/img/css/islands/island-path.png" alt="path" />
       </div>
 
-      <div className="student-track-progress d-flex">
+      {/* <div className="student-track-progress d-flex">
       {status === 1 &&
         assignments
         .sort((a1, a2) => a1.id < a2.id ? -1 : 1) // Always in id order
@@ -102,12 +102,11 @@ export default function Island() {
                 ? <LockIcon type={"trophy"} />
                 : null 
         }
-      </div>
-
+      </div> */}
 
       {status === 1 &&
         assignments
-          .sort((a, b) => a.id - b.id)
+          .sort((a1, a2) => (a1.id < a2.id ? -1 : 1))
           .map((assignment, index) => {
             const className = "island-icon-position island-lock-" + index;
             const linkUrl = "/assignment/" + assignment.id;
@@ -145,7 +144,6 @@ export default function Island() {
               </div>
             );
           })}
-
     </div>
   );
 }
