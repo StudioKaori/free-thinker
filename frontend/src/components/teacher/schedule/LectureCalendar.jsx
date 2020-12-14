@@ -82,7 +82,7 @@ export default function LectureCalendar() {
         defaultView={Views.WEEK}
         onSelectEvent={(event) => openStudentLecturePage(event.id)}
         selectable="true"
-        onSelectSlot={(event) => openCreateLecturePage(event)}
+        // onSelectSlot={(event) => openCreateLecturePage(event)}
         style={{ height: 500 }}
         scrollToTime={new Date(new Date().setHours(8, 0, 0, 0))}
         min={new Date(new Date().setHours(8, 0, 0, 0))}

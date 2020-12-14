@@ -13,6 +13,7 @@ import LecturePage from "../lecture/LecturePage";
 import StudentAssignmentPage from "../assignment/StudentAssignmentPage";
 import StudentLecture from "../student/lecture/LecturePage";
 import TeacherDailySettings from "../teacher/TeacherDailySetting";
+import LectureCalendarPage from "../teacher/LectureCalendarPage";
 
 export default function User() {
   const { path } = useRouteMatch();
@@ -47,6 +48,10 @@ export default function User() {
             />
 
             <Route
+              path="/lecture-calendar"
+              render={() => <LectureCalendarPage />}
+            />
+            <Route
               path="/assignment/:id"
               render={(match) => <StudentAssignmentPage match={match} />}
             />
@@ -55,8 +60,7 @@ export default function User() {
               render={(match) => <StudentLecture match={match} />}
             />
             <Route path={path}>
-               <TeacherHomePage /> 
-
+              <TeacherHomePage />
             </Route>
           </Switch>
         ) : (

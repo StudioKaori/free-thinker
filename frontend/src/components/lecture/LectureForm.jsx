@@ -25,18 +25,23 @@ export default function LectureForm({
   const [zoom, setZoom] = useState("");
 
   // unlock date
-  const initialUnlockDate =
-    dateFromCalDate.current === ""
-      ? ""
-      : moment(dateFromCalDate.current).format("YYYY-MM-DD");
-  const [unlockDate, setUnlockDate] = useState(initialUnlockDate);
-  const [unlockTime, setUnlockTime] = useState(
-    dateFromCalDate.current === ""
-      ? ""
-      : moment(dateFromCalDate.current)
-          .format("hh")
-          .concat(":00")
-  );
+  // const initialUnlockDate =
+  //   dateFromCalDate.current === ""
+  //     ? ""
+  //     : moment(dateFromCalDate.current).format("YYYY-MM-DD");
+
+  // const initialUnlockTime =
+  //   dateFromCalDate.current === ""
+  //     ? ""
+  //     : moment(dateFromCalDate.current)
+  //         .format("hh")
+  //         .concat(":00");
+
+  // console.log("initialUnlockTime", initialUnlockTime);
+  // console.log("initialUnlockDate ", initialUnlockDate);
+
+  const [unlockDate, setUnlockDate] = useState("");
+  const [unlockTime, setUnlockTime] = useState("");
 
   return (
     <div className="body-wrapper">

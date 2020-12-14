@@ -117,13 +117,16 @@ function Navbar({ onLogout }) {
                   </li>
                   {/* Add Teacher menu here */}
                   <li onClick={() => closeNav()}>
-                    <Link to="/daily-settings">Daily Settings</Link>
-                  </li>
-                  <li onClick={() => closeNav()}>
                     <Link to="/create-lecture">Create Lecture</Link>
                   </li>
                   <li onClick={() => closeNav()}>
                     <Link to="/create-assignment">Create Assignment</Link>
+                  </li>
+                  <li onClick={() => closeNav()}>
+                    <Link to="/lecture-calendar">Lecture Calendar</Link>
+                  </li>
+                  <li onClick={() => closeNav()}>
+                    <Link to="/daily-settings">Daily Settings</Link>
                   </li>
                   <li onClick={onLogout}>
                     <Link to="/">LOGOUT</Link>
