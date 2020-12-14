@@ -1,0 +1,11 @@
+section {
+  margin-top: 30px !important;
+  width: 100%;
+  border-radius: 30px;
+  margin: 30px auto;
+  background-color: #ffffffb0;
+  color: var(--accent-color-brown);
+  padding: 40px;
+  text-align: left;
+  font-size: var(--font-L);
+}
