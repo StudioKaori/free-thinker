@@ -9,7 +9,7 @@ import PopUpMsg from "./PopUpMsg";
 import AssignmentCreateForm from  "./assignCreate/AssignCreateForm"
 
 // Create assignment Page for teacher
-export default function TeacherAssignmentPage() {
+export default function TeacherAssignmentPage(onDeleteClick) {
 
     const [uploadFileIsOpen, setUploadFileIsOpen] = useState(false);
     const [createQuizIsOpen, setCreateQuizIsOpen] = useState(false);
@@ -115,6 +115,24 @@ export default function TeacherAssignmentPage() {
 
             {displayPopUp && <PopUpMsg type="success" message="Succesfully saved"/>}
             {displayError && <PopUpMsg type="error" message="Something is Missing"/>}
+
+          
+                <button className="btn btn-danger m-2" onClick={() => onDeleteClick()}>  
+                        Delete
+                </button>
+
+
+
+
+
+
+
+
         </div>
+
+
+
+
+
     );
 }
