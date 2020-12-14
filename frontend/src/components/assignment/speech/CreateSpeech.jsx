@@ -1,38 +1,33 @@
 import React, { useState } from 'react';
 import { useSpeechSynthesis } from 'react-speech-kit';
-import AssignmentApi from '../../../api/AssignmentApi';
 
 import '../../../css/assignment/speech.css'
 
 import Button from '../atoms/Button';
 
 // Entry point for creating a Speech assignment - use of react-speech-kit library
-export default function CreateSpeech({close, setDisplayPopUp, setDisplayError,
+export default function CreateSpeech({close, setAssignmentIsValid, setNothingIsPicked,
     assignmentObj ,setAssignmentObj}) {
 
     const [question, setQuestion] = useState('');
     const { speak } = useSpeechSynthesis();
 
     const saveSpeech = () => {
+        const newObj = {...assignmentObj}
+        newObj.type = "Speech";
+
         if (question === '') { 
-            setDisplayError(true);
-            setTimeout(() => {
-                setDisplayError(false);
-            }, 1000)
+            setNothingIsPicked(false)
+            setAssignmentObj(newObj);
+            setAssignmentIsValid(false)
             return; 
         } // Cancel if not ok
 
-        const newObj = {...assignmentObj}
-        newObj.type = "Speech";
         newObj.assignment = JSON.stringify({question: question});
 
+        setNothingIsPicked(false)
         setAssignmentObj(newObj);
-
-        setDisplayPopUp(true);
-        setTimeout(() => {
-            setDisplayPopUp(false);
-        }, 2000)
-
+        setAssignmentIsValid(true);
         close();
     }
 
