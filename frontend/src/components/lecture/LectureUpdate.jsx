@@ -21,7 +21,6 @@ function LectureUpdate({ lecture, oldLecture, onUpdateClick }) {
   );
 
   const handleOnChange = (e, editor) => {
-    //console.log(editor.getData());
     const data = editor.getData();
     setBody(data);
   };
