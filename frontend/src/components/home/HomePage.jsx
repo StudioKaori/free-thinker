@@ -62,13 +62,6 @@ function HomePage() {
                 </p>
                 <p>We are Free Thinkers !</p>
             </section>
-            {/* <footer className="home-footer bg-secondary">
-                <ul className="d-flex justify-content-around">
-                    <li>Instagram</li>
-                    <li>LinkedIn</li>
-                    <li>Github</li>
-                </ul>
-            </footer> */}
             <Footer />
 
         </>
