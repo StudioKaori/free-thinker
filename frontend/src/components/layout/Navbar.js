@@ -65,6 +65,7 @@ function Navbar({ onLogout }) {
                 <img
                   src="/assets/img/logo.svg"
                   alt="Free Thinker"
+                  title="Free Thinker"
                   className="header-menu-logo-icon"
                 />
               </Link>
@@ -134,12 +135,6 @@ function Navbar({ onLogout }) {
                   <li onClick={() => closeNav()}>
                     <Link to="/">HOME</Link>
                     {/* Add Student menu here */}
-                  </li>
-                  <li onClick={() => closeNav()}>
-                    <Link to="/see-lecture">See Lecture</Link>
-                  </li>
-                  <li onClick={() => closeNav()}>
-                    <Link to="/see-assignment">See Assignment</Link>
                   </li>
                   <li onClick={onLogout}>
                     <Link to="/">LOGOUT</Link>
