@@ -3,26 +3,34 @@ import { Link } from "react-router-dom";
 
 import "../../../../css/components/island/island-icon.css";
 
-export default function IslandIcon({ type, linkUrl, done, assignmentNum }) {
+export default function IslandIcon({
+  type,
+  linkUrl,
+  done,
+  assignmentNum,
+  addLinkToIcon,
+}) {
   const displayType = done === "done" ? "done" : type;
   const iconImg = "/assets/img/css/islands/icon" + assignmentNum + ".png";
 
   switch (displayType) {
     case "unlock":
-      return (
-        <Link to={linkUrl}>
-          <img
-            src={iconImg}
-            className="island-icon animate__animated animate__rubberBand"
-            alt="assignment"
-          />
-        </Link>
+      const imgUrl = (
+        <img
+          src={iconImg}
+          className="island-icon animate__animated animate__rubberBand"
+          alt="assignment"
+          title="assignment"
+        />
       );
+
+      return addLinkToIcon ? <Link to={linkUrl}>{imgUrl}</Link> : imgUrl;
+
     case "done":
       return (
         <img
-          src="/assets/img/css/islands/icon-done.svg"
-          className="island-icon"
+          src="/assets/img/css/islands/icon-done.png"
+          className="island-icon animate__animated animate__rubberBand"
           alt="done"
         />
       );
@@ -32,7 +40,7 @@ export default function IslandIcon({ type, linkUrl, done, assignmentNum }) {
         <img
           src="/assets/img/css/islands/icon-lock.png"
           alt="locked assignment"
-          className="island-icon"
+          className="island-icon animate__animated animate__rubberBand"
         />
       );
 
@@ -41,7 +49,7 @@ export default function IslandIcon({ type, linkUrl, done, assignmentNum }) {
         <img
           src="/assets/img/css/islands/icon-lock.png"
           alt="locked assignment"
-          className="island-icon"
+          className="island-icon animate__animated animate__rubberBand"
         />
       );
   }

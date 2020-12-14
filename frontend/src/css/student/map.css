@@ -49,13 +49,13 @@
   position: absolute;
 }
 
-.student-home-map-island-path {
-  display: none;
-}
-
-.island-icon-position img:hover {
+.island-icon-position a img:hover {
   width: 75px;
   height: 75px;
+}
+
+.student-home-map-island-path {
+  display: none;
 }
 
 @media (min-width: 550px) {
