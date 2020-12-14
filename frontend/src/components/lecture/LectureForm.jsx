@@ -2,35 +2,27 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import moment from 'moment';
+import moment from "moment";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import PopUpMsg from "../assignment/PopUpMsg";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function LectureForm({ isOpen, onCreateClick, dateFromCalDate }) {
-
+export default function LectureForm({
+  isOpen,
+  onCreateClick,
+  dateFromCalDate,
+}) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-
-  // var date = new Date();
-  // var timestamp = date.getTime();
-  // const sortTime = new Intl.DateTimeFormat("en-US", {
-  //   year: "numeric",
-  //   month: "2-digit",
-  //   day: "2-digit",
-  //   hour: "2-digit",
-  //   minute: "2-digit",
-  //   second: "2-digit",
-  // }).format(timestamp);
 
   const handleOnChange = (e, editor) => {
     const data = editor.getData();
     setBody(data);
   };
 
-  //youtube video
   const [youtube, setYoutube] = useState("");
+  const [zoom, setZoom] = useState("");
 
   // unlock date
   const initialUnlockDate =
@@ -66,19 +58,6 @@ export default function LectureForm({ isOpen, onCreateClick, dateFromCalDate }) 
 
           <div className="form-group">
             <label>Unlock Date:</label>
-            {/* <input
-              id="lectureDateInLectureForm"
-              type="text"
-              className="form-control"
-              placeholder="YYYY-MM-DD"
-              value={unlockDate}
-              onChange={(e) => setUnlockDate(e.target.value)}
-
-              />
-                        
-          </div>
-
-            /> */}
             <div>
               <DatePicker
                 id="lectureDateInLectureForm"
@@ -103,13 +82,25 @@ export default function LectureForm({ isOpen, onCreateClick, dateFromCalDate }) 
           </div>
 
           <div className="form-group">
-            <label>Youtube/Zoom:</label>
+            <label>Youtube URL:</label>
             <input
               id="lectureYoutubeInLectureForm"
               type="text"
               className="form-control"
-              placeholder="Youtube video url or Zoom link"
+              placeholder="Youtube video url"
               value={youtube}
+              onChange={(e) => setYoutube(e.target.value)}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Zoom Link:</label>
+            <input
+              id="lectureZoomInLectureForm"
+              type="text"
+              className="form-control"
+              placeholder="Zoom link"
+              value={zoom}
               onChange={(e) => setYoutube(e.target.value)}
             />
           </div>
@@ -126,11 +117,19 @@ export default function LectureForm({ isOpen, onCreateClick, dateFromCalDate }) 
               id="lectureCreateButtonInLectureForm"
               className="btn btn-info"
               onClick={() => {
-                onCreateClick({ title, body, youtube, unlockDate, unlockTime });
+                onCreateClick({
+                  title,
+                  body,
+                  youtube,
+                  unlockDate,
+                  unlockTime,
+                  zoom,
+                });
                 setTitle("");
                 setUnlockDate("");
                 setUnlockTime("");
                 setYoutube("");
+                setZoom("");
                 document.getElementsByClassName(
                   "ck-content"
                 )[0].childNodes[0].innerHTML = "";
@@ -138,7 +137,9 @@ export default function LectureForm({ isOpen, onCreateClick, dateFromCalDate }) 
             >
               Create
             </button>
-            {isOpen && <PopUpMsg type="success" message="lecture has been created" />}
+            {isOpen && (
+              <PopUpMsg type="success" message="lecture has been created" />
+            )}
           </div>
         </div>
       </div>

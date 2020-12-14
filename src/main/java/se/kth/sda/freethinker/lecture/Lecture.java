@@ -19,6 +19,7 @@ public class Lecture {
     @Column(columnDefinition = "TEXT")
     private String body;
     private String youtubeUrl;
+    private String zoomLink;
 
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime unlockTime;
@@ -30,7 +31,7 @@ public class Lecture {
     @OneToMany
     public List<Assignment> assignments;
 
-    public Lecture(){
+    public Lecture() {
 
     }
 
