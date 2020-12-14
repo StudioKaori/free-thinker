@@ -1,10 +1,7 @@
 package se.kth.sda.freethinker.classDailySettings;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.List;
 
 
 @Entity
@@ -17,12 +14,10 @@ public class ClassDailySetting {
     private LocalDateTime date;
 
     private String islandTheme;
+    private String city;
+    private String monster;
 
-
-
-
-    public ClassDailySetting(){
-
+    public ClassDailySetting() {
     }
 
     public Long getId() {
@@ -47,5 +42,21 @@ public class ClassDailySetting {
 
     public void setIslandTheme(String islandTheme) {
         this.islandTheme = islandTheme;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getMonster() {
+        return monster;
+    }
+
+    public void setMonster(String monster) {
+        this.monster = monster;
     }
 }

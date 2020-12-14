@@ -55,7 +55,16 @@ export default function LecturePage({ match }) {
           </div>
 
           <div className="lecture-details">
-            <div className="lecture-text">{ReactHtmlParser(lecture.body)}</div>
+            <div className="lecture-text">
+              <div className="lecture-text-title">
+                <h2>
+                  <i className="fas fa-glasses"></i> {lecture.title}{" "}
+                  <i className="fas fa-glasses"></i>
+                </h2>
+                {moment(lecture.unlockTime).format("YYYY-MM-DD HH:mm")}
+              </div>
+              {ReactHtmlParser(lecture.body)}
+            </div>
           </div>
         </div>
       )}
