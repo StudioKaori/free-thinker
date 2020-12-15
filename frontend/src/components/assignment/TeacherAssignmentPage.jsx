@@ -6,10 +6,7 @@ import CreateSpeech from './speech/CreateSpeech';
 import CreateQuiz from './quiz/CreateQuiz';
 import PopUpMsg from "./PopUpMsg";
 import AssignmentCreateForm from  "./assignCreate/AssignCreateForm";
-
 import Icon from "../icons/map-icon"
-
-
 import FileUpload from "../assignment/assignCreate/FileUpload";
 
 // Create assignment Page for teacher
@@ -33,29 +30,28 @@ export default function TeacherAssignmentPage() {
     const [assignmentObj, setAssignmentObj] = useState({});
     const [resetFields, setResetFields] = useState(false);
     
-
+    // Assignment list for overview
     const [assignments, setAssignments] = useState([]);
 
     const getAll = () => {
-        AssignmentApi.getAllAssignments("/assignments").then((res) => {
+        AssignmentApi.getAllAssignments().then((res) => {
           setAssignments(res.data.sort((a, b) => b.id - a.id));
         });
-      };
+    };
       
-     
+    const deleteAssignment = (id) => {
+        AssignmentApi.deleteAssignment(id).then(() => getAll());
+    };
 
-    const deleteAssignment = (assignmentObj) => {
-        AssignmentApi.deleteAssignment("/assignments/" + assignmentObj.id).then((r) => getAll());
-      };
-
-      useEffect(() => {
+    useEffect(() => {
         getAll();
-      }, [])
+    }, [])
       
 
     const onCreateClick = () => {
         AssignmentApi.createAssignment(assignmentObj)
             .then(() => {
+                getAll();
                 setDisplayPopUp(true);
                 setTimeout(() => {
                     setDisplayPopUp(false);
@@ -78,10 +74,6 @@ export default function TeacherAssignmentPage() {
                 setFormIsValid={setFormIsValid}
                 setResetFields={setResetFields} resetFields={resetFields}
             />
-
-               
-
-
 
         <div className="dropdown ml-4">
             <label>Assignement :</label>
@@ -208,14 +200,5 @@ export default function TeacherAssignmentPage() {
                     />
                    ))}
        </div>
-  
-
-
     );
-          
-
-            }
-
-
-    
-
+}

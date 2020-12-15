@@ -15,7 +15,7 @@ function AssignCard({ onDeleteClick,assign}) {
                        </div>
                     
                         <div>
-                            <button className="btn btn-danger m-2" onClick={() => onDeleteClick(assign)}>
+                            <button className="btn btn-danger m-2" onClick={() => onDeleteClick(assign.id)}>
                             Delete
 
                             </button>
