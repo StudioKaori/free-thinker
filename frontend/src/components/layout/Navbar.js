@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Api from "../../api/Api";
 import { Link } from "react-router-dom";
-import LogoIcon from "../../assets/img/components/navbar/logo-icon.png";
 import Profile from "../layout/Profile";
 import UserApi from "../../api/UserApi";
 
@@ -37,7 +36,7 @@ function Navbar({ onLogout }) {
 
   // for navigation drawer
   function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("mySidenav").style.width = "300px";
   }
 
   function closeNav() {
