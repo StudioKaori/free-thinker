@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import moment from "moment";
+import DatePicker from "react-datepicker";
 
 // ========================================================================
 // Form in teacher create assignment page
@@ -88,7 +89,6 @@ export default function AssignCreateForm({ assignmentObj, setAssignmentObj,
                         onChange={(e) => setUnlockTime(e.target.value)}
                     />
                 </div>
-
             </div>
         </div>
     );
