@@ -98,13 +98,17 @@ function Navbar({ onLogout }) {
           </div>
 
           <div className="mobile-menu">
-            <span onClick={() => openNav()}>
+            <span onClick={() => openNav()} onMouseEnter={() => openNav()}>
               <MenuButton />
               {/* <i className="fas fa-bars"></i> */}
             </span>
           </div>
 
-          <div id="mySidenav" className="header-menu">
+          <div
+            id="mySidenav"
+            className="header-menu"
+            onMouseLeave={() => closeNav()}
+          >
             <span className="closebtn" onClick={() => closeNav()}>
               &times;
             </span>
