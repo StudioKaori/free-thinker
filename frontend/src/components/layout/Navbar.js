@@ -3,6 +3,7 @@ import Api from "../../api/Api";
 import { Link } from "react-router-dom";
 import Profile from "../layout/Profile";
 import UserApi from "../../api/UserApi";
+import MenuButton from "../common/MenuButton";
 
 // Popup
 import showPopupWindow from "../../js/common/popup/showPopupWindow";
@@ -98,7 +99,8 @@ function Navbar({ onLogout }) {
 
           <div className="mobile-menu">
             <span onClick={() => openNav()}>
-              <i className="fas fa-bars"></i>
+              <MenuButton />
+              {/* <i className="fas fa-bars"></i> */}
             </span>
           </div>
 
