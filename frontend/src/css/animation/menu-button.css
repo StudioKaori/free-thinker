@@ -1,0 +1,31 @@
+.menu {
+  cursor: pointer;
+}
+
+.menu .border {
+  fill: #000000;
+  -webkit-transition: 200ms all ease;
+  transition: 200ms all ease;
+  -webkit-transform-origin: 250px 250px;
+  transform-origin: 250px 250px;
+}
+
+.menu:hover .border {
+  fill: #890a0c;
+}
+
+.menu:hover .border1 {
+  -webkit-transform: translate(-102px, 102px) rotate(45deg);
+  transform: translate(-102px, 102px) rotate(45deg);
+}
+
+.menu:hover .border2 {
+  opacity: 0;
+}
+
+.menu:hover .border3 {
+  -webkit-transform: translate(-102px, -102px) rotate(-45deg);
+  transform: translate(-102px, -102px) rotate(-45deg);
+}
+
+/*# sourceMappingURL=demo1_transition.css.map */

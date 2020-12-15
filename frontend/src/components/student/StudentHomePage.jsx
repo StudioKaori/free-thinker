@@ -4,6 +4,7 @@ import Map from "./home/map/Map";
 import StoryIntro from "./home/storyIntro/StoryIntro";
 import WorldMap from "./worldmap/WorldMap";
 import Heart from "../common/Heart";
+import MenuButton from "../common/MenuButton";
 
 // Popup
 import showPopupWindow from "../../js/common/popup/showPopupWindow";
@@ -20,6 +21,7 @@ export default function StudentHomePage() {
       <Map />
       {/* <WorldMap /> */}
       <Heart />
+      <MenuButton />
 
       <div id="popupWindow" className="popupWindow hidePopup">
         <div className="popup_inner popup_inner_L story-inner-box animate__animated animate__rubberBand">
