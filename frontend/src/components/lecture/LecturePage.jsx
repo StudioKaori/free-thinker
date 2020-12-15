@@ -8,6 +8,9 @@ import LectureForm from "./LectureForm";
 function LecturePage({ dateFromCal }) {
   const dateFromCalDate = useRef("");
   const [isOpen, setIsOpen] = useState(false);
+  const [errorTitle, setErrorTitle] = useState(false);
+  const [errorDate, setErrorDate] = useState(false);
+  const [errorTime, setErrorTime] = useState(false);
 
   if (typeof dateFromCal !== "undefined") {
     dateFromCalDate.current = dateFromCal.match.params.date;
@@ -18,6 +21,27 @@ function LecturePage({ dateFromCal }) {
   // const [activity, setActivity] = useRecoilState(recent);
 
   const createLecture = (lectureData) => {
+    
+    if(lectureData.unlockDate === ''){
+        setErrorDate(true);
+        setTimeout(() => {
+          setErrorDate(false);
+        }, 1000);
+      }
+    if(lectureData.unlockTime === ''){
+      setErrorTime(true);
+      setTimeout(() => {
+        setErrorTime(false);
+      }, 1000);
+    }
+    if (lectureData.title === ''){
+      setErrorTitle(true);
+      setTimeout(() => {
+        setErrorTitle(false);
+      }, 1000);
+      return;
+      }
+
     let sqlLectureData = {};
     sqlLectureData.title = lectureData.title;
     sqlLectureData.body = lectureData.body;
@@ -49,6 +73,9 @@ function LecturePage({ dateFromCal }) {
         "recent-activity",
         JSON.stringify(temp.concat(res.data))
       );
+      document.getElementsByClassName(
+        "ck-content"
+      )[0].childNodes[0].innerHTML = "";
     });
   };
 
@@ -91,6 +118,12 @@ function LecturePage({ dateFromCal }) {
         dateFromCalDate={dateFromCalDate}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
+        errorTitle={errorTitle}
+        setErrorTitle={setErrorTitle}
+        errorDate={errorDate}
+        setErrorDate={setErrorDate}
+        errorTime={errorTime}
+        setErrorTime={setErrorTime}
       />
 
       {lectures.map((lecture) => (

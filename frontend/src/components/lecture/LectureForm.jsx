@@ -9,6 +9,9 @@ import PopUpMsg from "../assignment/PopUpMsg";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function LectureForm({
+  errorTitle,
+  errorDate,
+  errorTime,
   isOpen,
   onCreateClick,
   dateFromCalDate,
@@ -44,21 +47,23 @@ export default function LectureForm({
   const [unlockTime, setUnlockTime] = useState("");
 
   return (
+  <form novalidate=""  id="myForm">
     <div className="body-wrapper">
       <div className="card">
         <div className="card-body">
           <h2> Create a Lecture: </h2>
 
           <div className="form-group">
-            <label>Title:</label>
+            <label className="form-control-label" for ="inputSuccess1">Title:</label>
             <input
-              id="lectureTitleInLectureForm"
+              id="inputSuccess1"
               type="text"
               className="form-control"
               placeholder="lecture title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
+            <div> {errorTitle &&  <span style={{ color: "red" }}> Please provide a title</span>} </div>
           </div>
 
           <div className="form-group">
@@ -72,6 +77,7 @@ export default function LectureForm({
                 onChange={(e) => setUnlockDate(e)}
               />
             </div>
+            <div> {errorDate &&  <span style={{ color: "red" }}> Please provide unlockDate</span>} </div>
           </div>
 
           <div className="form-group">
@@ -84,6 +90,7 @@ export default function LectureForm({
               value={unlockTime}
               onChange={(e) => setUnlockTime(e.target.value)}
             />
+            <div> {errorTime &&  <span style={{ color: "red" }}> Please provide unlockTime</span>} </div>
           </div>
 
           <div className="form-group">
@@ -121,7 +128,8 @@ export default function LectureForm({
             <button
               id="lectureCreateButtonInLectureForm"
               className="btn btn-info"
-              onClick={() => {
+              type="submit"
+              onClick={(e) => {e.preventDefault()
                 onCreateClick({
                   title,
                   body,
@@ -135,9 +143,6 @@ export default function LectureForm({
                 setUnlockTime("");
                 setYoutube("");
                 setZoom("");
-                document.getElementsByClassName(
-                  "ck-content"
-                )[0].childNodes[0].innerHTML = "";
               }}
             >
               Create
@@ -149,5 +154,6 @@ export default function LectureForm({
         </div>
       </div>
     </div>
+  </form>
   );
 }
