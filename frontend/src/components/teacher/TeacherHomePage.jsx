@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import DailySettingForm from "./home/DailySettingForm";
 import DayBox from "./home_page/DayBox";
 import ActivityBox from "./home_page/ActivityBox";
 
+// ========================================================================
+// Teacher Home Page / Dashboard
 export default function TeacherHomePage() {
   // const [previewChange, setPreviewChange] = useState(<Map />);
 

@@ -1,18 +1,19 @@
+import { useEffect, useState } from "react";
+import moment from "moment";
+
 import { useRecoilState } from "recoil";
 import { userState } from "../../js/state-information";
-import Map from "./home/map/Map";
+
 import StoryIntro from "./home/storyIntro/StoryIntro";
 import WorldMap from "./worldmap/WorldMap";
+import Map from "./home/map/Map";
+
 import AssignmentProgressApi from "../../api/AssignmentProgressApi";
 
-// Popup
-import showPopupWindow from "../../js/common/popup/showPopupWindow";
-import closePopupWindow from "../../js/common/popup/closePopupWindow";
-
-import moment from "moment";
 import "../../css/student/student-home.css";
-import { useEffect, useState } from "react";
 
+// ========================================================================
+// Student Home page - Entry point
 export default function StudentHomePage() {
   // To get user information, just use user below
   const [user] = useRecoilState(userState);
@@ -27,6 +28,7 @@ export default function StudentHomePage() {
         })
   }, [])
 
+  // Get info if student finish todays assignments
   useEffect(() => {
     const todayProgress = progress
         .filter(prog => prog.classDailySetting.date.substr(0, 10) === date);

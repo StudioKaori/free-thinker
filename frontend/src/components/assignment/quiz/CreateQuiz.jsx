@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 
 import CreateQuizForm from './CreateQuizForm';
 
-import Button from '../atoms/Button';
-
+// =====================================================================
 // Entry point for Quiz creation
 export default function CreateQuiz({close, setAssignmentIsValid, setNothingIsPicked,
     assignmentObj ,setAssignmentObj}) {
@@ -50,12 +49,11 @@ export default function CreateQuiz({close, setAssignmentIsValid, setNothingIsPic
             <div className="col-sm-12 col-md-8">
 
                 <div className="text-center">
-                    <Button 
+                    <button
                         id="save-quiz-button"
-                        buttonStyle="btn-danger"
-                        content="Save Quiz" 
+                        className="btn m-1 btn-danger" 
                         onClick={() => saveQuiz()}
-                    />
+                    >Save Quiz</button>
                 </div>
 
                 <CreateQuizForm setNewQuiz={setNewQuiz} />

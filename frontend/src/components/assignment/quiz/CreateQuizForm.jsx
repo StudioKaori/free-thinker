@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
 
-import Button from '../atoms/Button';
 import Question from './Question';
 
 import '../../../css/assignment/quiz.css';
 
+// =====================================================================
 // Actual form for creating the quiz
 export default function CreateQuizForm({ setNewQuiz }) {
 
     // Main
     const [title, setTitle] = useState('');
     const [synopsis, setSynopsis] = useState('');
-    // const [theme, setTheme] = useState(1);  // later maybe (?)
     
     // Steps
     const [questions, setQuestions] = useState([]);
@@ -60,10 +59,6 @@ export default function CreateQuizForm({ setNewQuiz }) {
 
     return (
         <div className="card p-3 mt-4 mb-4 bg-dark">
-            {/* <div className="text-center">
-                If we need 'Change Themes' feature, it is here
-            </div> */}
-
             <div className="d-flex justify-content-center">
                 <div className='create-quiz-div' >
                     <div className='create-quiz-header'>
@@ -94,14 +89,12 @@ export default function CreateQuizForm({ setNewQuiz }) {
                     </div>
 
                     <div>
-                        <Button
+                        <button
                             id="create-quiz-new-question-button"
-                            buttonStyle="mt-4 ml-1 btn-sm btn-success"
-                            content="+"
+                            className="btn mt-4 ml-1 btn-sm btn-success"
                             onClick={() => createQuestion()}
-                        />
+                        >+</button>
                     </div>
-
                 </div>
             </div>
         </div>

@@ -1,7 +1,8 @@
+import React,{Component} from 'react'; 
 import axios from 'axios'; 
 
-import React,{Component} from 'react'; 
-
+// ========================================================================
+// Upload File component
 class FileUpload extends Component { 
 
 	state = { 
@@ -53,21 +54,17 @@ class FileUpload extends Component {
 	};  
 	
 	render() { 
-	
-	return ( 
-		
-		<div className="dropdown-item" data-toggle="dropdown-menu">  
-			
-			
-			 <div  > 
-				<input type="file" onChange={this.onFileChange} /> 
-				<button onClick={this.onFileUpload}> 
-				Upload 
-				</button> 
-			</div>  
-		
-		</div> 
-	); 
+        return ( 
+            
+            <div className="dropdown-item" data-toggle="dropdown-menu">  
+                <div  > 
+                    <input type="file" onChange={this.onFileChange} /> 
+                    <button onClick={this.onFileUpload}> 
+                        Upload 
+                    </button> 
+                </div>  
+            </div> 
+        ); 
 	} 
 } 
 

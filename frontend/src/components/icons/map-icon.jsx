@@ -1,15 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import lock from "../../assets/img/Lock-icon.png";
-import unlock from "../../assets/img/Unlock-icon2.png";
-import check from "../../assets/img/check-1-icon.png";
-import thumbs from "../../assets/img/Hand-thumbs-up-like-2-icon.png";
+
+// Icons
+import lock from "../../assets/img/icons/Lock-icon.png";
+import unlock from "../../assets/img/icons/Unlock-icon2.png";
+import check from "../../assets/img/icons/check-1-icon.png";
+import thumbs from "../../assets/img/icons/Hand-thumbs-up-like-2-icon.png";
 import todo from "../../assets/img/components/navbar/logo-icon.png";
-import trophy from "../../assets/img/trophy.png";
-import wrong from "../../assets/img/wrong.png";
+import trophy from "../../assets/img/icons/trophy.png";
+import wrong from "../../assets/img/icons/wrong.png";
 
 import "../../css/icons.css";
 
+// ========================================================================
+// Icons - Mainly for island page
 export default function mapIcon({ type, linkUrl }) {
   switch (type) {
     case "lock":

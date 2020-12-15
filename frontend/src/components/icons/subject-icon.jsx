@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import maths from "../../assets/img/maths-logo.png";
-import science from "../../assets/img/science-logo.png";
-import english from "../../assets/img/english-logo.png";
-import geo from "../../assets/img/geo-logo.png";
+
+import maths from "../../assets/img/topics-logo/maths-logo.png";
+import science from "../../assets/img/topics-logo/science-logo.png";
+import english from "../../assets/img/topics-logo/english-logo.png";
+import geo from "../../assets/img/topics-logo/geo-logo.png";
 
 import "../../css/icons.css";
 
-
+// =====================================================================
+// Subject icons - not used now
 export default function subjectIcon({subject}) {
 
     // const [subject, setSubject] = useState("");
@@ -21,7 +23,8 @@ export default function subjectIcon({subject}) {
             return <img className="subject" src={science} alt="Science logo"/>;
         case "geo":
             return <img className="subject" src={geo} alt="Geography logo"/>;
-
+        default: 
+            return <img className="subject" src={geo} alt="Geography logo"/>;
     }
 
     // return (

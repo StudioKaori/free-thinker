@@ -1,8 +1,11 @@
 import React from "react";
-import image1 from '../../assets/img/student-carousel-1.png';
-import image2 from '../../assets/img/student-carousel-2.png';
-import image3 from '../../assets/img/student-carousel-3.png';
 
+import image1 from '../../assets/img/carousel/student-carousel-1.png';
+import image2 from '../../assets/img/carousel/student-carousel-2.png';
+import image3 from '../../assets/img/carousel/student-carousel-3.png';
+
+// =====================================================================
+// Carousel for student section in home page
 function StudentCarousel() {
 
     return (
@@ -33,7 +36,6 @@ function StudentCarousel() {
             </a>
         </div>
     )
-
 }
 
 export default StudentCarousel;

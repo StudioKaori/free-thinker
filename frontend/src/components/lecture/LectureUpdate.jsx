@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import ReactHtmlParser from "react-html-parser";
 import moment from "moment";
 
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
+// ========================================================================
+// Update form - in teacher create lecture page
 function LectureUpdate({ lecture, oldLecture, onUpdateClick }) {
   const [title, setTitle] = useState(oldLecture.title);
   const [body, setBody] = useState(oldLecture.body);

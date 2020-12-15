@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import "../../../../css/components/island/island-icon.css";
 
+// ========================================================================
 export default function IslandIcon({
   type,
   linkUrl,

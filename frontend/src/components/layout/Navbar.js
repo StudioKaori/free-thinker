@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Api from "../../api/Api";
 import { Link } from "react-router-dom";
+
+import Api from "../../api/Api";
+
 import Profile from "../layout/Profile";
 import UserApi from "../../api/UserApi";
 import MenuButton from "../common/MenuButton";
@@ -13,6 +15,9 @@ import closePopupWindow from "../../js/common/popup/closePopupWindow";
 import { useRecoilState } from "recoil";
 import { userState } from "../../js/state-information";
 
+
+// ========================================================================
+// Navbar - visible on every pages
 function Navbar({ onLogout }) {
   const [status, setStatus] = useState(0);
   const [user, setUser] = useRecoilState(userState);
