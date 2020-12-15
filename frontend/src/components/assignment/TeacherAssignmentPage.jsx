@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import AssignmentApi from '../../api/AssignmentApi'
-
+import AssignCard from '../assignment/assignCreate/AssignCard';
 import CreateChat from './chatbot/CreateChat';
 import CreateSpeech from './speech/CreateSpeech';
 import CreateQuiz from './quiz/CreateQuiz';
 import PopUpMsg from "./PopUpMsg";
-import AssignmentCreateForm from  "./assignCreate/AssignCreateForm"
+import AssignmentCreateForm from  "./assignCreate/AssignCreateForm";
+
 import Icon from "../icons/map-icon"
 
 // Create assignment Page for teacher
-export default function TeacherAssignmentPage(onDeleteClick) {
+export default function TeacherAssignmentPage() {
 
     // Form Validity
     const [nothingIsPicked, setNothingIsPicked] = useState(true);
@@ -31,6 +32,26 @@ export default function TeacherAssignmentPage(onDeleteClick) {
     const [assignmentObj, setAssignmentObj] = useState({});
     const [resetFields, setResetFields] = useState(false);
     
+
+    const [assignments, setAssignments] = useState([]);
+
+    const getAll = () => {
+        AssignmentApi.getAllAssignments("/assignments").then((res) => {
+          setAssignments(res.data.sort((a, b) => b.id - a.id));
+        });
+      };
+      
+     
+
+    const deleteAssignment = (assignmentObj) => {
+        AssignmentApi.deleteAssignment("/assignments/" + assignmentObj.id).then((r) => getAll());
+      };
+
+      useEffect(() => {
+        getAll();
+      }, [])
+      
+
     const onCreateClick = () => {
 
         if (typeof assignmentObj.assignment === 'undefined' ) {
@@ -54,9 +75,10 @@ export default function TeacherAssignmentPage(onDeleteClick) {
                 setAssignmentIsValid(false);
                 setFormIsValid(false);
                 setNothingIsPicked(true)
+                console.log(assignmentObj)
             })
     } 
-
+   
     return (
         <div className="bg-light p-2">
 
@@ -65,6 +87,10 @@ export default function TeacherAssignmentPage(onDeleteClick) {
                 setFormIsValid={setFormIsValid}
                 setResetFields={setResetFields} resetFields={resetFields}
             />
+
+               
+
+
 
         <div className="dropdown ml-4">
             <label>Assignement :</label>
@@ -171,27 +197,32 @@ export default function TeacherAssignmentPage(onDeleteClick) {
               Create
             </button>
 
-
             {displayPopUp && <PopUpMsg type="success" message="Succesfully saved"/>}
             {displayError && <PopUpMsg type="error" message="Something is Missing"/>}
 
+
           
-                <button className="btn btn-danger m-2" onClick={() => onDeleteClick()}>  
-                        Delete
-                </button>
+
+            {assignments.map((assign) => (
+                    <AssignCard
+                    key={assign.id}
+                    assign={assign}
+                    onDeleteClick={deleteAssignment}
+                    />
+                   ))}
+
+      
 
 
-
-
-
-
-
-
-        </div>
-
-
-
+       </div>
+  
 
 
     );
-}
+          
+
+            }
+
+
+    
+
