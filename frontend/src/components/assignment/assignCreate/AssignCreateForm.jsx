@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import moment from "moment";
+import DatePicker from "react-datepicker";
 
 
 
@@ -67,30 +68,29 @@ export default function AssignCreateForm({assignmentObj, setAssignmentObj,
           </div>
           <div className="form-group">
             <label>Unlock Date:</label>
-              <input
-              id="assignDateInAssignForm"
-              type="text"
-              className="form-control"
-              placeholder="YYYY-MM-DD"
-              value={unlockDate}
-              onChange={(e) => setUnlockDate(e.target.value)}
-            /> 
-          <div>
-          
-            </div>
+            <div>
+              <DatePicker
+                id="lectureDateInLectureForm"
+                className="form-control"
+                selected={unlockDate}
+                dateFormat="yyyy-MM-dd"
+                onChange={(e) => setUnlockDate(e)}
+              />
             </div>
             
+          </div>
 
           <div className="form-group">
             <label>Unlock Time:</label>
             <input
-              id="assignTimeInAssignForm"
-              type="text"
+              id="lectureTimeInLectureForm"
+              type="time"
               className="form-control"
               placeholder="ex. 09:00"
               value={unlockTime}
               onChange={(e) => setUnlockTime(e.target.value)}
             />
+            
           </div>
           
 
