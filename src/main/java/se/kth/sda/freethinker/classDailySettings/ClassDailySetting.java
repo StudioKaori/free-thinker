@@ -1,5 +1,6 @@
 package se.kth.sda.freethinker.classDailySettings;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import se.kth.sda.freethinker.assignmentProgress.AssignmentProgress;
 
 import javax.persistence.*;
@@ -20,7 +21,8 @@ public class ClassDailySetting {
     private String city;
     private String monster;
 
-    @OneToMany
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "class_daily_setting_id")
     private List<AssignmentProgress> assignmentProgresses;
 

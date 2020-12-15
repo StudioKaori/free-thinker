@@ -1,5 +1,6 @@
 package se.kth.sda.freethinker.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.Length;
 import se.kth.sda.freethinker.assignmentProgress.AssignmentProgress;
 import se.kth.sda.freethinker.assignments.Assignment;
@@ -39,7 +40,8 @@ public class User {
     @ManyToMany
     private List<Assignment> assignmentsDone = new ArrayList<>();
 
-    @OneToMany
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id")
     private List<AssignmentProgress> assignmentProgresses;
 

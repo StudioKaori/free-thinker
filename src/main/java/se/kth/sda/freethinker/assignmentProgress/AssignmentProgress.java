@@ -4,6 +4,7 @@ import se.kth.sda.freethinker.classDailySettings.ClassDailySetting;
 import se.kth.sda.freethinker.user.User;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -13,12 +14,15 @@ public class AssignmentProgress {
     private Long id;
 
     private Boolean assignmentsOfTheDayIsDone;
+    
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime assignmentDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "student_id")
     private User student;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "class_daily_setting_id")
     private ClassDailySetting classDailySetting;
 
@@ -47,5 +51,13 @@ public class AssignmentProgress {
 
     public void setStudent(User student) {
         this.student = student;
+    }
+
+    public ClassDailySetting getClassDailySetting() {
+        return classDailySetting;
+    }
+
+    public void setClassDailySetting(ClassDailySetting classDailySetting) {
+        this.classDailySetting = classDailySetting;
     }
 }
