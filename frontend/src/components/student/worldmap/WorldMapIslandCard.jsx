@@ -5,8 +5,7 @@ export default function WorldMapIslandCard({ island }) {
   const date = moment(island.classDailySetting.date).format("YYYY-MM-DD");
   const islandImg =
     "/assets/img/css/islands/" + island.classDailySetting.islandTheme + ".png";
-  const monsterImg =
-    "/assets/img/monsters/" + island.classDailySetting.monster + ".png";
+  const monsterImg = "/assets/img/monsters/" + island.monster + ".png";
   const isVisible = island.assignmentsOfTheDayIsDone
     ? "worldmap-visible"
     : "worldmap-invisible";
@@ -22,9 +21,9 @@ export default function WorldMapIslandCard({ island }) {
         <img src={monsterImg} className={isVisible} alt="monster" />
       </div>
       <div className="island-name">
+        {/* <div className={showCityName}>{island.city}</div>
+        <br /> */}
         <span>{date}</span>
-        <br />
-        <div className={showCityName}>{island.classDailySetting.city}</div>
       </div>
       <div className="island-img animate__animated animate__rubberBand">
         <img src={islandImg} className={isVisible} alt="island" />

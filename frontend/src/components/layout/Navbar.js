@@ -163,6 +163,11 @@ function Navbar({ onLogout }) {
                       <i className="fas fa-calendar-alt"></i>Lecture Calendar
                     </Link>
                   </li>
+                  <li onClick={() => closeNav()}>
+                    <Link to="/my-progress">
+                      <i className="fas fa-globe-americas"></i>My Progress
+                    </Link>
+                  </li>
                   <li onClick={onLogout}>
                     <Link to="/">
                       <i className="fas fa-sign-out-alt"></i>LOGOUT

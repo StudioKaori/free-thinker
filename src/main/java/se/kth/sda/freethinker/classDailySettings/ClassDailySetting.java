@@ -18,8 +18,6 @@ public class ClassDailySetting {
     private LocalDateTime date;
 
     private String islandTheme;
-    private String city;
-    private String monster;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "classDailySetting")
@@ -50,21 +48,5 @@ public class ClassDailySetting {
 
     public void setIslandTheme(String islandTheme) {
         this.islandTheme = islandTheme;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getMonster() {
-        return monster;
-    }
-
-    public void setMonster(String monster) {
-        this.monster = monster;
     }
 }
