@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import Map from "../student/home/map/Map";
 import DailySettingForm from "./home/DailySettingForm";
-import LectureCalendar from "./schedule/LectureCalendar";
 
 export default function TeacherDailySetting() {
   const [previewChange, setPreviewChange] = useState(<Map />);
@@ -22,10 +20,6 @@ export default function TeacherDailySetting() {
 
             <div>{previewChange}</div>
           </div>
-
-          {/* <div className="lecture-calendar-wrapper">
-            <LectureCalendar />
-          </div> */}
         </div>
       </div>
     </div>

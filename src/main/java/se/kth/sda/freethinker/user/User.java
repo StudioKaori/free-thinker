@@ -1,12 +1,15 @@
 package se.kth.sda.freethinker.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.Length;
+import se.kth.sda.freethinker.assignmentProgress.AssignmentProgress;
 import se.kth.sda.freethinker.assignments.Assignment;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "account")
@@ -37,6 +40,11 @@ public class User {
     @ManyToMany
     private List<Assignment> assignmentsDone = new ArrayList<>();
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id")
+    private List<AssignmentProgress> assignmentProgresses;
+
     // Hibernate needs a default constructor to function
     public User() {
     }
@@ -63,7 +71,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     public String getPassword() {
         return password;
     }

@@ -1,7 +1,11 @@
 package se.kth.sda.freethinker.classDailySettings;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import se.kth.sda.freethinker.assignmentProgress.AssignmentProgress;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Entity
@@ -16,6 +20,11 @@ public class ClassDailySetting {
     private String islandTheme;
     private String city;
     private String monster;
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "class_daily_setting_id")
+    private List<AssignmentProgress> assignmentProgresses;
 
     public ClassDailySetting() {
     }

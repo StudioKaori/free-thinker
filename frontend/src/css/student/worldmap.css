@@ -161,6 +161,11 @@
   height: auto;
 }
 
+.worldMap-island article .worldmap-icon {
+  top: 10px;
+  left: -20px;
+}
+
 .worldmap-invisible {
   filter: brightness(5%);
 }

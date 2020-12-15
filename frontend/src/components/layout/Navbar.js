@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Api from "../../api/Api";
 import { Link } from "react-router-dom";
-import LogoIcon from "../../assets/img/components/navbar/logo-icon.png";
 import Profile from "../layout/Profile";
 import UserApi from "../../api/UserApi";
+import MenuButton from "../common/MenuButton";
 
 // Popup
 import showPopupWindow from "../../js/common/popup/showPopupWindow";
@@ -37,7 +37,7 @@ function Navbar({ onLogout }) {
 
   // for navigation drawer
   function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("mySidenav").style.width = "300px";
   }
 
   function closeNav() {
@@ -98,12 +98,17 @@ function Navbar({ onLogout }) {
           </div>
 
           <div className="mobile-menu">
-            <span onClick={() => openNav()}>
-              <i className="fas fa-bars"></i>
+            <span onClick={() => openNav()} onMouseEnter={() => openNav()}>
+              <MenuButton />
+              {/* <i className="fas fa-bars"></i> */}
             </span>
           </div>
 
-          <div id="mySidenav" className="header-menu">
+          <div
+            id="mySidenav"
+            className="header-menu"
+            onMouseLeave={() => closeNav()}
+          >
             <span className="closebtn" onClick={() => closeNav()}>
               &times;
             </span>

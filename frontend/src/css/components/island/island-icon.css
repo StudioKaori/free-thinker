@@ -1,3 +1,9 @@
 .island-icon {
   transition: 0.5s;
 }
+
+.worldmap-icon {
+  transition: 0.5s;
+  width: 30px;
+  height: 30px;
+}
