@@ -1,14 +1,12 @@
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import AssignmentApi from '../../api/AssignmentApi'
-
+import AssignCard from '../assignment/assignCreate/AssignCard';
 import CreateChat from './chatbot/CreateChat';
 import CreateSpeech from './speech/CreateSpeech';
 import CreateQuiz from './quiz/CreateQuiz';
 import PopUpMsg from "./PopUpMsg";
-import AssignmentCreateForm from  "./assignCreate/AssignCreateForm"
+import AssignmentCreateForm from  "./assignCreate/AssignCreateForm";
 import Icon from "../icons/map-icon"
-
-
 import FileUpload from "../assignment/assignCreate/FileUpload";
 
 // Create assignment Page for teacher
@@ -24,29 +22,36 @@ export default function TeacherAssignmentPage() {
     const [createQuizIsOpen, setCreateQuizIsOpen] = useState(false);
     const [createSpeechIsOpen, setCreateSpeechIsOpen] = useState(false);
     const [createChatIsOpen, setCreateChatIsOpen] = useState(false);
-
     
-    // Pop up messages
+    // Pop up message
     const [displayPopUp, setDisplayPopUp] = useState(false);
-    const [displayError, setDisplayError] = useState(false);
     
     // Form helpers
     const [assignmentObj, setAssignmentObj] = useState({});
     const [resetFields, setResetFields] = useState(false);
     
+    // Assignment list for overview
+    const [assignments, setAssignments] = useState([]);
+
+    const getAll = () => {
+        AssignmentApi.getAllAssignments().then((res) => {
+          setAssignments(res.data.sort((a, b) => b.id - a.id));
+        });
+    };
+      
+    const deleteAssignment = (id) => {
+        AssignmentApi.deleteAssignment(id).then(() => getAll());
+    };
+
+    useEffect(() => {
+        getAll();
+    }, [])
+      
+
     const onCreateClick = () => {
-
-        if (typeof assignmentObj.assignment === 'undefined' ) {
-            setDisplayError(true);
-            setTimeout(() => {
-                setDisplayError(false);
-            }, 1000)
-            return;
-        }
-
-        console.log(assignmentObj)
         AssignmentApi.createAssignment(assignmentObj)
             .then(() => {
+                getAll();
                 setDisplayPopUp(true);
                 setTimeout(() => {
                     setDisplayPopUp(false);
@@ -57,9 +62,10 @@ export default function TeacherAssignmentPage() {
                 setAssignmentIsValid(false);
                 setFormIsValid(false);
                 setNothingIsPicked(true)
+                console.log(assignmentObj)
             })
     } 
-
+   
     return (
         <div className="bg-light p-2">
 
@@ -106,16 +112,13 @@ export default function TeacherAssignmentPage() {
                 >None</div>
                 <div 
                     className="dropdown-item" data-toggle="dropdown-menu"
-                    /* onClick={() => {
-                        // setUploadFileIsOpen(true);
-                        // setCreateChatIsOpen(false);
-                        // setCreateQuizIsOpen(false);
-                        // setCreateSpeechIsOpen(false);
-                    }} */
-
-                > 
-                <FileUpload />
-                </div>
+                    onClick={() => {
+                        setUploadFileIsOpen(true);
+                        setCreateChatIsOpen(false);
+                        setCreateQuizIsOpen(false);
+                        setCreateSpeechIsOpen(false);
+                    }}
+                >Upload</div>
                 <div 
                     className="dropdown-item"
                     onClick={() => {
@@ -169,7 +172,13 @@ export default function TeacherAssignmentPage() {
                         setNothingIsPicked={setNothingIsPicked}
                         assignmentObj={assignmentObj}  setAssignmentObj={setAssignmentObj}
                     /> }
-                {uploadFileIsOpen && <div>Not ready yet</div>}
+                {uploadFileIsOpen && 
+                    <FileUpload 
+                        close={() => setUploadFileIsOpen(false)} 
+                        setAssignmentIsValid={setAssignmentIsValid}
+                        setNothingIsPicked={setNothingIsPicked}
+                        assignmentObj={assignmentObj}  setAssignmentObj={setAssignmentObj}
+                    />}
             </div>
 
             <button
@@ -181,9 +190,15 @@ export default function TeacherAssignmentPage() {
               Create
             </button>
 
-
             {displayPopUp && <PopUpMsg type="success" message="Succesfully saved"/>}
-            {displayError && <PopUpMsg type="error" message="Something is Missing"/>}
-        </div>
+
+            {assignments.map((assign) => (
+                    <AssignCard
+                    key={assign.id}
+                    assign={assign}
+                    onDeleteClick={deleteAssignment}
+                    />
+                   ))}
+       </div>
     );
 }
