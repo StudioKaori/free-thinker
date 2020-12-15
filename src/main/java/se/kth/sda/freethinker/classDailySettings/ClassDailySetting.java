@@ -1,7 +1,10 @@
 package se.kth.sda.freethinker.classDailySettings;
 
+import se.kth.sda.freethinker.assignmentProgress.AssignmentProgress;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Entity
@@ -16,6 +19,10 @@ public class ClassDailySetting {
     private String islandTheme;
     private String city;
     private String monster;
+
+    @OneToMany
+    @JoinColumn(name = "class_daily_setting_id")
+    private List<AssignmentProgress> assignmentProgresses;
 
     public ClassDailySetting() {
     }
