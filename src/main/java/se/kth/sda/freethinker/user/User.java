@@ -41,8 +41,7 @@ public class User {
     private List<Assignment> assignmentsDone = new ArrayList<>();
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
     private List<AssignmentProgress> assignmentProgresses;
 
     // Hibernate needs a default constructor to function

@@ -22,8 +22,7 @@ public class ClassDailySetting {
     private String monster;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "class_daily_setting_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "classDailySetting")
     private List<AssignmentProgress> assignmentProgresses;
 
     public ClassDailySetting() {

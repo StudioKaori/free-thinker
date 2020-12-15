@@ -1,105 +1,25 @@
-import "../../../css/student/worldmap.css";
+import { useRecoilState } from "recoil";
+import { userState } from "../../../js/state-information";
 import { useEffect, useState } from "react";
 import WorldMapIslandCard from "./WorldMapIslandCard";
 import AssignmentProgressApi from "../../../api/AssignmentProgressApi";
 
+import "../../../css/student/worldmap.css";
+
 export default function WorldMap() {
+  const [user] = useRecoilState(userState);
   const [studentProgresses, setStudentProgresses] = useState([]);
   const [status, setStatus] = useState(0);
 
   const getAssignmentProgress = () => {
-    AssignmentProgressApi.getAllAssignmentProgresss().then((res) => {
-      console.log("res", res.data);
-      setStudentProgresses(res.data);
-    });
+    console.log("user[0]", user);
+    AssignmentProgressApi.getAllAssignmentProgresssByStudentId(user[0].id).then(
+      (res) => {
+        console.log("res", res.data);
+        setStudentProgresses(res.data);
+      }
+    );
   };
-
-  // const fakeDB = [
-  //   {
-  //     id: 1,
-  //     date: "2020-12-12",
-  //     isDone: true,
-  //     city: "Stockholm",
-  //     monster: "oni",
-  //     islandTheme: "island-green",
-  //   },
-
-  //   {
-  //     id: 2,
-  //     date: "2020-12-13",
-  //     isDone: true,
-  //     city: "Stockholm",
-  //     monster: "kurage",
-  //     islandTheme: "island-ice",
-  //   },
-
-  //   {
-  //     id: 3,
-  //     date: "2020-12-14",
-  //     isDone: false,
-  //     city: "Stockholm",
-  //     monster: "kurage",
-  //     islandTheme: "island-desert",
-  //   },
-
-  //   {
-  //     id: 4,
-  //     date: "2020-12-15",
-  //     isDone: true,
-  //     city: "Stockholm",
-  //     monster: "kurage",
-  //     islandTheme: "island-green-volcano",
-  //   },
-
-  //   {
-  //     id: 5,
-  //     date: "2020-12-16",
-  //     isDone: false,
-  //     city: "Stockholm",
-  //     monster: "kurage",
-  //     islandTheme: "island-green",
-  //   },
-  //   {
-  //     id: 5,
-  //     date: "2020-12-16",
-  //     isDone: false,
-  //     city: "Stockholm",
-  //     monster: "kurage",
-  //     islandTheme: "island-green",
-  //   },
-  //   {
-  //     id: 5,
-  //     date: "2020-12-16",
-  //     isDone: false,
-  //     city: "Stockholm",
-  //     monster: "kurage",
-  //     islandTheme: "island-green",
-  //   },
-  //   {
-  //     id: 5,
-  //     date: "2020-12-16",
-  //     isDone: false,
-  //     city: "Stockholm",
-  //     monster: "kurage",
-  //     islandTheme: "island-green",
-  //   },
-  //   {
-  //     id: 5,
-  //     date: "2020-12-16",
-  //     isDone: false,
-  //     city: "Stockholm",
-  //     monster: "kurage",
-  //     islandTheme: "island-green",
-  //   },
-  //   {
-  //     id: 5,
-  //     date: "2020-12-16",
-  //     isDone: false,
-  //     city: "Stockholm",
-  //     monster: "kurage",
-  //     islandTheme: "island-green",
-  //   },
-  // ];
 
   const getIslandCards = () => {
     return studentProgresses.map((progress, index) => {

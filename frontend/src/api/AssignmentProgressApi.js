@@ -5,6 +5,10 @@ class AssignmentProgressApi {
     return Api.get("/assignmentProgress");
   }
 
+  getAllAssignmentProgresssByStudentId(studentId) {
+    return Api.get("/assignmentProgress/studentId/" + studentId);
+  }
+
   createAssignmentProgress(assignmentProgress) {
     return Api.post("/assignmentProgress", assignmentProgress);
   }

@@ -17,6 +17,12 @@ public class AssignmentProgressController {
         return assignmentProgressService.getAll();
     }
 
+    @GetMapping("/studentId/{id}")
+    public List<AssignmentProgress> getAllByStudentId(@PathVariable Long id) {
+        return assignmentProgressService.getAllByStudentId(id);
+    }
+
+
     @PostMapping("")
     public AssignmentProgress create(@RequestBody AssignmentProgress newAssignmentProgress) {
         return assignmentProgressService.create(newAssignmentProgress);
