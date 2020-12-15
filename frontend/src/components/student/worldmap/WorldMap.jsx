@@ -1,5 +1,4 @@
 import "../../../css/student/worldmap.css";
-import moment from "moment";
 import { useEffect, useState } from "react";
 import WorldMapIslandCard from "./WorldMapIslandCard";
 
@@ -38,12 +37,52 @@ export default function WorldMap() {
     {
       id: 4,
       date: "2020-12-15",
-      isDone: false,
+      isDone: true,
       city: "Stockholm",
       monster: "kurage",
       islandTheme: "island-green-volcano",
     },
 
+    {
+      id: 5,
+      date: "2020-12-16",
+      isDone: false,
+      city: "Stockholm",
+      monster: "kurage",
+      islandTheme: "island-green",
+    },
+    {
+      id: 5,
+      date: "2020-12-16",
+      isDone: false,
+      city: "Stockholm",
+      monster: "kurage",
+      islandTheme: "island-green",
+    },
+    {
+      id: 5,
+      date: "2020-12-16",
+      isDone: false,
+      city: "Stockholm",
+      monster: "kurage",
+      islandTheme: "island-green",
+    },
+    {
+      id: 5,
+      date: "2020-12-16",
+      isDone: false,
+      city: "Stockholm",
+      monster: "kurage",
+      islandTheme: "island-green",
+    },
+    {
+      id: 5,
+      date: "2020-12-16",
+      isDone: false,
+      city: "Stockholm",
+      monster: "kurage",
+      islandTheme: "island-green",
+    },
     {
       id: 5,
       date: "2020-12-16",
@@ -60,6 +99,14 @@ export default function WorldMap() {
       return <WorldMapIslandCard key={key} island={island} />;
     });
     setIslands(cards);
+  };
+
+  // play paper open sound
+  const playPaperSound = () => {
+    console.log("sound");
+    const audio = new Audio("/assets/sound/paper-open.mp3");
+    audio.muted = true;
+    audio.play();
   };
 
   useEffect(() => {

@@ -1,2 +1,4 @@
-package se.kth.sda.freethinker.assignmentProgress;public class AssignmentProgress {
+package se.kth.sda.freethinker.assignmentProgress;
+
+public class AssignmentProgress {
 }
