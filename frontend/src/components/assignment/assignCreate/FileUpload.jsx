@@ -5,7 +5,7 @@ import React,{Component} from 'react';
 class FileUpload extends Component { 
 
 	state = { 
-
+    // setAssignmentIsValid, setNothingIsPicked
 	// Initially, no file is selected 
 	selectedFile: null
 	}; 
@@ -22,17 +22,30 @@ class FileUpload extends Component {
 	onFileUpload = () => { 
 	
 	// Create an object of formData 
-	const formData = new FormData(); 
+    const formData = new FormData(); 
 	
 	// Update the formData object 
 	formData.append( 
 		"myFile", 
 		this.state.selectedFile, 
 		this.state.selectedFile.name 
-	); 
+    ); 
+    
+    // Add it to assignment object
+    const newAssign = { ...this.props.assignmentObj };
+    newAssign.type = "File"
+    newAssign.assignment = JSON.stringify(formData); // Not that easy
+
+    this.props.setAssignmentObj(newAssign);
+    
+    // Form display: close and valid.
+    this.props.setAssignmentIsValid(true);
+    this.props.setNothingIsPicked(false);
+    this.props.close();
 	
 	// Details of the uploaded file 
-	console.log(this.state.selectedFile); 
+    console.log(formData); 
+    console.log(newAssign)
 	
 	// Request made to the backend api 
 	// Send formData object 

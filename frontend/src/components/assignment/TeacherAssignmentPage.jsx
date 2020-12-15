@@ -24,27 +24,15 @@ export default function TeacherAssignmentPage() {
     const [createQuizIsOpen, setCreateQuizIsOpen] = useState(false);
     const [createSpeechIsOpen, setCreateSpeechIsOpen] = useState(false);
     const [createChatIsOpen, setCreateChatIsOpen] = useState(false);
-
     
-    // Pop up messages
+    // Pop up message
     const [displayPopUp, setDisplayPopUp] = useState(false);
-    const [displayError, setDisplayError] = useState(false);
     
     // Form helpers
     const [assignmentObj, setAssignmentObj] = useState({});
     const [resetFields, setResetFields] = useState(false);
     
     const onCreateClick = () => {
-
-        if (typeof assignmentObj.assignment === 'undefined' ) {
-            setDisplayError(true);
-            setTimeout(() => {
-                setDisplayError(false);
-            }, 1000)
-            return;
-        }
-
-        console.log(assignmentObj)
         AssignmentApi.createAssignment(assignmentObj)
             .then(() => {
                 setDisplayPopUp(true);
@@ -106,16 +94,13 @@ export default function TeacherAssignmentPage() {
                 >None</div>
                 <div 
                     className="dropdown-item" data-toggle="dropdown-menu"
-                    /* onClick={() => {
-                        // setUploadFileIsOpen(true);
-                        // setCreateChatIsOpen(false);
-                        // setCreateQuizIsOpen(false);
-                        // setCreateSpeechIsOpen(false);
-                    }} */
-
-                > 
-                <FileUpload />
-                </div>
+                    onClick={() => {
+                        setUploadFileIsOpen(true);
+                        setCreateChatIsOpen(false);
+                        setCreateQuizIsOpen(false);
+                        setCreateSpeechIsOpen(false);
+                    }}
+                >Upload</div>
                 <div 
                     className="dropdown-item"
                     onClick={() => {
@@ -169,7 +154,13 @@ export default function TeacherAssignmentPage() {
                         setNothingIsPicked={setNothingIsPicked}
                         assignmentObj={assignmentObj}  setAssignmentObj={setAssignmentObj}
                     /> }
-                {uploadFileIsOpen && <div>Not ready yet</div>}
+                {uploadFileIsOpen && 
+                    <FileUpload 
+                        close={() => setUploadFileIsOpen(false)} 
+                        setAssignmentIsValid={setAssignmentIsValid}
+                        setNothingIsPicked={setNothingIsPicked}
+                        assignmentObj={assignmentObj}  setAssignmentObj={setAssignmentObj}
+                    />}
             </div>
 
             <button
@@ -181,9 +172,7 @@ export default function TeacherAssignmentPage() {
               Create
             </button>
 
-
             {displayPopUp && <PopUpMsg type="success" message="Succesfully saved"/>}
-            {displayError && <PopUpMsg type="error" message="Something is Missing"/>}
         </div>
     );
 }
