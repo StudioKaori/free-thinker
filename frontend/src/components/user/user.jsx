@@ -69,6 +69,10 @@ export default function User() {
               <LectureStudentPage />
             </Route>
             <Route
+              path="/lecture-calendar"
+              render={() => <LectureCalendarPage />}
+            />
+            <Route
               path="/assignment/:id"
               render={(match) => <StudentAssignmentPage match={match} />}
             />

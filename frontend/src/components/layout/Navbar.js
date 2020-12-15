@@ -156,7 +156,12 @@ function Navbar({ onLogout }) {
                     <Link to="/">
                       <i className="fas fa-home"></i>HOME
                     </Link>
-                    {/* Add Student menu here */}
+                  </li>
+                  {/* Add Student menu here */}
+                  <li onClick={() => closeNav()}>
+                    <Link to="/lecture-calendar">
+                      <i className="fas fa-calendar-alt"></i>Lecture Calendar
+                    </Link>
                   </li>
                   <li onClick={onLogout}>
                     <Link to="/">
