@@ -70,7 +70,7 @@ export default function AssignCreateForm({assignmentObj, setAssignmentObj,
             <label>Unlock Date:</label>
             <div>
               <DatePicker
-                id="lectureDateInLectureForm"
+                id="assignDateInassignForm"
                 className="form-control"
                 selected={unlockDate}
                 dateFormat="yyyy-MM-dd"
@@ -83,7 +83,7 @@ export default function AssignCreateForm({assignmentObj, setAssignmentObj,
           <div className="form-group">
             <label>Unlock Time:</label>
             <input
-              id="lectureTimeInLectureForm"
+              id="assignTimeInassignForm"
               type="time"
               className="form-control"
               placeholder="ex. 09:00"
