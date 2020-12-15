@@ -113,7 +113,7 @@ export default function TeacherAssignmentPage() {
                         // setCreateSpeechIsOpen(false);
                     }} */
 
-                > Upload File
+                > 
                 <FileUpload />
                 </div>
                 <div 

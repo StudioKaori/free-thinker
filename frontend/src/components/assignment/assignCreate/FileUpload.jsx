@@ -42,13 +42,16 @@ class FileUpload extends Component {
 	render() { 
 	
 	return ( 
+		
 		<div className="dropdown-item" data-toggle="dropdown-menu">  
-			<div  > 
+			
+			
+			 <div  > 
 				<input type="file" onChange={this.onFileChange} /> 
 				<button onClick={this.onFileUpload}> 
 				Upload 
 				</button> 
-			</div> 
+			</div>  
 		
 		</div> 
 	); 
