@@ -8,6 +8,9 @@ import PopUpMsg from "./PopUpMsg";
 import AssignmentCreateForm from  "./assignCreate/AssignCreateForm"
 import Icon from "../icons/map-icon"
 
+
+import FileUpload from "../assignment/assignCreate/FileUpload";
+
 // Create assignment Page for teacher
 export default function TeacherAssignmentPage() {
 
@@ -103,13 +106,16 @@ export default function TeacherAssignmentPage() {
                 >None</div>
                 <div 
                     className="dropdown-item" data-toggle="dropdown-menu"
-                    onClick={() => {
+                    /* onClick={() => {
                         // setUploadFileIsOpen(true);
                         // setCreateChatIsOpen(false);
                         // setCreateQuizIsOpen(false);
                         // setCreateSpeechIsOpen(false);
-                    }}
-                >Upload File</div>
+                    }} */
+
+                > 
+                <FileUpload />
+                </div>
                 <div 
                     className="dropdown-item"
                     onClick={() => {
