@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { userState } from "../../js/state-information";
+import moment from "moment";
 
 import StudentChat from "./chatbot/StudentChat";
 import StudentSpeech from "./speech/StudentSpeech";
@@ -10,14 +11,19 @@ import StudentQuiz from "./quiz/StudentQuiz";
 import AssignmentApi from "../../api/AssignmentApi";
 
 import "../../css/student/assignmentPage.css";
+import AssignmentProgressApi from "../../api/AssignmentProgressApi";
+import ClassDailySettingsApi from "../../api/ClassDailySettingsApi";
 
 // Student assignment entry point, fetch assignment by id and display the related component
 export default function StudentAssignmentPage({ match }) {
 
     const assignmentId = Number(match.match.params.id);
     const [assignment, setAssignment] = useState({});
+    const [isLastAssignment, setIsLastAssignment] = useState(false);
+    const [allDone, setAllDone] = useState(false);
     const [end, setEnd] = useState(false); // Check for assignment completion
     const [user] = useRecoilState(userState);
+    const [date] = useState(moment().format("yyyy-MM-DD"));
 
   useEffect(() => {
     AssignmentApi.getAssignmentById(assignmentId).then((res) => {
@@ -26,7 +32,15 @@ export default function StudentAssignmentPage({ match }) {
         res.data.isDoneByUser.filter((usr) => usr.id === user[0].id).length > 0;
       setEnd(done);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    AssignmentApi.getAssignmentsByUnlockDate(date).then((res) => {
+        const lastAssignmentId = res.data[res.data.length - 1].id;
+        if (lastAssignmentId === assignmentId) {
+            setIsLastAssignment(true);
+        } else {
+            setAllDone(false); // In case we add an assignment the same day.
+        }
+      });
   }, []);
 
   useEffect(() => {
@@ -43,9 +57,26 @@ export default function StudentAssignmentPage({ match }) {
       updatedAssign.isDoneByUser = temp;
 
       AssignmentApi.updateAssignment(updatedAssign).then(() =>
-        console.log("updated")
+        console.log('assignment', updatedAssign.id, "is done")
       );
+
+            if (isLastAssignment && !allDone) { // Send signal that all assignment for the day are done
+
+            ClassDailySettingsApi.getByDate(date).then((res) => { 
+                const newObj = {
+                    assignmentsOfTheDayIsDone: true,
+                    classDailySetting: {id: res.data.id}, 
+                    student: {id: user[0].id} // student id
+                }
+                AssignmentProgressApi.createAssignmentProgress(newObj)
+                    .then((res) => {
+                        console.log("End of the day, youhou!")
+                    } );
+            })
+            setAllDone(true);
+        }
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [end, assignment]);
 

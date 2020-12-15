@@ -2,7 +2,7 @@ import Api from "./Api";
 
 class AssignmentProgressApi {
   getAllAssignmentProgresss() {
-    return Api.getAll("/assignmentProgress");
+    return Api.get("/assignmentProgress");
   }
 
   createAssignmentProgress(assignmentProgress) {
