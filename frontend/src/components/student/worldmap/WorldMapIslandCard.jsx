@@ -2,16 +2,19 @@ import moment from "moment";
 import WorldMapIcon from "./WorldMapIcon";
 
 export default function WorldMapIslandCard({ island }) {
-  const islandImg = "/assets/img/css/islands/" + island.islandTheme + ".png";
-  const monsterImg = "/assets/img/monsters/" + island.monster + ".png";
-  const isVisible = island.isDone ? "worldmap-visible" : "worldmap-invisible";
-  const showCityName = island.isDone ? "worldmap-show" : "worldmap-hide";
-  const iconType =
-    moment(island.date).format("YYYY-MM-DD HH:MM") <
-    moment().format("YYYY-MM-DD HH:MM")
-      ? "unlock"
-      : "lock";
-  const isDone = island.isDone;
+  const date = moment(island.classDailySetting.date).format("YYYY-MM-DD");
+  const islandImg =
+    "/assets/img/css/islands/" + island.classDailySetting.islandTheme + ".png";
+  const monsterImg =
+    "/assets/img/monsters/" + island.classDailySetting.monster + ".png";
+  const isVisible = island.assignmentsOfTheDayIsDone
+    ? "worldmap-visible"
+    : "worldmap-invisible";
+  const showCityName = island.assignmentsOfTheDayIsDone
+    ? "worldmap-show"
+    : "worldmap-hide";
+  const iconType = date < moment().format("YYYY-MM-DD") ? "unlock" : "lock";
+  const isDone = island.assignmentsOfTheDayIsDone;
 
   return (
     <article>
@@ -19,9 +22,9 @@ export default function WorldMapIslandCard({ island }) {
         <img src={monsterImg} className={isVisible} alt="monster" />
       </div>
       <div className="island-name">
-        <span>{moment(island.date).format("YYYY/MM/DD")}</span>
+        <span>{date}</span>
         <br />
-        <div className={showCityName}>{island.city}</div>
+        <div className={showCityName}>{island.classDailySetting.city}</div>
       </div>
       <div className="island-img animate__animated animate__rubberBand">
         <img src={islandImg} className={isVisible} alt="island" />
