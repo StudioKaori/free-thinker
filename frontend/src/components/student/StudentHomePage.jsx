@@ -3,12 +3,14 @@ import StoryIntro from "./home/storyIntro/StoryIntro";
 import createNewDiv from "../../js/common/createNewDiv";
 
 import "../../css/student/student-home.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function StudentHomePage() {
+  // for intro story
+  const [showIntro, setShowIntro] = useState(false);
+
   const showIntroStory = () => {
-    // setTimeout(hideInnerPopup, 30000);
-    setTimeout(hideInnerPopup, 3000);
+    setTimeout(hideInnerPopup, 30000);
   };
 
   const hideInnerPopup = () => {
@@ -28,7 +30,7 @@ export default function StudentHomePage() {
       "First, have lectures to know this world better!"
     );
 
-    setTimeout(showIslandDescription, 3000);
+    setTimeout(showIslandDescription, 6000);
   };
 
   const showIslandDescription = () => {
@@ -48,36 +50,50 @@ export default function StudentHomePage() {
     createNewDiv(
       "map-island",
       "islandDesc",
-      "Let's look for the monsters from here!"
+      "Then, look for the monsters from here!"
     );
 
-    setTimeout(deleteDescription, 3000);
+    setTimeout(deleteDescription, 6000);
   };
 
   const deleteDescription = () => {
     document.getElementById("islandDesc").remove();
     document.getElementById("map-island").classList.remove("changeToForward");
-    document.getElementById("popupStoryWindow").classList.add("hidePopup");
+    //document.getElementById("popupStoryWindow").classList.add("hidePopup");
+    document.getElementById("popupStoryWindow").remove();
+    localStorage.setItem("doesShowIntroStory", "showed");
   };
 
   useEffect(() => {
-    var localDoesShowIntroStory = localStorage.getItem("doesShowIntroStory");
-    console.log("localDoesShowIntroStory", localDoesShowIntroStory);
-    if (localDoesShowIntroStory === null) showIntroStory();
+    //delete it later
+    //localStorage.removeItem("doesShowIntroStory");
+
+    const localDoesShowIntroStory = localStorage.getItem("doesShowIntroStory");
+    if (localDoesShowIntroStory === null) {
+      setShowIntro(true);
+    }
   }, []);
+
+  useEffect(() => {
+    if (showIntro) {
+      showIntroStory();
+    }
+  }, [showIntro]);
 
   return (
     <div>
       <Map />
 
-      <div id="popupStoryWindow" className="popupWindow">
-        <div
-          id="popupStoryInner"
-          className="popup_inner popup_inner_L story-inner-box animate__animated animate__rubberBand"
-        >
-          <StoryIntro key="storyIntro" />
+      {showIntro && (
+        <div id="popupStoryWindow" className="popupWindow">
+          <div
+            id="popupStoryInner"
+            className="popup_inner popup_inner_L story-inner-box animate__animated animate__rubberBand"
+          >
+            <StoryIntro key="storyIntro" />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
