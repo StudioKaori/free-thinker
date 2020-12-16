@@ -1,11 +1,24 @@
-import Map from "./home/map/Map";
+
 import StoryIntro from "./home/storyIntro/StoryIntro";
 import createNewDiv from "../../js/common/createNewDiv";
+import {useState, useEffect} from "react";
+import moment from "moment";
+
+import { useRecoilState } from "recoil";
+import { userState } from "../../js/state-information";
+
+import Map from "./home/map/Map";
+import StoryIntro from "./home/storyIntro/StoryIntro";
+
+import AssignmentProgressApi from "../../api/AssignmentProgressApi";
+import ClassDailySettingsApi from '../../api/ClassDailySettingsApi';
+
 
 import "../../css/student/student-home.css";
-import { useEffect, useState } from "react";
+
 
 export default function StudentHomePage() {
+
   // for intro story
   const [showIntro, setShowIntro] = useState(false);
 
@@ -65,20 +78,46 @@ export default function StudentHomePage() {
   };
 
   useEffect(() => {
-    //delete it later
-    //localStorage.removeItem("doesShowIntroStory");
-
-    const localDoesShowIntroStory = localStorage.getItem("doesShowIntroStory");
-    if (localDoesShowIntroStory === null) {
-      setShowIntro(true);
-    }
-  }, []);
-
-  useEffect(() => {
     if (showIntro) {
       showIntroStory();
     }
   }, [showIntro]);
+
+
+    const [date] = useState(moment().format("yyyy-MM-DD"));
+    const [user] = useRecoilState(userState);
+
+    // Create a default progress entity for each students if not existing yet
+    useEffect(() => {
+        AssignmentProgressApi.getAllAssignmentProgresss().then((res) => {
+            const alreadySetForStudentToday = res.data
+                .filter(prog => prog.classDailySetting.date.substr(0,10) === date 
+                    && prog.student.id === user[0].id)
+                .length > 0;
+                
+            if (!alreadySetForStudentToday) {
+                ClassDailySettingsApi.getByDate(date)
+                .then((res) => {
+                    const newObj = {
+                        assignmentsOfTheDayIsDone: false,
+                        classDailySetting: { id: res.data.id },
+                        student: { id: user[0].id } // student id
+                    }
+                    AssignmentProgressApi.createAssignmentProgress(newObj)
+                        .then(() => { console.log('progress created')});
+                });
+            }
+        });
+      
+      
+      //for animation
+    const localDoesShowIntroStory = localStorage.getItem("doesShowIntroStory");
+    if (localDoesShowIntroStory === null) {
+      setShowIntro(true);
+    }
+      
+    }, [])
+
 
   return (
     <div>

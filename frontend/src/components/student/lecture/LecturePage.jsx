@@ -57,7 +57,20 @@ export default function LecturePage({ match }) {
               ></iframe>
             </div>
           )}
-
+          
+          {lecture.zoomLink !== "" && (
+            <div className="youtube-wrapper">
+              <iframe
+                title="zoom"
+                width="560"
+                height="315"
+                src={lecture.zoomLink}
+                frameborder="0"
+                allow="microphone; camera; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          )}
           <div className="lecture-details">
             <div className="lecture-text">
               <div className="lecture-text-title">
