@@ -34,7 +34,7 @@ function LectureCard({ lecture, onDeleteClick, onUpdateClick }) {
                             allowfullscreen
                         ></iframe>
                         )}
-                        {lecture.zoomLink !== null && (
+                        {lecture.zoomLink !== "" && (
                             <iframe
                                 title="zoom"
                                 width="560"
