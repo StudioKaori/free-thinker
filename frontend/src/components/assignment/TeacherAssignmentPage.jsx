@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import moment from "moment";
 
 import AssignmentApi from '../../api/AssignmentApi';
+import ClassDailySettingsApi from '../../api/ClassDailySettingsApi';
+import UserApi from '../../api/UserApi';
+import AssignmentProgressApi from '../../api/AssignmentProgressApi';
 
 import AssignCard from '../assignment/assignCreate/AssignCard';
 import AssignmentCreateForm from "./assignCreate/AssignCreateForm";
@@ -13,7 +16,6 @@ import CreateQuiz from './quiz/CreateQuiz';
 
 import PopUpMsg from "./PopUpMsg";
 import Icon from "../icons/map-icon";
-import ClassDailySettingsApi from '../../api/ClassDailySettingsApi';
 
 // =====================================================================
 // Create assignment Page for teacher
@@ -40,6 +42,10 @@ export default function TeacherAssignmentPage() {
     // Assignment list for overview
     const [assignments, setAssignments] = useState([]);
 
+    // Assign progress
+    const [date] = useState(moment().format("yyyy-MM-DD"));
+    const [dailySettingOfTheDayId, setDailySettingOfTheDayId] = useState(0);
+
     const getAll = () => {
         AssignmentApi.getAllAssignments().then((res) => {
             setAssignments(res.data.sort((a, b) => b.id - a.id));
@@ -48,25 +54,32 @@ export default function TeacherAssignmentPage() {
 
     useEffect(() => {
         getAll();
+
+        ClassDailySettingsApi.getByDate(date)
+            .then((res) => {
+                setDailySettingOfTheDayId(res.data.id);
+            });
     }, [])
 
     const onCreateClick = () => {
         AssignmentApi.createAssignment(assignmentObj)
             .then(() => {
+                // Refresh list
                 getAll();
 
+                // User message
                 setDisplayPopUp(true);
                 setTimeout(() => {
                     setDisplayPopUp(false);
                 }, 1000)
 
+                // Clean form
                 setAssignmentObj({})
                 setResetFields(true);
                 setAssignmentIsValid(false);
                 setFormIsValid(false);
                 setNothingIsPicked(true);
 
-                
                 // Create a new daily setting if teacher create assignment for another day
                 const assignDate = assignmentObj.unlockTime.substr(0,10);
                 ClassDailySettingsApi.getByDate(assignDate)
@@ -82,6 +95,21 @@ export default function TeacherAssignmentPage() {
                         }
                     })
 
+                // Create a default progress entity for each students if not existing yet
+                UserApi.getAllUsers()
+                    .then((res) => {
+                        for (let i = 0; i <res.data.length; i +=1) {
+                            if (res.data[i].userType === "Student") {
+                                const newObj = {
+                                    assignmentsOfTheDayIsDone: false,
+                                    classDailySetting: { id: dailySettingOfTheDayId },
+                                    student: { id: res.data[i].id } // student id
+                                }
+                                AssignmentProgressApi.createAssignmentProgress(newObj)
+                                    .then(() => { });
+                            }
+                        }
+                })
             })
     }
 
