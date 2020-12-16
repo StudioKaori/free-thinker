@@ -98,4 +98,11 @@ public class Lecture {
     public void setYoutubeUrl(String youtubeUrl) {
         this.youtubeUrl = youtubeUrl;
     }
+
+    public String getZoomLink() {
+        return zoomLink;
+    }
+    public void setZoomLink(String zoomLink) {
+        this.zoomLink = zoomLink;
+    }
 }
