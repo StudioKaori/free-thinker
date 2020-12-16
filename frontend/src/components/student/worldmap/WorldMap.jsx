@@ -1,117 +1,100 @@
-import "../../../css/student/worldmap.css";
+import { useRecoilState } from "recoil";
+import { userState } from "../../../js/state-information";
 import { useEffect, useState } from "react";
 import WorldMapIslandCard from "./WorldMapIslandCard";
+import AssignmentProgressApi from "../../../api/AssignmentProgressApi";
+import moment from "moment";
+
+import "../../../css/student/worldmap.css";
 
 export default function WorldMap() {
-  const [islands, setIslands] = useState([]);
+  const [user] = useRecoilState(userState);
+  const [studentProgresses, setStudentProgresses] = useState([]);
+  const [congrats, setCongrats] = useState("");
   const [status, setStatus] = useState(0);
 
-  const fakeDB = [
+  const getAssignmentProgress = () => {
+    console.log("user[0]", user);
+    AssignmentProgressApi.getAllAssignmentProgresssByStudentId(user[0].id).then(
+      (res) => {
+        setStudentProgresses(res.data);
+      }
+    );
+  };
+
+  const citiesAndMonsters = [
     {
-      id: 1,
-      date: "2020-12-12",
-      isDone: true,
       city: "Stockholm",
+      monster: "tori",
+    },
+    {
+      city: "Paris",
       monster: "oni",
-      islandTheme: "island-green",
-    },
-
-    {
-      id: 2,
-      date: "2020-12-13",
-      isDone: true,
-      city: "Stockholm",
-      monster: "kurage",
-      islandTheme: "island-ice",
-    },
-
-    {
-      id: 3,
-      date: "2020-12-14",
-      isDone: false,
-      city: "Stockholm",
-      monster: "kurage",
-      islandTheme: "island-desert",
-    },
-
-    {
-      id: 4,
-      date: "2020-12-15",
-      isDone: true,
-      city: "Stockholm",
-      monster: "kurage",
-      islandTheme: "island-green-volcano",
-    },
-
-    {
-      id: 5,
-      date: "2020-12-16",
-      isDone: false,
-      city: "Stockholm",
-      monster: "kurage",
-      islandTheme: "island-green",
     },
     {
-      id: 5,
-      date: "2020-12-16",
-      isDone: false,
-      city: "Stockholm",
-      monster: "kurage",
-      islandTheme: "island-green",
+      city: "Cairo",
+      monster: "namekuji",
     },
     {
-      id: 5,
-      date: "2020-12-16",
-      isDone: false,
-      city: "Stockholm",
-      monster: "kurage",
-      islandTheme: "island-green",
+      city: "Cape town",
+      monster: "hara",
     },
     {
-      id: 5,
-      date: "2020-12-16",
-      isDone: false,
-      city: "Stockholm",
-      monster: "kurage",
-      islandTheme: "island-green",
+      city: "Islamabad",
+      monster: "neko",
     },
     {
-      id: 5,
-      date: "2020-12-16",
-      isDone: false,
-      city: "Stockholm",
+      city: "New delhi",
       monster: "kurage",
-      islandTheme: "island-green",
     },
     {
-      id: 5,
-      date: "2020-12-16",
-      isDone: false,
-      city: "Stockholm",
-      monster: "kurage",
-      islandTheme: "island-green",
+      city: "Beijing",
+      monster: "",
+    },
+    {
+      city: "Tokyo",
+      monster: "",
+    },
+    {
+      city: "Rio de Janeiro",
+      monster: "",
+    },
+    {
+      city: "New york",
+      monster: "",
     },
   ];
 
-  const setIslandCard = () => {
-    const cards = fakeDB.map((island, index) => {
+  const getIslandCards = () => {
+    return studentProgresses.map((progress, index) => {
+      //console.log("progress", progress);
       const key = "worldmapIsland" + index;
-      return <WorldMapIslandCard key={key} island={island} />;
+      progress.city = citiesAndMonsters[index].city;
+      progress.monster = citiesAndMonsters[index].monster;
+
+      // moment(progress.classDailySetting.date).format("YYYY-MM-DD") ===
+      //   moment().format("YYYY-MM-DD") && setCongrats(progress.monster);
+
+      return <WorldMapIslandCard key={key} island={progress} />;
     });
-    setIslands(cards);
   };
 
   // play paper open sound
   const playPaperSound = () => {
-    console.log("sound");
     const audio = new Audio("/assets/sound/paper-open.mp3");
     audio.muted = true;
     audio.play();
   };
 
   useEffect(() => {
-    setIslandCard();
+    getAssignmentProgress();
   }, []);
+
+  useEffect(() => {
+    if (studentProgresses.length !== 0) {
+      setStatus(1);
+    }
+  }, [studentProgresses]);
 
   return (
     <div className="worldMap">
@@ -121,7 +104,9 @@ export default function WorldMap() {
           alt="world map"
         />
 
-        <div className="worldMap-island">{islands}</div>
+        <div className="worldMap-island">
+          {status === 1 && getIslandCards()}
+        </div>
       </div>
     </div>
   );

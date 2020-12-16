@@ -130,15 +130,16 @@
 }
 
 .worldMap-island article .island-name {
-  top: -40px;
-  left: 30px;
+  top: -20px;
+  left: 33px;
+  width: 100px;
   color: #ffffffce;
-  font-size: var(--font-M);
   font-family: var(--theme-font-family);
+  font-size: var(--font-S);
 }
 
 .worldMap-island article .island-name span {
-  font-size: var(--font-XS);
+  font-size: var(--font-S);
 }
 
 .worldMap-island article .island-img {
@@ -152,8 +153,8 @@
 }
 
 .worldMap-island article .island-monster {
-  top: -30px;
-  left: -10px;
+  top: -40px;
+  left: -15px;
 }
 
 .worldMap-island article .island-monster img {

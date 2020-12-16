@@ -11,12 +11,13 @@ import LockIcon from "./IslandIcon";
 
 import "../../../../css/student/islands/island-green.css";
 
-// ========================================================================
-// Island in student honme page
-export default function Island() {
+export default function Island({ myDate }) {
+  const date =
+    typeof myDate === "undefined" ? moment().format("yyyy-MM-DD") : myDate;
+
   const [assignments, setAssignments] = useState([]);
   const [islandTheme, setIslandTheme] = useState("island-green");
-  const [date] = useState(moment().format("yyyy-MM-DD"));
+  //const [date] = useState(moment().format("yyyy-MM-DD"));
   const [status, setStatus] = useState(0);
   const [user] = useRecoilState(userState);
   const iconAddLink = useRef("");
@@ -85,8 +86,7 @@ export default function Island() {
 
             // This const "done" return true If assignment is done for that student / false if not
             const done =
-              assignment.isDoneByUser
-                .filter((usr) => usr.id === user[0].id)
+              assignment.isDoneByUser.filter((usr) => usr.id === user[0].id)
                 .length > 0;
 
             const assignmentType = done

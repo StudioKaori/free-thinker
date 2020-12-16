@@ -1,17 +1,23 @@
 import moment from "moment";
+import { Link } from "react-router-dom";
 import WorldMapIcon from "./WorldMapIcon";
 
 export default function WorldMapIslandCard({ island }) {
-  const islandImg = "/assets/img/css/islands/" + island.islandTheme + ".png";
+  const date = moment(island.classDailySetting.date).format("YYYY-MM-DD");
+  const islandImg =
+    "/assets/img/css/islands/" + island.classDailySetting.islandTheme + ".png";
   const monsterImg = "/assets/img/monsters/" + island.monster + ".png";
-  const isVisible = island.isDone ? "worldmap-visible" : "worldmap-invisible";
-  const showCityName = island.isDone ? "worldmap-show" : "worldmap-hide";
-  const iconType =
-    moment(island.date).format("YYYY-MM-DD HH:MM") <
-    moment().format("YYYY-MM-DD HH:MM")
-      ? "unlock"
-      : "lock";
-  const isDone = island.isDone;
+  const isVisible = island.assignmentsOfTheDayIsDone
+    ? "worldmap-visible"
+    : "worldmap-invisible";
+  const showCityName = island.assignmentsOfTheDayIsDone
+    ? "worldmap-show"
+    : "worldmap-hide";
+  const iconType = date < moment().format("YYYY-MM-DD") ? "unlock" : "lock";
+  const isDone = island.assignmentsOfTheDayIsDone;
+
+  const linkUrl = "/assignment/day/" + date;
+  const showIslandLink = iconType === "unlock" && !isDone ? true : false;
 
   return (
     <article>
@@ -19,15 +25,21 @@ export default function WorldMapIslandCard({ island }) {
         <img src={monsterImg} className={isVisible} alt="monster" />
       </div>
       <div className="island-name">
-        <span>{moment(island.date).format("YYYY/MM/DD")}</span>
-        <br />
-        <div className={showCityName}>{island.city}</div>
+        {/* <div className={showCityName}>{island.city}</div>
+        <br /> */}
+        <span>{date}</span>
       </div>
       <div className="island-img animate__animated animate__rubberBand">
         <img src={islandImg} className={isVisible} alt="island" />
       </div>
       <div className="worldmap-icon animate__animated animate__rubberBand">
-        <WorldMapIcon type={iconType} done={isDone} />
+        {showIslandLink ? (
+          <Link to={linkUrl} alt="Try assignment!" title="Try assignment!">
+            <WorldMapIcon type={iconType} done={isDone} />
+          </Link>
+        ) : (
+          <WorldMapIcon type={iconType} done={isDone} />
+        )}
       </div>
     </article>
   );

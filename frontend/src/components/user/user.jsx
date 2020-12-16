@@ -13,7 +13,9 @@ import LectureStudentPage from "../lecture/LectureStudentPage";
 import TeacherHomePage from "../teacher/TeacherHomePage";
 import TeacherAssignmentPage from "../assignment/TeacherAssignmentPage";
 import LectureCalendarPage from "../teacher/LectureCalendarPage";
-import TeacherDailySettings from "../teacher/TeacherDailySetting";
+import WorldMapPage from "../student/worldmap/WorldMapPage";
+import IslandPage from "../student/assignment/IslandPage";
+
 
 // ========================================================================
 // Router - dispatch routes regarding user type (student or teacher)
@@ -70,6 +72,15 @@ export default function User() {
             <Route path={path + "see-lecture"}>
               <LectureStudentPage />
             </Route>
+            <Route
+              path="/lecture-calendar"
+              render={() => <LectureCalendarPage />}
+            />
+            <Route path="/my-progress" render={() => <WorldMapPage />} />
+            <Route
+              path="/assignment/day/:date"
+              render={(date) => <IslandPage myDate={date} />}
+            />
             <Route
               path="/assignment/:id"
               render={(match) => <StudentAssignmentPage match={match} />}

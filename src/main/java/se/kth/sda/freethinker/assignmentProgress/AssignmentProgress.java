@@ -4,7 +4,6 @@ import se.kth.sda.freethinker.classDailySettings.ClassDailySetting;
 import se.kth.sda.freethinker.user.User;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 
 @Entity
@@ -14,9 +13,6 @@ public class AssignmentProgress {
     private Long id;
 
     private Boolean assignmentsOfTheDayIsDone;
-    
-    @Column(columnDefinition = "TIMESTAMP")
-    private LocalDateTime assignmentDate;
 
     @ManyToOne
     @JoinColumn(name = "student_id")
