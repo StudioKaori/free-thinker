@@ -3,8 +3,6 @@ import moment from "moment";
 
 import AssignmentApi from '../../api/AssignmentApi';
 import ClassDailySettingsApi from '../../api/ClassDailySettingsApi';
-import UserApi from '../../api/UserApi';
-import AssignmentProgressApi from '../../api/AssignmentProgressApi';
 
 import AssignCard from '../assignment/assignCreate/AssignCard';
 import AssignmentCreateForm from "./assignCreate/AssignCreateForm";
@@ -44,7 +42,6 @@ export default function TeacherAssignmentPage() {
 
     // Assign progress
     const [date] = useState(moment().format("yyyy-MM-DD"));
-    const [dailySettingOfTheDayId, setDailySettingOfTheDayId] = useState(0);
 
     const getAll = () => {
         AssignmentApi.getAllAssignments().then((res) => {
@@ -54,11 +51,6 @@ export default function TeacherAssignmentPage() {
 
     useEffect(() => {
         getAll();
-
-        ClassDailySettingsApi.getByDate(date)
-            .then((res) => {
-                setDailySettingOfTheDayId(res.data.id);
-            });
     }, [])
 
     const onCreateClick = () => {
@@ -94,22 +86,6 @@ export default function TeacherAssignmentPage() {
                                 .then(() => console.log('New daily setting set for', assignDate));
                         }
                     })
-
-                // Create a default progress entity for each students if not existing yet
-                UserApi.getAllUsers()
-                    .then((res) => {
-                        for (let i = 0; i <res.data.length; i +=1) {
-                            if (res.data[i].userType === "Student") {
-                                const newObj = {
-                                    assignmentsOfTheDayIsDone: false,
-                                    classDailySetting: { id: dailySettingOfTheDayId },
-                                    student: { id: res.data[i].id } // student id
-                                }
-                                AssignmentProgressApi.createAssignmentProgress(newObj)
-                                    .then(() => { });
-                            }
-                        }
-                })
             })
     }
 

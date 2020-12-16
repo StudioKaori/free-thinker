@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import moment from "moment";
+
 import { useRecoilState } from "recoil";
 import { userState } from "../../js/state-information";
-import moment from "moment";
 
 import StudentChat from "./chatbot/StudentChat";
 import StudentSpeech from "./speech/StudentSpeech";
@@ -10,7 +11,6 @@ import StudentQuiz from "./quiz/StudentQuiz";
 
 import AssignmentApi from "../../api/AssignmentApi";
 import AssignmentProgressApi from "../../api/AssignmentProgressApi";
-import ClassDailySettingsApi from "../../api/ClassDailySettingsApi";
 
 import "../../css/student/assignmentPage.css";
 
@@ -68,16 +68,19 @@ export default function StudentAssignmentPage({ match }) {
 
             if (isLastAssignment && !allDone) { // Send signal that all assignment for the day are done
 
-                ClassDailySettingsApi.getByDate(date).then((res) => {
-                    const newObj = {
-                        assignmentsOfTheDayIsDone: true,
-                        classDailySetting: { id: res.data.id },
-                        student: { id: user[0].id } // student id
-                    }
-                    AssignmentProgressApi.createAssignmentProgress(newObj)
-                        .then((res) => {
-                            console.log("End of the day, youhou!")
-                        });
+                AssignmentProgressApi.getAllAssignmentProgresss()
+                    .then((res) => {
+                        const todayStudentProgress = res.data
+                            .filter(prog => prog.classDailySetting.date.substr(0,10) === date 
+                                && prog.student.id === user[0].id)[0]; // Supposed to return an array of 1 element
+
+                        const newObj = { ...todayStudentProgress }
+                        newObj.assignmentsOfTheDayIsDone = true;
+                        
+                        AssignmentProgressApi.updateAssignmentProgress(newObj)
+                            .then((res) => {
+                                console.log("End of the day, youhou!")
+                            });
                 })
                 setAllDone(true);
             }
