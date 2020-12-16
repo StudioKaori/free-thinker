@@ -58,7 +58,7 @@ export default function LecturePage({ match }) {
             </div>
           )}
           
-          {lecture.zoomLink !== null && (
+          {lecture.zoomLink !== "" && (
             <div className="youtube-wrapper">
               <iframe
                 title="zoom"
