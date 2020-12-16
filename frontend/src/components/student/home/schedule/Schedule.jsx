@@ -30,8 +30,8 @@ export default function Schedule() {
   }, [lectures]);
 
   return (
-    <div>
-      <div className="student-home-schedule-wrapper">
+    <div id="student-home-schedule-component">
+      <div id="student-home-schedule" className="student-home-schedule-wrapper">
         <img src="/assets/img/css/lecture-bg.svg" alt="background" />
       </div>
       <div className="student-home-schedule">
