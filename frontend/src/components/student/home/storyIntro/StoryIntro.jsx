@@ -1,6 +1,5 @@
 import "../../../../css/student/storyIntro/storyIntro.css";
 
-// ========================================================================
 export default function StoryIntro() {
   return (
     <div className="storyIntro">

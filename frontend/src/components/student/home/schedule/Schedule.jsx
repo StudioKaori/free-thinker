@@ -30,11 +30,14 @@ export default function Schedule() {
   }, [lectures]);
 
   return (
-    <div id="student-home-schedule-component">
-      <div id="student-home-schedule" className="student-home-schedule-wrapper">
+    <div>
+      <div
+        id="student-home-schedule-wrapper1"
+        className="student-home-schedule-wrapper"
+      >
         <img src="/assets/img/css/lecture-bg.svg" alt="background" />
       </div>
-      <div className="student-home-schedule">
+      <div id="student-home-schedule1" className="student-home-schedule">
         <h5>
           {moment().format("MM/DD")} lecture <i className="fas fa-glasses"></i>
         </h5>
