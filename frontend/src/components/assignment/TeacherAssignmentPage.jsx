@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import moment from "moment";
 
 import AssignmentApi from '../../api/AssignmentApi';
+import ClassDailySettingsApi from '../../api/ClassDailySettingsApi';
 
 import AssignCard from '../assignment/assignCreate/AssignCard';
 import AssignmentCreateForm from "./assignCreate/AssignCreateForm";
@@ -38,6 +40,9 @@ export default function TeacherAssignmentPage() {
     // Assignment list for overview
     const [assignments, setAssignments] = useState([]);
 
+    // Assign progress
+    const [date] = useState(moment().format("yyyy-MM-DD"));
+
     const getAll = () => {
         AssignmentApi.getAllAssignments().then((res) => {
             setAssignments(res.data.sort((a, b) => b.id - a.id));
@@ -51,18 +56,36 @@ export default function TeacherAssignmentPage() {
     const onCreateClick = () => {
         AssignmentApi.createAssignment(assignmentObj)
             .then(() => {
+                // Refresh list
                 getAll();
 
+                // User message
                 setDisplayPopUp(true);
                 setTimeout(() => {
                     setDisplayPopUp(false);
                 }, 1000)
 
+                // Clean form
                 setAssignmentObj({})
                 setResetFields(true);
                 setAssignmentIsValid(false);
                 setFormIsValid(false);
                 setNothingIsPicked(true);
+
+                // Create a new daily setting if teacher create assignment for another day
+                const assignDate = assignmentObj.unlockTime.substr(0,10);
+                ClassDailySettingsApi.getByDate(assignDate)
+                    .then((res) => {
+                        if (res.data === "") { // Non existing
+                            const defaultSettings = {
+                                islandTheme: "island-green",
+                                date: assignDate + "T00:00:00.0",
+                            }
+                            ClassDailySettingsApi
+                                .createClassDailySetting(defaultSettings)
+                                .then(() => console.log('New daily setting set for', assignDate));
+                        }
+                    })
             })
     }
 

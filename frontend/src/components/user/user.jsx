@@ -15,7 +15,8 @@ import TeacherAssignmentPage from "../assignment/TeacherAssignmentPage";
 import LectureCalendarPage from "../teacher/LectureCalendarPage";
 import WorldMapPage from "../student/worldmap/WorldMapPage";
 import IslandPage from "../student/assignment/IslandPage";
-import TeacherDailySettings from "../teacher/home/DailySettingForm";
+import TeacherDailySettings from "../teacher/TeacherDailySetting";
+
 
 // ========================================================================
 // Router - dispatch routes regarding user type (student or teacher)
