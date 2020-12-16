@@ -34,6 +34,17 @@ function LectureCard({ lecture, onDeleteClick, onUpdateClick }) {
                             allowfullscreen
                         ></iframe>
                         )}
+                        {lecture.zoomLink !== null && (
+                            <iframe
+                                title="zoom"
+                                width="560"
+                                height="315"
+                                src={lecture.zoomLink}
+                                frameborder="0"
+                                allow="camera; microphone accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                            )}
                         <p> {ReactHtmlParser(lecture.body)} </p>
                         <p> {lecture.unlockDate} </p>
                         <p> {lecture.unlockTime} </p>
