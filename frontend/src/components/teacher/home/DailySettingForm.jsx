@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import moment from "moment";
+
 import ClassDailySettingApi from "../../../api/ClassDailySettingsApi";
 
+// ========================================================================
+// Daily setting part in teacher home page
 export default function DailySettingForm({ onClickPreview }) {
   const [date, setDate] = useState(moment().format("yyyy-MM-DD"));
 

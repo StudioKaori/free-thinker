@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+// =====================================================================
 // One bloc => Teacher's question + 3 choices for student answers
 export default function Question(props) {
 

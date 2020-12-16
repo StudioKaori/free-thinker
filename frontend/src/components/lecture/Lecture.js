@@ -1,6 +1,8 @@
 import { React } from "react";
 import ReactHtmlParser from "react-html-parser";
 
+// ========================================================================
+// Not used now
 export default function Lecture(props) {
   return (
     <div className="card-body">

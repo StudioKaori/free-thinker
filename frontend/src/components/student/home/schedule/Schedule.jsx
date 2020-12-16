@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import LectureApi from "../../../../api/LectureApi";
 import moment from "moment";
 import { Link } from "react-router-dom";
 
+import LectureApi from "../../../../api/LectureApi";
+
 import "../../../../css/schedule.css";
 
+// ========================================================================
+// Lecture schedule in Island - student home page
 export default function Schedule() {
   const [status, setStatus] = useState(0);
   const [lectures, setLectures] = useState([]);

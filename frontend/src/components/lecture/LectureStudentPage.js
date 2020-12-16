@@ -1,8 +1,10 @@
 import {useEffect, useState} from "react";
-import LectureApi from "../../api/LectureApi"
 import { Link } from "react-router-dom";
 
+import LectureApi from "../../api/LectureApi"
 
+// ========================================================================
+// Lecture in student side - old one, not use
 export default function LectureStudentPage(){
 
     const [lectures, setLectures] = useState([]);

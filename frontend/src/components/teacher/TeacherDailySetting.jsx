@@ -1,8 +1,10 @@
 import { useState } from "react";
-import Map from "../student/home/map/Map";
+
 import DailySettingForm from "./home/DailySettingForm";
 import moment from "moment";
 
+
+// ========================================================================
 export default function TeacherDailySetting() {
   const [previewChange, setPreviewChange] = useState(<Map key={moment()} />);
 

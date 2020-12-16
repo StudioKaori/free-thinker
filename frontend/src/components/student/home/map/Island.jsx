@@ -1,16 +1,20 @@
 import { useState, useEffect, useRef } from "react";
-import AssignmentApi from "../../../../api/AssignmentApi";
+import moment from "moment";
+
 import { useRecoilState } from "recoil";
 import { userState } from "../../../../js/state-information";
 
-import moment from "moment";
+import AssignmentApi from "../../../../api/AssignmentApi";
 import ClassDailySettingApi from "../../../../api/ClassDailySettingsApi";
+
 import LockIcon from "./IslandIcon";
+
 import "../../../../css/student/islands/island-green.css";
 
 export default function Island({ myDate }) {
   const date =
     typeof myDate === "undefined" ? moment().format("yyyy-MM-DD") : myDate;
+
   const [assignments, setAssignments] = useState([]);
   const [islandTheme, setIslandTheme] = useState("island-green");
   //const [date] = useState(moment().format("yyyy-MM-DD"));

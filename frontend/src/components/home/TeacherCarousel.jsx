@@ -1,8 +1,11 @@
 import React from "react";
-import image1 from '../../assets/img/teacher-carousel-1.png';
-import image2 from '../../assets/img/teacher-carousel-2.png';
-import image3 from '../../assets/img/teacher-carousel-3.png';
 
+import image1 from '../../assets/img/carousel/teacher-carousel-1.png';
+import image2 from '../../assets/img/carousel/teacher-carousel-2.png';
+import image3 from '../../assets/img/carousel/teacher-carousel-3.png';
+
+// =====================================================================
+// Carousel for teacher section in home page
 function TeacherCarousel() {
 
     return (

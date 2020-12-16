@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { useRecoilState } from "recoil";
-import { userState } from "../../js/state-information";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 
-import LectureStudentPage from "../lecture/LectureStudentPage";
+import { useRecoilState } from "recoil";
+import { userState } from "../../js/state-information";
 
 // Pages
 import StudentHomePage from "../student/StudentHomePage";
+import StudentLecture from "../student/lecture/LecturePage";
+import StudentAssignmentPage from "../assignment/StudentAssignmentPage";
+import LecturePage from "../lecture/LecturePage";
+import LectureStudentPage from "../lecture/LectureStudentPage";
 import TeacherHomePage from "../teacher/TeacherHomePage";
 import TeacherAssignmentPage from "../assignment/TeacherAssignmentPage";
-import LecturePage from "../lecture/LecturePage";
-import StudentAssignmentPage from "../assignment/StudentAssignmentPage";
-import StudentLecture from "../student/lecture/LecturePage";
-import TeacherDailySettings from "../teacher/TeacherDailySetting";
 import LectureCalendarPage from "../teacher/LectureCalendarPage";
 import WorldMapPage from "../student/worldmap/WorldMapPage";
 import IslandPage from "../student/assignment/IslandPage";
 
+
+// ========================================================================
+// Router - dispatch routes regarding user type (student or teacher)
 export default function User() {
   const { path } = useRouteMatch();
   const [status, setStatus] = useState(0);

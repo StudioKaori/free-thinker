@@ -1,9 +1,13 @@
 import React from "react";
+import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
+
 import '@fortawesome/fontawesome-free/css/all.min.css'; 
 import 'bootstrap-css-only/css/bootstrap.min.css'; 
 import 'mdbreact/dist/css/mdb.css';
-import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
+
+// =====================================================================
+// Footer - only visible in login page
 const FooterPagePro = () => {
   return (
     <MDBFooter color="cyan" className="font-small darken-3 pt-0">

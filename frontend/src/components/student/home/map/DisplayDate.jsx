@@ -1,5 +1,7 @@
 import moment from "moment";
 
+// ========================================================================
+// Date in sign on Island page
 export default function DisplayDate() {
   return (
     <div className="student-home-map-date-wrapper">

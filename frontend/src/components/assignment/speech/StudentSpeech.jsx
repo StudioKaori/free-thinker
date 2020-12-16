@@ -1,8 +1,7 @@
 import React, { useState} from 'react';
 import { useSpeechRecognition, useSpeechSynthesis } from 'react-speech-kit';
 
-import Button from '../atoms/Button';
-
+// =====================================================================
 // Speech assignment, Student side - Use of react-speech-kit library
 export default function StudentSpeech({speech, setEnd}) {
 
@@ -19,12 +18,11 @@ export default function StudentSpeech({speech, setEnd}) {
         <div>
             <div className="border-bottom mb-3">
                 Teacher's question : 
-                <Button 
+                <button 
                     id="listen-teacher-question-button"
-                    buttonStyle="is-rounded btn-danger text-white"
-                    content="Listen"
+                    className="btn m-1 is-rounded btn-danger text-white"
                     onClick={() => speak({ text: speech.question })}
-                />
+                >Listen</button>
             </div>
 
             <div className="d-flex flex-wrap p-3">
@@ -54,12 +52,11 @@ export default function StudentSpeech({speech, setEnd}) {
 
             <div>
                 When you are sure of your answer, 
-                <Button 
+                <button
                     id="speech-send-answer-button"
-                    buttonStyle="btn-sm btn-success text-white"
-                    content="Save it"
+                    className="btn m-1 btn-sm btn-success text-white"
                     onClick={() => setEnd(true)}
-                />
+                >Save it</button>
             </div>
         </div>
     );

@@ -1,5 +1,7 @@
 import React from "react";
 
+// ========================================================================
+// Dropdown list for Island Theme choice
 export default function Dropdown() {
   return (
     <div>

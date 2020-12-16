@@ -1,12 +1,13 @@
+
 import Map from "./home/map/Map";
 import StoryIntro from "./home/storyIntro/StoryIntro";
 
-// Popup
-import showPopupWindow from "../../js/common/popup/showPopupWindow";
-import closePopupWindow from "../../js/common/popup/closePopupWindow";
+import AssignmentProgressApi from "../../api/AssignmentProgressApi";
 
 import "../../css/student/student-home.css";
 
+// ========================================================================
+// Student Home page - Entry point
 export default function StudentHomePage() {
   return (
     <div>

@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import LectureApi from "../../../api/LectureApi";
-import ReactHtmlParser from "react-html-parser";
 import moment from "moment";
+import ReactHtmlParser from "react-html-parser";
+
+import LectureApi from "../../../api/LectureApi";
 
 import "../../../css/student/lecture.css";
 
+// ========================================================================
+// Student lecture page - Each lecture opened
 export default function LecturePage({ match }) {
   const lectureId = Number(match.match.params.id);
 
