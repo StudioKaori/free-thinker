@@ -9,7 +9,6 @@ function AssignCard({ onDeleteClick, assign }) {
             <div className="card-body">
                 <div>
                     <h2>{assign.title}</h2>
-                    <p>{assign.id}</p>
                     <p>{assign.instruction}</p>
                 </div>
             </div>
