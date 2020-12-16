@@ -1,10 +1,14 @@
-import { Calendar, momentLocalizer, Views } from "react-big-calendar";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import moment from "moment";
 import { useEffect, useState } from "react";
-import LectureApi from "../../../api/LectureApi";
-import "../../../css/components/react-big-calendar.css";
+import { Calendar, momentLocalizer, Views } from "react-big-calendar";
+import moment from "moment";
 
+import LectureApi from "../../../api/LectureApi";
+
+import "../../../css/components/react-big-calendar.css";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+
+// ========================================================================
+// Not used right now
 export default function LectureCalendar() {
   const localizer = momentLocalizer(moment);
   const [eventList, setEventList] = useState([]);

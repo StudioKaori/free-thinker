@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+
 import firebase, { storage } from "../../firebase/firebase";
 
+// =====================================================================
 export default function FileUpload({ registerPhotoToDB }) {
   const [image, setImage] = useState("");
   const [imageUrl, setImageUrl] = useState("");

@@ -1,6 +1,7 @@
 import Quiz from 'react-quiz-component';
 
-// Student side for quiz - use of react-quiz-component (Just give it our own JSON object)
+// =====================================================================
+// Student side for quiz - use of react-quiz-component 
 export default function StudentQuiz({quiz, setEnd}) {
     
     return (

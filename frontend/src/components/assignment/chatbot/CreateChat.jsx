@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import Button from '../atoms/Button';
 import CreateChatForm from './CreateChatForm';
 
+// ========================================================================
 // Entry point for Creating a chat - Teacher's side
 export default function CreateChat({close, assignmentObj, setAssignmentObj, 
     setAssignmentIsValid, setNothingIsPicked}) {
@@ -45,16 +45,14 @@ export default function CreateChat({close, assignmentObj, setAssignmentObj,
             <div className="col-sm-12 col-md-8">
 
                 <div className="text-center">
-                    <Button
+                    <button
                         id="create-chat-button"
-                        buttonStyle="btn m-1 btn-danger"
-                        content="Save Chat" 
+                        className="btn m-1 btn-danger" 
                         onClick={() => saveChat()}
-                    />
+                    >Save Chat</button>
                 </div>
 
                 <CreateChatForm setNewChat={setNewChat} />
-
             </div>
         </div>
     );

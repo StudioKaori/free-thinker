@@ -4,6 +4,8 @@ import TeacherCarousel from "./TeacherCarousel";
 import StudentCarousel from "./StudentCarousel";
 import Footer from "./Footer";
 
+// =====================================================================
+// Content in Home / Login page
 function HomePage() {
 
     return (

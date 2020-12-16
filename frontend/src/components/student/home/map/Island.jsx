@@ -1,13 +1,18 @@
 import { useState, useEffect, useRef } from "react";
-import AssignmentApi from "../../../../api/AssignmentApi";
+import moment from "moment";
+
 import { useRecoilState } from "recoil";
 import { userState } from "../../../../js/state-information";
 
-import moment from "moment";
+import AssignmentApi from "../../../../api/AssignmentApi";
 import ClassDailySettingApi from "../../../../api/ClassDailySettingsApi";
+
 import LockIcon from "./IslandIcon";
+
 import "../../../../css/student/islands/island-green.css";
 
+// ========================================================================
+// Island in student honme page
 export default function Island() {
   const [assignments, setAssignments] = useState([]);
   const [islandTheme, setIslandTheme] = useState("island-green");
@@ -69,18 +74,6 @@ export default function Island() {
       <div className="student-home-map-island-path">
         <img src="/assets/img/css/islands/island-path.png" alt="path" />
       </div>
-
-      {/*
-        {status === 1 &&
-            assignments
-            .sort((a1, a2) => a1.id < a2.id ? -1 : 1) 
-            .slice(0, 6)
-            .every((assignment) => assignment.isDoneByUser.filter(usr => usr.id === user[0].id).length > 0)
-            // If all assignments are done
-                ? <LockIcon type={"trophy"} />
-                : null 
-        }
-      </div> */}
 
       {status === 1 &&
         assignments

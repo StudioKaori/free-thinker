@@ -1,11 +1,11 @@
 import { useEffect, useState} from 'react';
-import { premadeThemes } from './templates';
 
-import Button from '../atoms/Button';
+import { premadeThemes } from './templates';
 import Step from './Step';
 
 import '../../../css/assignment/chatbot.css';
 
+// =====================================================================
 // The actual form for create the chat
 export default function CreateChatForm({ setNewChat }) {
 
@@ -29,18 +29,10 @@ export default function CreateChatForm({ setNewChat }) {
     // Create a set of 4 steps => corresponding at one question/answer set.
     const createStep = () => {
         const newStep = [
-            {
-                id: stepId,
-            },
-            {
-                id: stepId + 1,
-            },
-            {
-                id: stepId + 2,
-            },
-            {
-                id: stepId + 3,
-            },
+            { id: stepId },
+            { id: stepId + 1},
+            { id: stepId + 2},
+            { id: stepId + 3},
         ]
         setSteps(steps.concat(newStep));
         setStepId(stepId + 4);
@@ -62,24 +54,21 @@ export default function CreateChatForm({ setNewChat }) {
     return (
         <div className="card p-3 mt-4 mb-4 bg-dark">
             <div className="text-center">
-                <Button 
+                <button
                     id="create-chat-theme-1"
-                    buttonStyle="btn-sm btn-info"
-                    content="Theme 1" 
+                    className="btn m-1 btn-sm btn-info"
                     onClick={() => setTheme(1)} 
-                />
-                <Button 
+                >Theme 1</button>
+                <button 
                     id="create-chat-theme-2"
-                    buttonStyle="btn-sm btn-info"
-                    content="Theme 2" 
+                    className="btn m-1 btn-sm btn-info"
                     onClick={() => setTheme(2)} 
-                />
-                <Button 
+                >Theme 2</button>
+                <button 
                     id="create-chat-theme-3"
-                    buttonStyle="btn-sm btn-info"
-                    content="Theme 3" 
+                    className="btn m-1 btn-sm btn-info"
                     onClick={() => setTheme(3)} 
-                />
+                >Theme 3</button>
             </div>
 
             <div className="d-flex justify-content-center">
@@ -109,17 +98,15 @@ export default function CreateChatForm({ setNewChat }) {
                     </div>
 
                     <div>
-                        <Button
+                        <button
                             id="create-chat-step-button"
-                            buttonStyle="mt-4 ml-1 btn-sm btn-success"
-                            content="+"
+                            className="btn mt-4 ml-1 btn-sm btn-success"
                             onClick={() => createStep()}
-                        />
+                        >+</button>
                     </div>
 
                 </div>
             </div>
-
         </div>
     );
 }

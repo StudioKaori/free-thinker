@@ -1,5 +1,7 @@
 import FileUploader from "../common/FileUploader";
 
+// ========================================================================
+// Profile pop up to upload picture
 export default function Profile({ registerPhotoToDB, closePopupWindow }) {
   return (
     <div className="form-group">

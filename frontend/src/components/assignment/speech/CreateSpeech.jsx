@@ -3,8 +3,7 @@ import { useSpeechSynthesis } from 'react-speech-kit';
 
 import '../../../css/assignment/speech.css'
 
-import Button from '../atoms/Button';
-
+// =====================================================================
 // Entry point for creating a Speech assignment - use of react-speech-kit library
 export default function CreateSpeech({close, setAssignmentIsValid, setNothingIsPicked,
     assignmentObj ,setAssignmentObj}) {
@@ -40,18 +39,16 @@ export default function CreateSpeech({close, setAssignmentIsValid, setNothingIsP
                 onChange={(event) => setQuestion(event.target.value)}
             />
             <div>
-                <Button 
+                <button 
                     id="test-speech-button"
-                    buttonStyle="btn-sm btn-info"
-                    content="Test" 
+                    className="btn m-1 btn-sm btn-info"
                     onClick={() => speak({ text: question })}
-                />
-                <Button 
+                >Test</button>
+                <button
                     id="save-speech-button"
-                    buttonStyle="btn-sm btn-danger"
-                    content="Save" 
+                    className="btn m-1 btn-sm btn-danger" 
                     onClick={() => saveSpeech()}
-                />
+                >Save</button>
             </div>
         </div>
     );

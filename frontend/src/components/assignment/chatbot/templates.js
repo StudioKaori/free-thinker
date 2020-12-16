@@ -1,6 +1,4 @@
-/* Template for a default chat and themes, can be used to see the original format */
-
-// Themes are actually used, those one can be modified, and new one can be added
+// Themes who are actually used, those one can be modified, and new one can be added
 export const premadeThemes = [
     {
         background: '#f5f8fb',
@@ -36,65 +34,3 @@ export const premadeThemes = [
         userFontColor: '#4a4a4a',
     }
 ];
-
-export const stepsTemplate1 = [
-    {
-        id: '1',
-        message: '18 + 12',
-        trigger: '2',
-    },
-    {
-        id: '2',
-        options: [
-            { value: 1, label: '30', trigger: '4' },
-            { value: 2, label: '28', trigger: '3' },
-            { value: 3, label: '182', trigger: '3' },
-          ],
-    },
-    {
-        id: '3',
-        message: 'Wrong answer, try again.',
-        trigger: '2',
-    },
-    {
-        id: '4',
-        message: 'Awesome! Well Done !',
-        end: true,
-    },
-];
-
-export const stepsTemplate2 = [
-    {
-        id: '1',
-        message: 'Default question, type ok to move on',
-        trigger: '2',
-    },
-    {
-        id: '2',
-        user: true,
-        trigger: (value) => {
-            if (value.value === 'ok') {
-                return '4';
-            }
-            return '3';
-        }
-    },
-    {
-        id: '3',
-        message: 'Wrong answer, try again.',
-        trigger: '2',
-    },
-    {
-        id: '4',
-        message: 'Awesome! Well Done !',
-        end: true,
-    },
-];
-
-export const defaultSteps = [
-    {
-        id: '1',
-        message: 'Create Your own',
-        end: true,
-    },
-]

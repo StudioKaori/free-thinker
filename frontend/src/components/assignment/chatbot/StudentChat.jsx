@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import ChatBot from 'react-simple-chatbot';
+
 import { ThemeProvider } from 'styled-components';
 
+// =====================================================================
 // Chat in Student side: use of 'react-simple-chatbot' library
 export default function StudentChat({chat, setEnd}) {
 
