@@ -89,14 +89,14 @@ See dedicated section for installation >> [Help](./Help.md)
 
 ### Teachers
 
-![Teacher Page](frontend/src/assets/img/teacher-carousel-1.png)
+![Teacher Page](frontend/src/assets/img/carousel/teacher-carousel-1.png)
 
 Create lectures and assignment and get an overview of your preparation.
 For the next day or the next week, you can plan in advance.
 
 ### Students
 
-![Student Page](frontend/src/assets/img/student-carousel-1.png)
+![Student Page](frontend/src/assets/img/carousel/student-carousel-1.png)
 
 Follow your teacher's intructions in a funny environment. Even better than in classroom !
 
