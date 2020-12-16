@@ -11,8 +11,8 @@ export default function WorldMapIcon({ type, done }) {
         <img
           src="/assets/img/css/islands/icon-unlock.png"
           className="worldmap-icon animate__animated animate__rubberBand"
-          alt="assignment"
-          title="assignment"
+          alt="Try assignment!"
+          title="You haven't found a monster yet! Try assignment!"
         />
       );
 

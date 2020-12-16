@@ -8,10 +8,12 @@ import ClassDailySettingApi from "../../../../api/ClassDailySettingsApi";
 import LockIcon from "./IslandIcon";
 import "../../../../css/student/islands/island-green.css";
 
-export default function Island() {
+export default function Island({ myDate }) {
+  const date =
+    typeof myDate === "undefined" ? moment().format("yyyy-MM-DD") : myDate;
   const [assignments, setAssignments] = useState([]);
   const [islandTheme, setIslandTheme] = useState("island-green");
-  const [date] = useState(moment().format("yyyy-MM-DD"));
+  //const [date] = useState(moment().format("yyyy-MM-DD"));
   const [status, setStatus] = useState(0);
   const [user] = useRecoilState(userState);
   const iconAddLink = useRef("");

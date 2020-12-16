@@ -1,4 +1,5 @@
 import moment from "moment";
+import { Link } from "react-router-dom";
 import WorldMapIcon from "./WorldMapIcon";
 
 export default function WorldMapIslandCard({ island }) {
@@ -15,6 +16,9 @@ export default function WorldMapIslandCard({ island }) {
   const iconType = date < moment().format("YYYY-MM-DD") ? "unlock" : "lock";
   const isDone = island.assignmentsOfTheDayIsDone;
 
+  const linkUrl = "/assignment/day/" + date;
+  const showIslandLink = iconType === "unlock" && !isDone ? true : false;
+
   return (
     <article>
       <div className="island-monster animate__animated animate__pulse animate__infinite	infinite">
@@ -29,7 +33,13 @@ export default function WorldMapIslandCard({ island }) {
         <img src={islandImg} className={isVisible} alt="island" />
       </div>
       <div className="worldmap-icon animate__animated animate__rubberBand">
-        <WorldMapIcon type={iconType} done={isDone} />
+        {showIslandLink ? (
+          <Link to={linkUrl} alt="Try assignment!" title="Try assignment!">
+            <WorldMapIcon type={iconType} done={isDone} />
+          </Link>
+        ) : (
+          <WorldMapIcon type={iconType} done={isDone} />
+        )}
       </div>
     </article>
   );
