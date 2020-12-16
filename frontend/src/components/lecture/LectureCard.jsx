@@ -23,6 +23,7 @@ function LectureCard({ lecture, onDeleteClick, onUpdateClick }) {
                 <div className="card-body">
                     <div >
                         <h2>{lecture.title}</h2>
+                        {lecture.youtubeUrl !== null && (
                         <iframe
                             title="youtube"
                             width="560"
@@ -32,6 +33,7 @@ function LectureCard({ lecture, onDeleteClick, onUpdateClick }) {
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen
                         ></iframe>
+                        )}
                         <p> {ReactHtmlParser(lecture.body)} </p>
                         <p> {lecture.unlockDate} </p>
                         <p> {lecture.unlockTime} </p>
