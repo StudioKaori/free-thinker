@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import moment from "moment";
 
 import AssignmentApi from '../../api/AssignmentApi';
 
@@ -12,6 +13,7 @@ import CreateQuiz from './quiz/CreateQuiz';
 
 import PopUpMsg from "./PopUpMsg";
 import Icon from "../icons/map-icon";
+import ClassDailySettingsApi from '../../api/ClassDailySettingsApi';
 
 // =====================================================================
 // Create assignment Page for teacher
@@ -63,6 +65,23 @@ export default function TeacherAssignmentPage() {
                 setAssignmentIsValid(false);
                 setFormIsValid(false);
                 setNothingIsPicked(true);
+
+                
+                // Create a new daily setting if teacher create assignment for another day
+                const assignDate = assignmentObj.unlockTime.substr(0,10);
+                ClassDailySettingsApi.getByDate(assignDate)
+                    .then((res) => {
+                        if (res.data === "") { // Non existing
+                            const defaultSettings = {
+                                islandTheme: "island-green",
+                                date: assignDate + "T00:00:00.0",
+                            }
+                            ClassDailySettingsApi
+                                .createClassDailySetting(defaultSettings)
+                                .then(() => console.log('New daily setting set for', assignDate));
+                        }
+                    })
+
             })
     }
 
