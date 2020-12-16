@@ -14,7 +14,7 @@ function LectureUpdate({ lecture, oldLecture, onUpdateClick }) {
       ? "https://www.youtube.com/watch?v=" + oldLecture.youtubeUrl
       : ""
   );
-  const [zoom, setZoom] = useState(oldLecture.zoom);
+  const [zoom, setZoom] = useState(oldLecture.zoomLink !== "" ? oldLecture.zoomLink : "");
   const [unlockDate, setUnlockDate] = useState(
     moment(oldLecture.unlockTime).format("YYYY-MM-DD")
   );
