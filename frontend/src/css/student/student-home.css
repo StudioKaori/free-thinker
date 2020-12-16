@@ -10,6 +10,25 @@
   background-image: url("../../assets/img/world-map.png");
 }
 
+#islandDesc {
+  position: absolute;
+  font-family: var(--theme-font-family);
+  font-size: var(--font-L);
+  top: -50px;
+  left: 50px;
+  color: #ffffff;
+}
+
+#schedule-desc {
+  position: absolute;
+  font-family: var(--theme-font-family);
+  font-size: var(--font-L);
+  top: -50px;
+  left: -280px;
+  color: #ffffff;
+  width: 250px;
+}
+
 @media (min-width: 550px) {
   .student-home-map {
     height: 250px;
