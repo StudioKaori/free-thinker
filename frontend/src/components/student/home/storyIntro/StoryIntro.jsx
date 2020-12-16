@@ -4,7 +4,7 @@ import "../../../../css/student/storyIntro/storyIntro.css";
 export default function StoryIntro() {
   return (
     <div className="storyIntro">
-      <div className="storyIntroElement fadeOut">
+      <div className="storyIntroElement fadeOut welcome">
         Welcome to
         <img src="/assets/img/logo.svg" alt="Free Thinker" />
       </div>

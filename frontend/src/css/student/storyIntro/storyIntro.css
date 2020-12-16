@@ -1,7 +1,6 @@
 .story-inner-box {
   color: var(--accent-color-green);
   font-family: "Sigmar One", cursive;
-  font-size: var(--font-XL);
   position: relative;
   background-color: #000000;
 }
@@ -15,14 +14,15 @@
   justify-content: center;
   flex-direction: column;
   padding: 20px;
+  font-size: var(--font-XL);
 }
 
-:root {
+/* :root {
   --animate-delay: 10s;
-}
+} */
 
 .fadeIn {
-  animation: fadeInFrames 5s;
+  animation: fadeInFrames 4s;
   /* animation-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1); */
   opacity: 0;
 }
@@ -31,21 +31,25 @@
   0% {
     opacity: 0;
     top: 30px;
+    transform: scale(1);
   }
 
   10% {
     opacity: 1;
     top: 0;
+    transform: scale(1);
   }
 
   90% {
     opacity: 1;
     top: 0;
+    transform: scale(4.5);
   }
 
   100% {
     opacity: 0;
     top: -30px;
+    transform: scale(1);
   }
 }
 
@@ -99,10 +103,13 @@
   }
 }
 
-.storyIntro div:nth-child(1) {
-  animation-delay: 0;
+.storyIntro .welcome {
   background-color: #ffffff;
   border-radius: 10px;
+}
+
+.storyIntro div:nth-child(1) {
+  animation-delay: 0;
 }
 
 .storyIntro div:nth-child(2) {
