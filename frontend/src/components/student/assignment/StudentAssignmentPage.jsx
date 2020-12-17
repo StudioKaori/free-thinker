@@ -12,9 +12,9 @@ import StudentQuiz from "./StudentQuiz";
 import AssignmentApi from "../../../api/AssignmentApi";
 import AssignmentProgressApi from "../../../api/AssignmentProgressApi";
 
-import Congrats from "../student/assignment/Congrats";
+import Congrats from "./Congrats";
 
-import "../../css/student/assignmentPage.css";
+import "../../../css/student/assignmentPage.css";
 
 // =====================================================================
 // Student assignment entry point, fetch assignment by id and display the related component
