@@ -49,14 +49,14 @@ export default function LectureForm({
   const [unlockTime, setUnlockTime] = useState("");
 
   return (
-  <form novalidate=""  id="myForm">
+  <form noValidate=""  id="myForm">
     <div className="body-wrapper">
       <div className="card">
         <div className="card-body">
           <h2> Create a Lecture: </h2>
 
           <div className="form-group">
-            <label className="form-control-label" for ="inputSuccess1">Title:</label>
+            <label className="form-control-label" htmlFor="inputSuccess1">Title:</label>
             <input
               id="inputSuccess1"
               type="text"

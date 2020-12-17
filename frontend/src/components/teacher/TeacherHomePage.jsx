@@ -19,13 +19,13 @@ export default function TeacherHomePage() {
   // };
   return (
     <div className="body-wrapper">
-      <div class="container p-3 my-3">
+      <div className="container p-3 my-3">
         {/* <div>
         <LectureCalendar />
       </div> */}
         {/* This container forms the week's display
       The number props soecify the day relative to the current day */}
-        <div class="week-container">
+        <div className="week-container">
           <DayBox day="-1" />
           <DayBox day="0" />
           <DayBox day="1" />
@@ -44,7 +44,7 @@ export default function TeacherHomePage() {
               .reverse()
               .slice(0, 5)
               .map((activity) => (
-                <ActivityBox activity={activity} />
+                <ActivityBox key={activity.unlockTime} activity={activity} />
               ))}
           </div>
           {/* This div only needs some finer CSS touch, otherwise it looks fine */}
