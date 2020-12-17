@@ -46,10 +46,6 @@ function LoginPage() {
         <div class="bubble"></div>
       </div>
       <div className="bg-01">
-        <div className="login-logo-wrapper">
-          <img src="/assets/img/logo.svg" alt="free thinker logo" />
-        </div>
-
         <div className="login-buttons">
           <ul className="nav d-flex justify-content-sm-center justify-content-md-end">
             <li
@@ -104,6 +100,9 @@ function LoginPage() {
               </div>
             )}
           </div>
+        </div>
+        <div className="login-logo-wrapper">
+          <img src="/assets/img/logo.svg" alt="free thinker logo" />
         </div>
       </div>
       {/* <div className="container">

@@ -1,7 +1,5 @@
 import StoryIntro from "./home/storyIntro/StoryIntro";
 
-import StoryIntro from "./home/storyIntro/StoryIntro";
-
 import createNewDiv from "../../js/common/createNewDiv";
 import { useState, useEffect } from "react";
 import moment from "moment";
