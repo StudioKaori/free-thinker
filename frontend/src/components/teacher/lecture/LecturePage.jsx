@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import moment from "moment";
 
-import Api from "../../api/Api";
+import Api from "../../../api/Api";
 
 import LectureCard from "./LectureCard";
 import LectureForm from "./LectureForm";

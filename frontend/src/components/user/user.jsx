@@ -7,11 +7,10 @@ import { userState } from "../../js/state-information";
 // Pages
 import StudentHomePage from "../student/StudentHomePage";
 import StudentLecture from "../student/lecture/LecturePage";
-import StudentAssignmentPage from "../assignment/StudentAssignmentPage";
-import LecturePage from "../lecture/LecturePage";
-import LectureStudentPage from "../lecture/LectureStudentPage";
+import StudentAssignmentPage from "../student/assignment/StudentAssignmentPage";
+import LecturePage from "../teacher/lecture/LecturePage";
 import TeacherHomePage from "../teacher/TeacherHomePage";
-import TeacherAssignmentPage from "../assignment/TeacherAssignmentPage";
+import TeacherAssignmentPage from "../teacher/assignment/TeacherAssignmentPage";
 import LectureCalendarPage from "../teacher/LectureCalendarPage";
 import WorldMapPage from "../student/worldmap/WorldMapPage";
 import IslandPage from "../student/assignment/IslandPage";
@@ -70,9 +69,6 @@ export default function User() {
           </Switch>
         ) : (
           <Switch>
-            <Route path={path + "see-lecture"}>
-              <LectureStudentPage />
-            </Route>
             <Route
               path="/lecture-calendar"
               render={() => <LectureCalendarPage />}

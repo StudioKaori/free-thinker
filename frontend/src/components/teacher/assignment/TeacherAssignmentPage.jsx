@@ -1,19 +1,20 @@
 import { useState, useEffect } from 'react';
 import moment from "moment";
 
-import AssignmentApi from '../../api/AssignmentApi';
-import ClassDailySettingsApi from '../../api/ClassDailySettingsApi';
+import AssignmentApi from '../../../api/AssignmentApi';
+import ClassDailySettingsApi from '../../../api/ClassDailySettingsApi';
 
-import AssignCard from '../assignment/assignCreate/AssignCard';
+import AssignCard from './assignCreate/AssignCard';
 import AssignmentCreateForm from "./assignCreate/AssignCreateForm";
-import FileUpload from "../assignment/assignCreate/FileUpload";
+import FileUpload from "./assignCreate/FileUpload";
 
 import CreateChat from './chatbot/CreateChat';
 import CreateSpeech from './speech/CreateSpeech';
 import CreateQuiz from './quiz/CreateQuiz';
 
 import PopUpMsg from "./PopUpMsg";
-import Icon from "../icons/map-icon";
+import check from "../../../assets/img/icons/check-1-icon.png";
+import wrong from "../../../assets/img/icons/wrong.png";
 
 // =====================================================================
 // Create assignment Page for teacher
@@ -111,12 +112,12 @@ export default function TeacherAssignmentPage() {
                     assignmentIsValid ?
                         <span>
                             <span className="mr-2"> {assignmentObj.type} </span>
-                            <span > <Icon type="check" /> </span>
+                            <span > <img width="30" className="map-icon" src={check} alt="Check logo" /> </span>
                         </span>
                         : !nothingIsPicked ?
                             <span>
                                 <span className="mr-2"> {assignmentObj.type} </span>
-                                <span > <Icon type="wrong" /> </span>
+                                <span > <img width="30" className="map-icon" src={wrong} alt="Wrong logo" /> </span>
                             </span>
                             : null
                 }
