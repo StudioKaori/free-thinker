@@ -47,12 +47,27 @@ export default function Schedule() {
               {lectures.map((lecture) => {
                 const lectureUrl = "/lecture/" + lecture.id;
                 const myKey = "lecturelink" + lecture.id;
+                const isCurrentLecture =
+                  moment().format("HH") ===
+                  moment(lecture.unlockTime).format("HH");
+                const lectureLinkClass = isCurrentLecture ? "highlited-a" : "";
+                const nowSign = isCurrentLecture ? (
+                  <span className="currentLectureSign animate__animated animate__rubberBand animate__repeat-3">
+                    GO NOW
+                  </span>
+                ) : (
+                  ""
+                );
+
                 return (
-                  <tr key={myKey}>
+                  <tr>
                     <th>{moment(lecture.unlockTime).format("H:mm")}</th>
                     <td>
                       <div>
-                        <Link to={lectureUrl}>{lecture.title}</Link>
+                        <Link to={lectureUrl} className={lectureLinkClass}>
+                          {lecture.title}
+                          {nowSign}
+                        </Link>
                       </div>
                     </td>
                   </tr>

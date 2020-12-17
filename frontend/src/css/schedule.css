@@ -1,32 +1,26 @@
-.table-striped,
-td {
-  table-layout: auto;
-  width: 250px;
-  border: 1px ridge white;
-  border-collapse: collapse;
-  text-align: center;
-  font-weight: 700;
+table {
+  font-family: var(--theme-font-family);
 }
-caption {
-  caption-side: top;
-  text-align: center;
-}
-h5,
+
+.student-home-schedule-wrapper h5,
 h6 {
   margin-bottom: 10px;
   color: var(--accent-color-brown);
-  text-align: center;
+  text-align: right;
+  border-bottom: 1px solid var(--accent-color-brown);
 }
 
 th {
   color: var(--accent-color-green);
   height: 100%;
   vertical-align: middle;
+  font-size: 16px !important;
 }
 
 td {
   border: 0;
   padding: 5px;
+  text-align: center;
 }
 
 td a {
@@ -38,12 +32,30 @@ td a {
   border-radius: 5px;
   background-color: var(--accent-color-green);
   transition: 0.5s;
+  font-size: 16px !important;
 }
+
 td a:hover {
   text-decoration: none;
   color: #ffffff;
   background-color: #7ddbd3;
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.highlited-a {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #7ddbd3;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.currentLectureSign {
+  background-color: #ff7474;
+  border-radius: 10px;
+  font-size: var(--font-XS);
+  padding: 3px;
+  margin-left: 4px;
+  display: inline-block;
 }
 
 .student-home-schedule-wrapper {
@@ -72,7 +84,7 @@ td a:hover {
 .student-home-schedule {
   position: absolute;
   top: 80px;
-  left: 55px;
+  left: 45px;
 }
 
 @media (min-width: 750px) {
