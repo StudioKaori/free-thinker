@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import Question from './Question';
 
-import '../../../css/assignment/quiz.css';
+import '../../../../css/assignment/quiz.css';
 
 // =====================================================================
 // Actual form for creating the quiz

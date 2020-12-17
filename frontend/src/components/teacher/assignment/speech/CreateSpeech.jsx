@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSpeechSynthesis } from 'react-speech-kit';
 
-import '../../../css/assignment/speech.css'
+import '../../../../css/assignment/speech.css'
 
 // =====================================================================
 // Entry point for creating a Speech assignment - use of react-speech-kit library

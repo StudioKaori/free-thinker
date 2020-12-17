@@ -3,7 +3,7 @@ import { useEffect, useState} from 'react';
 import { premadeThemes } from './templates';
 import Step from './Step';
 
-import '../../../css/assignment/chatbot.css';
+import '../../../../css/assignment/chatbot.css';
 
 // =====================================================================
 // The actual form for create the chat
