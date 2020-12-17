@@ -3,16 +3,16 @@ import { userState } from "../../../js/state-information";
 import { useEffect, useState } from "react";
 import WorldMapIslandCard from "./WorldMapIslandCard";
 import AssignmentProgressApi from "../../../api/AssignmentProgressApi";
+import Congrats from "../assignment/Congrats";
 
 import "../../../css/student/worldmap.css";
 import monsters from "../../../data/citiesAndMonsters.json";
 
-export default function WorldMap({ dailySettingId }) {
+export default function WorldMap({ showCongrats }) {
+  console.log("showCongrats", showCongrats);
   const [user] = useRecoilState(userState);
   const [studentProgresses, setStudentProgresses] = useState([]);
-  const [congrats, setCongrats] = useState(
-    dailySettingId !== null ? true : false
-  );
+  const [congrats] = useState(showCongrats === "true" ? true : false);
   const [status, setStatus] = useState(0);
 
   const getAssignmentProgress = () => {
@@ -25,25 +25,21 @@ export default function WorldMap({ dailySettingId }) {
 
   const getIslandCards = () => {
     return studentProgresses.map((progress, index) => {
-      //console.log("progress", progress);
       const key = "worldmapIsland" + index;
       progress.city = monsters[index].city;
       progress.monster = monsters[index].monster;
-
-      // moment(progress.classDailySetting.date).format("YYYY-MM-DD") ===
-      //   moment().format("YYYY-MM-DD") && setCongrats(progress.monster);
 
       return <WorldMapIslandCard key={key} island={progress} />;
     });
   };
 
-  const showCongrats = () => {
-    console.log("congrats!daily setting id", dailySettingId);
+  const deleteCongrats = () => {
+    document.getElementById("popupStoryWindow").remove();
   };
 
   useEffect(() => {
     getAssignmentProgress();
-    if (congrats) showCongrats();
+    if (congrats) setTimeout(deleteCongrats, 4000);
   }, []);
 
   useEffect(() => {
@@ -64,6 +60,11 @@ export default function WorldMap({ dailySettingId }) {
           {status === 1 && getIslandCards()}
         </div>
       </div>
+      {congrats && (
+        <div id="popupStoryWindow" className="popupWindow">
+          <Congrats key="congrats" />
+        </div>
+      )}
     </div>
   );
 }
