@@ -12,7 +12,7 @@ import StudentQuiz from "./quiz/StudentQuiz";
 import AssignmentApi from "../../api/AssignmentApi";
 import AssignmentProgressApi from "../../api/AssignmentProgressApi";
 
-import Congrats from "../student/assignment/Congrats";
+import WorldMap from "../../components/student/worldmap/WorldMap";
 
 import "../../css/student/assignmentPage.css";
 
@@ -99,13 +99,11 @@ export default function StudentAssignmentPage({ match }) {
     <section className="body-wrapper">
       <h2 className="border-bottom mb-3">{assignment.title}</h2>
 
-      {allDone && (
+      {allDone ? (
         <div>
-          <Congrats monster={monster} />
+          <WorldMap showCongrats="true" />
         </div>
-      )}
-
-      {end ? (
+      ) : end ? (
         <div className="text-center">
           <p>Thank you very much your teacher will review your answers.</p>
           <Link to="/" className="btn btn-danger">

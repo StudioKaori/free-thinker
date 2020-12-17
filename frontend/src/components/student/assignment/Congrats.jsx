@@ -1,9 +1,23 @@
-export default function Congrats({ monster }) {
-  const monsterImg = "/assets/img/monsters/" + monster + ".png";
+import Heart from "../../common/Heart";
+import "../../../css/student/worldmap/congrats.css";
+
+export default function Congrats() {
+  const monsterImg = "/assets/img/monsters/free.png";
 
   return (
-    <div className="popupWindow">
-      <img src={monsterImg} alt="moster" />
+    <div id="congrats-today" className="congrats-wrapper">
+      <div className="heart-wrapper">
+        <Heart />
+      </div>
+      <div className="congrats-monster">
+        <h3>
+          Congratulations! <br />
+          You found the monster of today!
+        </h3>
+        <div className="animate__animated animate__rubberBand">
+          <img src={monsterImg} alt="moster" />
+        </div>
+      </div>
     </div>
   );
 }
