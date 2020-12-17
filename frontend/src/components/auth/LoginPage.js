@@ -49,7 +49,7 @@ function LoginPage() {
         <div className="login-logo-wrapper">
           <div className="login-logo-wrapper-inner animate__animated animate__rubberBand">
             <img
-              src="/assets/img/logo.svg"
+              src="/assets/img/login-logo.svg"
               alt="free thinker logo"
               className="login-logo-img"
             />
