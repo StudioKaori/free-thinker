@@ -1,15 +1,5 @@
-.table-striped,
-td {
-  table-layout: auto;
-  width: 250px;
-  border: 1px ridge white;
-  border-collapse: collapse;
-  text-align: center;
-  font-weight: 700;
-}
-caption {
-  caption-side: top;
-  text-align: center;
+table {
+  font-family: var(--theme-font-family);
 }
 h5,
 h6 {
@@ -22,11 +12,13 @@ th {
   color: var(--accent-color-green);
   height: 100%;
   vertical-align: middle;
+  font-size: 18px !important;
 }
 
 td {
   border: 0;
   padding: 5px;
+  text-align: center;
 }
 
 td a {
@@ -38,6 +30,7 @@ td a {
   border-radius: 5px;
   background-color: var(--accent-color-green);
   transition: 0.5s;
+  font-size: 18px !important;
 }
 td a:hover {
   text-decoration: none;
