@@ -12,7 +12,7 @@ import StudentQuiz from "./StudentQuiz";
 import AssignmentApi from "../../../api/AssignmentApi";
 import AssignmentProgressApi from "../../../api/AssignmentProgressApi";
 
-import WorldMap from "../../components/student/worldmap/WorldMap";
+import WorldMap from "../worldmap/WorldMap";
 
 import "../../../css/student/assignmentPage.css";
 
