@@ -112,12 +112,12 @@ export default function TeacherAssignmentPage() {
                     assignmentIsValid ?
                         <span>
                             <span className="mr-2"> {assignmentObj.type} </span>
-                            <span > <img className="map-icon" src={check} alt="Check logo" /> </span>
+                            <span > <img width="30" className="map-icon" src={check} alt="Check logo" /> </span>
                         </span>
                         : !nothingIsPicked ?
                             <span>
                                 <span className="mr-2"> {assignmentObj.type} </span>
-                                <span > <img className="map-icon" src={wrong} alt="Wrong logo" /> </span>
+                                <span > <img width="30" className="map-icon" src={wrong} alt="Wrong logo" /> </span>
                             </span>
                             : null
                 }
