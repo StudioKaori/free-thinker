@@ -3,18 +3,19 @@ import { userState } from "../../../js/state-information";
 import { useEffect, useState } from "react";
 import WorldMapIslandCard from "./WorldMapIslandCard";
 import AssignmentProgressApi from "../../../api/AssignmentProgressApi";
-import moment from "moment";
 
 import "../../../css/student/worldmap.css";
+import monsters from "../../../data/citiesAndMonsters.json";
 
-export default function WorldMap() {
+export default function WorldMap({ dailySettingId }) {
   const [user] = useRecoilState(userState);
   const [studentProgresses, setStudentProgresses] = useState([]);
-  const [congrats, setCongrats] = useState("");
+  const [congrats, setCongrats] = useState(
+    dailySettingId !== null ? true : false
+  );
   const [status, setStatus] = useState(0);
 
   const getAssignmentProgress = () => {
-    console.log("user[0]", user);
     AssignmentProgressApi.getAllAssignmentProgresssByStudentId(user[0].id).then(
       (res) => {
         setStudentProgresses(res.data);
@@ -22,55 +23,12 @@ export default function WorldMap() {
     );
   };
 
-  const citiesAndMonsters = [
-    {
-      city: "Stockholm",
-      monster: "tori",
-    },
-    {
-      city: "Paris",
-      monster: "oni",
-    },
-    {
-      city: "Cairo",
-      monster: "namekuji",
-    },
-    {
-      city: "Cape town",
-      monster: "hara",
-    },
-    {
-      city: "Islamabad",
-      monster: "neko",
-    },
-    {
-      city: "New delhi",
-      monster: "kurage",
-    },
-    {
-      city: "Beijing",
-      monster: "",
-    },
-    {
-      city: "Tokyo",
-      monster: "",
-    },
-    {
-      city: "Rio de Janeiro",
-      monster: "",
-    },
-    {
-      city: "New york",
-      monster: "",
-    },
-  ];
-
   const getIslandCards = () => {
     return studentProgresses.map((progress, index) => {
       //console.log("progress", progress);
       const key = "worldmapIsland" + index;
-      progress.city = citiesAndMonsters[index].city;
-      progress.monster = citiesAndMonsters[index].monster;
+      progress.city = monsters[index].city;
+      progress.monster = monsters[index].monster;
 
       // moment(progress.classDailySetting.date).format("YYYY-MM-DD") ===
       //   moment().format("YYYY-MM-DD") && setCongrats(progress.monster);
@@ -79,15 +37,13 @@ export default function WorldMap() {
     });
   };
 
-  // play paper open sound
-  const playPaperSound = () => {
-    const audio = new Audio("/assets/sound/paper-open.mp3");
-    audio.muted = true;
-    audio.play();
+  const showCongrats = () => {
+    console.log("congrats!daily setting id", dailySettingId);
   };
 
   useEffect(() => {
     getAssignmentProgress();
+    if (congrats) showCongrats();
   }, []);
 
   useEffect(() => {

@@ -28,6 +28,11 @@ h6 {
   color: var(--accent-color-brown);
 }
 
+label {
+  font-weight: bold;
+  color: var(--accent-color-brown);
+}
+
 .react-dropdown-list li {
   cursor: pointer;
   display: block;

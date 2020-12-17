@@ -15,7 +15,6 @@ import closePopupWindow from "../../js/common/popup/closePopupWindow";
 import { useRecoilState } from "recoil";
 import { userState } from "../../js/state-information";
 
-
 // ========================================================================
 // Navbar - visible on every pages
 function Navbar({ onLogout }) {
@@ -145,7 +144,7 @@ function Navbar({ onLogout }) {
                   </li>
                   <li onClick={() => closeNav()}>
                     <Link to="/daily-settings">
-                      <i className="fas fa-cog"></i>Daily Settings
+                      <i className="fas fa-cog"></i>Preview
                     </Link>
                   </li>
                   <li onClick={onLogout}>
