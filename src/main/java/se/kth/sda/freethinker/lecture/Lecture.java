@@ -1,7 +1,6 @@
 package se.kth.sda.freethinker.lecture;
 
 import se.kth.sda.freethinker.assignments.Assignment;
-import se.kth.sda.freethinker.topics.Topic;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -23,10 +22,6 @@ public class Lecture {
 
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime unlockTime;
-
-
-    @ManyToOne
-    private Topic topic;
 
     @OneToMany
     public List<Assignment> assignments;
@@ -65,15 +60,6 @@ public class Lecture {
     public void setBody(String body) {
         this.body = body;
     }
-
-    public Topic getTopic() {
-        return topic;
-    }
-
-    public void setTopic(Topic topic) {
-        this.topic = topic;
-    }
-
 
     public List<Assignment> getAssignments() {
         return assignments;
