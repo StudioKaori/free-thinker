@@ -57,7 +57,7 @@ export default function TeacherHomePage() {
             </Link>
             <Link
               to="/create-assignment"
-              className="btn btn-info btn-lg btn-block mb-5"
+              className="btn btn-warning btn-lg btn-block mb-5"
             >
               Create New Assignment
             </Link>

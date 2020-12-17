@@ -73,7 +73,7 @@ export default function DailySettingForm({ onClickPreview }) {
       {/* <h4 className="card-title">{date} Classroom Setting</h4> */}
       <div className="dropdown">
         <button
-          className="btn btn-secondary dropdown-toggle"
+          className="btn btn-light dropdown-toggle"
           type="button"
           id="island-selector"
           data-toggle="dropdown"
