@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 
 import { useRecoilState } from "recoil";
-import { userState } from "../../js/state-information";
+import { userState } from "../../../js/state-information";
 
-import StudentChat from "./chatbot/StudentChat";
-import StudentSpeech from "./speech/StudentSpeech";
-import StudentQuiz from "./quiz/StudentQuiz";
+import StudentChat from "./StudentChat";
+import StudentSpeech from "./StudentSpeech";
+import StudentQuiz from "./StudentQuiz";
 
-import AssignmentApi from "../../api/AssignmentApi";
-import AssignmentProgressApi from "../../api/AssignmentProgressApi";
+import AssignmentApi from "../../../api/AssignmentApi";
+import AssignmentProgressApi from "../../../api/AssignmentProgressApi";
 
-import "../../css/student/assignmentPage.css";
+import "../../../css/student/assignmentPage.css";
 
 
 // =====================================================================
