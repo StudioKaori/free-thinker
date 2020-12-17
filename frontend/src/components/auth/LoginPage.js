@@ -46,6 +46,16 @@ function LoginPage() {
         <div class="bubble"></div>
       </div>
       <div className="bg-01">
+        <div className="login-logo-wrapper">
+          <div className="login-logo-wrapper-inner animate__animated animate__rubberBand">
+            <img
+              src="/assets/img/logo.svg"
+              alt="free thinker logo"
+              className="login-logo-img"
+            />
+          </div>
+        </div>
+
         <div className="login-buttons">
           <ul className="nav d-flex justify-content-sm-center justify-content-md-end">
             <li
@@ -101,73 +111,7 @@ function LoginPage() {
             )}
           </div>
         </div>
-        <div className="login-logo-wrapper">
-          <img src="/assets/img/logo.svg" alt="free thinker logo" />
-        </div>
       </div>
-      {/* <div className="container">
-        <div className="row">
-          <div className="col-md-6 mt-4 text-center">
-            <h1>Free Thinkers aaa</h1>
-          </div>
-
-          <div className="col-md-6 mt-4">
-            <ul className="nav d-flex justify-content-sm-center justify-content-md-end">
-              <li
-                className={`nav-item btn btn-info m-1 ${loginOpen && "active"}`}
-                onClick={() => {
-                  setLoginOpen(!loginOpen);
-                  setTeacherRegisterOpen(false);
-                  setStudentRegisterOpen(false);
-                }}
-              >
-                Login
-              </li>
-              <li
-                className={`nav-item btn btn-info m-1 ${teacherRegisterOpen &&
-                  "active"}`}
-                onClick={() => {
-                  setLoginOpen(false);
-                  setTeacherRegisterOpen(!teacherRegisterOpen);
-                  setStudentRegisterOpen(false);
-                }}
-              >
-                Teacher Sign Up
-              </li>
-              <li
-                className={`nav-item btn btn-info m-1 ${studentRegisterOpen &&
-                  "active"}`}
-                onClick={() => {
-                  setLoginOpen(false);
-                  setTeacherRegisterOpen(false);
-                  setStudentRegisterOpen(!studentRegisterOpen);
-                }}
-              >
-                Student Sign Up
-              </li>
-            </ul>
-            <div className="row">
-              {loginOpen && (
-                <div className="col-12  strong-shadow">
-                  <LoginForm onSubmit={login} />
-                </div>
-              )}
-
-              {teacherRegisterOpen && (
-                <div className="col-12">
-                  <RegisterForm userType="Teacher" onSubmit={register} />
-                </div>
-              )}
-
-              {studentRegisterOpen && (
-                <div className="col-12">
-                  <RegisterForm userType="Student" onSubmit={register} />
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }
