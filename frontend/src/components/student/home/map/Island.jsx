@@ -8,6 +8,7 @@ import AssignmentApi from "../../../../api/AssignmentApi";
 import ClassDailySettingApi from "../../../../api/ClassDailySettingsApi";
 
 import LockIcon from "./IslandIcon";
+import monsters from "../../../../data/citiesAndMonsters.json";
 
 import "../../../../css/student/islands/island-green.css";
 
@@ -22,11 +23,17 @@ export default function Island({ myDate }) {
   const [user] = useRecoilState(userState);
   const iconAddLink = useRef("");
   iconAddLink.current = true;
+  const monsterImg = useRef("");
 
   // island theme
   const getIslandTheme = () => {
     ClassDailySettingApi.getByDate(date).then((res) => {
-      res.data.length !== 0 && setIslandTheme(res.data.islandTheme);
+      if (res.data.length !== 0) {
+        monsterImg.current =
+          "/assets/img/monsters/" + monsters[res.data.id - 1].monster + ".png";
+        console.log("monster", monsterImg);
+        setIslandTheme(res.data.islandTheme);
+      }
     });
   };
 
@@ -74,6 +81,10 @@ export default function Island({ myDate }) {
 
       <div className="student-home-map-island-path">
         <img src="/assets/img/css/islands/island-path.png" alt="path" />
+      </div>
+
+      <div className="island-icon-position island-monster">
+        <img src={monsterImg.current} alt="monster" />
       </div>
 
       {status === 1 &&
