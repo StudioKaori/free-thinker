@@ -4,13 +4,13 @@ export default function Heart() {
   return (
     <div id="heart-ex">
       <svg
-        class="likeButton clicked"
+        className="likeButton clicked"
         width="500px"
         height="500px"
         viewBox="0 0 500 500"
       >
-        <circle class="explosion" r="150" cx="250" cy="250"></circle>
-        <g class="particleLayer">
+        <circle className="explosion" r="150" cx="250" cy="250"></circle>
+        <g className="particleLayer">
           <circle fill="#8CE8C3" cx="130" cy="126.5" r="12.5" />
           <circle fill="#8CE8C3" cx="411" cy="313.5" r="12.5" />
           <circle fill="#91D2FA" cx="279" cy="86.5" r="12.5" />
@@ -27,7 +27,7 @@ export default function Heart() {
           <circle fill="#DD99B8" cx="296" cy="392.5" r="10.5" />
         </g>
         <path
-          class="heart"
+          className="heart"
           d="M250,187.4c-31.8-47.8-95.5-19.8-95.5,32.2c0,35.2,31.8,60.3,55.7,79.2c24.9,19.7,31.8,23.9,39.8,31.8 c7.9-7.9,14.6-12.6,39.8-31.8c24.3-18.5,55.7-44.4,55.7-79.6C345.5,167.6,281.8,139.7,250,187.4z"
         />
       </svg>
