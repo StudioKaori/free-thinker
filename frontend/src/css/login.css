@@ -229,7 +229,7 @@ body {
 
 .loginform-popup {
   position: absolute;
-  top: 20%;
+  top: 10%;
   bottom: 20%;
   left: 20%;
   right: 20%;
@@ -276,6 +276,12 @@ body {
   background-repeat: no-repeat;
   background-position: 130px 90px;
   background-color: #ffa1c0;
+}
+
+.loginform-close {
+  cursor: pointer;
+  font-size: var(--font-XL);
+  text-align: right;
 }
 /* .login-logo-img {
   width: 60%;

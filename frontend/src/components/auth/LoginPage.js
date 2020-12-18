@@ -70,10 +70,7 @@ function LoginPage() {
         </div>
         <div className="bg-01">
           <div className="login-logo-wrapper">
-            <div
-              className="login-logo-wrapper-inner"
-              // onClick={() => closeForms()}
-            >
+            <div className="login-logo-wrapper-inner">
               <img
                 src="/assets/img/login-logo.png"
                 alt="free thinker logo"
@@ -83,18 +80,36 @@ function LoginPage() {
               <div>
                 {loginOpen && (
                   <div className="loginform-popup">
+                    <div
+                      className="loginform-close"
+                      onClick={() => closeForms()}
+                    >
+                      <i className="far fa-times-circle"></i>
+                    </div>
                     <LoginForm onSubmit={login} />
                   </div>
                 )}
 
                 {teacherRegisterOpen && (
                   <div className="loginform-popup">
+                    <div
+                      className="loginform-close"
+                      onClick={() => closeForms()}
+                    >
+                      <i className="far fa-times-circle"></i>
+                    </div>
                     <RegisterForm userType="Teacher" onSubmit={register} />
                   </div>
                 )}
 
                 {studentRegisterOpen && (
                   <div className="loginform-popup">
+                    <div
+                      className="loginform-close"
+                      onClick={() => closeForms()}
+                    >
+                      <i className="far fa-times-circle"></i>
+                    </div>
                     <RegisterForm userType="Student" onSubmit={register} />
                   </div>
                 )}
