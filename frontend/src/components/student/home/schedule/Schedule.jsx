@@ -64,7 +64,11 @@ export default function Schedule() {
                     <th>{moment(lecture.unlockTime).format("H:mm")}</th>
                     <td>
                       <div>
-                        <Link to={lectureUrl} className={lectureLinkClass}>
+                        <Link
+                          to={lectureUrl}
+                          key={myKey}
+                          className={lectureLinkClass}
+                        >
                           {lecture.title}
                           {nowSign}
                         </Link>

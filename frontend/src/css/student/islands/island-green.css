@@ -28,6 +28,16 @@
   top: 12%;
 }
 
+.island-monster-home {
+  left: 38%;
+  top: 0%;
+}
+
+.island-monster-home img {
+  filter: brightness(10%);
+  width: 50px;
+  height: auto;
+}
 /* .island-lock-0 {
   top: 181px;
   left: 211px;

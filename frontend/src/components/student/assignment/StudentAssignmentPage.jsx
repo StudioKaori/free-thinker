@@ -101,7 +101,7 @@ export default function StudentAssignmentPage({ match }) {
 
       {allDone ? (
         <div>
-          <WorldMap showCongrats="true" />
+          <WorldMap showCongrats="true" monster={monster.current} />
         </div>
       ) : end ? (
         <div className="text-center">

@@ -8,8 +8,7 @@ import Congrats from "../assignment/Congrats";
 import "../../../css/student/worldmap.css";
 import monsters from "../../../data/citiesAndMonsters.json";
 
-export default function WorldMap({ showCongrats }) {
-  console.log("showCongrats", showCongrats);
+export default function WorldMap({ showCongrats, monster }) {
   const [user] = useRecoilState(userState);
   const [studentProgresses, setStudentProgresses] = useState([]);
   const [congrats] = useState(showCongrats === "true" ? true : false);
@@ -35,6 +34,7 @@ export default function WorldMap({ showCongrats }) {
 
   const deleteCongrats = () => {
     document.getElementById("popupStoryWindow").remove();
+    getAssignmentProgress();
   };
 
   useEffect(() => {

@@ -31,88 +31,169 @@ function LoginPage() {
     }
   };
 
+  const closeForms = () => {
+    if (loginOpen) setLoginOpen(false);
+    else if (studentRegisterOpen) setStudentRegisterOpen(false);
+    else if (teacherRegisterOpen) setTeacherRegisterOpen(false);
+  };
+
   return (
-    <div className="parallax-bg login-bg-01">
-      <div class="bubbles">
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-      </div>
-      <div className="bg-01">
-        <div className="login-logo-wrapper">
-          <div className="login-logo-wrapper-inner animate__animated animate__rubberBand">
-            <img
-              src="/assets/img/login-logo.svg"
-              alt="free thinker logo"
-              className="login-logo-img"
-            />
+    <>
+      <nav>
+        <div className="header-menu-bg">
+          <div>
+            <div className="header-menu-logo">
+              <h1>
+                <img
+                  src="/assets/img/logo.svg"
+                  alt="Free Thinker"
+                  title="Free Thinker"
+                  className="header-menu-logo-icon"
+                />
+              </h1>
+            </div>
           </div>
         </div>
+      </nav>
+      <div className="parallax-bg login-bg-01">
+        <div class="bubbles">
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+        </div>
+        <div className="bg-01">
+          <div className="login-logo-wrapper">
+            <div className="login-logo-wrapper-inner">
+              <img
+                src="/assets/img/login-logo.png"
+                alt="free thinker logo"
+                className="login-logo-img animate__animated animate__rubberBand"
+              />
 
-        <div className="login-buttons">
-          <ul className="nav d-flex justify-content-sm-center justify-content-md-end">
-            <li
-              className={`nav-item btn btn-info m-1 ${loginOpen && "active"}`}
-              onClick={() => {
-                setLoginOpen(!loginOpen);
-                setTeacherRegisterOpen(false);
-                setStudentRegisterOpen(false);
-              }}
-            >
-              Login
-            </li>
-            <li
-              className={`nav-item btn btn-info m-1 ${teacherRegisterOpen &&
-                "active"}`}
-              onClick={() => {
-                setLoginOpen(false);
-                setTeacherRegisterOpen(!teacherRegisterOpen);
-                setStudentRegisterOpen(false);
-              }}
-            >
-              Teacher Sign Up
-            </li>
-            <li
-              className={`nav-item btn btn-info m-1 ${studentRegisterOpen &&
-                "active"}`}
-              onClick={() => {
-                setLoginOpen(false);
-                setTeacherRegisterOpen(false);
-                setStudentRegisterOpen(!studentRegisterOpen);
-              }}
-            >
-              Student Sign Up
-            </li>
-          </ul>
-          <div className="row">
-            {loginOpen && (
-              <div className="col-12  strong-shadow">
-                <LoginForm onSubmit={login} />
-              </div>
-            )}
+              <div>
+                {loginOpen && (
+                  <div className="loginform-popup">
+                    <div
+                      className="loginform-close"
+                      onClick={() => closeForms()}
+                    >
+                      <i className="far fa-times-circle"></i>
+                    </div>
+                    <LoginForm onSubmit={login} />
+                  </div>
+                )}
 
-            {teacherRegisterOpen && (
-              <div className="col-12">
-                <RegisterForm userType="Teacher" onSubmit={register} />
-              </div>
-            )}
+                {teacherRegisterOpen && (
+                  <div className="loginform-popup">
+                    <div
+                      className="loginform-close"
+                      onClick={() => closeForms()}
+                    >
+                      <i className="far fa-times-circle"></i>
+                    </div>
+                    <RegisterForm userType="Teacher" onSubmit={register} />
+                  </div>
+                )}
 
-            {studentRegisterOpen && (
-              <div className="col-12">
-                <RegisterForm userType="Student" onSubmit={register} />
+                {studentRegisterOpen && (
+                  <div className="loginform-popup">
+                    <div
+                      className="loginform-close"
+                      onClick={() => closeForms()}
+                    >
+                      <i className="far fa-times-circle"></i>
+                    </div>
+                    <RegisterForm userType="Student" onSubmit={register} />
+                  </div>
+                )}
               </div>
-            )}
+              <div className="login-buttons">
+                <div
+                  className={`loginform-button ${loginOpen && "active"}`}
+                  onClick={() => {
+                    setLoginOpen(!loginOpen);
+                    setTeacherRegisterOpen(false);
+                    setStudentRegisterOpen(false);
+                  }}
+                >
+                  Login
+                </div>
+                <div
+                  className={`loginform-button ${teacherRegisterOpen &&
+                    "active"}`}
+                  onClick={() => {
+                    setLoginOpen(false);
+                    setTeacherRegisterOpen(!teacherRegisterOpen);
+                    setStudentRegisterOpen(false);
+                  }}
+                >
+                  Teacher
+                  <br />
+                  Sign Up
+                </div>
+                <div
+                  className={`loginform-button ${studentRegisterOpen &&
+                    "active"}`}
+                  onClick={() => {
+                    setLoginOpen(false);
+                    setTeacherRegisterOpen(false);
+                    setStudentRegisterOpen(!studentRegisterOpen);
+                  }}
+                >
+                  Student
+                  <br />
+                  Sign Up
+                </div>
+              </div>
+
+              {/* <ul className="nav d-flex justify-content-sm-center justify-content-md-end"> */}
+              {/* <ul>
+                  <li
+                    className={`loginform-button ${loginOpen &&
+                      "active"}`}
+                    onClick={() => {
+                      setLoginOpen(!loginOpen);
+                      setTeacherRegisterOpen(false);
+                      setStudentRegisterOpen(false);
+                    }}
+                  >
+                    Login
+                  </li>
+                  <li
+                    className={`loginform-button ${teacherRegisterOpen &&
+                      "active"}`}
+                    onClick={() => {
+                      setLoginOpen(false);
+                      setTeacherRegisterOpen(!teacherRegisterOpen);
+                      setStudentRegisterOpen(false);
+                    }}
+                  >
+                    Teacher Sign Up
+                  </li>
+                  <li
+                    className={`loginform-button ${studentRegisterOpen &&
+                      "active"}`}
+                    onClick={() => {
+                      setLoginOpen(false);
+                      setTeacherRegisterOpen(false);
+                      setStudentRegisterOpen(!studentRegisterOpen);
+                    }}
+                  >
+                    Student Sign Up
+                  </li>
+                </ul> */}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

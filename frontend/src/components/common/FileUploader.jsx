@@ -59,7 +59,7 @@ export default function FileUpload({ registerPhotoToDB }) {
 
   return (
     <div className="App">
-      <h6>Upload Image</h6>
+      <h3>Upload Image</h3>
       <form onSubmit={onSubmit}>
         <input type="file" onChange={handleImage} />
         <button>Upload</button>
