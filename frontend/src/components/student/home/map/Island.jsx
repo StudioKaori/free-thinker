@@ -24,6 +24,7 @@ export default function Island({ myDate }) {
   const iconAddLink = useRef("");
   iconAddLink.current = true;
   const monsterImg = useRef("");
+  monsterImg.current = "/assets/img/monsters/tori.png";
 
   // island theme
   const getIslandTheme = () => {
