@@ -72,7 +72,7 @@ function LoginPage() {
           <div className="login-logo-wrapper">
             <div
               className="login-logo-wrapper-inner"
-              onClick={() => closeForms()}
+              // onClick={() => closeForms()}
             >
               <img
                 src="/assets/img/login-logo.png"
