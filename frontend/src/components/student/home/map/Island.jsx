@@ -84,7 +84,7 @@ export default function Island({ myDate }) {
         <img src="/assets/img/css/islands/island-path.png" alt="path" />
       </div>
 
-      <div className="island-icon-position island-monster">
+      <div className="island-icon-position island-monster-home">
         <img src={monsterImg.current} alt="monster" />
       </div>
 
