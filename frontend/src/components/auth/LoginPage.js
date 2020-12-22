@@ -77,43 +77,34 @@ function LoginPage() {
                 className="login-logo-img animate__animated animate__rubberBand"
               />
 
-              <div>
+              <div className="login-form-group">
                 {loginOpen && (
                   <div className="loginform-popup">
-                    <div
-                      className="loginform-close"
-                      onClick={() => closeForms()}
-                    >
-                      <i className="far fa-times-circle"></i>
-                    </div>
-                    <LoginForm onSubmit={login} />
+                    <LoginForm onSubmit={login} onClickClose={closeForms} />
                   </div>
                 )}
 
                 {teacherRegisterOpen && (
                   <div className="loginform-popup">
-                    <div
-                      className="loginform-close"
-                      onClick={() => closeForms()}
-                    >
-                      <i className="far fa-times-circle"></i>
-                    </div>
-                    <RegisterForm userType="Teacher" onSubmit={register} />
+                    <RegisterForm
+                      userType="Teacher"
+                      onSubmit={register}
+                      onClickClose={closeForms}
+                    />
                   </div>
                 )}
 
                 {studentRegisterOpen && (
                   <div className="loginform-popup">
-                    <div
-                      className="loginform-close"
-                      onClick={() => closeForms()}
-                    >
-                      <i className="far fa-times-circle"></i>
-                    </div>
-                    <RegisterForm userType="Student" onSubmit={register} />
+                    <RegisterForm
+                      userType="Student"
+                      onSubmit={register}
+                      onClickClose={closeForms}
+                    />
                   </div>
                 )}
               </div>
+
               <div className="login-buttons">
                 <div
                   className={`loginform-button ${loginOpen && "active"}`}
