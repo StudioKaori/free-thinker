@@ -1,0 +1,84 @@
+.form-card {
+  position: relative;
+}
+
+.form-popup {
+  background-color: var(--accent-color-green);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.inputWithIcon input {
+  width: 100%;
+  border: 2px solid var(--accent-color-green);
+  border-radius: 4px;
+  margin: 8px 0;
+  outline: none;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: 0.3s;
+  font-size: var(--font-M);
+}
+
+.inputWithIcon input:focus {
+  border-color: var(--accent-color-yellow);
+  box-shadow: 0 0 8px 0 var(--accent-color-yellow);
+}
+
+.inputWithIcon input {
+  padding-left: 40px;
+}
+
+.inputWithIcon {
+  position: relative;
+}
+
+.inputWithIcon i {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  padding: 12px 8px;
+  color: var(--accent-color-green);
+  transition: 0.3s;
+  width: 36px;
+  text-align: center;
+}
+
+.inputWithIcon input:focus + i {
+  color: var(--accent-color-yellow);
+}
+
+.inputWithIcon .inputIconBg i {
+  background-color: var(--accent-color-green);
+  color: #fff;
+  width: 35px;
+  padding: 14px 4px;
+  border-radius: 4px 0 0 4px;
+  text-align: center;
+}
+
+.inputWithIcon.inputIconBg input:focus + i {
+  color: #fff;
+  background-color: var(--accent-color-yellow);
+}
+
+.loginform-submit {
+  width: 100%;
+  text-align: center;
+}
+.loginform-submit button {
+  background-color: #fff;
+  border-radius: 5px;
+  font-size: var(--font-M);
+  padding: 14px;
+  margin-top: 20px;
+  border: 0;
+  color: var(--accent-color-green);
+  box-shadow: 0 5px 5px 0 #0000002a;
+  text-transform: uppercase;
+}
+
+.loginform-submit button:hover {
+  box-shadow: 0 10px 10px 0 #00000059;
+}
