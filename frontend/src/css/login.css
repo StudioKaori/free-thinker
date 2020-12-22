@@ -215,17 +215,15 @@ body {
 }
 
 .loginform-popup {
+  width: 300px;
+  height: 300px;
   position: absolute;
-  top: 10%;
-  bottom: 20%;
-  left: 20%;
-  right: 20%;
-  text-align: left;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   z-index: 50;
-}
-
-.loginform-popup i {
-  color: var(--accent-color-yellow);
 }
 
 .login-buttons {
@@ -277,7 +275,7 @@ body {
 
 .loginform-close {
   cursor: pointer;
-  font-size: var(--font-XL);
+  font-size: var(--font-L);
   text-align: right;
 }
 /* .login-logo-img {

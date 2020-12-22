@@ -5,37 +5,35 @@ function LoginForm({ onSubmit, onClickClose }) {
   const [password, setPassword] = useState("");
 
   return (
-    <div className="card">
-      <div className="card-body">
+    <div className="form-card form-popup">
+      <div className="form-card-body">
         <div className="loginform-close" onClick={() => onClickClose()}>
-          <i className="far fa-times-circle"></i>
+          <i className="far fa-times-circle" title="Close"></i>
         </div>
         <div>
-          <div className="form-group">
-            <label>Email:</label>
+          <div className="inputWithIcon inputIconBg">
             <input
               type="email"
-              className="form-control"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            <i className="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
           </div>
 
-          <div className="form-group">
-            <label>Password:</label>
+          <div className="inputWithIcon inputIconBg">
             <input
               type="password"
               placeholder="Password"
-              className="form-control"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <i className="fa fa-key" aria-hidden="true"></i>
           </div>
 
-          <div className="form-group">
+          <div className="loginform-submit">
             <button
-              className="btn btn-info"
+              className="loginform-submit-button"
               onClick={() => onSubmit({ email, password })}
             >
               Login

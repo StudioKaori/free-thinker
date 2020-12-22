@@ -5,6 +5,7 @@ import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 
 import "../../css/login.css";
+import "../../css/login-forms.css";
 
 function LoginPage() {
   const [loginOpen, setLoginOpen] = useState(false);
@@ -77,33 +78,31 @@ function LoginPage() {
                 className="login-logo-img animate__animated animate__rubberBand"
               />
 
-              <div className="login-form-group">
-                {loginOpen && (
-                  <div className="loginform-popup">
-                    <LoginForm onSubmit={login} onClickClose={closeForms} />
-                  </div>
-                )}
+              {loginOpen && (
+                <div className="loginform-popup">
+                  <LoginForm onSubmit={login} onClickClose={closeForms} />
+                </div>
+              )}
 
-                {teacherRegisterOpen && (
-                  <div className="loginform-popup">
-                    <RegisterForm
-                      userType="Teacher"
-                      onSubmit={register}
-                      onClickClose={closeForms}
-                    />
-                  </div>
-                )}
+              {teacherRegisterOpen && (
+                <div className="loginform-popup">
+                  <RegisterForm
+                    userType="Teacher"
+                    onSubmit={register}
+                    onClickClose={closeForms}
+                  />
+                </div>
+              )}
 
-                {studentRegisterOpen && (
-                  <div className="loginform-popup">
-                    <RegisterForm
-                      userType="Student"
-                      onSubmit={register}
-                      onClickClose={closeForms}
-                    />
-                  </div>
-                )}
-              </div>
+              {studentRegisterOpen && (
+                <div className="loginform-popup">
+                  <RegisterForm
+                    userType="Student"
+                    onSubmit={register}
+                    onClickClose={closeForms}
+                  />
+                </div>
+              )}
 
               <div className="login-buttons">
                 <div
