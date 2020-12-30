@@ -18,7 +18,7 @@
     <br />
     <br />
     <br />
-    <a href="https://github.com/asad-tirmizi/sda-group-project-gp3">View Demo</a>
+    <a href="https://free-thinker-d732f.web.app/" target="_blank">View Demo</a>
     ·
     <a href="https://github.com/asad-tirmizi/sda-group-project-gp3/issues">Report Bug</a>
     ·
